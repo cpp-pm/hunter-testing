@@ -27,9 +27,18 @@ addons:
       - g++-4.8
 
 env:
-  - PROJECT_DIR=examples/spdlog TOOLCHAIN=default
+
+  # Only toolchains with c++11 support:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105846237
+  # * https://travis-ci.org/ingenue/hunter/jobs/105846245
+  # - PROJECT_DIR=examples/spdlog TOOLCHAIN=default
+
   - PROJECT_DIR=examples/spdlog TOOLCHAIN=libcxx
-  - PROJECT_DIR=examples/spdlog TOOLCHAIN=clang-libstdcxx
+
+  # FIXME: lack of c++11 support
+  # * https://travis-ci.org/ingenue/hunter/jobs/105846247
+  # - PROJECT_DIR=examples/spdlog TOOLCHAIN=clang-libstdcxx
+
   - PROJECT_DIR=examples/spdlog TOOLCHAIN=xcode
   - PROJECT_DIR=examples/spdlog TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/spdlog TOOLCHAIN=gcc
