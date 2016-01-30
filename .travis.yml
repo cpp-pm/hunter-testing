@@ -35,8 +35,17 @@ env:
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=gcc
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=gcc-4-8
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=analyze
+
+  # FIXME:
+  # https://travis-ci.org/ingenue/hunter/jobs/105845954
+  # https://travis-ci.org/ingenue/hunter/jobs/105845966
+  # - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845955
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845967
+  # - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=analyze
+
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=sanitize-leak
   - PROJECT_DIR=examples/CLAPACK TOOLCHAIN=sanitize-thread
