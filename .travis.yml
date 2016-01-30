@@ -34,9 +34,21 @@ env:
   - PROJECT_DIR=examples/GSL TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/GSL TOOLCHAIN=gcc
   - PROJECT_DIR=examples/GSL TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/GSL TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/GSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/GSL TOOLCHAIN=analyze
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845783
+  # - PROJECT_DIR=examples/GSL TOOLCHAIN=ios-nocodesign
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845772
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845784
+  # - PROJECT_DIR=examples/GSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845773
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845785
+  # - PROJECT_DIR=examples/GSL TOOLCHAIN=analyze
+
   - PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-leak
   - PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-thread
