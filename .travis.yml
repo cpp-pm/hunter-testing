@@ -35,7 +35,12 @@ env:
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=gcc
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=gcc-4-8
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
+  # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+  # - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-leak
