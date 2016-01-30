@@ -87,6 +87,13 @@ def run():
   ):
     verbose = False
 
+  if (
+      os.getenv('TRAVIS') and
+      (project_dir == 'examples/spdlog') and
+      (toolchain == 'android-ndk-r10e-api-19-armeabi-v7a-neon')
+  ):
+    verbose = False
+
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
