@@ -27,53 +27,199 @@ addons:
       - g++-4.8
 
 env:
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=default
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=xcode
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-9
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=gcc
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
-  - PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+  # Boost
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=default
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=libcxx
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=clang-libstdcxx
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=xcode
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-9
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-4-8
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=analyze
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak
+  - PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+
+  # Boost-filesystem
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=default
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=libcxx
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-libstdcxx
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=xcode
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-9
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-4-8
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=analyze
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-address
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-leak
+  - PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
+
+  # Boost-system
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=default
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=libcxx
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=clang-libstdcxx
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=xcode
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-9
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc-4-8
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=analyze
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-address
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-leak
+  - PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-thread
+
+  # Boost-iostreams
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=default
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=libcxx
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=xcode
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-9
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-4-8
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=analyze
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak
+  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread
 
 matrix:
   exclude:
+    ##### Boost #####
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=libcxx
 
     # Xcode is for OSX only
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=xcode
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=xcode
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-9
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign
 
     # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
 
     ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-4-8
 
     # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
 
     # Linux only
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+
+    ##### Boost-filesystem #####
+    ### Linux excludes ###
+    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=libcxx
+
+    # Xcode is for OSX only
+    - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=xcode
+    - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-9
+    - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign
+
+    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
+    - os: linux
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
+
+    ### OSX excludes ###
+    # TOOLCHAIN=gcc works fine on OSX
+    - os: osx
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-4-8
+
+    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
+    - os: osx
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
+
+    # Linux only
+    - os: osx
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak
+    - os: osx
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+
+    ##### Boost-system #####
+    ### Linux excludes ###
+    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=libcxx
+
+    # Xcode is for OSX only
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=xcode
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-9
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign
+
+    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc
+
+    ### OSX excludes ###
+    # TOOLCHAIN=gcc works fine on OSX
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc-4-8
+
+    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-address
+
+    # Linux only
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-leak
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-thread
+
+    ##### Boost-iostreams #####
+    ### Linux excludes ###
+    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=libcxx
+
+    # Xcode is for OSX only
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=xcode
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-9
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
+
+    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
+
+    ### OSX excludes ###
+    # TOOLCHAIN=gcc works fine on OSX
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-4-8
+
+    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address
+
+    # Linux only
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread
 
 install:
   - ./ci/install-deps.sh

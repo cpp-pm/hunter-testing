@@ -2,41 +2,153 @@
 
 environment:
   matrix:
+    ### Boost ###
     - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost
+
+    ### Boost-filesystem ###
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-filesystem
+
+    ### Boost-system ###
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-system
+
+    ### Boost-iostreams ###
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Boost-iostreams
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-iostreams
 
 install:
   - git submodule update --init --recursive
