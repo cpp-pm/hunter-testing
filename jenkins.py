@@ -82,6 +82,13 @@ def run():
 
   if (
       os.getenv('TRAVIS') and
+      (project_dir == 'examples/CLAPACK') and
+      (toolchain == 'osx-10-9')
+  ):
+    verbose = False
+
+  if (
+      os.getenv('TRAVIS') and
       (project_dir == 'examples/GSL') and
       (toolchain == 'xcode')
   ):
