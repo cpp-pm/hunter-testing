@@ -35,7 +35,11 @@ env:
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=gcc
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=gcc-4-8
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105878671
+  # - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=analyze
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/Libssh2 TOOLCHAIN=sanitize-leak
