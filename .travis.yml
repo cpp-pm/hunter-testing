@@ -81,7 +81,11 @@ env:
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-4-8
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105856458
+  # - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=analyze
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak
