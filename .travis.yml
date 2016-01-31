@@ -126,34 +126,34 @@ matrix:
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=libcxx
 
     # Xcode is for OSX only
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=xcode
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=xcode
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-9
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign
 
     # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc
 
     ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-4-8
 
     # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-address
 
     # Linux only
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-leak
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
 
     ##### Boost-system #####
     ### Linux excludes ###
