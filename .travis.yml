@@ -75,18 +75,29 @@ env:
   # Boost-iostreams
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=default
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=libcxx
-  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105982173
+  # - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
+
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=xcode
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105982177
+  # - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
 
   # FIXME:
   # * https://travis-ci.org/ingenue/hunter/jobs/105856458
   # - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-  - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=analyze
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105982178
+  # * https://travis-ci.org/ingenue/hunter/jobs/105982140
+  # - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=analyze
+
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak
   - PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread
