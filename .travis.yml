@@ -48,7 +48,7 @@ env:
   # FIXME:
   # * https://travis-ci.org/ingenue/hunter/jobs/105847709
   # * https://travis-ci.org/ingenue/hunter/jobs/105847697
-  - PROJECT_DIR=examples/odb TOOLCHAIN=analyze
+  # - PROJECT_DIR=examples/odb TOOLCHAIN=analyze
 
   - PROJECT_DIR=examples/odb TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/odb TOOLCHAIN=sanitize-leak
