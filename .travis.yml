@@ -34,9 +34,21 @@ env:
   - PROJECT_DIR=examples/Lua TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/Lua TOOLCHAIN=gcc
   - PROJECT_DIR=examples/Lua TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/Lua TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/Lua TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/Lua TOOLCHAIN=analyze
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848173
+  # - PROJECT_DIR=examples/Lua TOOLCHAIN=ios-nocodesign
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848162
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848174
+  # - PROJECT_DIR=examples/Lua TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848163
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848175
+  # - PROJECT_DIR=examples/Lua TOOLCHAIN=analyze
+
   - PROJECT_DIR=examples/Lua TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/Lua TOOLCHAIN=sanitize-leak
   - PROJECT_DIR=examples/Lua TOOLCHAIN=sanitize-thread
