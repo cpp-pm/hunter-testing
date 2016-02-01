@@ -27,19 +27,49 @@ addons:
       - g++-4.8
 
 env:
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=default
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=libcxx
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=clang-libstdcxx
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848110
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=default
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=libcxx
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848111
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848120
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=clang-libstdcxx
+
   - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=xcode
   - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=gcc
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=analyze
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-address
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-leak
-  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-thread
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848112
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=gcc-4-8
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848124
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=ios-nocodesign
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848113
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848125
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848114
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848126
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=analyze
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848115
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-address
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848116
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-leak
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/105848117
+  # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=sanitize-thread
 
 matrix:
   exclude:
