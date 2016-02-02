@@ -36,6 +36,9 @@ env:
   # * https://travis-ci.org/ingenue/hunter/jobs/105847867
   # - PROJECT_DIR=examples/odb-sqlite TOOLCHAIN=clang-libstdcxx
 
+  # Dummy toolchain for Linux
+  - PROJECT_DIR=examples/odb-sqlite TOOLCHAIN=dummy
+
   - PROJECT_DIR=examples/odb-sqlite TOOLCHAIN=xcode
   - PROJECT_DIR=examples/odb-sqlite TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/odb-sqlite TOOLCHAIN=gcc
