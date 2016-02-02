@@ -70,6 +70,10 @@ def run():
   if (project_dir == 'examples/OpenSSL') and (toolchain == 'xcode'):
     print('Skip (https://github.com/ruslo/hunter/issues/30)')
     sys.exit(0)
+
+  if (os.getenv('TRAVIS') and toolchain == 'dummy'):
+    print('Skip build: Travis CI empty matrix configuration workaround')
+    sys.exit(0)
   # -- end
 
   verbose = True
@@ -173,14 +177,13 @@ def run():
       'TESTING_SHA1={}'.format(hunter_sha1)
   ]
 
-  if not parsed_args.verbose:
-    args += ['HUNTER_STATUS_DEBUG=NO']
-
   if not parsed_args.nocreate:
     args += ['HUNTER_RUN_INSTALL=ON']
 
-  if verbose:
-    args += ['--verbose']
+  args += ['--verbose']
+  if not verbose:
+    args += ['--discard', '10']
+    args += ['--tail', '200']
 
   print('Execute command: [')
   for i in args:
