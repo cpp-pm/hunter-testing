@@ -1,7 +1,8 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
 os:
-  - linux
+  # Only OSX entries in matrix left
+  # - linux
   - osx
 
 # Container-based infrastructure (Linux)
