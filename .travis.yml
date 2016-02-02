@@ -1,8 +1,7 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
 os:
-  # Only OSX entries in matrix left
-  # - linux
+  - linux
   - osx
 
 # Container-based infrastructure (Linux)
@@ -37,6 +36,9 @@ env:
   # * https://travis-ci.org/ingenue/hunter/jobs/105848111
   # * https://travis-ci.org/ingenue/hunter/jobs/105848120
   # - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=clang-libstdcxx
+
+  # Dummy toolchain for Linux
+  - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=dummy
 
   - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=xcode
   - PROJECT_DIR=examples/odb-pgsql TOOLCHAIN=osx-10-9
