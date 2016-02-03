@@ -147,8 +147,10 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\Boost-iostreams
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-iostreams
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.81/job/gyvurjesgb2gtcyw
+    # - TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\Boost-iostreams
 
 install:
   - git submodule update --init --recursive
