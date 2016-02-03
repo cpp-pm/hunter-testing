@@ -144,8 +144,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Boost-iostreams
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Boost-iostreams
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.81/job/2y70bu72eg2m79iv
+    # - TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\Boost-iostreams
 
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.81/job/gyvurjesgb2gtcyw
