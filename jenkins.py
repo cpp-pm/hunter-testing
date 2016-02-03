@@ -189,7 +189,7 @@ def run():
 
   args += ['--verbose']
   if not verbose:
-    args += ['--discard', '10']
+    args += ['--discard', '100']
     args += ['--tail', '200']
 
   print('Execute command: [')
