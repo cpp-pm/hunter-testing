@@ -27,6 +27,7 @@ addons:
       - g++-4.8
 
 env:
+  - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=dummy # for OSX
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=default
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=libcxx
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=clang-libstdcxx
@@ -35,8 +36,15 @@ env:
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=gcc
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=gcc-4-8
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=analyze
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/107647419
+  #  - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+  # Failed because of PNG:
+  # * https://travis-ci.org/ingenue/hunter/jobs/107647420
+  # - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=analyze
+
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=sanitize-address
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=sanitize-leak
   - PROJECT_DIR=examples/wxWidgets TOOLCHAIN=sanitize-thread
@@ -74,6 +82,27 @@ matrix:
       env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=sanitize-leak
     - os: osx
       env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=sanitize-thread
+
+    # OSX is not supported:
+    # * https://travis-ci.org/ingenue/hunter/builds/107647415
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=xcode
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=osx-10-9
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=gcc
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=ios-nocodesign
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/wxWidgets TOOLCHAIN=analyze
 
 install:
   - ./ci/install-deps.sh

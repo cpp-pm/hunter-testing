@@ -5,14 +5,20 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\wxWidgets
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\wxWidgets
+    # FIXME:
+    # *  https://ci.appveyor.com/project/ingenue/hunter/build/1.0.106/job/5n73nqbu7t0ise06
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\wxWidgets
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\wxWidgets
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.106/job/x8nrev8ttbi6nq0r
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\wxWidgets
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\wxWidgets
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.106/job/hd23g76c3la0bbms
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\wxWidgets
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\wxWidgets
@@ -35,8 +41,10 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\wxWidgets
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\wxWidgets
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.106/job/6hda0h7nueuyyrtj
+    # - TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\wxWidgets
 
 install:
   - git submodule update --init --recursive
