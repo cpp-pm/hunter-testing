@@ -76,6 +76,21 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-compute TOOLCHAIN=sanitize-thread
 
+    # FIXME (lack of c++11 support for libstdc++):
+    # * https://travis-ci.org/ingenue/hunter/jobs/107998943
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-compute TOOLCHAIN=clang-libstdcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/107998947
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-compute TOOLCHAIN=ios-nocodesign
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/107998948
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-compute TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
 install:
   - ./ci/install-deps.sh
 
