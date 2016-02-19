@@ -1,42 +1,48 @@
 # Windows (https://github.com/travis-ci-tester/toolchain-table)
 
+# FIXME (missing dependencies):
+# * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.114
+
 environment:
   matrix:
-    - TOOLCHAIN: "default"
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\ArrayFire
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\ArrayFire
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\ArrayFire
+#    - TOOLCHAIN: "default"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "nmake-vs-12-2013"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-10-2010"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-11-2012"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-12-2013-win64"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-12-2013-xp"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-12-2013"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-14-2015"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "vs-9-2008"
+#      PROJECT_DIR: examples\ArrayFire
+#
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\ArrayFire
 
 install:
   - git submodule update --init --recursive
