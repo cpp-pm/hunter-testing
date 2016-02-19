@@ -6,6 +6,9 @@ if [ "`uname`" == "Darwin" ];
 then
   brew install python3
 
+  # https://github.com/arrayfire/arrayfire/wiki/Build-Instructions-for-OSX#cpu-build-dependencies
+  brew install fftw
+
   # Patched CMake (for iOS)
   wget https://github.com/ruslo/CMake/releases/download/v3.3.2-p0/cmake-3.3.2-Darwin-x86_64.tar.gz
   tar xf cmake-3.3.2-Darwin-x86_64.tar.gz
