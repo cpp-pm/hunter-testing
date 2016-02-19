@@ -20,6 +20,10 @@ addons:
       - cmake
       - python3
 
+      # https://github.com/arrayfire/arrayfire/wiki/Build-Instructions-for-Linux#cpu-backend-dependencies
+      - libatlas-dev
+      - libfftw3-dev
+
       # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
       - libstdc++-4.8-dev
 
