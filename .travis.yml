@@ -27,11 +27,7 @@ addons:
       - g++-4.8
 
 env:
-  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=mingw
-  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=analyze
-  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=sanitize-address
-  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=sanitize-leak
-  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=sanitize-thread
+  - PROJECT_DIR=examples/WinSparkle TOOLCHAIN=dummy
 
 matrix:
   exclude:
