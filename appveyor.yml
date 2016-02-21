@@ -35,7 +35,15 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\WTL
 
-    - TOOLCHAIN: "mingw"
+matrix:
+  allow_failures:
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\WTL
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\WTL
+
+    - TOOLCHAIN: "vs-11-2012"
       PROJECT_DIR: examples\WTL
 
 install:
