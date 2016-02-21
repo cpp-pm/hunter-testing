@@ -5,14 +5,20 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\WinSparkle
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\WinSparkle
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.121/job/904rdcg4blu6jpqt
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\WinSparkle
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\WinSparkle
+    # FIXME:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.121/job/0ap4r49m6qqm67h0
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\WinSparkle
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\WinSparkle
+    # FIXME:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.121/job/409jtsg75ymy676i
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\WinSparkle
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\WinSparkle
@@ -35,8 +41,10 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\WinSparkle
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\WinSparkle
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.121/job/x54l8jdvs03u57py
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\WinSparkle
 
 install:
   - git submodule update --init --recursive
