@@ -27,53 +27,53 @@ addons:
       - g++-4.8
 
 env:
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=default
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=libcxx
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=clang-libstdcxx
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=xcode
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=osx-10-9
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=gcc
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=ios-nocodesign
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=analyze
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-address
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-leak
-  - PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-thread
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=default
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=libcxx
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=clang-libstdcxx
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=xcode
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=osx-10-9
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=gcc
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=gcc-4-8
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=ios-nocodesign
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=analyze
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-address
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-leak
+  - PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-thread
 
 matrix:
   exclude:
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=libcxx
 
     # Xcode is for OSX only
     - os: linux
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=xcode
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=xcode
     - os: linux
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=osx-10-9
     - os: linux
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=ios-nocodesign
 
     # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - os: linux
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=gcc
 
     ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=gcc-4-8
 
     # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
     - os: osx
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-address
 
     # Linux only
     - os: osx
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-leak
     - os: osx
-      env: PROJECT_DIR=examples/BoostProcess TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/Boost-process TOOLCHAIN=sanitize-thread
 
 install:
   - ./ci/install-deps.sh
