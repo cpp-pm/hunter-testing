@@ -70,6 +70,11 @@ def run():
   if (project_dir == 'examples/OpenSSL') and (toolchain == 'xcode'):
     print('Skip (https://github.com/ruslo/hunter/issues/30)')
     sys.exit(0)
+
+  ci = os.getenv('TRAVIS') or os.getenv('APPVEYOR')
+  if (ci and toolchain == 'dummy'):
+    print('Skip build: CI dummy (workaround)')
+    sys.exit(0)
   # -- end
 
   verbose = True
