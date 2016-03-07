@@ -27,9 +27,6 @@ addons:
       - g++-4.8
 
 env:
-  # For OSX
-  - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=dummy
-
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=default
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=libcxx
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=clang-libstdcxx
@@ -37,7 +34,10 @@ env:
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=osx-10-9
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=gcc
   - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=gcc-4-8
-  - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=ios-nocodesign
+
+  # FIXME:
+  # * https://travis-ci.org/ingenue/hunter/jobs/113713515
+  # - PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=ios-nocodesign
 
   # FIXME:
   # * https://travis-ci.org/ingenue/hunter/jobs/113099819
@@ -84,23 +84,6 @@ matrix:
       env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=sanitize-leak
     - os: osx
       env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=sanitize-thread
-
-    # FIXME
-    # All OSX tests failed: https://travis-ci.org/ingenue/hunter/builds/113099814
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=xcode
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=gcc
-    - os: osx
-      env: PROJECT_DIR=examples/ZeroMQ TOOLCHAIN=ios-nocodesign
 
 install:
   - ./ci/install-deps.sh
