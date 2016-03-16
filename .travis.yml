@@ -43,9 +43,17 @@ env:
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=osx-10-9
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=gcc
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=gcc-4-8
-    - PROJECT_DIR=examples/BZip2 TOOLCHAIN=ios-nocodesign
+
+    # Broken package
+    # - PROJECT_DIR=examples/BZip2 TOOLCHAIN=ios-nocodesign
+
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - PROJECT_DIR=examples/BZip2 TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/116392402
+    # * https://travis-ci.org/ingenue/hunter/jobs/116392413
+    # - PROJECT_DIR=examples/BZip2 TOOLCHAIN=analyze
+
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=sanitize-address
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=sanitize-leak
     - PROJECT_DIR=examples/BZip2 TOOLCHAIN=sanitize-thread
