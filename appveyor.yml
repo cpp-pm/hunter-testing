@@ -4,6 +4,11 @@
 # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.81
 
 environment:
+  global:
+    # This variable used only if '--upload' added to 'jenkins.py'
+    GITHUB_USER_PASSWORD:
+      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+
   matrix:
     ### Boost ###
     - TOOLCHAIN: "default"
