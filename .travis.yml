@@ -172,6 +172,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
 
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/115628636
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-libstdcxx
+
     ##### Boost-system #####
     ### Linux excludes ###
     # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
