@@ -40,17 +40,11 @@ env:
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=default
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=libcxx
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=clang-libstdcxx
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=xcode
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=osx-10-9
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845667
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845655
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=analyze
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-address
     - PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-leak
@@ -64,8 +58,6 @@ matrix:
       env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=libcxx
 
     # Xcode is for OSX only
-    - os: linux
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=xcode
     - os: linux
       env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=osx-10-9
     - os: linux
