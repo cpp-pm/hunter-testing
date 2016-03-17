@@ -1,11 +1,7 @@
 # Copyright (c) 2015, David Hirvonen
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_OPENCV_HUNTER_CMAKE_)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_OPENCV_HUNTER_CMAKE_ 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 # Load used modules
 include(hunter_add_package)
@@ -183,6 +179,10 @@ hunter_cmake_args(
         BUILD_ZLIB=OFF
         BUILD_TIFF=OFF
         BUILD_PNG=OFF
+        # This stuff will build shared libraries. Build with PIC required for dependencies.
+        BUILD_opencv_java=OFF
+        BUILD_opencv_python2=OFF
+        BUILD_opencv_python3=OFF
 )
 
 # Pick a download scheme
