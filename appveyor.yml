@@ -37,11 +37,23 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\OpenCV
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\OpenCV
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.279/job/ps3k4p1b9v5hs8pn
+    # Error message:
+    #   Source\modules\calib3d\src\rho.cpp(51) : fatal error C1083: Cannot open include file:
+    #   'stdint.h': No such file or directory
+    # -----
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\OpenCV
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\OpenCV
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.279/job/p27q37khi5t7vopc
+    # Error message:
+    #   Source\modules\core\src\parallel.cpp:544:1: error:
+    #   control reaches end of non-void function
+    # -----
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\OpenCV
 
 install:
   # Python 3
