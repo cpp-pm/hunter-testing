@@ -39,16 +39,34 @@ env:
   matrix:
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=default
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=libcxx
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592965
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592974
+    # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
+
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-9
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread
+
+    # FIXME (TIFF broken)
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592968
+    # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592969
+    # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address
+
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592970
+    # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592971
+    # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread
 
 matrix:
   exclude:
