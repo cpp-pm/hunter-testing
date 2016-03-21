@@ -154,6 +154,24 @@ endif()
 
 list(APPEND configure_opts "-prefix" "@HUNTER_PACKAGE_INSTALL_PREFIX@")
 
+### Disable SQL {
+# Configuration should be predictable on different machines. It must not
+# depends on what SQL packages installed on building machine and what not.
+# This will simplify building errors analyzing and allow to use cache from
+# CI slave.
+# Right way to turn this features ON is to add this packages to Hunter and
+# pass location of libraries to Qt.
+list(APPEND configure_opts "-no-sql-db2")
+list(APPEND configure_opts "-no-sql-ibase")
+list(APPEND configure_opts "-no-sql-mysql")
+list(APPEND configure_opts "-no-sql-oci")
+list(APPEND configure_opts "-no-sql-odbc")
+list(APPEND configure_opts "-no-sql-psql")
+list(APPEND configure_opts "-no-sql-sqlite2")
+# list(APPEND configure_opts "-no-sql-sqlite") # (okay, bundled copy)
+list(APPEND configure_opts "-no-sql-tds")
+### }
+
 ### Configuration type --
 
 set(cfg "@HUNTER_PACKAGE_CONFIGURATION_TYPES@")
