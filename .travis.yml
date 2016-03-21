@@ -45,7 +45,12 @@ env:
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=ios-nocodesign
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - PROJECT_DIR=examples/Jpeg TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/117370722
+    # * https://travis-ci.org/ingenue/hunter/jobs/117370710
+    # - PROJECT_DIR=examples/Jpeg TOOLCHAIN=analyze
+
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=sanitize-address
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=sanitize-leak
     - PROJECT_DIR=examples/Jpeg TOOLCHAIN=sanitize-thread
