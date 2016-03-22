@@ -8,6 +8,7 @@
 import argparse
 import hashlib
 import os
+import platform
 import shutil
 import subprocess
 import sys
@@ -133,6 +134,13 @@ def run():
       os.getenv('TRAVIS') and
       (project_dir == 'examples/qt-widgets') and
       (toolchain == 'osx-10-9')
+  ):
+    verbose = False
+
+  if (
+      os.getenv('TRAVIS') and
+      (project_dir == 'examples/qt-widgets')
+      (platform.system() == 'Darwin')
   ):
     verbose = False
 
