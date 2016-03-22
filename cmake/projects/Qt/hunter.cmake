@@ -144,11 +144,6 @@ if(NOT APPLE AND NOT WIN32)
   hunter_configuration_types(Qt CONFIGURATION_TYPES Release)
 endif()
 
-if(ANDROID)
-  # Static variant is not supported: https://bugreports.qt.io/browse/QTBUG-47455
-  hunter_cmake_args(Qt CMAKE_ARGS BUILD_SHARED_LIBS=ON)
-endif()
-
 if(IOS)
   list(FIND IPHONEOS_ARCHS "armv7s" _armv7s_index)
   if(NOT _armv7s_index EQUAL -1)
@@ -157,6 +152,11 @@ if(IOS)
         "For example Qt Multimedia: https://bugreports.qt.io/browse/QTBUG-48805"
     )
   endif()
+endif()
+
+if(ANDROID)
+  # Static variant is not supported: https://bugreports.qt.io/browse/QTBUG-47455
+  hunter_cmake_args(Qt CMAKE_ARGS BUILD_SHARED_LIBS=ON)
 endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/qtbase/hunter.cmake")
