@@ -44,7 +44,7 @@ env:
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-9
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-4-8
-    - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign
+    - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-wo-armv7s
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze
     - PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-address
@@ -72,7 +72,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-4-8
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-wo-armv7s
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -89,7 +89,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-9
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-wo-armv7s
 
     # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - os: linux
@@ -109,6 +109,11 @@ matrix:
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-leak
     - os: osx
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-thread
+
+    # default can't be used since it doesn't set SDK (by design)
+    # * https://travis-ci.org/ingenue/hunter/jobs/117738040
+    - os: osx
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=default
 
 install:
   # Info about OS
