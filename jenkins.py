@@ -139,7 +139,7 @@ def run():
 
   if (
       os.getenv('TRAVIS') and
-      (project_dir == 'examples/qt-widgets')
+      (project_dir == 'examples/qt-widgets') and
       (platform.system() == 'Darwin')
   ):
     verbose = False
