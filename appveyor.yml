@@ -39,8 +39,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\libyuv
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\libyuv
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.310/job/jnk6lipb2lfw5yo3
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\libyuv
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\libyuv
