@@ -67,6 +67,11 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/libyuv TOOLCHAIN=gcc
 
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/118221454
+    - os: linux
+      env: PROJECT_DIR=examples/libyuv TOOLCHAIN=default
+
     ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
