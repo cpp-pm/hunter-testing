@@ -85,6 +85,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/cereal TOOLCHAIN=sanitize-thread
 
+    # FIXME (lack of c++11 support):
+    # * https://travis-ci.org/ingenue/hunter/jobs/118219421
+    - os: osx
+      env: PROJECT_DIR=examples/cereal TOOLCHAIN=clang-libstdcxx
+
 install:
   # Info about OS
   - uname -a
