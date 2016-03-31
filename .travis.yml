@@ -46,7 +46,6 @@ env:
     # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
 
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-4-8
 
     # Toolchain should be uploaded from local machine because of Travis timeouts
@@ -84,12 +83,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign
 
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
-
     ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX
+    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-4-8
 
