@@ -129,6 +129,13 @@ def run():
   ):
     verbose = False
 
+  if (
+      os.getenv('TRAVIS') and
+      (project_dir == 'examples/ZMQPP') and
+      (toolchain == 'ios-nocodesign')
+  ):
+    verbose = False
+
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
