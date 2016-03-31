@@ -43,7 +43,6 @@ env:
     - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=libcxx
     - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=clang-libstdcxx
     - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=gcc
     - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/ZMQPP TOOLCHAIN=ios-nocodesign
 
@@ -72,12 +71,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/ZMQPP TOOLCHAIN=ios-nocodesign
 
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-    - os: linux
-      env: PROJECT_DIR=examples/ZMQPP TOOLCHAIN=gcc
-
     ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX
+    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
     - os: osx
       env: PROJECT_DIR=examples/ZMQPP TOOLCHAIN=gcc-4-8
 
