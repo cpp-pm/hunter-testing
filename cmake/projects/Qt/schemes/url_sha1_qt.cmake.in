@@ -134,6 +134,8 @@ elseif(_is_linux)
   list(APPEND
     configure_opts
       -qt-xcb
+      -qt-xkbcommon-x11
+      -no-fontconfig # https://bugreports.qt.io/browse/QTBUG-51738
   )
 elseif("@MSVC@")
   list(APPEND configure_opts -platform "win32-msvc@HUNTER_MSVC_YEAR@")
@@ -183,6 +185,14 @@ elseif(is_release_debug)
 else()
   hunter_user_error("Qt configuration type `${cfg}` is not supported")
 endif()
+
+# Disable 3rd party from system
+list(APPEND configure_opts "-qt-freetype")
+list(APPEND configure_opts "-qt-harfbuzz")
+list(APPEND configure_opts "-qt-libjpeg")
+list(APPEND configure_opts "-qt-libpng")
+list(APPEND configure_opts "-qt-pcre")
+list(APPEND configure_opts "-qt-zlib")
 
 ### -- end
 
