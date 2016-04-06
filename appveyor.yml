@@ -1,6 +1,11 @@
 # Windows (https://github.com/travis-ci-tester/toolchain-table)
 
 environment:
+  global:
+    # This variable used only if '--upload' added to 'jenkins.py'
+    GITHUB_USER_PASSWORD:
+      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+
   matrix:
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\odb
@@ -73,3 +78,9 @@ install:
 
 build_script:
   - cmd: python .\jenkins.py
+
+# http://www.appveyor.com/docs/branches#white-and-blacklisting
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - pkg.template
