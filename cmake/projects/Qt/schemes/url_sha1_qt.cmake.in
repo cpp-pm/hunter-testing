@@ -266,14 +266,6 @@ else()
   hunter_user_error("Qt configuration type `${cfg}` is not supported")
 endif()
 
-# Disable 3rd party from system
-list(APPEND configure_opts "-qt-freetype")
-list(APPEND configure_opts "-qt-harfbuzz")
-list(APPEND configure_opts "-qt-libjpeg")
-list(APPEND configure_opts "-qt-libpng")
-list(APPEND configure_opts "-qt-pcre")
-list(APPEND configure_opts "-qt-zlib")
-
 ### -- end
 
 hunter_status_debug("Qt configure options (without -skip): ${configure_opts}")
