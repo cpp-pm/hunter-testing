@@ -77,6 +77,7 @@ else() # is standard opensource
 endif()
 
 set(HUNTER_PATCH_QT_MACX_CLANG FALSE)
+set(HUNTER_QT_OS_IS_LINUX FALSE)
 
 string(COMPARE EQUAL "@CMAKE_OSX_SYSROOT@" "iphoneos" _is_iphoneos)
 string(COMPARE NOTEQUAL "@ANDROID@" "" _is_android)
@@ -137,9 +138,44 @@ elseif(_is_darwin)
   )
   set(HUNTER_PATCH_QT_MACX_CLANG TRUE)
 elseif(_is_linux)
+  set(HUNTER_QT_OS_IS_LINUX TRUE)
+  hunter_add_package(xcb)
+  hunter_add_package(x11)
+  hunter_add_package(xext)
+  hunter_add_package(xrender)
+  hunter_add_package(sm)
+  hunter_add_package(ice)
+
+  string(COMPARE EQUAL "${X11_ROOT}" "${XCB_ROOT}" is_good)
+  if(NOT is_good)
+    hunter_internal_error("Roots not the same")
+  endif()
+
+  string(COMPARE EQUAL "${XEXT_ROOT}" "${XCB_ROOT}" is_good)
+  if(NOT is_good)
+    hunter_internal_error("Roots not the same")
+  endif()
+
+  string(COMPARE EQUAL "${XRENDER_ROOT}" "${XCB_ROOT}" is_good)
+  if(NOT is_good)
+    hunter_internal_error("Roots not the same")
+  endif()
+
+  string(COMPARE EQUAL "${SM_ROOT}" "${XCB_ROOT}" is_good)
+  if(NOT is_good)
+    hunter_internal_error("Roots not the same")
+  endif()
+
+  string(COMPARE EQUAL "${ICE_ROOT}" "${XCB_ROOT}" is_good)
+  if(NOT is_good)
+    hunter_internal_error("Roots not the same")
+  endif()
+
   list(APPEND
     configure_opts
       -qt-xcb
+      -L "${XCB_ROOT}/lib"
+      -I "${XCB_ROOT}/include"
   )
 elseif("@MSVC@")
   list(APPEND configure_opts -platform "win32-msvc@HUNTER_MSVC_YEAR@")
@@ -176,6 +212,34 @@ list(APPEND configure_opts "-no-sql-psql")
 list(APPEND configure_opts "-no-sql-sqlite2")
 # list(APPEND configure_opts "-no-sql-sqlite") # (okay, bundled copy)
 list(APPEND configure_opts "-no-sql-tds")
+### }
+
+### Predictable configuration {
+# Disable components that may or may not present in system (TODO: add to Hunter)
+if(NOT _is_android AND NOT _is_iphoneos)
+  if(NOT WIN32)
+    list(APPEND configure_opts "-no-egl")
+    list(APPEND configure_opts "-no-eglfs")
+  endif()
+  list(APPEND configure_opts "-no-opengl")
+endif()
+list(APPEND configure_opts "-no-fontconfig")
+list(APPEND configure_opts "-no-gif")
+if(NOT WIN32)
+  list(APPEND configure_opts "-no-glib")
+  list(APPEND configure_opts "-no-gtkstyle")
+  list(APPEND configure_opts "-no-xinput2")
+endif()
+list(APPEND configure_opts "-no-icu")
+list(APPEND configure_opts "-no-openssl")
+### }
+
+### Predictable configuration {
+# Force bundled copy (TODO: add to Hunter)
+list(APPEND configure_opts "-qt-freetype")
+list(APPEND configure_opts "-qt-libjpeg")
+list(APPEND configure_opts "-qt-libpng")
+list(APPEND configure_opts "-qt-zlib")
 ### }
 
 ### Configuration type --
@@ -254,6 +318,8 @@ set(
 #   * IOS
 #   * HUNTER_Qt_VERSION
 #   * HUNTER_PATCH_QT_MACX_CLANG
+#   * HUNTER_QT_OS_IS_LINUX
+#   * global_install_dir
 configure_file(
     "@HUNTER_PACKAGE_SETUP_DIR@/ep-stages/qt-configure.cmake.in"
     "@HUNTER_PACKAGE_BUILD_DIR@/qt-configure.cmake"
@@ -301,16 +367,6 @@ configure_file(
 # This file created after archive with sources successfully
 # downloaded and unpacked
 if(EXISTS "${qt_source_dir}/qt-configure.cmake")
-  set(download_done TRUE)
-else()
-  set(download_done FALSE)
-endif()
-
-string(COMPARE EQUAL "${qt_component}" "qtbase" is_qtbase)
-
-if(is_qtbase AND download_done)
-  hunter_internal_error("qtbase is not the first component")
-elseif(download_done)
   set(download_step DOWNLOAD_COMMAND "@CMAKE_COMMAND@" -E echo "skip download")
 else()
   set(download_step)
