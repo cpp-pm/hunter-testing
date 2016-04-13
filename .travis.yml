@@ -82,6 +82,14 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=default
 
+    # FIXME: upload from local
+    - os: osx
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: upload from local
+    - os: osx
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze
+
 install:
   # Info about OS
   - uname -a
