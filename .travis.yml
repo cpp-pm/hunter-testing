@@ -62,6 +62,18 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-wo-armv7s
 
+    # FIXME: upload from local
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-leak
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-thread
+
     ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
     - os: osx
