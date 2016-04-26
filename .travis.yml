@@ -54,6 +54,25 @@ env:
     - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-leak
     - PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-thread
 
+   # imported variant {
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=default
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=libcxx
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=clang-libstdcxx
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-9
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc-4-8
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/105845290 (why it's passed???)
+    # * https://travis-ci.org/ingenue/hunter/jobs/105845302
+    # - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-address
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-leak
+    - PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-thread
+    # }
+
 matrix:
   exclude:
     ### Linux excludes ###
@@ -81,6 +100,34 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-leak
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-thread
+
+    # imported variant {
+    ### Linux excludes ###
+    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
+    - os: linux
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=libcxx
+
+    # Xcode is for OSX only
+    - os: linux
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-9
+    - os: linux
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign
+
+    ### OSX excludes ###
+    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
+    - os: osx
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc-4-8
+
+    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
+    - os: osx
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-address
+
+    # Linux only
+    - os: osx
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-leak
+    - os: osx
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-thread
+    # }
 
 install:
   # Info about OS
