@@ -18,13 +18,14 @@ include(hunter_user_error)
 
 function(hunter_download)
   set(one PACKAGE_NAME PACKAGE_COMPONENT PACKAGE_INTERNAL_DEPS_ID)
-  set(multiple PACKAGE_DEPENDS_ON)
+  set(multiple PACKAGE_DEPENDS_ON PACKAGE_UNRELOCATABLE_TEXT_FILES)
 
   cmake_parse_arguments(HUNTER "" "${one}" "${multiple}" ${ARGV})
   # -> HUNTER_PACKAGE_NAME
   # -> HUNTER_PACKAGE_COMPONENT
   # -> HUNTER_PACKAGE_DEPENDS_ON
   # -> HUNTER_PACKAGE_INTERNAL_DEPS_ID
+  # -> HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES
 
   if(HUNTER_UNPARSED_ARGUMENTS)
     hunter_internal_error("Unparsed: ${HUNTER_UNPARSED_ARGUMENTS}")
@@ -53,6 +54,13 @@ function(hunter_download)
       ""
       has_internal_deps_id
   )
+  string(
+      COMPARE
+      NOTEQUAL
+      "${HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES}"
+      ""
+      has_unrelocatable_text_files
+  )
 
   if(hunter_has_component)
     set(HUNTER_EP_NAME "${HUNTER_PACKAGE_NAME}-${HUNTER_PACKAGE_COMPONENT}")
@@ -79,6 +87,13 @@ function(hunter_download)
   endif()
 
   set(HUNTER_PACKAGE_CACHEABLE "${HUNTER_${h_name}_CACHEABLE}")
+
+  if(has_unrelocatable_text_files AND NOT HUNTER_PACKAGE_CACHEABLE)
+    hunter_user_error(
+        "PACKAGE_UNRELOCATABLE_TEXT_FILES for uncacheable package:"
+        "  please add hunter_cacheable to hunter.cmake"
+    )
+  endif()
 
   hunter_test_string_not_empty("${HUNTER_PACKAGE_CONFIGURATION_TYPES}")
 
@@ -193,6 +208,11 @@ function(hunter_download)
   set(ENV{${root_name}} "${${root_name}}")
   hunter_status_print("${root_name}: ${${root_name}} (ver.: ${ver})")
 
+  hunter_status_debug(
+      "Default arguments: ${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS}"
+  )
+  hunter_status_debug("User arguments: ${HUNTER_${h_name}_CMAKE_ARGS}")
+
   # Same for the "snake case"
   string(REPLACE "-" "_" snake_case_root_name "${root_name}")
   set(${snake_case_root_name} "${${root_name}}" PARENT_SCOPE)
@@ -207,6 +227,8 @@ function(hunter_download)
   set(HUNTER_ARGS_FILE "${HUNTER_PACKAGE_HOME_DIR}/args.cmake")
 
   # Registering dependency (before return!)
+  # Note: there will be no dependency registration on cache run.
+  # HUNTER_PARENT_PACKAGE set to empty string in 'hunter_cache_run'
   hunter_register_dependency(
       PACKAGE "${HUNTER_PARENT_PACKAGE}"
       DEPENDS_ON_PACKAGE "${HUNTER_PACKAGE_NAME}"
@@ -256,7 +278,8 @@ function(hunter_download)
   # load from cache using SHA1 of args.cmake file
   file(REMOVE "${HUNTER_ARGS_FILE}")
   hunter_create_args_file(
-      "${HUNTER_${h_name}_CMAKE_ARGS}" "${HUNTER_ARGS_FILE}"
+      "${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS};${HUNTER_${h_name}_CMAKE_ARGS}"
+      "${HUNTER_ARGS_FILE}"
   )
 
   # Check if package can be loaded from cache
@@ -302,7 +325,21 @@ function(hunter_download)
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_ALREADY_LOCKED_DIRECTORIES \"${HUNTER_ALREADY_LOCKED_DIRECTORIES}\" CACHE INTERNAL \"\")\n"
   )
-
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_DISABLE_BUILDS \"${HUNTER_DISABLE_BUILDS}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_USE_CACHE_SERVERS \"${HUNTER_USE_CACHE_SERVERS}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "list(APPEND HUNTER_CACHE_SERVERS ${HUNTER_CACHE_SERVERS})\n"
+  )
 
   if(hunter_no_url)
     set(avail ${HUNTER_${h_name}_VERSIONS})
@@ -368,6 +405,22 @@ function(hunter_download)
     )
   endif()
   hunter_status_print("${build_message}")
+
+  set(allow_builds TRUE)
+  if(HUNTER_DISABLE_BUILDS)
+    set(allow_builds FALSE)
+  endif()
+  string(COMPARE EQUAL "${HUNTER_USE_CACHE_SERVERS}" "ONLY" only_server)
+  if(only_server)
+    set(allow_builds FALSE)
+  endif()
+
+  if(NOT allow_builds AND HUNTER_PACKAGE_SCHEME_INSTALL)
+    hunter_fatal_error(
+        "Building package from source is disabled (dir: ${HUNTER_PACKAGE_HOME_DIR})"
+        WIKI "error.build.disabled"
+    )
+  endif()
 
   if(HUNTER_STATUS_DEBUG)
     set(logging_params "")
