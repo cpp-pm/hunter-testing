@@ -11,6 +11,8 @@ environment:
       PROJECT_DIR: examples\websocketpp
 
     # FIXME: boost compile error
+    # filtering from: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.404
+
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
     #   PROJECT_DIR: examples\websocketpp
 

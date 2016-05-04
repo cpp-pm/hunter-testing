@@ -51,6 +51,9 @@ env:
 
 matrix:
   exclude:
+    # excludes base on:
+    # https://travis-ci.org/ingenue/hunter/builds/126111928
+
     # I don't know why gcc doesn't link to libdl although -dl is added
     # to compile flags.
     - os: linux
