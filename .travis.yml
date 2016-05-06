@@ -74,10 +74,6 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=clang-libstdcxx
 
-    # XCode builder (???) seg fault...
-    - os: osx
-      env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=osx-10-9
-
     # OpenSSL link error
     - os: osx
       env: PROJECT_DIR=examples/websocketpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
