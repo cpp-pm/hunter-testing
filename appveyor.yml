@@ -10,20 +10,27 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\websocketpp
+    # FIXME: boost compile error
+    # filtering from: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.404
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\websocketpp
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\websocketpp
+    # FIXME: boost compile error
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\websocketpp
+    # FIXME: dies on boost install
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\websocketpp
+    # DISABLE: doesn't support c++11
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\websocketpp
+
+    # DISABLE: doesn't support c++11
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\websocketpp
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\websocketpp
@@ -37,11 +44,13 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\websocketpp
+    # DISABLE: doesn't support c++11
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\websocketpp
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\websocketpp
+    # FIXME: build failes during OpenSSL building
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\websocketpp
 
 install:
   # Python 3
