@@ -12,7 +12,7 @@ project(qt-camera)
 hunter_add_package(Qt COMPONENTS qtmultimedia) # Qt5MultimediaWidgets
 
 find_package(Qt5MultimediaWidgets REQUIRED) # Qt5::MultimediaWidgets
-find_package(Qt5OpenGL REQUIRED) # Qt5::OpenGL
+find_package(Qt5PrintSupport REQUIRED) # Qt5::PrintSupport
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -59,14 +59,20 @@ else()
   add_executable(qt-camera ${SOURCES})
 endif()
 
-if(APPLE)
-  set(plugins Qt5::AVFMediaPlayerServicePlugin Qt5::AVFServicePlugin)
+if(IOS)
+  find_package(Qt5OpenGL REQUIRED)
+  set(plugins Qt5::OpenGL)
+elseif(APPLE)
+  find_package(Qt5OpenGL REQUIRED)
+  set(plugins Qt5::AVFMediaPlayerServicePlugin Qt5::AVFServicePlugin Qt5::OpenGL)
 elseif(ANDROID)
   set(plugins "")
-elseif(UNIX)
-  set(plugins "")
+elseif(UNIX) # Linux
+  find_package(Qt5OpenGL REQUIRED)
+  set(plugins Qt5::OpenGL)
 elseif(WIN32)
-  set(plugins Qt5::DSServicePlugin)
+  find_package(Qt5OpenGL REQUIRED)
+  set(plugins Qt5::DSServicePlugin Qt5::OpenGL)
 else()
   message(FATAL_ERROR "Not supported")
 endif()
@@ -75,7 +81,7 @@ target_link_libraries(
   qt-camera
   PUBLIC
   Qt5::MultimediaWidgets
-  Qt5::OpenGL
+  Qt5::PrintSupport
   ${plugins}
 )
 
