@@ -43,7 +43,10 @@ env:
     - PROJECT_DIR=examples/fmt TOOLCHAIN=osx-10-9
     - PROJECT_DIR=examples/fmt TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/fmt TOOLCHAIN=ios-nocodesign
-    - PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/130544214
+    # lconv is stubbed on Android: https://github.com/fmtlib/fmt/issues/327
+    # - PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - PROJECT_DIR=examples/fmt TOOLCHAIN=analyze
     - PROJECT_DIR=examples/fmt TOOLCHAIN=sanitize-address
     - PROJECT_DIR=examples/fmt TOOLCHAIN=sanitize-leak
