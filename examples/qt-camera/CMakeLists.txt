@@ -73,6 +73,22 @@ elseif(UNIX) # Linux
 elseif(WIN32)
   find_package(Qt5OpenGL REQUIRED)
   set(plugins Qt5::DSServicePlugin Qt5::OpenGL)
+  if(MINGW)
+    list(APPEND plugins strmiids)
+
+    # defined: '_imp__glDepthRange'
+    list(APPEND plugins opengl32)
+
+    # defined `hb_ot_tags_from_script'
+    # should be set before Qt5::Gui
+    list(APPEND plugins "${QT_ROOT}/lib/libqtharfbuzzng.a")
+
+    # defined: 'pcre16_exec'
+    list(APPEND plugins "${QT_ROOT}/lib/libqtpcre.a")
+
+    # defined: '_WSAAsyncSelect'
+    list(APPEND plugins ws2_32)
+  endif()
 else()
   message(FATAL_ERROR "Not supported")
 endif()
@@ -85,8 +101,21 @@ target_link_libraries(
   ${plugins}
 )
 
+set(fix_cyclic FALSE)
+if(APPLE)
+  set(fix_cyclic FALSE)
+elseif(CMAKE_COMPILER_IS_GNUCXX)
+  # MinGW included
+  set(fix_cyclic TRUE)
+elseif(NOT UNIX)
+  set(fix_cyclic FALSE)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  # Linux Clang
+  set(fix_cyclic TRUE)
+endif()
+
 # Workaround for Linux's linker problems (*_MULTIPLICITY doesn't help, TODO) --
-if(UNIX AND NOT APPLE AND CMAKE_COMPILER_IS_GNUCXX)
+if(fix_cyclic)
   string(
       REPLACE
       "<LINK_LIBRARIES>"
