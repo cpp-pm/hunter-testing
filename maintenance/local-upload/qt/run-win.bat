@@ -10,8 +10,6 @@ set TOOLCHAIN=vs-14-2015
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=vs-12-2013
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
-set TOOLCHAIN=vs-11-2012
-.\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=mingw
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 REM }
@@ -21,8 +19,6 @@ set PROJECT_DIR=examples/qt-camera
 set TOOLCHAIN=vs-14-2015
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=vs-12-2013
-.\jenkins.py --verbose --upload --nocreate || exit /b 1
-set TOOLCHAIN=vs-11-2012
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=mingw
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
@@ -34,8 +30,6 @@ set TOOLCHAIN=vs-14-2015
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=vs-12-2013
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
-set TOOLCHAIN=vs-11-2012
-.\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=mingw
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 REM }
@@ -45,8 +39,6 @@ set PROJECT_DIR=examples/qt-qml
 set TOOLCHAIN=vs-14-2015
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=vs-12-2013
-.\jenkins.py --verbose --upload --nocreate || exit /b 1
-set TOOLCHAIN=vs-11-2012
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
 set TOOLCHAIN=mingw
 .\jenkins.py --verbose --upload --nocreate || exit /b 1
