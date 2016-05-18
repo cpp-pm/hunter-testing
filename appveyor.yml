@@ -22,8 +22,8 @@ environment:
     # - TOOLCHAIN: "vs-10-2010"
     #   PROJECT_DIR: examples\qt-widgets
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\qt-widgets
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\qt-widgets
 
     # - TOOLCHAIN: "vs-12-2013-win64"
     #   PROJECT_DIR: examples\qt-widgets
