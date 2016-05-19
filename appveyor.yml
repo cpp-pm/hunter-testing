@@ -33,15 +33,33 @@ environment:
 
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\qt-widgets
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\qt-qml
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\qt-location
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\qt-camera
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\qt-widgets
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\qt-qml
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\qt-location
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\qt-camera
 
     # - TOOLCHAIN: "vs-9-2008"
     #   PROJECT_DIR: examples\qt-widgets
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\qt-widgets
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\qt-qml
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\qt-location
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\qt-camera
 
 install:
   # Python 3
