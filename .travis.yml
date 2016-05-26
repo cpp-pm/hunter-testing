@@ -46,7 +46,6 @@ env:
     # - PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
 
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
     - PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-4-8
 
     # Toolchain should be uploaded from local machine because of Travis timeouts
@@ -84,12 +83,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign
 
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
-
     ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX
+    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-4-8
 
@@ -108,7 +103,7 @@ install:
   - uname -a
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then brew install python3; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
@@ -132,3 +127,9 @@ install:
 
 script:
   - python3 ./jenkins.py --upload
+
+# https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - pkg.template
