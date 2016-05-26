@@ -1,15 +1,34 @@
 # Copyright (c) 2013-2014, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_OPENSSL_HUNTER_CMAKE)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_OPENSSL_HUNTER_CMAKE 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
+include(hunter_cacheable)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2h"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2h.tar.gz"
+    SHA1
+    ba4eee69aa0e6301cb3dca8a68785ffda018d581
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2g"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2g.tar.gz"
+    SHA1
+    852817cecfd3407429be833afad6f15a31099deb
+)
 
 hunter_add_version(
     PACKAGE_NAME
@@ -42,6 +61,28 @@ hunter_add_version(
     "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2d.tar.gz"
     SHA1
     a233de65e91dc176f4e34be03899ae00eb1dd029
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.1t"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_1t.tar.gz"
+    SHA1
+    505870952a3b63253696ed1d9c85473a6a0623eb
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.1s"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_1s.tar.gz"
+    SHA1
+    e507a45e6a43b900d29cbf573c1f6e7a8c7798e4
 )
 
 hunter_add_version(
@@ -152,4 +193,5 @@ hunter_pick_scheme(
     url_sha1_openssl_windows
 )
 
+hunter_cacheable(OpenSSL)
 hunter_download(PACKAGE_NAME OpenSSL)
