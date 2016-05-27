@@ -44,7 +44,6 @@ env:
     - PROJECT_DIR=examples/cereal TOOLCHAIN=libcxx
     - PROJECT_DIR=examples/cereal TOOLCHAIN=clang-libstdcxx
     - PROJECT_DIR=examples/cereal TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/cereal TOOLCHAIN=gcc
     - PROJECT_DIR=examples/cereal TOOLCHAIN=gcc-4-8
     - PROJECT_DIR=examples/cereal TOOLCHAIN=ios-nocodesign
     - PROJECT_DIR=examples/cereal TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
@@ -66,12 +65,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/cereal TOOLCHAIN=ios-nocodesign
 
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-    - os: linux
-      env: PROJECT_DIR=examples/cereal TOOLCHAIN=gcc
-
     ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX
+    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
     - os: osx
       env: PROJECT_DIR=examples/cereal TOOLCHAIN=gcc-4-8
 
@@ -95,7 +90,7 @@ install:
   - uname -a
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then brew install python3; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
@@ -119,3 +114,9 @@ install:
 
 script:
   - python3 ./jenkins.py
+
+# https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - pkg.template
