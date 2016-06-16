@@ -36,38 +36,38 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=gcc-4-8
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=sanitize-leak
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=osx-10-9
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=ios-nocodesign
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=analyze
     # }
 
 install:
