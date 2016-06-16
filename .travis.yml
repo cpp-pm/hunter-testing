@@ -65,12 +65,16 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/libsodium TOOLCHAIN=osx-10-9
     - os: osx
-      env: PROJECT_DIR=examples/libsodium TOOLCHAIN=ios-nocodesign
-    - os: osx
       env: PROJECT_DIR=examples/libsodium TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
       env: PROJECT_DIR=examples/libsodium TOOLCHAIN=analyze
     # }
+
+    # FIXME
+    # Will need to somehow pass "ios_architecture" to parent cmake file.
+    # https://travis-ci.org/ingenue/hunter/jobs/138178599
+    # env: PROJECT_DIR=examples/libsodium TOOLCHAIN=ios-nocodesign
+
 
 install:
   # Info about OS
