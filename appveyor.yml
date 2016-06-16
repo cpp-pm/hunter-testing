@@ -37,8 +37,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\libsodium
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\libsodium
+    # Toolchain not supported by libsodium
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.502/job/u4odqfuyrncl21bg
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\libsodium
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\libsodium
