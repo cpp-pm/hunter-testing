@@ -43,8 +43,11 @@ matrix:
       env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/138374753
+    # - os: linux
+    #   env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=sanitize-address
     - os: linux
@@ -66,8 +69,10 @@ matrix:
       env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/138374763
+    # - os: osx
+    #   env: PROJECT_DIR=examples/polyclipping TOOLCHAIN=analyze
     # }
 
 install:
