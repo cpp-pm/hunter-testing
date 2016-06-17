@@ -51,7 +51,7 @@ environment:
     #   PROJECT_DIR: examples\libsodium
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\libsodium
 
 install:
   # Python 3
