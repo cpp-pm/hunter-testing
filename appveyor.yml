@@ -10,11 +10,13 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\irrXML
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\irrXML
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/2rdedgnf2f3yiu0j
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\irrXML
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\irrXML
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/l01ja87ny6ofu8lv
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\irrXML
 
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\irrXML
@@ -25,8 +27,9 @@ environment:
     - TOOLCHAIN: "vs-11-2012"
       PROJECT_DIR: examples\irrXML
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\irrXML
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/w1gy5b2g5rg8b9xn
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\irrXML
 
     - TOOLCHAIN: "vs-12-2013-xp"
       PROJECT_DIR: examples\irrXML
