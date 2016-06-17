@@ -45,6 +45,11 @@ environment:
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\libsodium
 
+    # MinGW won't work (can't run ./configure), will need to use MSYS2
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.502/job/979e6i7ou386q0bw
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\libsodium
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
