@@ -44,7 +44,7 @@ environment:
       PROJECT_DIR: examples\convertutf
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\convertutf
 
 install:
   # Python 3
