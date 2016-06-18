@@ -19,11 +19,13 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\openddlparser
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\openddlparser
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.549/job/hqg5d9ihiqa2ubrw
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\openddlparser
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\openddlparser
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.549/job/fw4yill4h7a5ni9c
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\openddlparser
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\openddlparser
@@ -37,8 +39,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\openddlparser
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\openddlparser
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.549/job/00onv1d5oyeglc2x
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\openddlparser
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\openddlparser
