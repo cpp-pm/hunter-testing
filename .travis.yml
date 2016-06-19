@@ -43,8 +43,11 @@ matrix:
       env: PROJECT_DIR=examples/minizip TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/minizip TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/minizip TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/138709145
+    # - os: linux
+    #   env: PROJECT_DIR=examples/minizip TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/minizip TOOLCHAIN=sanitize-address
     - os: linux
@@ -66,8 +69,11 @@ matrix:
       env: PROJECT_DIR=examples/minizip TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/minizip TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/minizip TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/138709155
+    # - os: osx
+    #   env: PROJECT_DIR=examples/minizip TOOLCHAIN=analyze
+
     # }
 
 install:
