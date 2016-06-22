@@ -44,7 +44,7 @@ environment:
       PROJECT_DIR: examples\polyclipping
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\polyclipping
 
 install:
   # Python 3
