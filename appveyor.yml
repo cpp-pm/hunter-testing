@@ -45,7 +45,7 @@ environment:
     #   PROJECT_DIR: examples\PocoCpp
 
     # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Foo
+    #   PROJECT_DIR: examples\PocoCpp
 
 install:
   # Python 3
