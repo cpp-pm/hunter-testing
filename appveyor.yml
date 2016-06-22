@@ -41,11 +41,11 @@ environment:
       PROJECT_DIR: examples\PocoCpp
 
     # Officially not supported: http://pocoproject.org/docs/99150-WindowsPlatformNotes.html
-    #- TOOLCHAIN: "mingw"
-    #  PROJECT_DIR: examples\PocoCpp
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\PocoCpp
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Foo
 
 install:
   # Python 3
