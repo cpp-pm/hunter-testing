@@ -64,7 +64,7 @@ matrix:
       env: PROJECT_DIR=examples/irrXML TOOLCHAIN=osx-10-9
     - os: osx
       osx_image: xcode7.3
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+      env: PROJECT_DIR=examples/irrXML TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
       env: PROJECT_DIR=examples/irrXML TOOLCHAIN=ios-nocodesign
     - os: osx
