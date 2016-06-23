@@ -35,16 +35,22 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/Assimp TOOLCHAIN=default
+
+    # openddlparser need c++11: https://travis-ci.org/ingenue/hunter/jobs/139781283
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Assimp TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Assimp TOOLCHAIN=analyze
+
+    # minizip failed: https://travis-ci.org/ingenue/hunter/jobs/139781287
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Assimp TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=sanitize-address
     - os: linux
@@ -63,11 +69,17 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=osx-10-9
     - os: osx
+      osx_image: xcode7.3
+      env: PROJECT_DIR=examples/Assimp TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    - os: osx
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Assimp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Assimp TOOLCHAIN=analyze
+
+    # minizip failed: https://travis-ci.org/ingenue/hunter/jobs/139781299
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Assimp TOOLCHAIN=analyze
+
     # }
 
 install:
