@@ -47,7 +47,7 @@ environment:
       PROJECT_DIR: examples\irrXML
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\irrXML
 
 install:
   # Python 3
