@@ -50,6 +50,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost
 
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\Boost
+
     ### Boost-filesystem ###
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Boost-filesystem
@@ -90,6 +93,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost-filesystem
 
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\Boost-filesystem
+
     ### Boost-system ###
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Boost-system
@@ -128,6 +134,9 @@ environment:
       PROJECT_DIR: examples\Boost-system
 
     - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\Boost-system
 
     ### Boost-iostreams ###
@@ -175,7 +184,7 @@ environment:
     #  PROJECT_DIR: examples\Boost-iostreams
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Boost-iostreams
 
 install:
   # Python 3
