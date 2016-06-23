@@ -40,14 +40,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Assimp
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Assimp
+    # openddlparser need c++11: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.612/job/6ecd7wcp37e24ftr
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Assimp
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Assimp
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Assimp
+    # FIXME: upload from local machine
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.627
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Assimp
 
 install:
   # Python 3
