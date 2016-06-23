@@ -44,7 +44,7 @@ environment:
       PROJECT_DIR: examples\poly2tri
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\poly2tri
 
 install:
   # Python 3
