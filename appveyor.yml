@@ -10,11 +10,13 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Assimp
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Assimp
+    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Assimp
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Assimp
+    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Assimp
 
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\Assimp
@@ -25,8 +27,9 @@ environment:
     - TOOLCHAIN: "vs-11-2012"
       PROJECT_DIR: examples\Assimp
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Assimp
+    # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Assimp
 
     - TOOLCHAIN: "vs-12-2013-xp"
       PROJECT_DIR: examples\Assimp
