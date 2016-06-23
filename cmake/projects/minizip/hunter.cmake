@@ -10,26 +10,26 @@ include(hunter_pick_scheme)
 
 hunter_add_version(
     PACKAGE_NAME
-    convertutf
+    minizip
     VERSION
-    "1.0.1"
+    "1.0.1-p1"
     URL
-    "https://github.com/hunter-packages/convertutf/archive/v1.0.1.tar.gz"
+    "https://github.com/hunter-packages/minizip/archive/v1.0.1-p1.tar.gz"
     SHA1
-    83c1f454b3d6789d5048e1198577092f1a77c7a2
+    fbbfe009a142535e4f902a45b33adb4d3af6ffd1
 )
 
 hunter_add_version(
     PACKAGE_NAME
-    convertutf
+    minizip
     VERSION
-    "1.0.0"
+    "1.0.1-p0"
     URL
-    "https://github.com/hunter-packages/convertutf/archive/v1.0.0.tar.gz"
+    "https://github.com/hunter-packages/minizip/archive/v1.0.1-p0.tar.gz"
     SHA1
-    757b75fff721260620050bc54096150ffd335672
+    65728dbf7573d3f1826d04a3b686d80eb099d7b8
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(convertutf)
-hunter_download(PACKAGE_NAME convertutf)
+hunter_cacheable(minizip)
+hunter_download(PACKAGE_NAME minizip)
