@@ -90,8 +90,20 @@ matrix:
 
     # qt-location {
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=clang-libstdcxx
+
+    # FIXME:
+    # In file included from sweep/cdt.cpp:31:
+    # In file included from sweep/cdt.h:35:
+    # In file included from sweep/advancing_front.h:35:
+    # In file included from sweep/../common/shapes.h:39:
+    # In file included from /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/cmath:44:
+    # In file included from /usr/include/math.h:427:
+    # /usr/include/x86_64-linux-gnu/bits/math-finite.h:177:1: error: unknown type name '__extern_always_inline'
+    # __extern_always_inline double __NTH (lgamma (double __d))
+    #
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=clang-libstdcxx
+
     - os: linux
       env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-4-8
     - os: linux
