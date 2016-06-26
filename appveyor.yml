@@ -50,8 +50,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Boost
+    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Boost
 
     ### Boost-filesystem ###
     - TOOLCHAIN: "default"
@@ -93,8 +94,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost-filesystem
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Boost-filesystem
+    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Boost-filesystem
 
     ### Boost-system ###
     - TOOLCHAIN: "default"
@@ -136,8 +138,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost-system
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Boost-system
+    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Boost-system
 
     ### Boost-iostreams ###
     - TOOLCHAIN: "default"
@@ -183,8 +186,9 @@ environment:
     # - TOOLCHAIN: "mingw"
     #  PROJECT_DIR: examples\Boost-iostreams
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Boost-iostreams
+    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Boost-iostreams
 
 install:
   # Python 3
