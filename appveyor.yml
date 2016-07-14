@@ -56,7 +56,7 @@ environment:
     #   PROJECT_DIR: examples\OpenCV
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\OpenCV
 
 install:
   # Python 3
