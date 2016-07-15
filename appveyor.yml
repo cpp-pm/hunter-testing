@@ -55,8 +55,10 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\OpenCV
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\OpenCV
+    # FIXME:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.669/job/h0rdtt5n9q0wxqix
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\OpenCV
 
 install:
   # Python 3
