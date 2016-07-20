@@ -37,8 +37,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\flatbuffers
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\flatbuffers
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.691/job/c5myacpt103mbt9b
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\flatbuffers
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\flatbuffers
