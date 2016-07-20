@@ -43,8 +43,11 @@ matrix:
       env: PROJECT_DIR=examples/tinydir TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/tinydir TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/tinydir TOOLCHAIN=analyze
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146123508
+    # - os: linux
+    #   env: PROJECT_DIR=examples/tinydir TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/tinydir TOOLCHAIN=sanitize-address
     - os: linux
