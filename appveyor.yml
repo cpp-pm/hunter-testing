@@ -19,11 +19,13 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\thread-pool-cpp
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\thread-pool-cpp
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.684/job/e30bk45alyddd4a6
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\thread-pool-cpp
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\thread-pool-cpp
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.684/job/ss7qc4axleb9df69
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\thread-pool-cpp
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\thread-pool-cpp
@@ -37,8 +39,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\thread-pool-cpp
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\thread-pool-cpp
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.684/job/d27xn06w05f2ywye
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\thread-pool-cpp
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\thread-pool-cpp
