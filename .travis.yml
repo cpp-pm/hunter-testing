@@ -35,16 +35,24 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968781
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=analyze
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968784
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968785
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=sanitize-address
     - os: linux
@@ -58,16 +66,26 @@ matrix:
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968791
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=analyze
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968793
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=ios-nocodesign
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968794
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145968795
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=analyze
+
     # }
 
 install:
