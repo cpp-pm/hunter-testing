@@ -10,14 +10,17 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/7fnysf94woiy2e49
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/bu9t8adtdu06u1i7
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/d0afjsfgvb0clm7m
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\xgboost
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\xgboost
@@ -37,14 +40,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/1xsilo3m4py6gqxw
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/tqk449kf57103vqn
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.683/job/3us8agkyqcua2e3y
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\xgboost
 
 install:
   # Python 3
