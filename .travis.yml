@@ -35,8 +35,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146096801
+    # - os: linux
+    #   env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=clang-libstdcxx
     - os: linux
@@ -54,12 +57,18 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146096811
+    # - os: osx
+    #   env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=clang-libstdcxx
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146096813
+    # - os: osx
+    #   env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/flatbuffers TOOLCHAIN=osx-10-9
     - os: osx
