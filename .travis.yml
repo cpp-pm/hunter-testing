@@ -35,16 +35,22 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146116363
+    # - os: linux
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=analyze
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146116369
+    # - os: linux
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,20 +60,29 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146116382
+    # - os: osx
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=clang-libstdcxx
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146116386
+    # - os: osx
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=osx-10-9
     - os: osx
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=analyze
+
+    # https://travis-ci.org/ingenue/hunter/jobs/146116390
+    # - os: osx
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=analyze
+
     # }
 
 install:
