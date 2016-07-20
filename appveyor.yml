@@ -37,8 +37,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\dest
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\dest
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.693/job/tw8u2b7xus8ktqdb
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\dest
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\dest
