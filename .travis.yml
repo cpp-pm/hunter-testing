@@ -35,8 +35,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145972187
+    # - os: linux
+    #   env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=clang-libstdcxx
     - os: linux
@@ -54,16 +57,25 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=default
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145972195
+    # - os: osx
+    #   env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=clang-libstdcxx
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145972197
+    # - os: osx
+    #   env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=ios-nocodesign
+
+    # https://travis-ci.org/ingenue/hunter/jobs/145972199
+    # - os: osx
+    #   env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=ios-nocodesign
+
     - os: osx
       env: PROJECT_DIR=examples/thread-pool-cpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
