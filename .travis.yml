@@ -43,8 +43,8 @@ matrix:
       env: PROJECT_DIR=examples/randrproto TOOLCHAIN=gcc-4-8
     # - os: linux
     #   env: PROJECT_DIR=examples/randrproto TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/randrproto TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/randrproto TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/randrproto TOOLCHAIN=sanitize-address
     - os: linux
