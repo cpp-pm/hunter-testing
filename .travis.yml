@@ -41,10 +41,10 @@ matrix:
       env: PROJECT_DIR=examples/xinerama TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xinerama TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/xinerama TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,20 +54,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/xinerama TOOLCHAIN=analyze
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=default
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=libcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=clang-libstdcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=osx-10-9
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=ios-nocodesign
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xinerama TOOLCHAIN=analyze
     # }
 
 install:
