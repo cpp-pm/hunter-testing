@@ -5,6 +5,8 @@
 
 include(hunter_add_version)
 include(hunter_cacheable)
+include(hunter_cmake_args)
+include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
 
@@ -20,10 +22,22 @@ hunter_add_version(
     21d43437219ddd1e409fb4b7d77254cd129e8075
 )
 
-hunter_pick_scheme(DEFAULT drm)
+hunter_configuration_types(drm CONFIGURATION_TYPES Release)
+hunter_pick_scheme(DEFAULT url_sha1_autotools)
+set(drm_dependencies
+    pciaccess
+    pthread-stubs
+)
+
+hunter_cmake_args(
+    drm
+    CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
+      DEPENDS_ON_PACKAGES=${drm_dependencies}
+)
 hunter_cacheable(drm)
 hunter_download(
     PACKAGE_NAME drm
+    PACKAGE_INTERNAL_DEPS_ID "1"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/libdrm.la"
     "lib/libdrm_amdgpu.la"

@@ -49,9 +49,14 @@ Message in logs:
   -- [hunter] [ Hunter-ID: 1eae623 | Config-ID: 0fa873a | Toolchain-ID: c018e63 ]
   -- [hunter] [ Hunter-ID: 1eae623 | Config-ID: 0fa873a | Toolchain-ID: c39da39 ]
 
-.. seealso::
+.. admonition:: Examples on GitHub
 
-  * `Collection of toolchains <https://github.com/ruslo/polly>`_
-  * `Android example <https://github.com/forexample/android-cmake>`_
+  * `Android example <https://github.com/forexample/android-cmake>`__
 
+.. admonition:: CGold
 
+  * `Platforms <http://cgold.readthedocs.io/en/latest/platforms.html>`__
+
+.. admonition:: Polly
+
+  * `Collection of toolchains <https://github.com/ruslo/polly>`__
