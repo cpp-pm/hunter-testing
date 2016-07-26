@@ -43,8 +43,8 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\GTest
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\GTest
 
 install:
   # Python 3
