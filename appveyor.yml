@@ -7,41 +7,49 @@ environment:
       secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
 
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\odb-boost
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\xinerama
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\odb-boost
+# odb-boost can be built by its VisualStudio solution, but there is no integration
+# in Hunter to do that yet, see: https://github.com/ruslo/hunter/pull/469
+#
+#
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/4vq1mhi4fsf4dne2
+#    - TOOLCHAIN: "default"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/ffu161culpin3vrg
+#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/a18gvkh3ia0se5u7
+#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/ej7wc2vcx5xby4d6
+#    - TOOLCHAIN: "nmake-vs-12-2013"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/3qw1uxehmyg9st97
+#    - TOOLCHAIN: "vs-10-2010"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/a62v3vjmriveu2jw
+#    - TOOLCHAIN: "vs-11-2012"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/0v0j3ko2c9vh885v
+#    - TOOLCHAIN: "vs-12-2013-win64"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/yokn77mob44vlmtl
+#    - TOOLCHAIN: "vs-12-2013-xp"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/opcvtrhrtdw9ygsi
+#    - TOOLCHAIN: "vs-12-2013"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/tjiw6gb8tva6u1i8
+#    - TOOLCHAIN: "vs-14-2015"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/s83x8x8nps6s77n6
+#    - TOOLCHAIN: "vs-9-2008"
+#      PROJECT_DIR: examples\odb-boost
+# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/c4o1tco7rcjwog31
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\odb-boost
 
 install:
   # Python 3
