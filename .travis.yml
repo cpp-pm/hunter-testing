@@ -41,10 +41,10 @@ matrix:
       env: PROJECT_DIR=examples/xcursor TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xcursor TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/xcursor TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,20 +54,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/xcursor TOOLCHAIN=analyze
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=default
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=libcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=clang-libstdcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=osx-10-9
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=ios-nocodesign
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xcursor TOOLCHAIN=analyze
     # }
 
 install:
