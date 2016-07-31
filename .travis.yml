@@ -41,10 +41,10 @@ matrix:
       env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,20 +54,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=osx-10-9
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=analyze
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=default
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=libcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=clang-libstdcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=osx-10-9
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=ios-nocodesign
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xxf86vm TOOLCHAIN=analyze
     # }
 
 install:
