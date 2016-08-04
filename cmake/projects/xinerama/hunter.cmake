@@ -13,35 +13,32 @@ include(hunter_pick_scheme)
 # http://www.x.org/releases/X11R7.7/src/lib
 hunter_add_version(
     PACKAGE_NAME
-    xrandr
+    xinerama
     VERSION
-    "1.3.2"
+    "1.1.2"
     URL
-    "http://www.x.org/releases/X11R7.7/src/lib/libXrandr-1.3.2.tar.bz2"
+    "https://www.x.org/releases/X11R7.7/src/lib/libXinerama-1.1.2.tar.bz2"
     SHA1
-    0c844a4c5237f96794f0c18a5af16dc5ab7a36ec
+    06a5b636305725ce09f6c3a4d5a15f2f188b5afd
 )
 
-hunter_configuration_types(xrandr CONFIGURATION_TYPES Release)
+hunter_configuration_types(xinerama CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
-set(xrandr_dependencies
+set(xinerama_dependencies
     x11
-    randrproto
     xext
     xextproto
-    xrender
-    renderproto
+    xineramaproto
 )
 hunter_cmake_args(
-    xrandr
+    xinerama
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
-      DEPENDS_ON_PACKAGES=${xrandr_dependencies}
+      DEPENDS_ON_PACKAGES=${xinerama_dependencies}
 )
-hunter_cacheable(xrandr)
+hunter_cacheable(xinerama)
 hunter_download(
-    PACKAGE_NAME xrandr
-    PACKAGE_INTERNAL_DEPS_ID "1"
+    PACKAGE_NAME xinerama
     PACKAGE_UNRELOCATABLE_TEXT_FILES
-    "lib/pkgconfig/xrandr.pc"
-    "lib/libXrandr.la"
+    "lib/libXinerama.la"
+    "lib/pkgconfig/xinerama.pc"
 )

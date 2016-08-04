@@ -13,35 +13,33 @@ include(hunter_pick_scheme)
 # http://www.x.org/releases/X11R7.7/src/lib
 hunter_add_version(
     PACKAGE_NAME
-    xrandr
+    xcursor
     VERSION
-    "1.3.2"
+    "1.1.13"
     URL
-    "http://www.x.org/releases/X11R7.7/src/lib/libXrandr-1.3.2.tar.bz2"
+    "https://www.x.org/releases/X11R7.7/src/lib/libXcursor-1.1.13.tar.bz2"
     SHA1
-    0c844a4c5237f96794f0c18a5af16dc5ab7a36ec
+    4e461d9e4324689ca8a84706926a8c0fe9470e47
 )
 
-hunter_configuration_types(xrandr CONFIGURATION_TYPES Release)
+hunter_configuration_types(xcursor CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
-set(xrandr_dependencies
-    x11
-    randrproto
-    xext
-    xextproto
+set(xcursor_dependencies
+    xorg-macros
     xrender
-    renderproto
+    xfixes
+    x11
+    fixesproto
 )
 hunter_cmake_args(
-    xrandr
+    xcursor
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
-      DEPENDS_ON_PACKAGES=${xrandr_dependencies}
+      DEPENDS_ON_PACKAGES=${xcursor_dependencies}
 )
-hunter_cacheable(xrandr)
+hunter_cacheable(xcursor)
 hunter_download(
-    PACKAGE_NAME xrandr
-    PACKAGE_INTERNAL_DEPS_ID "1"
+    PACKAGE_NAME xcursor
     PACKAGE_UNRELOCATABLE_TEXT_FILES
-    "lib/pkgconfig/xrandr.pc"
-    "lib/libXrandr.la"
+    "lib/libXcursor.la"
+    "lib/pkgconfig/xcursor.pc"
 )

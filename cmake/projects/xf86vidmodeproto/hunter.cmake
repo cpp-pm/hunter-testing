@@ -13,35 +13,28 @@ include(hunter_pick_scheme)
 # http://www.x.org/releases/X11R7.7/src/lib
 hunter_add_version(
     PACKAGE_NAME
-    xrandr
+    xf86vidmodeproto
     VERSION
-    "1.3.2"
+    "2.3.1"
     URL
-    "http://www.x.org/releases/X11R7.7/src/lib/libXrandr-1.3.2.tar.bz2"
+    "https://www.x.org/releases/X11R7.7/src/proto/xf86vidmodeproto-2.3.1.tar.bz2"
     SHA1
-    0c844a4c5237f96794f0c18a5af16dc5ab7a36ec
+    11d54c3210887631ea71e8f8030a77692e964fc4
 )
 
-hunter_configuration_types(xrandr CONFIGURATION_TYPES Release)
+hunter_configuration_types(xf86vidmodeproto CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
-set(xrandr_dependencies
-    x11
-    randrproto
-    xext
-    xextproto
-    xrender
-    renderproto
+set(xf86vidmodeproto_dependencies
+    xorg-macros
 )
 hunter_cmake_args(
-    xrandr
+    xf86vidmodeproto
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
-      DEPENDS_ON_PACKAGES=${xrandr_dependencies}
+      DEPENDS_ON_PACKAGES=${xf86vidmodeproto_dependencies}
 )
-hunter_cacheable(xrandr)
+hunter_cacheable(xf86vidmodeproto)
 hunter_download(
-    PACKAGE_NAME xrandr
-    PACKAGE_INTERNAL_DEPS_ID "1"
+    PACKAGE_NAME xf86vidmodeproto
     PACKAGE_UNRELOCATABLE_TEXT_FILES
-    "lib/pkgconfig/xrandr.pc"
-    "lib/libXrandr.la"
+    "lib/pkgconfig/xf86vidmodeproto.pc"
 )
