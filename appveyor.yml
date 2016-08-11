@@ -49,8 +49,8 @@ environment:
 #    - TOOLCHAIN: "mingw"
 #      PROJECT_DIR: examples\Protobuf
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf
 
 install:
   # Python 3
