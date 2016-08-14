@@ -51,8 +51,9 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\Libssh2
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Libssh2
+    # FIXME:
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Libssh2
 
 install:
   # Python 3
