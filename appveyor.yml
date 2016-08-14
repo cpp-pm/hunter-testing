@@ -43,8 +43,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\glew
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\glew
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.782/job/kyht5gx7d4qxhrch
+    # - TOOLCHAIN: "msys"
+    # - PROJECT_DIR: examples\glew
 
 install:
   # Python 3
