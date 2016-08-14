@@ -47,6 +47,9 @@ environment:
     # - TOOLCHAIN: "mingw"
     #      PROJECT_DIR: examples\OpenSSL
 
+    # - TOOLCHAIN: "msys"
+    #      PROJECT_DIR: examples\OpenSSL
+
     # imported variant {
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\OpenSSL-imported
@@ -87,10 +90,10 @@ environment:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.13/job/7okwadjb1wjeuii3
     # - TOOLCHAIN: "mingw"
     #      PROJECT_DIR: examples\OpenSSL-imported
-    # }
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #      PROJECT_DIR: examples\OpenSSL-imported
+    # }
 
 install:
   # Python 3
