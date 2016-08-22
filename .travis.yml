@@ -63,8 +63,11 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=default
+
+    # c++11 needed: https://travis-ci.org/ingenue/hunter/jobs/154092750
+    # - os: osx
+    #   env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=libcxx
 
