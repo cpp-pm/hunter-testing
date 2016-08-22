@@ -10,14 +10,17 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for Boost
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for Boost
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for Boost
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\cvmatio
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\cvmatio
@@ -37,14 +40,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for OpenCV
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for OpenCV
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\cvmatio
+    # FIXME: no such toolchain for Boost
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\cvmatio
 
 install:
   # Python 3
