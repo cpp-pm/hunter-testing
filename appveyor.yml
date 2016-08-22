@@ -22,11 +22,13 @@ environment:
     # - TOOLCHAIN: "nmake-vs-12-2013"
     #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\cvmatio
+    # Lack of c++11 features: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.817/job/s1r5xjpriabpe8le
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\cvmatio
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\cvmatio
+    # Lack of c++11 features: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.817/job/3hhcjcbj6i781h48
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\cvmatio
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\cvmatio
