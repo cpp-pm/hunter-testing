@@ -44,14 +44,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Protobuf
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Protobuf
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Protobuf
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf
+
     # }
 
     # Protobuf-legacy {
@@ -88,14 +91,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf-legacy
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Protobuf-legacy
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf-legacy
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Protobuf-legacy
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Protobuf-legacy
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf-legacy
+
     # }
 
     # Protobuf-optimized {
@@ -132,14 +138,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf-optimized
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Protobuf-optimized
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf-optimized
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Protobuf-optimized
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Protobuf-optimized
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf-optimized
+
     # }
 
 install:
