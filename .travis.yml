@@ -44,8 +44,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=sanitize-address
     - os: linux
@@ -59,8 +62,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-9
     - os: osx
@@ -70,8 +76,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=analyze
+
     # }
     # }
 
@@ -85,8 +94,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=sanitize-address
     - os: linux
@@ -100,8 +112,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=osx-10-9
     - os: osx
@@ -111,8 +126,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
+
     # }
     # }
 
@@ -126,8 +144,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=sanitize-address
     - os: linux
@@ -141,8 +162,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=osx-10-9
     - os: osx
@@ -152,8 +176,11 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
+
     # }
     # }
 
