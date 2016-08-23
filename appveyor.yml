@@ -10,47 +10,137 @@ environment:
       secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
 
   matrix:
+    # Protobuf {
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\Protobuf
 
-#    - TOOLCHAIN: "default"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "nmake-vs-12-2013"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-10-2010"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-11-2012"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013-xp"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-14-2015"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-9-2008"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "mingw"
-#      PROJECT_DIR: examples\Protobuf
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Protobuf
 
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Protobuf
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\Protobuf
+    # }
+
+    # Protobuf-legacy {
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\Protobuf-legacy
+    # }
+
+    # Protobuf-optimized {
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\Protobuf-optimized
+    # }
 
 install:
   # Python 3
