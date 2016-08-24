@@ -10,44 +10,137 @@ environment:
       secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
 
   matrix:
-    - TOOLCHAIN: "dummy"
+    # Protobuf {
+    - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Protobuf
 
-#    - TOOLCHAIN: "default"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "nmake-vs-12-2013"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-10-2010"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-11-2012"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013-win64"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013-xp"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-12-2013"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-14-2015"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "vs-9-2008"
-#      PROJECT_DIR: examples\Protobuf
-#
-#    - TOOLCHAIN: "mingw"
-#      PROJECT_DIR: examples\Protobuf
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf
+
+    # }
+
+    # Protobuf-legacy {
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf-legacy
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf-legacy
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf-legacy
+
+    # }
+
+    # Protobuf-optimized {
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "nmake-vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Protobuf-optimized
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Protobuf-optimized
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Protobuf-optimized
+
+    # }
 
 install:
   # Python 3
@@ -68,6 +161,8 @@ install:
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%
   - cmd: set PATH=%cd%\_ci\ninja;%PATH%
 
+  - cmd: git submodule update --init --recursive
+
   # Remove entry with sh.exe from PATH to fix error with MinGW toolchain
   # (For MinGW make to work correctly sh.exe must NOT be in your path)
   # * http://stackoverflow.com/a/3870338/2288008
@@ -77,7 +172,8 @@ install:
   # * http://www.appveyor.com/docs/installed-software#qt
   - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
 
-  - git submodule update --init --recursive
+  # MSYS2 location
+  - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
 build_script:
   - cmd: python .\jenkins.py --upload

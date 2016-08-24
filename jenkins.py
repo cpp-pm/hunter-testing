@@ -132,6 +132,12 @@ def run():
   ):
     verbose = False
 
+  if (
+      os.getenv('TRAVIS') and
+      toolchain.startswith('ios-nocodesign')
+  ):
+    verbose = False
+
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
@@ -274,6 +280,7 @@ def run():
         project_dir,
         '--fwd',
         'HUNTER_DISABLE_BUILDS=ON',
+        'HUNTER_USE_CACHE_SERVERS=ONLY',
         'HUNTER_ROOT={}'.format(hunter_root),
         'TESTING_URL={}'.format(hunter_url),
         'TESTING_SHA1={}'.format(hunter_sha1)
