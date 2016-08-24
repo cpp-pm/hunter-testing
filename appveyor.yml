@@ -11,9 +11,6 @@ environment:
 
   matrix:
     # Protobuf {
-    - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\Protobuf
-
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Protobuf
 
@@ -58,9 +55,6 @@ environment:
     # }
 
     # Protobuf-legacy {
-    - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\Protobuf-legacy
-
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Protobuf-legacy
 
@@ -105,9 +99,6 @@ environment:
     # }
 
     # Protobuf-optimized {
-    - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\Protobuf-optimized
-
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Protobuf-optimized
 
