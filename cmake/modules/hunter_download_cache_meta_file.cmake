@@ -3,7 +3,10 @@
 
 include(CMakeParseArguments) # cmake_parse_arguments
 
+include(hunter_check_download_error_message)
+include(hunter_init_not_found_counter)
 include(hunter_internal_error)
+include(hunter_sleep_before_download)
 include(hunter_status_debug)
 include(hunter_test_string_not_empty)
 include(hunter_user_error)
@@ -34,7 +37,8 @@ function(hunter_download_cache_meta_file)
   set(cache_directory "${HUNTER_CACHED_ROOT}/_Base/Cache")
   hunter_lock_directory("${cache_directory}" "")
 
-  string(REPLACE "${cache_directory}/meta/" "" suffix "${x_LOCAL}")
+  string(REPLACE "${cache_directory}/meta/" "" local_suffix "${x_LOCAL}")
+  string(REPLACE "${cache_directory}/meta/" "" done_suffix "${x_DONE}")
 
   if(EXISTS "${x_DONE}")
     return()
@@ -62,65 +66,88 @@ function(hunter_download_cache_meta_file)
         "${server}"
     )
 
-    set(url "${url}/master/${suffix}")
+    set(local_url "${url}/master/${local_suffix}")
+    set(done_url "${url}/master/${done_suffix}")
 
-    set(total_retry 3)
+    hunter_init_not_found_counter(NOT_FOUND_NEEDED not_found_counter)
+
+    set(total_retry 10)
     foreach(x RANGE ${total_retry})
-      hunter_status_debug("Try to download file (try #${x} of ${total_retry}):")
-      hunter_status_debug("  ${url}")
-      hunter_status_debug("  -> ${x_LOCAL}")
+      hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
+      hunter_status_debug("  ${done_url}")
+      hunter_status_debug("  -> ${x_DONE}")
 
-      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status)
+      hunter_sleep_before_download("${x}")
+      file(DOWNLOAD "${done_url}" "${x_DONE}" STATUS status)
 
       list(GET status 0 error_code)
       list(GET status 1 error_message)
 
+      hunter_check_download_error_message(
+          ERROR_CODE "${error_code}"
+          ERROR_MESSAGE "${error_message}"
+          REMOVE_ON_ERROR "${x_DONE}"
+          NOT_FOUND_COUNTER not_found_counter
+      )
+
       if(error_code EQUAL 0)
-        string(COMPARE EQUAL "${error_message}" "\"No error\"" is_good)
-        if(NOT is_good)
-          file(REMOVE "${x_LOCAL}")
-          hunter_internal_error("Unexpected message: ${error_message}")
-        endif()
-        file(WRITE "${x_DONE}" "")
-        return()
+        break()
       elseif(error_code EQUAL 22)
-        file(REMOVE "${x_LOCAL}")
-        string(
-            COMPARE
-            EQUAL "${error_message}" "\"HTTP response code said error\""
-            is_good
-        )
-        if(NOT is_good)
-          hunter_internal_error("Unexpected message: ${error_message}")
-        endif()
         hunter_status_debug("File not found")
-        break()
-      elseif(error_code EQUAL 6)
-        file(REMOVE "${x_LOCAL}")
-        string(
-            COMPARE
-            EQUAL "${error_message}" "\"Couldn't resolve host name\""
-            is_good
-        )
-        if(NOT is_good)
-          hunter_internal_error("Unexpected message: ${error_message}")
+        if(NOT_FOUND_NEEDED EQUAL not_found_counter)
+          break()
         endif()
-        string(COMPARE EQUAL "${HUNTER_USE_CACHE_SERVERS}" "ONLY" only_server)
-        if(only_server)
-          hunter_user_error(
-              "HUNTER_USE_CACHE_SERVERS is set to ONLY but network is down."
-          )
-        endif()
-        hunter_status_debug("File not found")
-        break()
       else()
-        file(REMOVE "${x_LOCAL}")
-        hunter_internal_error(
-            "Unknown error"
-            "  code: ${error_code}"
-            "  message: ${error_message}"
-        )
+        hunter_status_debug("Download error (${error_message})")
       endif()
     endforeach()
+
+    if(NOT EXISTS "${x_DONE}")
+      # DONE stamp not found on this server, try next
+      continue()
+    endif()
+
+    hunter_init_not_found_counter(NOT_FOUND_NEEDED not_found_counter)
+
+    set(total_retry 10)
+    foreach(x RANGE ${total_retry})
+      hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
+      hunter_status_debug("  ${local_url}")
+      hunter_status_debug("  -> ${x_LOCAL}")
+
+      hunter_sleep_before_download("${x}")
+      file(DOWNLOAD "${local_url}" "${x_LOCAL}" STATUS status)
+
+      list(GET status 0 error_code)
+      list(GET status 1 error_message)
+
+      hunter_check_download_error_message(
+          ERROR_CODE "${error_code}"
+          ERROR_MESSAGE "${error_message}"
+          REMOVE_ON_ERROR "${x_LOCAL}"
+          NOT_FOUND_COUNTER not_found_counter
+      )
+
+      if(error_code EQUAL 0)
+        return()
+      elseif(error_code EQUAL 22)
+        hunter_status_debug("File not found")
+        if(NOT_FOUND_NEEDED EQUAL not_found_counter)
+          file(REMOVE "${x_DONE}")
+          hunter_internal_error(
+              "Server error. File not exists but DONE stamp found.\n"
+              "  file: ${local_url}"
+              "  done: ${done_url}"
+          )
+        endif()
+      else()
+        hunter_status_debug("Download error (${error_message})")
+      endif()
+    endforeach()
+
+    if(NOT EXISTS "${x_LOCAL}")
+      # some errors, remove DONE stamp and try next server
+      file(REMOVE "${x_DONE}")
+    endif()
   endforeach()
 endfunction()

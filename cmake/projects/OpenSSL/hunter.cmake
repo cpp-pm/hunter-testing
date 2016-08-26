@@ -4,8 +4,31 @@
 # !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
+include(hunter_cacheable)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.1.0"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_1_0.tar.gz"
+    SHA1
+    d7092de956dbb7cb1b48b521a42eb53b01480047
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.2h"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2h.tar.gz"
+    SHA1
+    ba4eee69aa0e6301cb3dca8a68785ffda018d581
+)
 
 hunter_add_version(
     PACKAGE_NAME
@@ -49,6 +72,17 @@ hunter_add_version(
     "https://github.com/openssl/openssl/archive/OpenSSL_1_0_2d.tar.gz"
     SHA1
     a233de65e91dc176f4e34be03899ae00eb1dd029
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenSSL
+    VERSION
+    "1.0.1t"
+    URL
+    "https://github.com/openssl/openssl/archive/OpenSSL_1_0_1t.tar.gz"
+    SHA1
+    505870952a3b63253696ed1d9c85473a6a0623eb
 )
 
 hunter_add_version(
@@ -161,13 +195,17 @@ hunter_add_version(
     072cf2bc8e19c7c59a42e7e20977fe3037c9c9f3
 )
 
-hunter_pick_scheme(
-    DEFAULT
-    url_sha1_openssl
-    IPHONEOS
-    url_sha1_openssl_ios
-    WINDOWS
-    url_sha1_openssl_windows
-)
+if(WIN32)
+  if("${HUNTER_OpenSSL_VERSION}" VERSION_LESS "1.1")
+    hunter_pick_scheme(DEFAULT url_sha1_openssl_windows)
+  else()
+    hunter_pick_scheme(DEFAULT url_sha1_openssl_windows_1_1_plus)
+  endif()
+elseif(IOS)
+  hunter_pick_scheme(DEFAULT url_sha1_openssl_ios)
+else()
+  hunter_pick_scheme(DEFAULT url_sha1_openssl)
+endif()
 
-hunter_download(PACKAGE_NAME OpenSSL)
+hunter_cacheable(OpenSSL)
+hunter_download(PACKAGE_NAME OpenSSL PACKAGE_INTERNAL_DEPS_ID 1)
