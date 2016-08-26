@@ -8,7 +8,7 @@ environment:
 
   matrix:
     - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\xinerama
+      PROJECT_DIR: examples\odb-boost
 
 # odb-boost can be built by its VisualStudio solution, but there is no integration
 # in Hunter to do that yet, see: https://github.com/ruslo/hunter/pull/469
@@ -50,9 +50,8 @@ environment:
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/c4o1tco7rcjwog31
 #    - TOOLCHAIN: "mingw"
 #      PROJECT_DIR: examples\odb-boost
-
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+#    - TOOLCHAIN: "msys"
+#      PROJECT_DIR: examples\odb-boost
 
 install:
   # Python 3
