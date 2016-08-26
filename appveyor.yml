@@ -72,9 +72,8 @@ environment:
 #    * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.179/job/x3udsdmvi2bsy09t
 #    - TOOLCHAIN: "mingw"
 #      PROJECT_DIR: examples\odb-mysql
-
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+#    - TOOLCHAIN: "msys"
+#      PROJECT_DIR: examples\odb-mysql
 
 install:
   # Python 3
