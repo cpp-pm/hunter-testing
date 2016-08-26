@@ -46,8 +46,8 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\odb
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\odb
 
 install:
   # Python 3
