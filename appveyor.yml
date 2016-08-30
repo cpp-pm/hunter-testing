@@ -69,8 +69,8 @@ environment:
   #  - TOOLCHAIN: "mingw"
   #    PROJECT_DIR: examples\MySQL-client
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\MySQL-client
 
 install:
   # Python 3
