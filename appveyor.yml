@@ -40,11 +40,13 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\CURL
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\CURL
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.900/job/c3b60wxb43qrpvs7
+    # - TOOLCHAIN: "mingw"
+    # - PROJECT_DIR: examples\CURL
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\CURL
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.900/job/376hrm72g5h2acab
+    # - TOOLCHAIN: "msys"
+    # - PROJECT_DIR: examples\CURL
 
 install:
   # Python 3
