@@ -50,7 +50,7 @@ environment:
       PROJECT_DIR: examples\cereal
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\cereal
 
 install:
   # Python 3
