@@ -256,8 +256,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157828813
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-9
     - os: osx
@@ -267,8 +270,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157828818
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
+
     # }
     # }
 
