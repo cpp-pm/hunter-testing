@@ -231,6 +231,54 @@ matrix:
     # }
     # }
 
+    # Boost-thread {
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc-4-8
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-leak
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-thread
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=libcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157828813
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
+
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-9
+    - os: osx
+      osx_image: xcode7.3
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/157828818
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
+
+    # }
+    # }
+
+
 install:
   # Info about OS
   - uname -a
