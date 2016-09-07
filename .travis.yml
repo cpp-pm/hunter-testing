@@ -314,8 +314,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/158223572
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze
+
     # }
     # }
 
