@@ -234,6 +234,50 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Boost-thread
 
+    ### Boost-chrono ###
+    - TOOLCHAIN: "default"
+      PROJECT_DIR: examples\Boost-chrono
+
+    # FIXME:
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Boost-chrono
+
+    # FIXME:
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Boost-chrono
+
+    # FIXME:
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-10-2010"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-11-2012"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-12-2013-xp"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "vs-9-2008"
+      PROJECT_DIR: examples\Boost-chrono
+
+    - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-chrono
+
+    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Boost-chrono
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%

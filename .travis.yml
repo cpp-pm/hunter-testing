@@ -278,6 +278,46 @@ matrix:
     # }
     # }
 
+    # Boost-chrono {
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc-4-8
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-leak
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-thread
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-9
+    - os: osx
+      osx_image: xcode7.3
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze
+    # }
+    # }
 
 install:
   # Info about OS
