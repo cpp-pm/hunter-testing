@@ -322,6 +322,53 @@ matrix:
     # }
     # }
 
+    # Boost-serialization {
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc-4-8
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/159627884
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=analyze
+
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-leak
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-thread
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-9
+    - os: osx
+      osx_image: xcode7.3
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/159627884
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=analyze
+
+    # }
+    # }
+
 install:
   # Info about OS
   - uname -a
