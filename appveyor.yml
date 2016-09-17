@@ -41,6 +41,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\cereal
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\cereal
+
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.311/job/q5fuupdgj567cmk6
     # - TOOLCHAIN: "vs-9-2008"
