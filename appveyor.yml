@@ -44,7 +44,7 @@ environment:
       PROJECT_DIR: examples\Jpeg
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\Jpeg
 
 install:
   # Python 3
