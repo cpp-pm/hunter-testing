@@ -322,13 +322,6 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Boost-serialization
 
-    ### Boost-1.58 ###
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-1.58
-
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\Boost-1.58
-
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
