@@ -39,6 +39,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\thread-pool-cpp
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\thread-pool-cpp
+
     # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.684/job/d27xn06w05f2ywye
     # - TOOLCHAIN: "vs-9-2008"
     #   PROJECT_DIR: examples\thread-pool-cpp
