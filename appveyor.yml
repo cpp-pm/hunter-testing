@@ -37,14 +37,8 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\OpenCV
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\OpenCV-3.0.0
-
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\OpenCV
-
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\OpenCV-3.0.0
 
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.279/job/ps3k4p1b9v5hs8pn
