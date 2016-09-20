@@ -7,32 +7,35 @@ environment:
       secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
 
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\eos
+    # Visual Studio supported only for 2015+ version:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.957
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "default"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\eos
+
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\eos
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\eos
@@ -40,14 +43,16 @@ environment:
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\eos
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\eos
+    # FIXME (OpenCV dependency): https://ci.appveyor.com/project/ingenue/hunter/build/1.0.959
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\eos
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\eos
+    # FIXME (libtiff dependency): https://ci.appveyor.com/project/ingenue/hunter/build/1.0.291
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\eos
 
 install:
   # Python 3
