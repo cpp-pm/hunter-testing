@@ -65,6 +65,13 @@ matrix:
     # }
     # }
 
+    # qt-core {
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-9
+    # }
+    # }
+
     # qt-camera {
     # Linux {
     - os: linux
