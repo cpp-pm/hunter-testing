@@ -34,6 +34,8 @@ environment:
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\qt-widgets
     - TOOLCHAIN: "vs-12-2013"
+      PROJECT_DIR: examples\qt-core
+    - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\qt-qml
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\qt-location
@@ -42,9 +44,13 @@ environment:
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\qt-widgets
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\qt-core
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\qt-widgets
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\qt-core
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\qt-qml
     - TOOLCHAIN: "vs-14-2015"
