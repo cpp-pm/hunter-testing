@@ -40,6 +40,9 @@ environment:
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\qt-camera
 
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\qt-widgets
+
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\qt-widgets
     - TOOLCHAIN: "vs-14-2015"
