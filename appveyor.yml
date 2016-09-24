@@ -48,7 +48,7 @@ environment:
       PROJECT_DIR: examples\GSL
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\GSL
 
 install:
   # Python 3
