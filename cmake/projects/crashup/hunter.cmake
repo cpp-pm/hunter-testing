@@ -10,26 +10,26 @@ include(hunter_pick_scheme)
 
 hunter_add_version(
     PACKAGE_NAME
-    xgboost
+    crashup
     VERSION
-    0.40-p3
+    0.0.2
     URL
-    "https://github.com/hunter-packages/xgboost/archive/v0.40-p3.tar.gz"
+    "https://github.com/qedsoftware/crashup/archive/v0.0.2.tar.gz"
     SHA1
-    2949041288fca9a5fd6e42f38de83aad2b31b27d
+    cc826c9fb28301e67a8fee6459779b2de5b024f5
 )
 
 hunter_add_version(
     PACKAGE_NAME
-    xgboost
+    crashup
     VERSION
-    0.40-p2
+    0.0.1
     URL
-    "https://github.com/hunter-packages/xgboost/archive/v0.40-p2.tar.gz"
+    "https://github.com/qedsoftware/crashup/archive/v0.0.1.tar.gz"
     SHA1
-    dc1e21d0b023df87915c0140999286afed064c50
+    e7a86b394d36b08587f9d229d931d814192f6b53
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(xgboost)
-hunter_download(PACKAGE_NAME xgboost)
+hunter_cacheable(crashup)
+hunter_download(PACKAGE_NAME crashup)
