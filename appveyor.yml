@@ -41,8 +41,9 @@ environment:
     # - TOOLCHAIN: "vs-14-2015"
     #   PROJECT_DIR: examples\GSL
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\GSL
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.994/job/4w1wlrmfq4yaxg0l
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\GSL
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\GSL
