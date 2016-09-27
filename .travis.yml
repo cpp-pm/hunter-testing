@@ -79,8 +79,11 @@ matrix:
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=osx-10-9
     - os: osx
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/163176941
+    # - os: osx
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
     # }
