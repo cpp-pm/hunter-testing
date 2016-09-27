@@ -47,8 +47,8 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\msgpack
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\msgpack
 
 install:
   # Python 3
