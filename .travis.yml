@@ -3,10 +3,6 @@
 language:
   - cpp
 
-os:
-  - linux
-  - osx
-
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
@@ -36,66 +32,61 @@ env:
   global:
     - secure: "IpVQQ3WaLQdSYtZTJFB+/1zJw1Jhli+AuKUfzikeO/EMv1QVD8sOAlsfGkrs/0V/uzLnq3yo8I8VjakGySZW7RquT7JlTF8jIrbvPGltMCL2AGlpmA9fsohXJ3jddWLD1jI9/GP53SZFpA3WHN8PSufbbtVx9snATiYH/c7nebuHz4xZ7uOV6zAIAfeCaqTjxC6NXAjp18bwOcMoSBGy94KmOQK7TqC0+bIFV62V0YXsp/0sC12n80X7mrV3d1K5GXH18akzOyl5/J2UtCsOt47591uu1VG8lfRiq3Hd1Q5zyfc0C74nVuYHUCT0ykT+3eWSO5LA3crY4NXzCXNxJ7tRX6rIT61V56YwSSMm8HgrtMkCplXMLHEtrZlmIVumgn20YUnSUP40Giaib/tv3cyaKPeF1Wv99nqJvd7qnmKl+TcrAiMtM1gGtyih2NgdUoc2ukJv8/Gx3pXQNlzZ2Wg4AEDZW6wHugxtUjFllwM8wmKKdARyLozudB6cfFjw4VBp2EH8xGnRG7RhjuC+XeFl3Z8iKs7TzRxZTosTRSC9SzxVBiPevi4CdVD48CzYpdReoxjhHqX+ZTDlpx0WZ1mmpYQz+dD4vHKl5iUX+SwEItqOIZiDpIw5jVbiiCtEUOI7UBMZHDoPAgHDx63HAKdvIkr5HC3yMoWeDQgy90c="
 
-  matrix:
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=default
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=libcxx
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=gcc-4-8
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=ios-nocodesign
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-address
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-leak
-    - PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
+# filtering bases on: https://travis-ci.org/ingenue/hunter/builds/126599632
 
 matrix:
-  exclude:
-    # filtering bases on: https://travis-ci.org/ingenue/hunter/builds/126599632
+  include:
+    # Linux {
 
     # Lack of required C++11 level. Default uses only c++0x
+    # - os: linux
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=default
+
     - os: linux
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=default
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=gcc-4-8
+
+    # Cannot link to OpenSSL
+    # - os: linux
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-leak
 
     # I'dont know what is the problem, build fails with error messages:
     # clang: error: argument unused during compilation: '-pie'
-    - os: linux
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
+    # - os: linux
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
 
-    # This version of libstdc++ has no array header
+    # }
+
+    # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
-
-    # Cannot link to OpenSSL
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-
-    ### Linux excludes ###
-    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
-    - os: linux
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=libcxx
 
-    # Xcode is for OSX only
-    - os: linux
+    # This version of libstdc++ has no array header
+    # - os: osx
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
+
+    - os: osx
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=osx-10-9
-    - os: linux
+    - os: osx
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=ios-nocodesign
 
-    ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX (and 'gcc' same as 'libcxx')
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=gcc-4-8
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/163176941
+    # - os: osx
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
     - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-address
-
-    # Linux only
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-leak
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    # }
 
 install:
   # Info about OS
@@ -107,7 +98,7 @@ install:
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then easy_install3 --user requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
@@ -123,6 +114,7 @@ install:
 
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
+  - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
 
 script:
   - python3 ./jenkins.py --upload
