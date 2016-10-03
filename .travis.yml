@@ -41,10 +41,17 @@ matrix:
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/gflags TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/gflags TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/164668381
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gflags TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/164668384
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gflags TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=sanitize-address
     - os: linux
@@ -64,10 +71,17 @@ matrix:
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=osx-10-9
     - os: osx
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=ios-nocodesign
-    - os: osx
-      env: PROJECT_DIR=examples/gflags TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/gflags TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/164668381
+    # - os: osx
+    #   env: PROJECT_DIR=examples/gflags TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/164668384
+    # - os: osx
+    #   env: PROJECT_DIR=examples/gflags TOOLCHAIN=analyze
+
     # }
 
 install:
