@@ -63,8 +63,11 @@ matrix:
       env: PROJECT_DIR=examples/caffe TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/caffe TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: Boost is broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/caffe TOOLCHAIN=osx-10-9
 
