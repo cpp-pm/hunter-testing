@@ -37,8 +37,11 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/caffe TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164907429
+    # - os: linux
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=clang-libstdcxx
+
     - os: linux
       env: PROJECT_DIR=examples/caffe TOOLCHAIN=gcc-4-8
 
