@@ -62,17 +62,21 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=libcxx
+
+    # FIXME (Add VecLib):
+    # * https://travis-ci.org/ingenue/hunter/jobs/164913407
+    # - os: osx
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=default
+    # - os: osx
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=libcxx
 
     # FIXME: Boost is broken
     # - os: osx
     #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=clang-libstdcxx
 
-    - os: osx
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=osx-10-9
+    # FIXME (Add VecLib):
+    # - os: osx
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=osx-10-9
 
     # FIXME:
     # Protobuf with host vs target toolchain
