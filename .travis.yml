@@ -48,12 +48,14 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=analyze
 
-    - os: linux
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-thread
+    # FIXME: glog is broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-address
+    # - os: linux
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-leak
+    # - os: linux
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
