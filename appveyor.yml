@@ -22,11 +22,13 @@ environment:
     # - TOOLCHAIN: "nmake-vs-12-2013"
     #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1065/job/u77bbslswdk1uy3m
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\xgboost
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\xgboost
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1065/job/r52q5ib6kav3m3l5
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\xgboost
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\xgboost
