@@ -76,12 +76,12 @@ matrix:
     #   env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=osx-10-11
 
     # cvmatio depends on OpenCV, OpenCV cache was not uploaded for
     # 'ios-nocodesign' (use 'ios-nocodesign-9-3-wo-armv7s')
     # - os: osx
-    #   env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/cvmatio TOOLCHAIN=ios-nocodesign-9-3
 
     - os: osx
       osx_image: xcode7.3
