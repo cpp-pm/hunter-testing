@@ -1,4 +1,4 @@
-# Copyright (c) 2013, 2015 Ruslan Baratov
+# Copyright (c) 2016 Ruslan Baratov
 # All rights reserved.
 
 cmake_minimum_required(VERSION 3.0)
@@ -6,14 +6,18 @@ project(Hunter)
 
 include(ExternalProject) # ExternalProject_Add
 
-# Scheme for download and install OpenSSL library
+include("@HUNTER_SELF@/cmake/Hunter")
 
-list(APPEND CMAKE_MODULE_PATH "@HUNTER_SELF@/cmake/modules")
-
+include(hunter_fatal_error)
 include(hunter_status_debug)
 include(hunter_test_string_not_empty)
+include(hunter_user_error)
 
-hunter_status_debug("Scheme: url_sha1_openssl")
+hunter_status_debug("Scheme: OpenBLAS")
+
+if("@MSVC@")
+  hunter_fatal_error("Not supported with Visual Studio")
+endif()
 
 # Check preconditions
 hunter_test_string_not_empty("@HUNTER_SELF@")
@@ -23,29 +27,27 @@ hunter_test_string_not_empty("@HUNTER_PACKAGE_SHA1@")
 hunter_test_string_not_empty("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
 hunter_test_string_not_empty("@HUNTER_PACKAGE_SOURCE_DIR@")
 hunter_test_string_not_empty("@HUNTER_PACKAGE_INSTALL_PREFIX@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_LICENSE_FILE@")
-hunter_test_string_not_empty("@HUNTER_GLOBAL_SCRIPT_DIR@")
+hunter_test_string_not_empty("@HUNTER_PACKAGE_CONFIGURATION_TYPES@")
 
-if(APPLE)
-  set(configure_command "./Configure")
-  set(configure_opts "darwin64-x86_64-cc")
-else()
-  set(configure_command "./config")
+set(cfg_types "@HUNTER_PACKAGE_CONFIGURATION_TYPES@")
+
+list(LENGTH cfg_types len)
+if(NOT len EQUAL 1)
+  hunter_user_error(
+      "Only one configuration type allowed for this scheme"
+      " (${cfg_types})"
+  )
 endif()
 
-# Pass C compiler through
-set(configure_command CC=${CMAKE_C_COMPILER} ${configure_command})
+string(TOUPPER "${cfg_types}" config_type)
 
-# Pass C flags through
-set(configure_opts ${configure_opts} ${CMAKE_C_FLAGS})
+set(cflags "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_${config_type}}")
 
-set(
-    configure_command
-    . "@HUNTER_GLOBAL_SCRIPT_DIR@/clear-all.sh" && "${configure_command}"
-)
-set(build_command . "@HUNTER_GLOBAL_SCRIPT_DIR@/clear-all.sh" && make)
-
-set(configure_opts ${configure_opts} threads no-shared)
+if(NOT BUILD_SHARED_LIBS)
+  set(lib_type NO_SHARED=1)
+else()
+  set(lib_type "")
+endif()
 
 ExternalProject_Add(
     "@HUNTER_EP_NAME@"
@@ -61,17 +63,13 @@ ExternalProject_Add(
     "@HUNTER_PACKAGE_INSTALL_PREFIX@"
         # not used, just avoid creating Install/<name> empty directory
     CONFIGURE_COMMAND
-    ${configure_command}
-    ${configure_opts}
-    "--prefix=@HUNTER_PACKAGE_INSTALL_PREFIX@"
+    ""
     BUILD_COMMAND
-    ${build_command}
+    make ${lib_type} "CC=@CMAKE_C_COMPILER@" "CFLAGS=${cflags}"
     BUILD_IN_SOURCE
     1
     INSTALL_COMMAND
-    make install_sw
-    # Install without documentation
-    # * https://github.com/openssl/openssl/issues/57
+    make ${lib_type} "PREFIX=@HUNTER_PACKAGE_INSTALL_PREFIX@" install
     COMMAND # Copy license files
     "@CMAKE_COMMAND@"
     "-Dsrcdir=@HUNTER_PACKAGE_SOURCE_DIR@"
