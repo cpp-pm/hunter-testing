@@ -67,9 +67,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/164816649
@@ -115,9 +115,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/164816662
