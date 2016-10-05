@@ -72,11 +72,11 @@ matrix:
     #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=osx-10-11
 
     # https://travis-ci.org/ingenue/hunter/jobs/145968793
     # - os: osx
-    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=ios-nocodesign-9-3
 
     # https://travis-ci.org/ingenue/hunter/jobs/145968794
     # - os: osx
