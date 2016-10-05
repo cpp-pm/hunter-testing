@@ -86,17 +86,13 @@ matrix:
     #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-11
 
     # Toolchain should be uploaded from local machine because of Travis timeouts
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign
 
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
