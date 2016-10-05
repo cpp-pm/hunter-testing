@@ -76,12 +76,12 @@ matrix:
 
     # FIXME (Add VecLib):
     # - os: osx
-    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=osx-10-9
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=osx-10-11
 
     # FIXME:
     # Protobuf with host vs target toolchain
     # - os: osx
-    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/caffe TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME: no OpenBLAS package
     # - os: osx
