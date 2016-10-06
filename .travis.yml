@@ -71,11 +71,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=osx-10-11
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164878134
     # - os: osx
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859218
     # - os: osx
