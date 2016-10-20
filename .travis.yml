@@ -51,8 +51,10 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: linux
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    # FIXME: OpenSSL dependency broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-address
     - os: linux
@@ -84,8 +86,10 @@ matrix:
     # - os: osx
     #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    # FIXME: OpenSSL dependency broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+
     # }
 
 install:
