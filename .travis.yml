@@ -51,8 +51,10 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: linux
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    # FIXME: OpenSSL dependency broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-address
     - os: linux
@@ -76,16 +78,18 @@ matrix:
     #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/163176941
     # - os: osx
     #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+    # FIXME: OpenSSL dependency broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=analyze
+
     # }
 
 install:
