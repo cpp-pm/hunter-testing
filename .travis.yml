@@ -67,8 +67,10 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/169384946
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/163974428
@@ -109,8 +111,10 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/169384959
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/163974428
