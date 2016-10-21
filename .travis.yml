@@ -60,10 +60,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-leak
 
-    # I'dont know what is the problem, build fails with error messages:
-    # clang: error: argument unused during compilation: '-pie'
-    # - os: linux
-    #   env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
+    - os: linux
+      env: PROJECT_DIR=examples/msgpack TOOLCHAIN=sanitize-thread
 
     # }
 
