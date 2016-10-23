@@ -62,12 +62,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
@@ -107,12 +106,11 @@ matrix:
     #   env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
@@ -148,12 +146,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
@@ -207,17 +204,16 @@ matrix:
     #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-11
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105982177
     # - os: osx
-    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign-9-3
 
     # FIXME:
     # - os: osx
-    #   osx_image: xcode7.3
-    #   env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
 
     - os: osx
       env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
@@ -262,12 +258,11 @@ matrix:
     #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -306,12 +301,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -353,12 +347,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
