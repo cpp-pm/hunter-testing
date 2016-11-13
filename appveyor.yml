@@ -51,8 +51,9 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\ogles_gpgpu
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\ogles_gpgpu
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1168/job/qh7ade1h6emvr4sk
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\ogles_gpgpu
 
 install:
   # Python 3
