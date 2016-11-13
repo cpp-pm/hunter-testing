@@ -44,7 +44,29 @@ hunter_add_version(
     "https://github.com/hunter-packages/opencv/archive/3.1.0-p0.tar.gz"
     SHA1
     ab503105ce7e5415fc77cf44de0b276008be624f
+    )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p8"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p8.tar.gz"
+    SHA1
+    8cff7617f0b2a4e59c8a6b0016207476c30ba7e8
 )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p7"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p7.tar.gz"
+    SHA1
+    c1e6e32b146a4a19642bcd3ad7e36b4ddcd13ec3
+    )
 
 hunter_add_version(
     PACKAGE_NAME
