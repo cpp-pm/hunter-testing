@@ -135,7 +135,7 @@ def run():
   if (
       os.getenv('TRAVIS') and
       (project_dir == 'examples/PocoCpp') and
-      (toolchain == 'ios-nocodesign')
+      toolchain.startswith('ios-nocodesign')
   ):
     verbose = False
 
