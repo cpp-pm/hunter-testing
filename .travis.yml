@@ -58,8 +58,12 @@ matrix:
       env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=clang-libstdcxx
+
+    # Lack of C++11 support
+    # * https://travis-ci.org/ingenue/hunter/jobs/177101003
+    # - os: osx
+    #   env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/PocoCpp TOOLCHAIN=osx-10-11
     - os: osx
