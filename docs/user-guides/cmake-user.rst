@@ -1,3 +1,6 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 CMake user
 ----------
 
@@ -18,3 +21,10 @@ Such developers can't do:
 
 * Add more external dependencies to project
 * Adding flags that can break compatibility (e.g. ``-std=c++11`` or ``/MT``)
+
+See also:
+
+.. toctree::
+  :maxdepth: 1
+
+  Provide credentials to access protected sources <cmake-user/protected-sources>

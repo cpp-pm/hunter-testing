@@ -1,3 +1,6 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 What is it?
 -----------
 
@@ -65,7 +68,7 @@ Install instructions from build scheme `url_sha1_openssl.cmake.in`_:
   :start-after: # doc: install-start
   :end-before: # doc: install-end
 
-.. code-block:: cmake
+.. code-block:: none
 
   INSTALL_COMMAND
   make install_sw
@@ -81,6 +84,10 @@ Default version from `default.cmake`_
 .. code-block:: cmake
 
   hunter_config(OpenSSL VERSION 1.0.2g)
+
+.. seealso::
+
+  * :doc:`Detailed sources layout </reference/layouts/sources>`
 
 .. _release: https://github.com/ruslo/hunter/releases
 .. _Atom feed: https://github.com/ruslo/hunter/releases.atom
