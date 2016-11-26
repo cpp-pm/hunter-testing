@@ -10,14 +10,15 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\yaml-cpp
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\yaml-cpp
+    # Disabled due to Boost build error
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\yaml-cpp
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\yaml-cpp
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\yaml-cpp
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\yaml-cpp
+    #- TOOLCHAIN: "nmake-vs-12-2013"
+    #  PROJECT_DIR: examples\yaml-cpp
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\yaml-cpp
