@@ -73,9 +73,8 @@ matrix:
     #   env: PROJECT_DIR=examples/cereal TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/cereal TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/cereal TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/cereal TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
       env: PROJECT_DIR=examples/cereal TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
