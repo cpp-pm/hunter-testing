@@ -19,11 +19,18 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\OpenCL
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\OpenCL
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\OpenCL
+#VC 9-11 do not support some of the code used in the OpenCL headers
+#https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1206/job/ix590h5sb15m7yf3
+#    - TOOLCHAIN: "vs-9-2008"
+#      PROJECT_DIR: examples\OpenCL
+#
+#https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1206/job/8jmat42arvkfgayw
+#    - TOOLCHAIN: "vs-10-2010"
+#      PROJECT_DIR: examples\OpenCL
+#
+#https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1206/job/l3sbaotn6njmrimk
+#    - TOOLCHAIN: "vs-11-2012"
+#      PROJECT_DIR: examples\OpenCL
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\OpenCL
@@ -37,11 +44,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\OpenCL
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\OpenCL
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\OpenCL
+#this build links to native direct x which uses some VC specific code that gcc does not understand
+#https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1206/job/firtgemm7o3nhdsf
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\OpenCL
 
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\OpenCL
