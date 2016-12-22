@@ -68,6 +68,9 @@ matrix:
     #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
 
     - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=xcode-cxx98
+    - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
