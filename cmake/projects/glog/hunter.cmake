@@ -1,27 +1,12 @@
 # Copyright (c) 2015, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_GLOG_HUNTER_CMAKE_)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_GLOG_HUNTER_CMAKE_ 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_cacheable)
 include(hunter_download)
 include(hunter_pick_scheme)
-
-hunter_add_version(
-    PACKAGE_NAME
-    glog
-    VERSION
-    "0.3.4-p0"
-    URL
-    "https://github.com/ruslo/glog/archive/v0.3.4-p0.tar.gz"
-    SHA1
-    de92243289267cb0f0f971a9aedf21bba74b71b3
-)
 
 hunter_add_version(
     PACKAGE_NAME
