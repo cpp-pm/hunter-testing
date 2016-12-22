@@ -62,7 +62,7 @@ matrix:
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=clang-libstdcxx
     - os: osx
       osx_image: xcode8.2
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-12
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=xcode-cxx98
     - os: osx
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-11
     - os: osx
