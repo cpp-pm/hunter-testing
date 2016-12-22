@@ -68,12 +68,9 @@ matrix:
     #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -118,12 +115,9 @@ matrix:
     #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -168,12 +162,9 @@ matrix:
     #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=osx-10-11
     - os: osx
-      osx_image: xcode7.3
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=ios-nocodesign
     - os: osx
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
