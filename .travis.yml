@@ -69,7 +69,7 @@ matrix:
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=clang-libstdcxx
     - os: osx
       osx_image: xcode8.2
-      env: PROJECT_DIR=examples/gflags TOOLCHAIN=xcode-cxx98
+      env: PROJECT_DIR=examples/gflags TOOLCHAIN=xcode-nocxx
     - os: osx
       env: PROJECT_DIR=examples/gflags TOOLCHAIN=osx-10-11
     - os: osx
