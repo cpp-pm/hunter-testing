@@ -47,8 +47,10 @@ environment:
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\glog
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\glog
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1267/job/9vqsv6dqeo7f65q0
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\glog
 
 install:
   # Python 3
