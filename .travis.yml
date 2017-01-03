@@ -35,14 +35,22 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+
+    # Lack of c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/188504503
+    # - os: linux
+    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Lack of c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/188504506
+    # - os: linux
+    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=analyze
     - os: linux
@@ -54,18 +62,30 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/188504511
+    # - os: osx
+    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=clang-libstdcxx
+
+    # Lack of c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/188504513
+    # - os: osx
+    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Lack of c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/188504516
+    # - os: osx
+    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=analyze
     # }
