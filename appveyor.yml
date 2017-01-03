@@ -10,35 +10,53 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/af1e8w42s68031bt
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/rjm8wuq7a4ve3yl2
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/b0ecbmgxu0sl8y75
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/isqeojouw8tr68el
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/6nmrmxeatn4ylrpr
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/a88ep8ky63k7u8jd
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/ewjyekga2ol4q5be
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/y4d67l3luoe3wah5
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\nlohmann-json
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\nlohmann-json
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\nlohmann-json
+    # Lack of c++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1291/job/lm95x948t3a1a98k
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\nlohmann-json
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\nlohmann-json
