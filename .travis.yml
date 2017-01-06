@@ -36,38 +36,38 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=gcc-4-8
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=sanitize-leak
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/OpenCL-clhpp TOOLCHAIN=analyze
     # }
 
 install:
