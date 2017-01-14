@@ -19,11 +19,15 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\librtmp
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\librtmp
+# FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1297/job/7udhqqnxlov30mjv
+# VS10 does not support C99
+#    - TOOLCHAIN: "vs-10-2010"
+#      PROJECT_DIR: examples\librtmp
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\librtmp
+# FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1297/job/kd79xp544hufc8sx
+# VS11 does not support C99
+#    - TOOLCHAIN: "vs-11-2012"
+#      PROJECT_DIR: examples\librtmp
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\librtmp
@@ -37,14 +41,20 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\librtmp
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\librtmp
+# FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1297/job/hd1p58bqudxmgvm1
+# VS9 does not support C99
+#    - TOOLCHAIN: "vs-9-2008"
+#      PROJECT_DIR: examples\librtmp
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\librtmp
+# FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1297/job/1brnkon0dr1ibidp
+# issue related to openssl
+#    - TOOLCHAIN: "mingw"
+#      PROJECT_DIR: examples\librtmp
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\librtmp
+# FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1297/job/4b6463cn59cke5fo
+# issue related to openssl
+#    - TOOLCHAIN: "msys"
+#      PROJECT_DIR: examples\librtmp
 
 install:
   # Python 3
