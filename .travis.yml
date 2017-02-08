@@ -35,14 +35,14 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=default
+    # - os: linux
+    #   env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=default
     - os: linux
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=analyze
     - os: linux
@@ -58,14 +58,14 @@ matrix:
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=clang-libstdcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: osx
+    #   env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
       env: PROJECT_DIR=examples/jsoncpp TOOLCHAIN=analyze
     # }
