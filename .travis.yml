@@ -35,8 +35,12 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=default
+
+    # Need c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/199918203
+    # - os: linux
+    #   env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=clang-libstdcxx
     - os: linux
@@ -54,12 +58,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=default
+
+    # Need c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/199918211
+    # - os: osx
+    #   env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=clang-libstdcxx
+
+    # Lack of c++11 support:
+    # * https://travis-ci.org/ingenue/hunter/jobs/199918213
+    # - os: osx
+    #   env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/cxxopts TOOLCHAIN=osx-10-11
     - os: osx
