@@ -44,7 +44,40 @@ hunter_add_version(
     "https://github.com/hunter-packages/opencv/archive/3.1.0-p0.tar.gz"
     SHA1
     ab503105ce7e5415fc77cf44de0b276008be624f
+    )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p9"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p9.tar.gz"
+    SHA1
+    b41a71206d0963dcdf934ecf8f0d7ff299c4b57c
+)  
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p8"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p8.tar.gz"
+    SHA1
+    8cff7617f0b2a4e59c8a6b0016207476c30ba7e8
 )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p7"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p7.tar.gz"
+    SHA1
+    c1e6e32b146a4a19642bcd3ad7e36b4ddcd13ec3
+    )
 
 hunter_add_version(
     PACKAGE_NAME
@@ -197,6 +230,13 @@ else()
   set(_ios_args "")
 endif()
 
+if(ANDROID)
+  # This feature doesn't work with new CMake 3.7+ toolchains
+  set(_android_args ENABLE_PRECOMPILED_HEADERS=OFF)
+else()
+  set(_android_args "")
+endif()
+
 hunter_cmake_args(
     OpenCV
     CMAKE_ARGS
@@ -209,6 +249,7 @@ hunter_cmake_args(
         INSTALL_PYTHON_EXAMPLES=OFF
         BUILD_WITH_STATIC_CRT=OFF # Fix https://github.com/ruslo/hunter/issues/177
         ${_ios_args}
+        ${_android_args}
         # Find packages in Hunter (instead of building from OpenCV sources)
         BUILD_ZLIB=OFF
         BUILD_TIFF=OFF
