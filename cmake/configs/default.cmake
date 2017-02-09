@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2015, Ruslan Baratov
+# Copyright (c) 2013-2017, Ruslan Baratov
 # All rights reserved.
 
 # Do not place header guards here
@@ -112,6 +112,7 @@ hunter_config(convertutf VERSION 1.0.1)
 hunter_config(crashpad VERSION v0.0.1-p0)
 hunter_config(crashup VERSION 0.0.2)
 hunter_config(cvmatio VERSION 1.0.27-p3)
+hunter_config(cxxopts VERSION 1.0.0-p0)
 hunter_config(damageproto VERSION 1.2.1)
 hunter_config(dbus VERSION 1.10.0-hunter-4)
 hunter_config(dest VERSION 0.8.0-p3)
@@ -174,7 +175,7 @@ else()
   hunter_config(spdlog VERSION 0.11.0-p0)
 endif()
 hunter_config(szip VERSION 2.1.0-p1)
-hunter_config(thread-pool-cpp VERSION 1.0.0-p2)
+hunter_config(thread-pool-cpp VERSION 1.0.0-p3)
 hunter_config(tinydir VERSION 1.2-p0)
 hunter_config(websocketpp VERSION 0.7.0-p2)
 hunter_config(wxWidgets VERSION 3.0.2)
@@ -188,7 +189,7 @@ hunter_config(xext VERSION 1.3.1)
 hunter_config(xextproto VERSION 7.2.1)
 hunter_config(xf86vidmodeproto VERSION 2.3.1)
 hunter_config(xfixes VERSION 5.0.1)
-hunter_config(xgboost VERSION 0.40-p4)
+hunter_config(xgboost VERSION 0.40-p5)
 hunter_config(xinerama VERSION 1.1.2)
 hunter_config(xineramaproto VERSION 1.1.2)
 hunter_config(xorg-macros VERSION 1.17)
