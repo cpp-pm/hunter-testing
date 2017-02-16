@@ -41,10 +41,14 @@ matrix:
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=analyze
+
+    # Missing glob.h in NDK: https://travis-ci.org/ingenue/hunter/jobs/201561657
+    #- os: linux
+    #  env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Complains compiler does not work: https://travis-ci.org/ingenue/hunter/jobs/201561658
+    #- os: linux
+    #  env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=sanitize-address
     - os: linux
@@ -64,10 +68,14 @@ matrix:
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=analyze
+
+    # Missing glob.h in NDK:://travis-ci.org/ingenue/hunter/jobs/201561667
+    #- os: osx
+    #  env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Has warning generated: https://travis-ci.org/ingenue/hunter/jobs/201561668
+    #- os: osx
+    #  env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=analyze
     # }
 
 install:
