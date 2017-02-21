@@ -66,8 +66,10 @@ matrix:
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=ios-nocodesign-9-3
+
+    # lipo can't figure out architecture: https://travis-ci.org/ingenue/hunter/jobs/202466802
+    #- os: osx
+    #  env: PROJECT_DIR=examples/libxml2 TOOLCHAIN=ios-nocodesign-9-3
 
     # Missing glob.h in NDK:://travis-ci.org/ingenue/hunter/jobs/201561667
     #- os: osx
