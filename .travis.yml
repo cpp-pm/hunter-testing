@@ -78,7 +78,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/eos TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/eos TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/eos TOOLCHAIN=ios-nocodesign-9-3-armv7
+    - os: osx
+      env: PROJECT_DIR=examples/eos TOOLCHAIN=ios-nocodesign-9-3-arm64
     - os: osx
       env: PROJECT_DIR=examples/eos TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
