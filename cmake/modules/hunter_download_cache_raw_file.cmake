@@ -61,24 +61,34 @@ function(hunter_download_cache_raw_file)
     return()
   endif()
 
-  hunter_init_not_found_counter(NOT_FOUND_NEEDED not_found_counter)
+  list(LENGTH HUNTER_CACHE_SERVERS number_of_servers)
+  hunter_init_not_found_counter(
+      NOT_FOUND_NEEDED not_found_counter "${number_of_servers}"
+  )
 
-  foreach(server ${HUNTER_CACHE_SERVERS})
-    string(REGEX MATCH "^https://github.com/" is_github "${server}")
-    if(NOT is_github)
-      hunter_user_error("Unknown cache server: ${server}")
-    endif()
+  set(total_retry 10)
+  foreach(x RANGE ${total_retry})
+    foreach(server ${HUNTER_CACHE_SERVERS})
+      string(REGEX MATCH "^https://github.com/" is_github "${server}")
+      if(NOT is_github)
+        hunter_user_error("Unknown cache server: ${server}")
+      endif()
 
-    set(url "${server}/releases/download/cache/${suffix}")
+      set(url "${server}/releases/download/cache/${suffix}")
 
-    set(total_retry 10)
-    foreach(x RANGE ${total_retry})
       hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${url}")
       hunter_status_debug("  -> ${x_LOCAL}")
 
       hunter_sleep_before_download("${x}")
-      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status)
+
+      if(HUNTER_STATUS_DEBUG)
+        set(showprogress SHOW_PROGRESS)
+      else()
+        set(showprogress "")
+      endif()
+
+      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status ${showprogress})
       file(SHA1 "${x_LOCAL}" local_sha1)
       string(COMPARE EQUAL "${local_sha1}" "${x_SHA1}" sha1_is_good)
 
@@ -105,7 +115,7 @@ function(hunter_download_cache_raw_file)
       elseif(error_code EQUAL 22)
         hunter_status_debug("File not found")
         if(NOT_FOUND_NEEDED EQUAL not_found_counter)
-          break()
+          return()
         endif()
       else()
         hunter_status_debug("Download error (${error_message})")
