@@ -44,7 +44,7 @@ environment:
       PROJECT_DIR: examples\BZip2
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\BZip2
 
 install:
   # Python 3
