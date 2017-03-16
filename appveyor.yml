@@ -8,43 +8,49 @@ environment:
 
   matrix:
     - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Foo
+    # Broken:
+    # * https://ci.appveyor.com/project/ruslo/lzma/build/1.0.3/job/jxl73q8muj3qjyyq
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\lzma
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Foo
+    # Broken:
+    # * https://ci.appveyor.com/project/ruslo/lzma/build/1.0.3/job/9dj3y15ra8b2l515
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Foo
+    # Broken:
+    # * https://ci.appveyor.com/project/ruslo/lzma/build/1.0.3/job/da41cilfnrx7yo3l
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\lzma
 
 install:
   # Python 3

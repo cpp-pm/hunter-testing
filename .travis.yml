@@ -35,39 +35,55 @@ env:
 matrix:
   include:
     # Linux {
+
+    # Have to use C99:
+    # * https://travis-ci.org/hunter-packages/lzma/jobs/211597893
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=default
+
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=gcc-4-8
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/hunter-packages/lzma/jobs/211396059
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=analyze
+
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-leak
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
+
+    # Have to use C99:
+    # * https://travis-ci.org/hunter-packages/lzma/jobs/211597893
+    # - os: osx
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=default
+
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/hunter-packages/lzma/jobs/211396059
+    # - os: osx
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=analyze
+
     # }
 
 install:
