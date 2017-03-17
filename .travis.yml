@@ -41,24 +41,29 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=default
 
+    # Have to use C99:
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=clang-libstdcxx
+
     - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=gcc-4-8-c11
+
     - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon-c11
 
     # FIXME:
     # * https://travis-ci.org/hunter-packages/lzma/jobs/211396059
     # - os: linux
     #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=analyze
 
-    - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-thread
+    # Have to use C99:
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-address
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-leak
+    # - os: linux
+    #   env: PROJECT_DIR=examples/lzma TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -77,7 +82,7 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/lzma TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
-      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/lzma TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon-c11
 
     # FIXME:
     # * https://travis-ci.org/hunter-packages/lzma/jobs/211396059
