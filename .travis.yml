@@ -35,10 +35,21 @@ env:
 matrix:
   include:
     # Linux {
+    
+    # Only toolchains with c++11 support:
+    # https://travis-ci.org/ingenue/hunter/jobs/212980230
+    # - os: linux
+    # env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=default
+    
     - os: linux
-      env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=clang-libstdcxx
+      env: project_dir=examples/fakeit toolchain=clang-libstdcxx    
     - os: linux
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=gcc-4-8
+    
+    # FIXME: lack of c++11 support
+    # https://travis-ci.org/ingenue/hunter/jobs/212980233
+    # - os: linux
+    #   env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=analyze
     - os: linux
@@ -54,10 +65,22 @@ matrix:
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=libcxx
+    
+    # FIXME: lack of c++11 support
+    # https://travis-ci.org/ingenue/hunter/jobs/212980240
+    # - os: osx
+    #   env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=clang-libstdcxx
+    
     - os: osx
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=ios-nocodesign-9-3
+    
+    # FIXME: lack of c++11 support
+    # https://travis-ci.org/ingenue/hunter/jobs/212980243
+    # - os: osx
+    #   env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    
     - os: osx
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=analyze
     # }

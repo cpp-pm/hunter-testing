@@ -19,6 +19,16 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\FakeIt
 
+    # Only toolchains with c++11 support:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1449/job/5duurs08mf3018bm
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\FakeIt
+
+    # Only toolchains with c++11 support:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1449/job/he025472jj69al8t
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\FakeIt
+
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\FakeIt
 
@@ -30,6 +40,11 @@ environment:
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\FakeIt
+
+    # Only toolchains with c++11 support:
+    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1449/job/q4xp9u194oynb2iq
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\FakeIt
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\FakeIt
