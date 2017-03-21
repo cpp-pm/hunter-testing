@@ -42,7 +42,7 @@ matrix:
     # env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=default
     
     - os: linux
-      env: project_dir=examples/fakeit toolchain=clang-libstdcxx    
+      env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/FakeIt TOOLCHAIN=gcc-4-8
     
