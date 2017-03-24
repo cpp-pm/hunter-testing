@@ -37,14 +37,20 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\ceres-solver
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/m4cnni7etx95m668
+    #- TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\ceres-solver
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/48gweqf10g59yj8s
+    #- TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\ceres-solver
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/9vqsv6dqeo7f65q0
+    #- TOOLCHAIN: "msys"
+    #  PROJECT_DIR: examples\ceres-solver
 
 install:
   # Python 3
