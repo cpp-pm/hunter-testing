@@ -35,16 +35,27 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=default
+
+    # Lack of C++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382066
+    # - os: linux
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/imshow TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/imshow TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=analyze
+
+    # GLFW dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382069
+    # - os: linux
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # xproto dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382070
+    # - os: linux
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/imshow TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,20 +65,38 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=default
+
+    # Lack of C++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382074
+    # - os: osx
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/imshow TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=clang-libstdcxx
+
+    # OpenCV dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382076
+    # - os: osx
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/imshow TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/imshow TOOLCHAIN=analyze
+
+    # GLFW dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382078
+    # - os: osx
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=ios-nocodesign-9-3
+
+    # GLFW dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382079
+    # - os: osx
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # GLFW dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215382080
+    # - os: osx
+    #   env: PROJECT_DIR=examples/imshow TOOLCHAIN=analyze
+
     # }
 
 install:
