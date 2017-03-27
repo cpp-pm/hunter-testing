@@ -1,3 +1,6 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 Contacts
 --------
 
@@ -6,12 +9,7 @@ Public
 
 Feel free to open new `issue`_ if you want to ask any questions.
 
-Public chat room: |gitter|
-
-Questions and discussions: |codewake|
-
-.. |codewake| image:: https://www.codewake.com/badges/codewake2.svg
-  :target: https://www.codewake.com/p/hunter-8f41449c-ceab-4c45-ba5f-e7c3221e9700
+Public chat room: `gitter`_
 
 Private
 =======
@@ -24,5 +22,8 @@ You can write me to ``ruslan_baratov@yahoo.com`` or contact me using `Tox`_:
 .. _issue: https://github.com/ruslo/hunter/issues/new
 .. _Tox: https://tox.chat
 
-.. |gitter| image:: https://badges.gitter.im/ruslo/hunter.svg
-  :target: https://gitter.im/ruslo/hunter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+.. _gitter: https://gitter.im/ruslo/hunter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+
+.. Stopped working for some reason: https://travis-ci.org/ruslo/hunter/jobs/185557845
+.. .. |gitter| image:: https://badges.gitter.im/ruslo/hunter.svg
+..  :target: https://gitter.im/ruslo/hunter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge

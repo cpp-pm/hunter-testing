@@ -65,11 +65,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/glfw TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/glfw TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/glfw TOOLCHAIN=osx-10-11
 
       # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738811
       # - os: osx
-      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=ios-nocodesign
+      # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=ios-nocodesign-9-3
       # FIXME: https://travis-ci.org/ingenue/hunter/jobs/149738812
       # - os: osx
       # - env: PROJECT_DIR=examples/glfw TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
@@ -114,3 +114,5 @@ script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/

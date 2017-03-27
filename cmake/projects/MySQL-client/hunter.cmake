@@ -4,6 +4,7 @@
 # !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
+include(hunter_cacheable)
 include(hunter_configuration_types)
 include(hunter_pick_scheme)
 include(hunter_download)
@@ -21,6 +22,9 @@ hunter_add_version(
 # CONFIGURATION_TYPES is set to Release, because Debug is bugged at the moment
 # see https://github.com/ruslo/hunter/issues/303
 hunter_configuration_types(MySQL-client CONFIGURATION_TYPES Release)
+
+# https://github.com/ruslo/hunter/issues/705
+# hunter_cacheable(MySQL-client)
+
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_download(PACKAGE_NAME MySQL-client)
-
