@@ -10,14 +10,20 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\boost-pba
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\boost-pba
+    # Boost dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1476/job/73jll0tiqxo809kw
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\boost-pba
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\boost-pba
+    # Boost dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1476/job/l4chwe44atak9p4v
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\boost-pba
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\boost-pba
+    # Boost dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1476/job/jw4iiqnbkr052ht3
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\boost-pba
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\boost-pba
@@ -43,8 +49,10 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\boost-pba
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\boost-pba
+    # Boost dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1476/job/u5g987wmke7s5dmx
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\boost-pba
 
 install:
   # Python 3
