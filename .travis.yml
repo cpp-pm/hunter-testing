@@ -43,8 +43,12 @@ matrix:
       env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=analyze
+
+    # Boost dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215815061
+    # - os: linux
+    #   env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=sanitize-address
     - os: linux
@@ -66,8 +70,12 @@ matrix:
       env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=analyze
+
+    # Boost dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/215815061
+    # - os: osx
+    #   env: PROJECT_DIR=examples/boost-pba TOOLCHAIN=analyze
+
     # }
 
 install:
