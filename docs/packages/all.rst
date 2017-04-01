@@ -21,6 +21,7 @@ All packages
 * `CsvParserCPlusPlus <https://github.com/ruslo/hunter/wiki/pkg.csvparsercplusplus>`__
 * `Eigen <https://github.com/ruslo/hunter/wiki/pkg.eigen>`__
 * `Expat <https://github.com/ruslo/hunter/wiki/pkg.expat>`__
+* `FakeIt <https://github.com/ruslo/hunter/wiki/pkg.fakeit>`__
 * `GMock <https://github.com/ruslo/hunter/wiki/pkg.gtest>`__
 * `GPUImage <https://github.com/ruslo/hunter/wiki/pkg.gpuimage>`__
 * `GSL <https://github.com/ruslo/hunter/wiki/pkg.gsl>`__
@@ -55,6 +56,7 @@ All packages
 * `ZLIB <https://github.com/ruslo/hunter/wiki/pkg.zlib>`__
 * `ZMQPP <https://github.com/ruslo/hunter/wiki/pkg.zmqpp>`__
 * `ZeroMQ <https://github.com/ruslo/hunter/wiki/pkg.zeromq>`__
+* `boost-pba <https://github.com/ruslo/hunter/wiki/pkg.boost-pba>`__
 * `caffe <https://github.com/ruslo/hunter/wiki/pkg.caffe>`__
 * `ccv <https://github.com/ruslo/hunter/wiki/pkg.ccv>`__
 * `cereal <https://github.com/ruslo/hunter/wiki/pkg.cereal>`__
@@ -64,6 +66,7 @@ All packages
 * `cxxopts <https://github.com/ruslo/hunter/wiki/pkg.cxxopts>`__
 * `dest <https://github.com/ruslo/hunter/wiki/pkg.dest>`__
 * `dlib <https://github.com/ruslo/hunter/wiki/pkg.dlib>`__
+* `doctest <https://github.com/ruslo/hunter/wiki/pkg.doctest>`__
 * `eos <https://github.com/ruslo/hunter/wiki/pkg.eos>`__
 * `flatbuffers <https://github.com/ruslo/hunter/wiki/pkg.flatbuffers>`__
 * `fmt <https://github.com/ruslo/hunter/wiki/pkg.fmt>`__
@@ -73,10 +76,12 @@ All packages
 * `glog <https://github.com/ruslo/hunter/wiki/pkg.glog>`__
 * `half <https://github.com/ruslo/hunter/wiki/pkg.half>`__
 * `hdf5 <https://github.com/ruslo/hunter/wiki/pkg.hdf5>`__
+* `imshow <https://github.com/ruslo/hunter/wiki/pkg.imshow>`__
 * `ios_sim <https://github.com/ruslo/hunter/wiki/pkg.ios_sim>`__
 * `irrXML <https://github.com/ruslo/hunter/wiki/pkg.irrXML>`__
 * `libyuv <https://github.com/ruslo/hunter/wiki/pkg.libyuv>`__
 * `log4cplus <https://github.com/ruslo/hunter/wiki/pkg.log4cplus>`__
+* `lzma <https://github.com/ruslo/hunter/wiki/pkg.lzma>`__
 * `minizip <https://github.com/ruslo/hunter/wiki/pkg.minizip>`__
 * `msgpack <https://github.com/ruslo/hunter/wiki/pkg.msgpack>`__
 * `nlohmann::json <https://github.com/ruslo/hunter/wiki/pkg.nlohmann-json>`__
