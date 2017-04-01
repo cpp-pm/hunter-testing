@@ -8,26 +8,14 @@ language:
 sudo:
   - false
 
+dist:
+  - trusty
+
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
-      - python3
-
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
-      - python3-setuptools # easy_install3
-
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
-
       # For Qt
       - libegl1-mesa-dev
 
@@ -47,7 +35,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # }
@@ -76,7 +64,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # }
@@ -110,7 +98,7 @@ matrix:
     #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=clang-libstdcxx
 
     - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # }
@@ -132,7 +120,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # }
@@ -162,7 +150,7 @@ install:
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
