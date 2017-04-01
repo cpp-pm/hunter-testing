@@ -142,7 +142,7 @@ def run():
   if (
       os.getenv('TRAVIS') and
       (project_dir == 'examples/OpenCV') and
-      (toolchain == 'osx-10-9')
+      (toolchain == 'osx-10-11')
   ):
     verbose = False
 
