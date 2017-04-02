@@ -1,6 +1,7 @@
 All packages
 ------------
 
+* `ARM_NEON_2_x86_SSE <https://github.com/ruslo/hunter/wiki/pkg.ARM_NEON_2_x86_SSE>`__
 * `Android-Apk <https://github.com/ruslo/hunter/wiki/pkg.android.apk>`__
 * `Android-Modules <https://github.com/ruslo/hunter/wiki/pkg.android.modules>`__
 * `Android-SDK <https://github.com/ruslo/hunter/wiki/pkg.android.sdk>`__
@@ -56,6 +57,7 @@ All packages
 * `ZLIB <https://github.com/ruslo/hunter/wiki/pkg.zlib>`__
 * `ZMQPP <https://github.com/ruslo/hunter/wiki/pkg.zmqpp>`__
 * `ZeroMQ <https://github.com/ruslo/hunter/wiki/pkg.zeromq>`__
+* `boost-pba <https://github.com/ruslo/hunter/wiki/pkg.boost-pba>`__
 * `caffe <https://github.com/ruslo/hunter/wiki/pkg.caffe>`__
 * `ccv <https://github.com/ruslo/hunter/wiki/pkg.ccv>`__
 * `cereal <https://github.com/ruslo/hunter/wiki/pkg.cereal>`__
@@ -65,6 +67,7 @@ All packages
 * `cxxopts <https://github.com/ruslo/hunter/wiki/pkg.cxxopts>`__
 * `dest <https://github.com/ruslo/hunter/wiki/pkg.dest>`__
 * `dlib <https://github.com/ruslo/hunter/wiki/pkg.dlib>`__
+* `doctest <https://github.com/ruslo/hunter/wiki/pkg.doctest>`__
 * `eos <https://github.com/ruslo/hunter/wiki/pkg.eos>`__
 * `flatbuffers <https://github.com/ruslo/hunter/wiki/pkg.flatbuffers>`__
 * `fmt <https://github.com/ruslo/hunter/wiki/pkg.fmt>`__
@@ -74,6 +77,7 @@ All packages
 * `glog <https://github.com/ruslo/hunter/wiki/pkg.glog>`__
 * `half <https://github.com/ruslo/hunter/wiki/pkg.half>`__
 * `hdf5 <https://github.com/ruslo/hunter/wiki/pkg.hdf5>`__
+* `imshow <https://github.com/ruslo/hunter/wiki/pkg.imshow>`__
 * `ios_sim <https://github.com/ruslo/hunter/wiki/pkg.ios_sim>`__
 * `irrXML <https://github.com/ruslo/hunter/wiki/pkg.irrXML>`__
 * `libyuv <https://github.com/ruslo/hunter/wiki/pkg.libyuv>`__
