@@ -17,6 +17,9 @@ env:
 
 matrix:
   include:
+    # X11 stuff only for Linux:
+    # * https://travis-ci.org/ingenue/hunter/builds/217741637
+
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/xi TOOLCHAIN=default
@@ -24,10 +27,14 @@ matrix:
       env: PROJECT_DIR=examples/xi TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/xi TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=analyze
+
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: autotools doesn't work with 'analyze'
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/xi TOOLCHAIN=sanitize-address
     - os: linux
@@ -40,20 +47,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/xi TOOLCHAIN=analyze
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=default
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=libcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=clang-libstdcxx
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=osx-10-11
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=ios-nocodesign-9-3
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: osx
+    #   env: PROJECT_DIR=examples/xi TOOLCHAIN=analyze
     # }
 
 install:
