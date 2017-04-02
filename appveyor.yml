@@ -6,45 +6,51 @@ environment:
     GITHUB_USER_PASSWORD:
       secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
 
+  # This package is for ARM Neon architecture:
+  # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1507
+
   matrix:
-    - TOOLCHAIN: "default"
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "default"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\sse2neon
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\sse2neon
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\sse2neon
+
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\sse2neon
 
 install:
   # Python 3
