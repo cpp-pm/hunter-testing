@@ -8,25 +8,8 @@ language:
 sudo:
   - false
 
-# Install packages differs for container-based infrastructure
-# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - python3
-
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
-      - python3-setuptools # easy_install3
-
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+dist:
+  - trusty
 
 env:
   global:
@@ -41,7 +24,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -50,8 +33,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -81,7 +67,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -90,8 +76,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -125,7 +114,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -134,8 +123,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -171,7 +163,7 @@ matrix:
     #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105856458
@@ -188,8 +180,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -234,7 +229,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -243,8 +238,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -280,7 +278,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -289,8 +287,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -323,7 +324,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -335,8 +336,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
@@ -372,7 +376,7 @@ install:
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
