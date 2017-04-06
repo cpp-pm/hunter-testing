@@ -3,96 +3,70 @@
 language:
   - cpp
 
-os:
-  - linux
-  - osx
-
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
   - false
 
-# Install packages differs for container-based infrastructure
-# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - python3
-
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
-      - python3-setuptools # easy_install3
-
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+dist:
+  - trusty
 
 env:
   global:
     - secure: "IpVQQ3WaLQdSYtZTJFB+/1zJw1Jhli+AuKUfzikeO/EMv1QVD8sOAlsfGkrs/0V/uzLnq3yo8I8VjakGySZW7RquT7JlTF8jIrbvPGltMCL2AGlpmA9fsohXJ3jddWLD1jI9/GP53SZFpA3WHN8PSufbbtVx9snATiYH/c7nebuHz4xZ7uOV6zAIAfeCaqTjxC6NXAjp18bwOcMoSBGy94KmOQK7TqC0+bIFV62V0YXsp/0sC12n80X7mrV3d1K5GXH18akzOyl5/J2UtCsOt47591uu1VG8lfRiq3Hd1Q5zyfc0C74nVuYHUCT0ykT+3eWSO5LA3crY4NXzCXNxJ7tRX6rIT61V56YwSSMm8HgrtMkCplXMLHEtrZlmIVumgn20YUnSUP40Giaib/tv3cyaKPeF1Wv99nqJvd7qnmKl+TcrAiMtM1gGtyih2NgdUoc2ukJv8/Gx3pXQNlzZ2Wg4AEDZW6wHugxtUjFllwM8wmKKdARyLozudB6cfFjw4VBp2EH8xGnRG7RhjuC+XeFl3Z8iKs7TzRxZTosTRSC9SzxVBiPevi4CdVD48CzYpdReoxjhHqX+ZTDlpx0WZ1mmpYQz+dD4vHKl5iUX+SwEItqOIZiDpIw5jVbiiCtEUOI7UBMZHDoPAgHDx63HAKdvIkr5HC3yMoWeDQgy90c="
 
-  matrix:
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=default
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=libcxx
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=clang-libstdcxx
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=osx-10-9
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc-4-8
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=analyze
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-address
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-leak
-    - PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-thread
-
 matrix:
-  exclude:
-    ### Linux excludes ###
-    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
+  include:
+    # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=libcxx
-
-    # Xcode is for OSX only
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=osx-10-9
-    - os: linux
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign
-
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc
-
-    ### OSX excludes ###
-    # TOOLCHAIN=gcc works fine on OSX
-    - os: osx
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=gcc-4-8
-
-    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
-    - os: osx
+    - os: linux
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=analyze
+    - os: linux
       env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-address
-
-    # Linux only
-    - os: osx
+    - os: linux
       env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-leak
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-thread
+
+    # }
+
+    # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=osx-10-11
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign-9-3
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=analyze
+    # }
 
 install:
   # Info about OS
   - uname -a
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then brew install python3; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then easy_install3 --user requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
@@ -108,6 +82,15 @@ install:
 
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
+  - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
 
 script:
   - python3 ./jenkins.py --upload
+
+# https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
