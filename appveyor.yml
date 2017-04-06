@@ -50,6 +50,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost
 
+    - TOOLCHAIN: "mingw-c11"
+      PROJECT_DIR: examples\Boost
+
     # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Boost
@@ -136,6 +139,9 @@ environment:
       PROJECT_DIR: examples\Boost-system
 
     - TOOLCHAIN: "mingw"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "mingw-c11"
       PROJECT_DIR: examples\Boost-system
 
     # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
@@ -230,6 +236,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Boost-thread
 
+    - TOOLCHAIN: "mingw-c11"
+      PROJECT_DIR: examples\Boost-thread
+
     # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Boost-thread
@@ -321,6 +330,12 @@ environment:
     # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Boost-serialization
+
+    - TOOLCHAIN: "mingw-c11"
+      PROJECT_DIR: examples\Boost-program-options
+
+    - TOOLCHAIN: "mingw-c11"
+      PROJECT_DIR: examples\Boost-test
 
 install:
   # Python 3
