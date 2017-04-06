@@ -8,25 +8,8 @@ language:
 sudo:
   - false
 
-# Install packages differs for container-based infrastructure
-# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - python3
-
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
-      - python3-setuptools # easy_install3
-
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+dist:
+  - trusty
 
 env:
   global:
@@ -40,7 +23,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=gcc
 
     #  FIXME:
     #  * https://travis-ci.org/ingenue/hunter/jobs/112505605
@@ -62,8 +45,7 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=sanitize-leak
 
-    #  FIXME:
-    #  * https://travis-ci.org/ingenue/hunter/jobs/112505609
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
     #   env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=sanitize-thread
 
@@ -77,12 +59,12 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=osx-10-9
+      env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=osx-10-11
 
     #  FIXME:
     #  * https://travis-ci.org/ingenue/hunter/jobs/112505616
     # - os: osx
-    #   env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=ios-nocodesign
+    #   env: PROJECT_DIR=examples/MySQL-client TOOLCHAIN=ios-nocodesign-9-3
 
     #  FIXME:
     #  * https://travis-ci.org/ingenue/hunter/jobs/112505605
@@ -106,7 +88,7 @@ install:
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
@@ -132,3 +114,5 @@ script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/

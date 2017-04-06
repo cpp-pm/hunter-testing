@@ -35,6 +35,8 @@ set(
 )
 
 if(ANDROID)
+  # Doesn't work in fact, working example is here:
+  # * https://github.com/forexample/android-cmake/tree/master/08-declarative-camera
   add_library(qt-camera SHARED ${SOURCES})
   set_target_properties(qt-camera PROPERTIES VERSION 1.0)
 
@@ -42,13 +44,18 @@ if(ANDROID)
   list(APPEND CMAKE_MODULE_PATH "${QTANDROIDCMAKE_ROOT}")
   include(AddQtAndroidApk)
 
-  add_qt_android_apk(
-      TARGET qt-camera-apk
-      BASE_TARGET qt-camera
-      LAUNCH_TARGET qt-camera-launch
-      PACKAGE_NAME camera.qt # must be no '-' (API 16 error)
-      MANIFEST "${CMAKE_CURRENT_LIST_DIR}/AndroidManifest.xml.in"
-  )
+  if(NOT "$ENV{TRAVIS}")
+    # Can't install dependencies to work with Android stuff:
+    # * https://github.com/travis-ci/travis-ci/issues/7558
+    # * https://github.com/ruslo/hunter/issues/718
+    add_qt_android_apk(
+        TARGET qt-camera-apk
+        BASE_TARGET qt-camera
+        LAUNCH_TARGET qt-camera-launch
+        PACKAGE_NAME camera.qt # must be no '-' (API 16 error)
+        MANIFEST "${CMAKE_CURRENT_LIST_DIR}/AndroidManifest.xml.in"
+    )
+  endif()
 
   hunter_add_package(Android-SDK)
   message("Path to `android`: ${ANDROID-SDK_ROOT}/android-sdk/tools/android")
