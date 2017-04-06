@@ -43,6 +43,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\ZLIB
 
+    - TOOLCHAIN: "mingw-c11"
+      PROJECT_DIR: examples\ZLIB
+
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\ZLIB
 
