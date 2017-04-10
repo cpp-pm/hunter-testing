@@ -24,10 +24,10 @@ matrix:
       env: PROJECT_DIR=examples/czmq TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/czmq TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/czmq TOOLCHAIN=sanitize-address
     - os: linux
@@ -40,20 +40,20 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/czmq TOOLCHAIN=analyze
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=default
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=libcxx
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=clang-libstdcxx
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=osx-10-11
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=ios-nocodesign-9-3
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #-  os: osx
+    #   env: PROJECT_DIR=examples/czmq TOOLCHAIN=analyze
     # }
 
 install:
