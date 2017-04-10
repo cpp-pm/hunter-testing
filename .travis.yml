@@ -366,6 +366,16 @@ matrix:
     # }
     # }
 
+    # Boost-random {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc
+    # }
+
+    # Boost-test {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc
+    # }
+
 install:
   # Info about OS
   - uname -a
