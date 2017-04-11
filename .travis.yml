@@ -57,6 +57,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=analyze
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=cxx11
+
     # }
     # }
 
@@ -104,6 +109,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=analyze
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=cxx11
+
     # }
     # }
 
@@ -147,6 +157,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=analyze
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=cxx11
+
     # }
     # }
 
@@ -268,6 +283,10 @@ matrix:
     # - os: osx
     #   env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze
 
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=cxx11
+
     # }
     # }
 
@@ -369,11 +388,19 @@ matrix:
     # Boost-random {
     - os: linux
       env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=cxx11
     # }
 
     # Boost-test {
     - os: linux
       env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=cxx11
     # }
 
 install:
