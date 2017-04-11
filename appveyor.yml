@@ -44,6 +44,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Boost
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost
+
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\Boost
 
@@ -334,8 +337,14 @@ environment:
     - TOOLCHAIN: "mingw-c11"
       PROJECT_DIR: examples\Boost-program-options
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost-test
+
     - TOOLCHAIN: "mingw-c11"
       PROJECT_DIR: examples\Boost-test
+
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost-random
 
 install:
   # Python 3
