@@ -94,6 +94,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Boost-filesystem
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost-filesystem
+
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\Boost-filesystem
 
@@ -136,6 +139,9 @@ environment:
       PROJECT_DIR: examples\Boost-system
 
     - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-system
+
+    - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\Boost-system
 
     - TOOLCHAIN: "vs-9-2008"
@@ -231,6 +237,9 @@ environment:
       PROJECT_DIR: examples\Boost-thread
 
     - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\Boost-thread
+
+    - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\Boost-thread
 
     - TOOLCHAIN: "vs-9-2008"
