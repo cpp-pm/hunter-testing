@@ -18,16 +18,30 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=default
+
+    # lzma dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751227
+    # - os: linux
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=analyze
+
+    # lzma dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751229
+    # - os: linux
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=gcc
+
+    # lzma dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751230
+    # - os: linux
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # bzip2 dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751231
+    # - os: linux
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=sanitize-address
     - os: linux
@@ -44,8 +58,12 @@ matrix:
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=clang-libstdcxx
+
+    # boost dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751236
+    # - os: osx
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=osx-10-11
 
@@ -56,17 +74,16 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-nocodesign-9-3
 
-    - os: osx
-      osx_image: xcode8.2
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-10-2
-    - os: osx
-      osx_image: xcode8.2
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-10-2-dep-9-3-armv7
+    # lzma dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751242
+    # - os: osx
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=analyze
+    # boost dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221751243
+    # - os: osx
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=analyze
+
     # }
 
 install:
