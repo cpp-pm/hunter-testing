@@ -48,8 +48,21 @@ matrix:
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=osx-10-11
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=osx-10-12
+
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-nocodesign-9-3
+
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-10-2
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=ios-10-2-dep-9-3-armv7
+
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx

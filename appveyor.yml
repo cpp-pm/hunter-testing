@@ -40,7 +40,7 @@ environment:
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\mtplz
 
-    - TOOLCHAIN: "mingw"
+    - TOOLCHAIN: "mingw-c11"
       PROJECT_DIR: examples\mtplz
 
     - TOOLCHAIN: "msys"
