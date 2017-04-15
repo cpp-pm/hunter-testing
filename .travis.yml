@@ -54,8 +54,12 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/mtplz TOOLCHAIN=default
+
+    # Need c++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/221789710
+    # - os: osx
+    #   env: PROJECT_DIR=examples/mtplz TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/mtplz TOOLCHAIN=libcxx
 
