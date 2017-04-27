@@ -24,8 +24,11 @@ matrix:
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/NASM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # https://github.com/ruslo/hunter/pull/778
+    # - os: linux
+    #   env: PROJECT_DIR=examples/NASM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=analyze
     - os: linux
@@ -48,10 +51,15 @@ matrix:
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/NASM TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/NASM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # https://github.com/ruslo/hunter/pull/778
+    # - os: osx
+    #   env: PROJECT_DIR=examples/NASM TOOLCHAIN=ios-nocodesign-9-3
+
+    # https://github.com/ruslo/hunter/pull/778
+    # - os: osx
+    #   env: PROJECT_DIR=examples/NASM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=analyze
     # }
