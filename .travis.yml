@@ -27,16 +27,17 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
-    - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-leak
 
+    # * https://travis-ci.org/ingenue/hunter/jobs/224868220
+    # - os: linux
+    #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
+
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
     #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-thread
-
     # }
 
     # OSX {
@@ -52,8 +53,10 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
+
+    # * https://travis-ci.org/ingenue/hunter/jobs/224868229
+    # - os: osx
+    #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
     # }
 
 install:
