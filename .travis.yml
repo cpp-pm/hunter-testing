@@ -367,8 +367,12 @@ matrix:
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/226483161
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-11
     - os: osx
