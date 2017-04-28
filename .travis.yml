@@ -34,7 +34,6 @@ matrix:
       env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/OpenCL TOOLCHAIN=sanitize-leak
-    - os: linux
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
