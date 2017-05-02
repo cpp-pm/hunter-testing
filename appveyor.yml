@@ -19,11 +19,12 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\NASM
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\NASM
+    # Too ancient to build NASM
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\NASM
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\NASM
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\NASM
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\NASM
@@ -37,8 +38,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\NASM
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\NASM
+    # Too ancient to build NASM
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\NASM
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\NASM
