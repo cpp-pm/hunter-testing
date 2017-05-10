@@ -24,8 +24,11 @@ matrix:
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Make no sense
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
     - os: linux
@@ -48,10 +51,15 @@ matrix:
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Make no sense
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=ios-nocodesign-9-3
+
+    # # Make no sense
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
     # }
