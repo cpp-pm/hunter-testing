@@ -29,12 +29,20 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: linux
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=sanitize-leak
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/230614661
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/230614662
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=sanitize-address
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/230614663
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
@@ -47,8 +55,12 @@ matrix:
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/230614666
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=osx-10-11
 
@@ -60,8 +72,11 @@ matrix:
     # - os: osx
     #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    - os: osx
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/230614668
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=analyze
+
     # }
 
 install:
