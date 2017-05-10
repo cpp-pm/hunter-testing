@@ -24,10 +24,13 @@ matrix:
       env: PROJECT_DIR=examples/tacopie TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/tacopie TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=analyze
+# FIXME: fails on "ld: cannot find -lpthread"
+#    - os: linux
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+# FIXME
+#    - os: linux
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/tacopie TOOLCHAIN=sanitize-address
     - os: linux
@@ -44,16 +47,19 @@ matrix:
       env: PROJECT_DIR=examples/tacopie TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/tacopie TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=analyze
+# FIXME: libstdcxx not supported
+#    - os: osx
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=clang-libstdcxx
+
+# FIXME: all below tests fail with job errored
+#    - os: osx
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=osx-10-11
+#    - os: osx
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=ios-nocodesign-9-3
+#    - os: osx
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#    - os: osx
+#      env: PROJECT_DIR=examples/tacopie TOOLCHAIN=analyze
     # }
 
 install:
