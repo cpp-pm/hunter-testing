@@ -24,10 +24,10 @@ matrix:
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=analyze
+#    - os: linux
+#      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#    - os: linux
+#      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=sanitize-address
     - os: linux
@@ -44,16 +44,16 @@ matrix:
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=clang-libstdcxx
+#    - os: osx
+#      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=analyze
+#    - os: osx
+#      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#    - os: osx
+#      env: PROJECT_DIR=examples/cpp_redis TOOLCHAIN=analyze
     # }
 
 install:
