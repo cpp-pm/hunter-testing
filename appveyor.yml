@@ -7,8 +7,9 @@ environment:
       secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\LLVM
+    # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "default"
+    #   PROJECT_DIR: examples\LLVM
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
       PROJECT_DIR: examples\LLVM
@@ -19,26 +20,33 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\LLVM
+    # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\LLVM
+    # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\LLVM
+    # # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\LLVM
+    # # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\LLVM
+    # # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\LLVM
+    # # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\LLVM
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\LLVM
+    # # FIXME: Visual Studio is broken
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\LLVM
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\LLVM
