@@ -26,8 +26,10 @@ matrix:
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=analyze
+    # FIXME: Project does not compile with analyze toolchain
+    # * https://travis-ci.org/ingenue/hunter/jobs/229158997
+    # - os: linux
+    #   env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=sanitize-address
     - os: linux
@@ -44,16 +46,22 @@ matrix:
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=clang-libstdcxx
+    # Toolchain not supported by project (Requires c++ include initializer_list)
+    # * https://travis-ci.org/ingenue/hunter/jobs/229159004
+    # - os: osx
+    #   env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=ios-nocodesign-9-3
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://travis-ci.org/ingenue/hunter/jobs/229159006
+    # - os: osx
+    #   env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=analyze
+    # FIXME: Project does not compile with analyze toolchain
+    # * https://travis-ci.org/ingenue/hunter/jobs/229159008
+    # - os: osx
+    #   env: PROJECT_DIR=examples/CapnProto TOOLCHAIN=analyze
     # }
 
 install:
