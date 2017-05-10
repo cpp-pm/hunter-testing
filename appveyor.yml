@@ -10,35 +10,53 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/x2xpx99qv97jmke8
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/si3weggi8x1qk0u9
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/2px7t2nfkd2i0lby
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/x9pw33x0jtkn50i8
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/1f4dc0udv44oxit0
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/qhschi9ewbn3x1l5
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/0jwvlg5lfcoxcq10
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/ir0cjafkhan4o67v
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\CapnProto
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\CapnProto
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\CapnProto
+    # Toolchain not supported by project (https://capnproto.org/install.html#supported-operating-systems)
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1651/job/pcg0uiq2x131s120
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\CapnProto
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\CapnProto
