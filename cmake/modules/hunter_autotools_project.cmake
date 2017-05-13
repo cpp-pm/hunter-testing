@@ -8,7 +8,7 @@
 #
 # Adds to the environment variables:
 #   PATH=<root-id>/bin
-#   PKG_CONFIG_PATH=<root-id>/{lib,share}/pkgconfig
+#   PKG_CONFIG_LIBDIR=<root-id>/{lib,share}/pkgconfig
 #
 # Adds to autotools flags:
 #   CPPFLAGS=-I<root-id>/include
@@ -56,12 +56,14 @@
 include(ExternalProject) # ExternalProject_Add
 include(CMakeParseArguments) # cmake_parse_arguments
 
+include(hunter_dump_cmake_flags)
 include(hunter_fatal_error)
+include(hunter_finalize)
+include(hunter_pick_archiver)
 include(hunter_status_debug)
 include(hunter_test_string_not_empty)
 
 function(hunter_autotools_project target_name)
-
   set(optional_params)
   set(one_value_params
       HUNTER_SELF
@@ -113,6 +115,25 @@ function(hunter_autotools_project target_name)
         WIKI "autools.package.configuration.types"
     )
   endif()
+
+  if(ANDROID)
+    hunter_test_string_not_empty("${CMAKE_C_ANDROID_TOOLCHAIN_PREFIX}")
+    # CMAKE_C_ANDROID_TOOLCHAIN_SUFFIX can be empty
+
+    # Extra Android variables that can't be set in toolchain
+    # (some variables available only after toolchain processed).
+    set(
+        CMAKE_C_PREPROCESSOR
+        "${CMAKE_C_ANDROID_TOOLCHAIN_PREFIX}cpp${CMAKE_C_ANDROID_TOOLCHAIN_SUFFIX}"
+    )
+    if(NOT EXISTS "${CMAKE_C_PREPROCESSOR}")
+      hunter_internal_error("File not found: ${CMAKE_C_PREPROCESSOR}")
+    endif()
+  endif()
+
+  # -> CMAKE_AR
+  # -> CMAKE_RANLIB
+  hunter_pick_archiver()
 
   string(TOUPPER ${PARAM_PACKAGE_CONFIGURATION_TYPES} config_type)
   # Sets the toolchain binaries
@@ -199,6 +220,10 @@ function(hunter_autotools_project target_name)
     )
   endforeach()
 
+  hunter_dump_cmake_flags(CPPFLAGS cppflags)
+  # -> CMAKE_C_FLAGS
+  # -> CMAKE_CXX_FLAGS
+
   set(cppflags "${cppflags} ${PARAM_CPPFLAGS}")
   string(STRIP "${cppflags}" cppflags)
   hunter_status_debug("CPPFLAGS=${cppflags}")
@@ -249,8 +274,8 @@ function(hunter_autotools_project target_name)
     hunter_test_string_not_empty("${CMAKE_RANLIB}")
     hunter_test_string_not_empty("${CMAKE_STRIP}")
 
-    hunter_test_string_not_empty("${ANDROID_TOOLCHAIN_MACHINE_NAME}")
-    set(configure_host --host=${ANDROID_TOOLCHAIN_MACHINE_NAME})
+    hunter_test_string_not_empty("${CMAKE_CXX_ANDROID_TOOLCHAIN_MACHINE}")
+    set(configure_host --host=${CMAKE_CXX_ANDROID_TOOLCHAIN_MACHINE})
     set(ldflags "${ldflags} ${__libstl}")
   elseif(is_ios)
     hunter_status_debug("Autotools iOS IPHONEOS_ARCHS: ${IPHONEOS_ARCHS} IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}")
@@ -295,10 +320,11 @@ function(hunter_autotools_project target_name)
       "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}"
   )
 
-  # PKG_CONFIG_PATH environment variable
+  # PKG_CONFIG_LIBDIR environment variable
+  # This info is also in hunter_finalize.cmake
   set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
   set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
-  list(APPEND configure_command "PKG_CONFIG_PATH=${d1}:${d2}")
+  list(APPEND configure_command "PKG_CONFIG_LIBDIR=${d1}:${d2}")
 
   string(COMPARE NOTEQUAL "${PARAM_BOOTSTRAP}" "" have_bootstrap)
   if(have_bootstrap)

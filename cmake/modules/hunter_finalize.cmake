@@ -1,10 +1,12 @@
-# Copyright (c) 2015, Ruslan Baratov
+# Copyright (c) 2015-2016, Ruslan Baratov
 # All rights reserved.
 
+include(hunter_apply_copy_rules)
 include(hunter_apply_gate_settings)
 include(hunter_calculate_self)
 include(hunter_create_cache_file)
 include(hunter_fatal_error)
+include(hunter_internal_error)
 include(hunter_sanity_checks)
 include(hunter_status_debug)
 include(hunter_status_print)
@@ -76,6 +78,16 @@ macro(hunter_finalize)
 
   set(HUNTER_INSTALL_PREFIX "${HUNTER_TOOLCHAIN_ID_PATH}/Install")
   list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}")
+
+  # Override pkg-config default search path
+  # https://github.com/ruslo/hunter/issues/762
+  if(NOT MSVC)
+    set(_pkg_config_dir1 "${HUNTER_INSTALL_PREFIX}/lib/pkgconfig")
+    set(_pkg_config_dir2 "${HUNTER_INSTALL_PREFIX}/share/pkgconfig")
+    # This info is also in hunter_autotools_project.cmake
+    set(ENV{PKG_CONFIG_LIBDIR} "${_pkg_config_dir1}:${_pkg_config_dir2}")
+  endif()
+
   if(ANDROID)
     # OpenCV support: https://github.com/ruslo/hunter/issues/153
     list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}/sdk/native/jni")
@@ -130,4 +142,27 @@ macro(hunter_finalize)
       "${CMAKE_BINARY_DIR}/_3rdParty/Hunter/install-root-dir"
       "${HUNTER_INSTALL_PREFIX}"
   )
+
+  hunter_apply_copy_rules()
+
+  if(ANDROID AND CMAKE_VERSION VERSION_LESS "3.7.1")
+    hunter_user_error(
+        "CMake version 3.7.1+ required for Android platforms, see"
+        " https://docs.hunter.sh/en/latest/quick-start/cmake.html"
+    )
+  endif()
+
+  # Android GDBSERVER moved to
+  # https://github.com/hunter-packages/android-apk/commit/32531adeb287d3e3b20498ff1a0f76336cbe0551
+
+  # Fix backslashed provided by user:
+  # * https://github.com/ruslo/hunter/issues/693
+  # Note: we can't use 'get_filename_component(... ABSOLUTE)' because sometimes
+  # original path expected. E.g. NMake build:
+  # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1412/job/o8a21ue85ivt5d0p
+  string(REPLACE "\\" "\\\\" CMAKE_MAKE_PROGRAM "${CMAKE_MAKE_PROGRAM}")
+
+  if(CMAKE_INTERPROCEDURAL_OPTIMIZATION AND NOT POLICY CMP0069)
+    hunter_user_error("Unsuitable CMake version")
+  endif()
 endmacro()
