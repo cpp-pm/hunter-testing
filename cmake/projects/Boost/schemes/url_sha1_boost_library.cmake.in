@@ -13,10 +13,13 @@ list(APPEND CMAKE_MODULE_PATH "@HUNTER_SELF@/cmake/modules")
 include(CheckSymbolExists) # check_symbol_exists
 
 include(hunter_boost_component_b2_args)
+include(hunter_dump_cmake_flags)
 include(hunter_fatal_error)
 include(hunter_install_boost_config)
 include(hunter_internal_error)
+include(hunter_pick_archiver)
 include(hunter_status_debug)
+include(hunter_status_print)
 include(hunter_test_string_not_empty)
 
 hunter_status_debug("Scheme: url_sha1_boost_library")
@@ -53,6 +56,7 @@ boost_component(coroutine 1.53.0)
 boost_component(coroutine2 1.60.0)
 boost_component(date_time 1.29.0)
 boost_component(exception 1.36.0)
+boost_component(fiber 1.62.0)
 boost_component(filesystem 1.30.0)
 boost_component(graph 1.18.0)
 boost_component(graph_parallel 1.18.0)
@@ -60,6 +64,7 @@ boost_component(iostreams 1.33.0)
 boost_component(locale 1.48.0)
 boost_component(log 1.54.0)
 boost_component(math 1.23.0)
+boost_component(metaparse 1.61.0)
 boost_component(mpi 1.35.0)
 boost_component(program_options 1.32.0)
 boost_component(python 1.19.0)
@@ -94,12 +99,17 @@ endif()
 
 string(COMPARE EQUAL "@CMAKE_CXX_COMPILER_ID@" "Clang" compiler_is_clang)
 
+set(use_cmake_archiver TRUE)
 if("@ANDROID@")
   set(toolset_name "gcc")
   set(toolset_version "ndk")
 elseif("@APPLE@")
   set(toolset_name "darwin")
   set(toolset_version "")
+
+  # Using CMAKE_AR on OSX leads to error (b2 use 'libtool'):
+  # * https://travis-ci.org/ingenue/hunter/jobs/204617507
+  set(use_cmake_archiver FALSE)
 elseif("@CMAKE_COMPILER_IS_GNUCXX@")
   set(toolset_name "gcc")
   set(toolset_version "")
@@ -112,6 +122,10 @@ elseif("@MSVC@")
 else()
   hunter_fatal_error("TODO: set toolset for boost" WIKI "error.boost.toolset")
 endif()
+
+hunter_dump_cmake_flags()
+# -> CMAKE_C_FLAGS
+# -> CMAKE_CXX_FLAGS
 
 if("@ANDROID@")
   get_directory_property(defs COMPILE_DEFINITIONS)
@@ -186,6 +200,16 @@ else()
   set(copy_mpi_command "")
 endif()
 
+set(BOOST_ALL_DYN_LINK "")
+if(BUILD_SHARED_LIBS) #if using shared libs overide boost config
+  set(BOOST_BUILD_STATIC OFF)
+  if("@MSVC@")
+    set(BOOST_ALL_DYN_LINK ON)
+  endif()
+else()
+  set(BOOST_BUILD_STATIC ON)
+endif()
+
 if("@MSVC@")
   # Disable auto-linking
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DBOOST_ALL_NO_LIB=1")
@@ -203,7 +227,11 @@ if(have_osx_sysroot)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot @CMAKE_OSX_SYSROOT@")
 endif()
 
-set(link_opts link=static)
+if(BOOST_BUILD_STATIC)
+  set(link_opts link=static)
+else()
+  set(link_opts link=shared)
+endif()
 
 set(toolset_full_name ${toolset_name})
 string(COMPARE NOTEQUAL "${toolset_version}" "" has_toolset_version)
@@ -254,11 +282,22 @@ else()
   )
 endif()
 
-file(
-    APPEND
-    ${boost_user_jam}
-    "  : <archiver> \"${CMAKE_AR}\"\n"
-)
+if(use_cmake_archiver)
+  # We need custom '<archiver>' and '<ranlib>' for
+  # Android LTO ('*-gcc-ar' instead of '*-ar')
+  # WARNING: no spaces between '<archiver>' and '${CMAKE_AR}'!
+
+  # -> CMAKE_AR
+  # -> CMAKE_RANLIB
+  hunter_pick_archiver()
+
+  file(
+      APPEND
+      ${boost_user_jam}
+      "  : <archiver>\"${CMAKE_AR}\"\n"
+      " <ranlib>\"${CMAKE_RANLIB}\"\n"
+  )
+endif()
 
 if(MSVC)
   # See 'boost_compiler' section
@@ -298,8 +337,11 @@ if(@HUNTER_STATUS_DEBUG@)
   set(verbose_output "-d+2 --debug-configuration")
 endif()
 
-if("@MSVC@" OR "@MINGW@")
+if("@MSVC@")
   set(bootstrap_cmd "bootstrap.bat")
+  set(b2_cmd "b2")
+elseif("@MINGW@")
+  set(bootstrap_cmd "bootstrap.bat" "gcc")
   set(b2_cmd "b2")
 else()
   set(bootstrap_cmd "./bootstrap.sh")
@@ -323,7 +365,11 @@ endif()
 if("@MSVC@")
   # Logging as Workaround for VS_UNICODE_OUTPUT issue:
   # https://public.kitware.com/Bug/view.php?id=14266
-  set(log_opts LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1)
+  set(log_opts LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1 LOG_DOWNLOAD 1)
+  get_filename_component(x "@HUNTER_PACKAGE_SOURCE_DIR@/.." ABSOLUTE)
+  hunter_status_print(
+      "For progress check log files in directory: ${x}"
+  )
 else()
   set(log_opts "")
 endif()

@@ -4,7 +4,9 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_check_download_error_message)
+include(hunter_init_not_found_counter)
 include(hunter_internal_error)
+include(hunter_sleep_before_download)
 include(hunter_status_debug)
 include(hunter_test_string_not_empty)
 include(hunter_user_error)
@@ -38,6 +40,9 @@ function(hunter_download_cache_meta_file)
   string(REPLACE "${cache_directory}/meta/" "" local_suffix "${x_LOCAL}")
   string(REPLACE "${cache_directory}/meta/" "" done_suffix "${x_DONE}")
 
+  set(local_temp "${x_LOCAL}.__HUNTER_TEMP__")
+  set(done_temp "${x_DONE}.__HUNTER_TEMP__")
+
   if(EXISTS "${x_DONE}")
     return()
   endif()
@@ -50,30 +55,36 @@ function(hunter_download_cache_meta_file)
     return()
   endif()
 
-  foreach(server ${HUNTER_CACHE_SERVERS})
-    string(REGEX MATCH "^https://github.com/" is_github "${server}")
-    if(NOT is_github)
-      hunter_user_error("Unknown cache server: ${server}")
-    endif()
+  list(LENGTH HUNTER_CACHE_SERVERS number_of_servers)
+  hunter_init_not_found_counter(
+      NOT_FOUND_NEEDED not_found_counter "${number_of_servers}"
+  )
 
-    string(
-        REPLACE
-        "https://github.com/"
-        "https://raw.githubusercontent.com/"
-        url
-        "${server}"
-    )
+  set(total_retry 10)
+  foreach(x RANGE ${total_retry})
+    foreach(server ${HUNTER_CACHE_SERVERS})
+      string(REGEX MATCH "^https://github.com/" is_github "${server}")
+      if(NOT is_github)
+        hunter_user_error("Unknown cache server: ${server}")
+      endif()
 
-    set(local_url "${url}/master/${local_suffix}")
-    set(done_url "${url}/master/${done_suffix}")
+      string(
+          REPLACE
+          "https://github.com/"
+          "https://raw.githubusercontent.com/"
+          url
+          "${server}"
+      )
 
-    set(total_retry 3)
-    foreach(x RANGE ${total_retry})
+      set(local_url "${url}/master/${local_suffix}")
+      set(done_url "${url}/master/${done_suffix}")
+
       hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${done_url}")
       hunter_status_debug("  -> ${x_DONE}")
 
-      file(DOWNLOAD "${done_url}" "${x_DONE}" STATUS status)
+      hunter_sleep_before_download("${x}")
+      file(DOWNLOAD "${done_url}" "${done_temp}" STATUS status)
 
       list(GET status 0 error_code)
       list(GET status 1 error_message)
@@ -81,58 +92,66 @@ function(hunter_download_cache_meta_file)
       hunter_check_download_error_message(
           ERROR_CODE "${error_code}"
           ERROR_MESSAGE "${error_message}"
-          REMOVE_ON_ERROR "${x_DONE}"
+          REMOVE_ON_ERROR "${done_temp}"
+          NOT_FOUND_COUNTER not_found_counter
       )
 
-      if(error_code EQUAL 0)
-        break()
-      elseif(error_code EQUAL 22)
-        hunter_status_debug("File not found")
-        break()
-      else()
-        hunter_status_debug("Downloading error, retry...")
+      if(NOT error_code EQUAL 0)
+        if(error_code EQUAL 22)
+          hunter_status_debug("File not found")
+          if(NOT_FOUND_NEEDED EQUAL not_found_counter)
+            return()
+          endif()
+        else()
+          hunter_status_debug("Download error (${error_message})")
+        endif()
+        continue()
       endif()
-    endforeach()
 
-    if(NOT EXISTS "${x_DONE}")
-      # DONE stamp not found on this server, try next
-      continue()
-    endif()
-
-    set(total_retry 3)
-    foreach(x RANGE ${total_retry})
-      hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
-      hunter_status_debug("  ${local_url}")
-      hunter_status_debug("  -> ${x_LOCAL}")
-
-      file(DOWNLOAD "${local_url}" "${x_LOCAL}" STATUS status)
-
-      list(GET status 0 error_code)
-      list(GET status 1 error_message)
-
-      hunter_check_download_error_message(
-          ERROR_CODE "${error_code}"
-          ERROR_MESSAGE "${error_message}"
-          REMOVE_ON_ERROR "${x_LOCAL}"
+      # Done stamp exists, now downloading real file
+      hunter_init_not_found_counter(
+          NOT_FOUND_NEEDED not_found_counter 1 # polling one server
       )
 
-      if(error_code EQUAL 0)
-        return()
-      elseif(error_code EQUAL 22)
-        file(REMOVE "${x_DONE}")
-        hunter_internal_error(
-            "Server error. File not exists but DONE stamp found.\n"
-            "  file: ${local_url}"
-            "  done: ${done_url}"
+      set(total_retry ${NOT_FOUND_NEEDED})
+      foreach(x RANGE ${total_retry})
+        hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
+        hunter_status_debug("  ${local_url}")
+        hunter_status_debug("  -> ${x_LOCAL}")
+
+        hunter_sleep_before_download("${x}")
+        file(DOWNLOAD "${local_url}" "${local_temp}" STATUS status)
+
+        list(GET status 0 error_code)
+        list(GET status 1 error_message)
+
+        hunter_check_download_error_message(
+            ERROR_CODE "${error_code}"
+            ERROR_MESSAGE "${error_message}"
+            REMOVE_ON_ERROR "${local_temp}"
+            NOT_FOUND_COUNTER not_found_counter
         )
-      else()
-        hunter_status_debug("Downloading error, retry...")
-      endif()
-    endforeach()
 
-    if(NOT EXISTS "${x_LOCAL}")
-      # some errors, remove DONE stamp and try next server
-      file(REMOVE "${x_DONE}")
-    endif()
+        if(error_code EQUAL 0)
+          # Success. Rename temporary files to the final destination.
+          # RENAME operation is atomic. Note that DONE should be the last to
+          # signal that everything ended as expected.
+          file(RENAME "${local_temp}" "${x_LOCAL}")
+          file(RENAME "${done_temp}" "${x_DONE}")
+          return()
+        elseif(error_code EQUAL 22)
+          hunter_status_debug("File not found")
+        else()
+          hunter_status_debug("Download error (${error_message})")
+        endif()
+      endforeach()
+
+      file(REMOVE "${done_temp}")
+      hunter_internal_error(
+          "Server error. File not exists but DONE stamp found.\n"
+          "  file: ${local_url}"
+          "  done: ${done_url}"
+      )
+    endforeach()
   endforeach()
 endfunction()

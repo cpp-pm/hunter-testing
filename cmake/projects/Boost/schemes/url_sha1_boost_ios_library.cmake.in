@@ -11,6 +11,7 @@ include(ExternalProject) # ExternalProject_Add
 list(APPEND CMAKE_MODULE_PATH "@HUNTER_SELF@/cmake/modules")
 
 include(hunter_boost_component_b2_args)
+include(hunter_dump_cmake_flags)
 include(hunter_install_boost_config)
 include(hunter_internal_error)
 include(hunter_status_debug)
@@ -54,6 +55,7 @@ boost_component(coroutine 1.53.0)
 boost_component(coroutine2 1.60.0)
 boost_component(date_time 1.29.0)
 boost_component(exception 1.36.0)
+boost_component(fiber 1.62.0)
 boost_component(filesystem 1.30.0)
 boost_component(graph 1.18.0)
 boost_component(graph_parallel 1.18.0)
@@ -61,6 +63,7 @@ boost_component(iostreams 1.33.0)
 boost_component(locale 1.48.0)
 boost_component(log 1.54.0)
 boost_component(math 1.23.0)
+boost_component(metaparse 1.61.0)
 boost_component(mpi 1.35.0)
 boost_component(program_options 1.32.0)
 boost_component(python 1.19.0)
@@ -162,6 +165,9 @@ hunter_boost_component_b2_args(
   )
 
 list(APPEND build_opts ${b2_component_opts})
+
+hunter_dump_cmake_flags()
+# -> CMAKE_CXX_FLAGS
 
 if(CMAKE_CXX_FLAGS)
   list(APPEND build_opts "cxxflags=${CMAKE_CXX_FLAGS}")
