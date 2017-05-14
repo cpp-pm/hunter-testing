@@ -1,15 +1,22 @@
 # Copyright (c) 2014, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_CLANG_HUNTER_CMAKE)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_CLANG_HUNTER_CMAKE 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Clang
+    VERSION
+    "3.6.2-p0"
+    URL
+    "https://github.com/hunter-packages/clang/archive/v3.6.2-p0.tar.gz"
+    SHA1
+    a83fb5364829f3836cbf0104cb54500359d4ea8c
+)
 
 hunter_add_version(
     PACKAGE_NAME
