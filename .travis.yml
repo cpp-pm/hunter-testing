@@ -26,8 +26,11 @@ matrix:
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=analyze
+
+    # OpenSSL fails to build for analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=sanitize-address
     - os: linux
@@ -44,16 +47,25 @@ matrix:
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: jsoncpp fails to detect that unique_ptr is not available.
+    #        https://github.com/open-source-parsers/jsoncpp/issues/612
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=ios-nocodesign-9-3
+
+    # CURL fails to build for iOS
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=ios-nocodesign-9-3
+
     - os: osx
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=analyze
+
+    # OpenSSL fails to build for analyze
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=analyze
     # }
 
 install:

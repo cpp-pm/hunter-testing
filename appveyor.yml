@@ -37,13 +37,7 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\libjson-rpc-cpp
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-
-    - TOOLCHAIN: "msys"
+    - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\libjson-rpc-cpp
 
 install:
