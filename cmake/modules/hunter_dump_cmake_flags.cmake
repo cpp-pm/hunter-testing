@@ -4,6 +4,7 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_internal_error)
+include(hunter_get_lang_standard_flag)
 
 # Packages to test this function:
 # * Boost
@@ -53,6 +54,18 @@ function(hunter_dump_cmake_flags)
     endforeach()
   endif()
 
+  hunter_get_lang_standard_flag(CXX flag)
+  string(COMPARE NOTEQUAL "${flag}" "" has_flag)
+  if(has_flag)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+  endif()
+
+  hunter_get_lang_standard_flag(C flag)
+  string(COMPARE NOTEQUAL "${flag}" "" has_flag)
+  if(has_flag)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}")
+  endif()
+
   string(COMPARE NOTEQUAL "${CMAKE_CXX_COMPILER_TARGET}" "" has_value)
   string(COMPARE NOTEQUAL "${CMAKE_CXX_COMPILE_OPTIONS_TARGET}" "" has_option)
   if(has_value AND has_option)
@@ -89,6 +102,7 @@ function(hunter_dump_cmake_flags)
     )
   endif()
 
+  # PIC {
   string(COMPARE NOTEQUAL "${CMAKE_CXX_COMPILE_OPTIONS_PIC}" "" has_pic)
   if(CMAKE_POSITION_INDEPENDENT_CODE AND has_pic)
     set(
@@ -102,6 +116,28 @@ function(hunter_dump_cmake_flags)
         CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${CMAKE_C_COMPILE_OPTIONS_PIC}"
     )
   endif()
+  # }
+
+  # IPO {
+  string(COMPARE NOTEQUAL "${CMAKE_CXX_COMPILE_OPTIONS_IPO}" "" has_ipo)
+  if(CMAKE_INTERPROCEDURAL_OPTIMIZATION AND has_ipo)
+    foreach(x ${CMAKE_CXX_COMPILE_OPTIONS_IPO})
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${x}")
+    endforeach()
+  endif()
+
+  string(COMPARE NOTEQUAL "${CMAKE_C_COMPILE_OPTIONS_IPO}" "" has_ipo)
+  if(CMAKE_INTERPROCEDURAL_OPTIMIZATION AND has_ipo)
+    foreach(x ${CMAKE_C_COMPILE_OPTIONS_IPO})
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${x}")
+    endforeach()
+  endif()
+
+  string(COMPARE NOTEQUAL "${CMAKE_CXX_LINK_OPTIONS_IPO}" "" has_ipo)
+  if(CMAKE_INTERPROCEDURAL_OPTIMIZATION AND has_ipo)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${CMAKE_CXX_LINK_OPTIONS_IPO}")
+  endif()
+  # }
 
   string(COMPARE EQUAL "${x_CPPFLAGS}" "" is_empty)
   if(NOT is_empty)

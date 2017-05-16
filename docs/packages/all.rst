@@ -1,6 +1,7 @@
 All packages
 ------------
 
+* `ARM_NEON_2_x86_SSE <https://github.com/ruslo/hunter/wiki/pkg.ARM_NEON_2_x86_SSE>`__
 * `Android-Apk <https://github.com/ruslo/hunter/wiki/pkg.android.apk>`__
 * `Android-Modules <https://github.com/ruslo/hunter/wiki/pkg.android.modules>`__
 * `Android-SDK <https://github.com/ruslo/hunter/wiki/pkg.android.sdk>`__
@@ -17,6 +18,7 @@ All packages
 * `CURL <https://github.com/ruslo/hunter/wiki/pkg.curl>`__
 * `Catch <https://github.com/ruslo/hunter/wiki/pkg.catch>`__
 * `Comet <https://github.com/ruslo/hunter/wiki/pkg.comet>`__
+* `cpp_redis <https://github.com/ruslo/hunter/wiki/pkg.cpp_redis>`__
 * `CppNetlib.URI <https://github.com/ruslo/hunter/wiki/pkg.cppnetlib.uri>`__
 * `CsvParserCPlusPlus <https://github.com/ruslo/hunter/wiki/pkg.csvparsercplusplus>`__
 * `Eigen <https://github.com/ruslo/hunter/wiki/pkg.eigen>`__
@@ -79,6 +81,7 @@ All packages
 * `imshow <https://github.com/ruslo/hunter/wiki/pkg.imshow>`__
 * `ios_sim <https://github.com/ruslo/hunter/wiki/pkg.ios_sim>`__
 * `irrXML <https://github.com/ruslo/hunter/wiki/pkg.irrXML>`__
+* `libuv <https://github.com/ruslo/hunter/wiki/pkg.libuv>`__
 * `libyuv <https://github.com/ruslo/hunter/wiki/pkg.libyuv>`__
 * `log4cplus <https://github.com/ruslo/hunter/wiki/pkg.log4cplus>`__
 * `lzma <https://github.com/ruslo/hunter/wiki/pkg.lzma>`__
@@ -94,7 +97,9 @@ All packages
 * `rabbitmq-c <https://github.com/ruslo/hunter/wiki/pkg.rabbitmq.c>`__
 * `sparsehash <https://github.com/ruslo/hunter/wiki/pkg.sparsehash>`__
 * `spdlog <https://github.com/ruslo/hunter/wiki/pkg.spdlog>`__
+* `sse2neon <https://github.com/ruslo/hunter/wiki/pkg.sse2neon>`__
 * `szip <https://github.com/ruslo/hunter/wiki/pkg.szip>`__
+* `TacoPie <https://github.com/ruslo/hunter/wiki/pkg.tacopie>`__
 * `thread-pool-cpp <https://github.com/ruslo/hunter/wiki/pkg.thread-pool-cpp>`__
 * `tinydir <https://github.com/ruslo/hunter/wiki/pkg.tinydir>`__
 * `websocketpp <https://github.com/ruslo/hunter/wiki/pkg.websocketpp>`__
