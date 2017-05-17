@@ -43,8 +43,8 @@ matrix:
       env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=gcc-4-8
     - os: linux
       env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=analyze
+    #- os: linux
+    #  env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=sanitize-address
     - os: linux
@@ -66,8 +66,8 @@ matrix:
       env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=analyze
+    #- os: osx
+    #  env: PROJECT_DIR=examples/tomcrypt TOOLCHAIN=analyze
     # }
 
 install:
