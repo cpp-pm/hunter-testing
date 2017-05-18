@@ -24,10 +24,13 @@ matrix:
       env: PROJECT_DIR=examples/doctest TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/doctest TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
+    # FIXME: android toolchain doesn't like snprintf used from std:: namespace
+    #        also doctest has its own static analysis on the CI with the latest clang-tidy
+    #        https://github.com/ruslo/hunter/pull/801#issuecomment-302346335
+    #- os: linux
+    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: linux
+    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/doctest TOOLCHAIN=sanitize-address
     - os: linux
@@ -50,10 +53,13 @@ matrix:
       env: PROJECT_DIR=examples/doctest TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/doctest TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
+    # FIXME: android toolchain doesn't like snprintf used from std:: namespace
+    #        also doctest has its own static analysis on the CI with the latest clang-tidy
+    #        https://github.com/ruslo/hunter/pull/801#issuecomment-302346335
+    #- os: osx
+    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: osx
+    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
     # }
 
 install:
