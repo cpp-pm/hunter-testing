@@ -45,8 +45,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\NASM
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\NASM
+    # Not supported
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\NASM
 
 install:
   # Python 3
