@@ -32,8 +32,8 @@ matrix:
     # The code is too fancy for the analyzer.
     # - os: linux
     #   env: PROJECT_DIR=examples/NASM TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/NASM TOOLCHAIN=sanitize-address
+    # - os: linux
+    #   env: PROJECT_DIR=examples/NASM TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/NASM TOOLCHAIN=sanitize-leak
 
