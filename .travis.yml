@@ -18,16 +18,24 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=default
+
+    # C++11 toolchain needed
+    # - os: linux
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=analyze
+
+    # FIXME: lack of C++11 support
+    # - os: linux
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/234504790
+    # - os: linux
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=sanitize-address
     - os: linux
@@ -40,18 +48,27 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=default
+
+    # C++11 toolchain needed
+    # - os: osx
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: OpenNMTTokenizer broken dependency
+    # - os: osx
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/onmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: lack of C++11 support
+    # - os: osx
+    #   env: PROJECT_DIR=examples/onmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/onmt TOOLCHAIN=analyze
     # }
