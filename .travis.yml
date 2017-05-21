@@ -18,8 +18,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=default
+
+    # We need C++11 toolchain
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=clang-libstdcxx
     - os: linux
@@ -40,12 +43,18 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=default
+
+    # We need C++11 toolchain
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: lack of C++11 support
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/OpenNMTTokenizer TOOLCHAIN=osx-10-11
     - os: osx
