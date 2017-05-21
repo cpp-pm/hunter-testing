@@ -6,42 +6,47 @@ environment:
     GITHUB_USER_PASSWORD:
       secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
+  # All Visual Studio based toolchains failed because of dependency
+  # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1747
+
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "default"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\onmt
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\onmt
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1747/job/bl89let2pcle66i4
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\onmt
 
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\onmt
