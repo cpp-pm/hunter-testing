@@ -21,12 +21,11 @@ include(hunter_user_error)
 # Note: 'hunter_find_licenses' should be called before each return point
 function(hunter_download)
   set(one PACKAGE_NAME PACKAGE_COMPONENT PACKAGE_INTERNAL_DEPS_ID)
-  set(multiple PACKAGE_DEPENDS_ON PACKAGE_UNRELOCATABLE_TEXT_FILES)
+  set(multiple PACKAGE_UNRELOCATABLE_TEXT_FILES)
 
   cmake_parse_arguments(HUNTER "" "${one}" "${multiple}" ${ARGV})
   # -> HUNTER_PACKAGE_NAME
   # -> HUNTER_PACKAGE_COMPONENT
-  # -> HUNTER_PACKAGE_DEPENDS_ON
   # -> HUNTER_PACKAGE_INTERNAL_DEPS_ID
   # -> HUNTER_PACKAGE_UNRELOCATABLE_TEXT_FILES
 
@@ -239,17 +238,6 @@ function(hunter_download)
       DEPENDS_ON_PACKAGE "${HUNTER_PACKAGE_NAME}"
       DEPENDS_ON_COMPONENT "${HUNTER_PACKAGE_COMPONENT}"
   )
-
-  foreach(deps ${HUNTER_PACKAGE_DEPENDS_ON})
-    if(NOT HUNTER_PACKAGE_SCHEME_INSTALL)
-      hunter_internal_error("Non-install scheme can't depends on anything")
-    endif()
-    # Register explicit dependency
-    hunter_register_dependency(
-        PACKAGE "${HUNTER_PACKAGE_NAME};${HUNTER_PACKAGE_COMPONENT}"
-        DEPENDS_ON_PACKAGE "${deps}"
-    )
-  endforeach()
 
   if(EXISTS "${HUNTER_PACKAGE_DONE_STAMP}")
     hunter_status_debug("Package already installed: ${HUNTER_PACKAGE_NAME}")
@@ -477,6 +465,18 @@ function(hunter_download)
   string(COMPARE EQUAL "${HUNTER_USE_CACHE_SERVERS}" "ONLY" only_server)
   if(only_server)
     set(allow_builds FALSE)
+  endif()
+
+  # Always allow builds of submodules
+  get_property(submodule_projects GLOBAL PROPERTY HUNTER_SUBMODULE_PROJECTS)
+  if(submodule_projects)
+    list(FIND submodule_projects "${HUNTER_PACKAGE_NAME}" submodule_found)
+    if(NOT submodule_found EQUAL -1)
+      set(allow_builds TRUE)
+      if(hunter_has_component)
+        hunter_internal_error("Submodule with components")
+      endif()
+    endif()
   endif()
 
   if(NOT allow_builds AND HUNTER_PACKAGE_SCHEME_INSTALL)
