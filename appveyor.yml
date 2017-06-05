@@ -10,14 +10,20 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/ojjdnjbcf7tuu008
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/vn3n718of7ifobh4
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/0aqr7f2spvv1hjpu
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\onmt
 
     # OpenNMTTokenizer dependency
     # - TOOLCHAIN: "vs-10-2010"
@@ -27,14 +33,20 @@ environment:
     # - TOOLCHAIN: "vs-11-2012"
     #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/h80p705du7gv16qe
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/osnk4j7resef8tx6
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\onmt
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\onmt
+    # Lack of C++11:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1762/job/0dvt1cwqkt8h8yn5
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\onmt
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\onmt
