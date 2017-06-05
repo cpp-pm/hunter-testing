@@ -17,6 +17,7 @@ include(hunter_dump_cmake_flags)
 include(hunter_fatal_error)
 include(hunter_install_boost_config)
 include(hunter_internal_error)
+include(hunter_pick_archiver)
 include(hunter_status_debug)
 include(hunter_status_print)
 include(hunter_test_string_not_empty)
@@ -285,6 +286,11 @@ if(use_cmake_archiver)
   # We need custom '<archiver>' and '<ranlib>' for
   # Android LTO ('*-gcc-ar' instead of '*-ar')
   # WARNING: no spaces between '<archiver>' and '${CMAKE_AR}'!
+
+  # -> CMAKE_AR
+  # -> CMAKE_RANLIB
+  hunter_pick_archiver()
+
   file(
       APPEND
       ${boost_user_jam}
@@ -331,8 +337,11 @@ if(@HUNTER_STATUS_DEBUG@)
   set(verbose_output "-d+2 --debug-configuration")
 endif()
 
-if("@MSVC@" OR "@MINGW@")
+if("@MSVC@")
   set(bootstrap_cmd "bootstrap.bat")
+  set(b2_cmd "b2")
+elseif("@MINGW@")
+  set(bootstrap_cmd "bootstrap.bat" "gcc")
   set(b2_cmd "b2")
 else()
   set(bootstrap_cmd "./bootstrap.sh")
