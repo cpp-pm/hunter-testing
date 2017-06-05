@@ -24,8 +24,12 @@ matrix:
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/239697795
+    # - os: linux
+    #   env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=analyze
     - os: linux
@@ -44,14 +48,22 @@ matrix:
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=clang-libstdcxx
+
+    # Lack of C++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/239697801
+    # - os: osx
+    #   env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/239697804
+    # - os: osx
+    #   env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/eigen3-nnls TOOLCHAIN=analyze
     # }

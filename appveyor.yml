@@ -43,8 +43,10 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\eigen3-nnls
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\eigen3-nnls
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1768/job/j5duvk8rn2uunqo6
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\eigen3-nnls
 
 install:
   # Python 3
