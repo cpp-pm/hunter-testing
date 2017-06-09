@@ -10,14 +10,17 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Beast
+    # FIXME: Boost
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Beast
+    # FIXME: Boost
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Beast
+    # FIXME: Boost
+    # - TOOLCHAIN: "nmake-vs-12-2013"
+    #   PROJECT_DIR: examples\Beast
 
     - TOOLCHAIN: "vs-10-2010"
       PROJECT_DIR: examples\Beast
@@ -43,8 +46,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Beast
+    # FIXME: Boost
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Beast
 
 install:
   # Python 3
