@@ -10,43 +10,41 @@ environment:
     - TOOLCHAIN: "default"
       PROJECT_DIR: examples\Beast
 
-    # FIXME: Boost
+    # Beast requires VS 2015
+    # https://github.com/vinniefalco/Beast#requirements
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
     #   PROJECT_DIR: examples\Beast
 
-    # FIXME: Boost
     # - TOOLCHAIN: "nmake-vs-12-2013-win64"
     #   PROJECT_DIR: examples\Beast
 
-    # FIXME: Boost
     # - TOOLCHAIN: "nmake-vs-12-2013"
     #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\Beast
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Beast
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Beast
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\Beast
 
-    # FIXME: Boost
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\Beast
 
