@@ -18,14 +18,19 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=default
+    # https://github.com/vinniefalco/Beast#requirements (requires C++11)
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/241169465 (missing std::to_string)
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=analyze
     - os: linux
@@ -40,20 +45,29 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=default
+    # https://github.com/vinniefalco/Beast#requirements (requires C++11)
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=clang-libstdcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/241169471 (missing 'type_traits' file)
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/Beast TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Beast TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/241169474 (missing std::to_string)
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/241169475
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Beast TOOLCHAIN=analyze
     # }
 
 install:
