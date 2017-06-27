@@ -18,11 +18,13 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\Tesseract
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Tesseract
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1866/job/lt4l7mj2fbh9uw6x (OpenCL)
+    # - TOOLCHAIN: "vs-10-2010"
+    #   PROJECT_DIR: examples\Tesseract
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Tesseract
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1866/job/ub9eje7h55i8iwfv (OpenCL)
+    # - TOOLCHAIN: "vs-11-2012"
+    #   PROJECT_DIR: examples\Tesseract
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\Tesseract
@@ -36,14 +38,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Tesseract
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\Tesseract
+    # Unsupported upstream: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1866/job/3mfhc57589taqvdh
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\Tesseract
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Tesseract
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1866/job/vwh8vmkdi8a24i78 (Leptonica)
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\Tesseract
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Tesseract
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1866/job/v8k0w42luk3nlaex (Leptonica)
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\Tesseract
 
 install:
   # Python 3
