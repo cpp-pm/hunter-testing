@@ -7,16 +7,14 @@ environment:
       secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
   matrix:
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
+
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\odb-boost
 
 # odb-boost can be built by its VisualStudio solution, but there is no integration
 # in Hunter to do that yet, see: https://github.com/ruslo/hunter/pull/469
 #
-#
-# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/4vq1mhi4fsf4dne2
-#    - TOOLCHAIN: "default"
-#      PROJECT_DIR: examples\odb-boost
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/ffu161culpin3vrg
 #    - TOOLCHAIN: "ninja-vs-12-2013-win64"
 #      PROJECT_DIR: examples\odb-boost
