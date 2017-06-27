@@ -9,11 +9,10 @@ environment:
     # FIXME: autotools packages not working on Windows
 
   matrix:
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
+
     - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\x264
-
-    # - TOOLCHAIN: "default"
-    #   PROJECT_DIR: examples\x264
 
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
     #   PROJECT_DIR: examples\x264
