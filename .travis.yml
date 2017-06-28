@@ -39,7 +39,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/odb TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/odb TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
