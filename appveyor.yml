@@ -10,9 +10,9 @@ environment:
       secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
   matrix:
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
+
     ### Boost ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -61,8 +61,6 @@ environment:
     #   PROJECT_DIR: examples\Boost
 
     ### Boost-filesystem ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-filesystem
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -108,8 +106,6 @@ environment:
     #   PROJECT_DIR: examples\Boost-filesystem
 
     ### Boost-system ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-system
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -158,8 +154,6 @@ environment:
     #   PROJECT_DIR: examples\Boost-system
 
     ### Boost-iostreams ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-iostreams
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -206,8 +200,6 @@ environment:
     #   PROJECT_DIR: examples\Boost-iostreams
 
     ### Boost-thread ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-thread
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -256,8 +248,6 @@ environment:
     #   PROJECT_DIR: examples\Boost-thread
 
     ### Boost-chrono ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-chrono
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -300,8 +290,6 @@ environment:
     #   PROJECT_DIR: examples\Boost-chrono
 
     ### Boost-serialization ###
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Boost-serialization
 
     # FIXME:
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"

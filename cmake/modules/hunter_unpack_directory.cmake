@@ -47,7 +47,7 @@ function(hunter_unpack_directory cache_sha1)
   # While waiting for lock other instance can do all the job
   if(NOT EXISTS "${unpack_stamp}")
     set(cmd "${CMAKE_COMMAND}" "-E" "tar")
-    if(HUNTER_STATUS_DEBUG)
+    if(HUNTER_STATUS_DEBUG AND NOT HUNTER_SUPPRESS_LIST_OF_FILES)
       list(APPEND cmd "xvf")
     else()
       list(APPEND cmd "xf")
@@ -79,6 +79,14 @@ function(hunter_unpack_directory cache_sha1)
       hunter_status_debug("Unpacked successfully")
     else()
       hunter_internal_error("Unpack failed")
+    endif()
+
+    # For LIST_DIRECTORIES
+    if(CMAKE_VERSION VERSION_LESS 3.3 AND use_link_script)
+      hunter_internal_error(
+          "CMake version 3.3 at least needed."
+          "Current version is ${CMAKE_VERSION}."
+      )
     endif()
 
     hunter_status_debug("Creating list of files and directories")
