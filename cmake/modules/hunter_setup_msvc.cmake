@@ -41,7 +41,7 @@ macro(hunter_setup_msvc)
     string(COMPARE EQUAL "${MSVC_VERSION}" "1700" _vs_11_2012)
     string(COMPARE EQUAL "${MSVC_VERSION}" "1800" _vs_12_2013)
     string(COMPARE EQUAL "${MSVC_VERSION}" "1900" _vs_14_2015)
-    string(COMPARE EQUAL "${MSVC_VERSION}" "1910" _vs_15_2017)
+    string(REGEX MATCH "^191[01]$" _vs_15_2017 "${MSVC_VERSION}")
 
     if(_vs_8_2005)
       set(HUNTER_MSVC_VERSION "8")
@@ -131,6 +131,11 @@ macro(hunter_setup_msvc)
       endif()
     else()
       set(_hunter_vcvarsall_path "${_hunter_vcvarsall_path}/../../VC")
+      if(NOT HUNTER_MSVC_VERSION VERSION_LESS "15")
+        # Visual Studio 15 2017+
+        # * https://github.com/ruslo/hunter/issues/836#issue-236352343
+        set(_hunter_vcvarsall_path "${_hunter_vcvarsall_path}/Auxiliary/Build")
+      endif()
     endif()
 
     get_filename_component(
