@@ -19,41 +19,80 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=default
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=gcc
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
-    #   env: PROJECT_DIR=examples/Foo TOOLCHAIN=sanitize-thread
+    #   env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=sanitize-thread
 
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=default
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: osx
-      env: PROJECT_DIR=examples/Foo TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=analyze
+    # }
+
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=gcc
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-leak
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-thread
+
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=osx-10-11
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=ios-nocodesign-9-3
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
     # }
 
 install:
