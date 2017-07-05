@@ -24,8 +24,12 @@ matrix:
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/250286825
+    # - os: linux
+    #   env: PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=analyze
     - os: linux
@@ -50,8 +54,12 @@ matrix:
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/250286825
+    # - os: osx
+    #   env: PROJECT_DIR=examples/fmt TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=analyze
     # }

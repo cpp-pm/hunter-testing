@@ -43,7 +43,7 @@ environment:
       PROJECT_DIR: examples\fmt
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\fmt
 
 install:
   # Python 3
