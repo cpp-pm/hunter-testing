@@ -9,35 +9,36 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK
+    # LAPACK needs a fortran compiler, MSVC has not builtin fortran compiler
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "nmake-vs-12-2013"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-10-2010"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-11-2012"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-12-2013"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-14-2015"
+    #  PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\LAPACK
+    #- TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\LAPACK
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\LAPACK
@@ -45,35 +46,35 @@ environment:
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\LAPACK
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "nmake-vs-12-2013"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-10-2010"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-11-2012"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-12-2013-win64"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-12-2013"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-14-2015"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\LAPACK-CBLAS
+    #- TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\LAPACK-CBLAS
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\LAPACK-CBLAS
