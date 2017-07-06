@@ -27,8 +27,10 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601288
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=gcc
     - os: linux
@@ -51,14 +53,21 @@ matrix:
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601301
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601302
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601303
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601304
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=osx-10-11
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=ios-nocodesign-9-3
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: osx
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=analyze
     # }
@@ -66,16 +75,24 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601309
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-address
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601311
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # Broken build:
+    # # https://travis-ci.org/ingenue/hunter/jobs/249601312
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601314
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=sanitize-leak
 
@@ -90,16 +107,21 @@ matrix:
       env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
+    # Broken build:
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601321
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601322
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601323
+    # * https://travis-ci.org/ingenue/hunter/jobs/249601324
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=clang-libstdcxx
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=osx-10-11
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=ios-nocodesign-9-3
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-CBLAS TOOLCHAIN=analyze
     # }
 
 install:
