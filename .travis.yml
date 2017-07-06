@@ -48,8 +48,10 @@ matrix:
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/fmt TOOLCHAIN=clang-libstdcxx
+    # FIXME:
+    # * https://stackoverflow.com/a/25322818/8140145
+    # - os: osx
+    #   env: PROJECT_DIR=examples/fmt TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/fmt TOOLCHAIN=osx-10-11
     - os: osx
