@@ -46,6 +46,7 @@ unset COMPRESS_PNG_FILES
 unset CONFIGURATION
 unset CONFIGURATION_BUILD_DIR
 unset CONFIGURATION_TEMP_DIR
+unset CONFIG_SITE
 unset COPYING_PRESERVES_HFS_DATA
 unset COPY_PHASE_STRIP
 unset COPY_RESOURCES_FROM_STATIC_FRAMEWORKS
@@ -301,6 +302,11 @@ unset PKG_CONFIG_DISABLE_UNINSTALLED
 unset PKG_CONFIG_ALLOW_SYSTEM_CFLAGS
 unset PKG_CONFIG_ALLOW_SYSTEM_LIBS
 unset PKG_CONFIG_SYSROOT_DIR
+
+# https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android
+unset ANDROID_NDK
+unset ANDROID_NDK_ROOT
+unset ANDROID_STANDALONE_TOOLCHAIN
 
 # This variable should be set to empty.
 # Example from Ubuntu:
