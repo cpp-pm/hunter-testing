@@ -11,11 +11,13 @@ All packages
 * `Autobahn-cpp <https://github.com/ruslo/hunter/wiki/pkg.autobahn-cpp>`__
 * `Avahi <https://github.com/ruslo/hunter/wiki/pkg.avahi>`__
 * `BZip2 <https://github.com/ruslo/hunter/wiki/pkg.bzip2>`__
+* `Beast <https://github.com/ruslo/hunter/wiki/pkg.beast>`__
 * `Boost <https://github.com/ruslo/hunter/wiki/pkg.boost>`__
 * `Boost.compute <https://github.com/ruslo/hunter/wiki/pkg.boost.compute>`__
 * `Boost.process <https://github.com/ruslo/hunter/wiki/pkg.boost.process>`__
 * `CLAPACK <https://github.com/ruslo/hunter/wiki/pkg.clapack>`__
 * `CURL <https://github.com/ruslo/hunter/wiki/pkg.curl>`__
+* `CapnProto <https://github.com/ruslo/hunter/wiki/pkg.capnproto>`__
 * `Catch <https://github.com/ruslo/hunter/wiki/pkg.catch>`__
 * `Comet <https://github.com/ruslo/hunter/wiki/pkg.comet>`__
 * `cpp_redis <https://github.com/ruslo/hunter/wiki/pkg.cpp_redis>`__
