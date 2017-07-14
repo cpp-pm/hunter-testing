@@ -36,8 +36,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\aes
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\aes
+    # No 'stdint.h':
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1955/job/t98ycg261ut2y3el
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\aes
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\aes
