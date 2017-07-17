@@ -50,9 +50,6 @@ environment:
     #      PROJECT_DIR: examples\OpenSSL
 
     # imported variant {
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\OpenSSL-imported
-
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
       PROJECT_DIR: examples\OpenSSL-imported
 
