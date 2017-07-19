@@ -18,16 +18,24 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=default
+
+    # C++11 required:
+    # * https://travis-ci.org/ingenue/hunter/jobs/255387444
+    # - os: linux
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=analyze
+
+    # FIXME (autotools build scheme):
+    # * https://travis-ci.org/ingenue/hunter/jobs/255387459
+    # - os: linux
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-address
     - os: linux
@@ -40,20 +48,32 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=default
+
+    # C++11 required:
+    # * https://travis-ci.org/ingenue/hunter/jobs/255387466
+    # - os: osx
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=clang-libstdcxx
+
+    # Lack of C++11:
+    # * https://travis-ci.org/ingenue/hunter/jobs/255387470
+    # - os: osx
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/aglet TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=analyze
+
+    # FIXME (GLFW):
+    # * https://travis-ci.org/ingenue/hunter/jobs/255387480
+    # - os: osx
+    #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=analyze
+
     # }
 
 install:
