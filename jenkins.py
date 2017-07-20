@@ -132,6 +132,18 @@ def run():
   ):
     verbose = False
 
+  if (
+      os.getenv('TRAVIS') and
+      (toolchain == 'sanitize-address')
+  ):
+    verbose = False
+
+  if (
+      os.getenv('TRAVIS') and
+      (toolchain == 'sanitize-leak')
+  ):
+    verbose = False
+
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
