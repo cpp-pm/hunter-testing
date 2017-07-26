@@ -23,7 +23,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=gcc-4-8
+      env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=gcc
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/164764252
