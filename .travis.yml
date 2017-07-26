@@ -53,8 +53,11 @@ matrix:
       env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=osx-10-11
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/257732927
+    # - os: osx
+    #   env: PROJECT_DIR=examples/OpenBLAS TOOLCHAIN=osx-10-11
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/164764269
