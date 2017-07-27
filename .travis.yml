@@ -22,28 +22,28 @@ matrix:
     # Lack of c++11:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504503
     # - os: linux
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=default
 
     - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=gcc
 
     # Lack of c++11:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504506
     # - os: linux
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=analyze
     - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=sanitize-address
     - os: linux
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=sanitize-thread
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=sanitize-thread
 
     # }
 
@@ -52,28 +52,28 @@ matrix:
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504511
     # - os: osx
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=default
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=default
 
     - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=libcxx
 
     # Lack of c++11:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504513
     # - os: osx
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=clang-libstdcxx
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=ios-nocodesign-9-3
 
     # Lack of c++11:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504516
     # - os: osx
-    #   env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     - os: osx
-      env: PROJECT_DIR=examples/nlohmann-json TOOLCHAIN=analyze
+      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=analyze
     # }
 
 install:
