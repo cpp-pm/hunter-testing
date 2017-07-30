@@ -26,8 +26,10 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=gcc
+
+    # https://github.com/nlohmann/json#supported-compilers
+    # - os: linux
+    #   env: PROJECT_DIR=examples/nlohmann_json TOOLCHAIN=gcc
 
     # Lack of c++11:
     # * https://travis-ci.org/ingenue/hunter/jobs/188504506
