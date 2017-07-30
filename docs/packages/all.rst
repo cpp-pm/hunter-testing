@@ -11,13 +11,16 @@ All packages
 * `Autobahn-cpp <https://github.com/ruslo/hunter/wiki/pkg.autobahn-cpp>`__
 * `Avahi <https://github.com/ruslo/hunter/wiki/pkg.avahi>`__
 * `BZip2 <https://github.com/ruslo/hunter/wiki/pkg.bzip2>`__
+* `Beast <https://github.com/ruslo/hunter/wiki/pkg.beast>`__
 * `Boost <https://github.com/ruslo/hunter/wiki/pkg.boost>`__
 * `Boost.compute <https://github.com/ruslo/hunter/wiki/pkg.boost.compute>`__
 * `Boost.process <https://github.com/ruslo/hunter/wiki/pkg.boost.process>`__
 * `CLAPACK <https://github.com/ruslo/hunter/wiki/pkg.clapack>`__
 * `CURL <https://github.com/ruslo/hunter/wiki/pkg.curl>`__
+* `CapnProto <https://github.com/ruslo/hunter/wiki/pkg.capnproto>`__
 * `Catch <https://github.com/ruslo/hunter/wiki/pkg.catch>`__
 * `Comet <https://github.com/ruslo/hunter/wiki/pkg.comet>`__
+* `cpp_redis <https://github.com/ruslo/hunter/wiki/pkg.cpp_redis>`__
 * `CppNetlib.URI <https://github.com/ruslo/hunter/wiki/pkg.cppnetlib.uri>`__
 * `CsvParserCPlusPlus <https://github.com/ruslo/hunter/wiki/pkg.csvparsercplusplus>`__
 * `Eigen <https://github.com/ruslo/hunter/wiki/pkg.eigen>`__
@@ -57,6 +60,8 @@ All packages
 * `ZLIB <https://github.com/ruslo/hunter/wiki/pkg.zlib>`__
 * `ZMQPP <https://github.com/ruslo/hunter/wiki/pkg.zmqpp>`__
 * `ZeroMQ <https://github.com/ruslo/hunter/wiki/pkg.zeromq>`__
+* `aes <https://github.com/ruslo/hunter/wiki/pkg.aes>`__
+* `aglet <https://github.com/ruslo/hunter/wiki/pkg.aglet>`__
 * `boost-pba <https://github.com/ruslo/hunter/wiki/pkg.boost-pba>`__
 * `caffe <https://github.com/ruslo/hunter/wiki/pkg.caffe>`__
 * `ccv <https://github.com/ruslo/hunter/wiki/pkg.ccv>`__
@@ -80,6 +85,7 @@ All packages
 * `imshow <https://github.com/ruslo/hunter/wiki/pkg.imshow>`__
 * `ios_sim <https://github.com/ruslo/hunter/wiki/pkg.ios_sim>`__
 * `irrXML <https://github.com/ruslo/hunter/wiki/pkg.irrXML>`__
+* `libuv <https://github.com/ruslo/hunter/wiki/pkg.libuv>`__
 * `libyuv <https://github.com/ruslo/hunter/wiki/pkg.libyuv>`__
 * `log4cplus <https://github.com/ruslo/hunter/wiki/pkg.log4cplus>`__
 * `lzma <https://github.com/ruslo/hunter/wiki/pkg.lzma>`__
@@ -97,6 +103,7 @@ All packages
 * `spdlog <https://github.com/ruslo/hunter/wiki/pkg.spdlog>`__
 * `sse2neon <https://github.com/ruslo/hunter/wiki/pkg.sse2neon>`__
 * `szip <https://github.com/ruslo/hunter/wiki/pkg.szip>`__
+* `TacoPie <https://github.com/ruslo/hunter/wiki/pkg.tacopie>`__
 * `thread-pool-cpp <https://github.com/ruslo/hunter/wiki/pkg.thread-pool-cpp>`__
 * `tinydir <https://github.com/ruslo/hunter/wiki/pkg.tinydir>`__
 * `websocketpp <https://github.com/ruslo/hunter/wiki/pkg.websocketpp>`__
