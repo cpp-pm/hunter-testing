@@ -24,10 +24,13 @@ matrix:
       env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=analyze
+ 
+    # SDL2 package doesn't currently work on ios or android
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=sanitize-address
     - os: linux
@@ -48,12 +51,14 @@ matrix:
       env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=analyze
+    # SDL2 package doesn't currently work on ios or android
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=ios-nocodesign-9-3
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SDL_mixer TOOLCHAIN=analyze
     # }
 
 install:
