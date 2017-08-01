@@ -18,8 +18,8 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013"
       PROJECT_DIR: examples\SDL_mixer
 
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\SDL_mixer
+    #- TOOLCHAIN: "vs-10-2010"
+    #  PROJECT_DIR: examples\SDL_mixer
 
     - TOOLCHAIN: "vs-11-2012"
       PROJECT_DIR: examples\SDL_mixer
@@ -27,8 +27,8 @@ environment:
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\SDL_mixer
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\SDL_mixer
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\SDL_mixer
 
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\SDL_mixer
@@ -36,14 +36,14 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\SDL_mixer
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\SDL_mixer
+    #- TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\SDL_mixer
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\SDL_mixer
+    #- TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\SDL_mixer
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\SDL_mixer
+    #- TOOLCHAIN: "msys"
+    #  PROJECT_DIR: examples\SDL_mixer
 
 install:
   # Python 3
