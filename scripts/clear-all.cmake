@@ -116,6 +116,7 @@ unset(ENV{ICONV})
 unset(ENV{INFOPLIST_EXPAND_BUILD_SETTINGS})
 unset(ENV{INFOPLIST_OUTPUT_FORMAT})
 unset(ENV{INFOPLIST_PREPROCESS})
+unset(ENV{INSTALL})
 unset(ENV{INSTALL_DIR})
 unset(ENV{INSTALL_GROUP})
 unset(ENV{INSTALL_MODE_FLAG})
@@ -300,6 +301,11 @@ endif()
 unset(ENV{ANDROID_SDK_ROOT})
 unset(ENV{ANDROID_API_VERSION})
 unset(ENV{ANDROID_HOME})
+
+# https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android
+unset(ENV{ANDROID_NDK})
+unset(ENV{ANDROID_NDK_ROOT})
+unset(ENV{ANDROID_STANDALONE_TOOLCHAIN})
 
 # See clear-all.sh for more info {
 unset(ENV{PKG_CONFIG_PATH})
