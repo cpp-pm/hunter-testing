@@ -20,8 +20,12 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
+    
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/262791338
+    # - os: linux
+    #   env: PROJECT_DIR=examples/LLVM TOOLCHAIN=clang-libstdcxx
+    
     - os: linux
       env: PROJECT_DIR=examples/LLVM TOOLCHAIN=gcc
 
