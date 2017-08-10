@@ -117,7 +117,8 @@ def run():
     sys.exit(0)
   # -- end
 
-  verbose = False
+  # Binaries uploaded from local machine
+  verbose = True
 
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
