@@ -117,26 +117,8 @@ def run():
     sys.exit(0)
   # -- end
 
+  # Binaries uploaded from local machine
   verbose = True
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/CLAPACK') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
-
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/GSL') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
-
-  if (
-      os.getenv('TRAVIS') and
-      (toolchain == 'osx-10-11')
-  ):
-    verbose = False
 
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
