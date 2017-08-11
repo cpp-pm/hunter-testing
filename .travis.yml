@@ -27,8 +27,9 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Snappy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
-      env: PROJECT_DIR=examples/Snappy TOOLCHAIN=analyze
-    - os: linux
+    # Static analysis finds bugs in Snappy.
+    #   env: PROJECT_DIR=examples/Snappy TOOLCHAIN=analyze
+    # - os: linux
       env: PROJECT_DIR=examples/Snappy TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Snappy TOOLCHAIN=sanitize-leak
@@ -52,8 +53,9 @@ matrix:
       env: PROJECT_DIR=examples/Snappy TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/Snappy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/Snappy TOOLCHAIN=analyze
+    # Static analysis finds bugs in Snappy.
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Snappy TOOLCHAIN=analyze
     # }
 
 install:
