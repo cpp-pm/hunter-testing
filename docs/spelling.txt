@@ -1,5 +1,6 @@
 AppVeyor
 Bonjour
+Cap'n
 CGold
 CMake
 CPack
@@ -11,8 +12,13 @@ Google
 Hunterize
 IDE
 IDEs
+Installable
 Makefile
 NMake
+Proto
+RPC
+Scalable
+Shareable
 Stackoverflow
 Toolchain
 Uninstall
@@ -22,6 +28,8 @@ cacheable
 companioning
 config
 configs
+customizable
+embeddable
 hunterization
 hunterized
 iOS
@@ -29,5 +37,9 @@ internet
 login
 prebuilt
 reconstructible
+reproducibility
+sanitizers
+shareable
+subfolder
 toolchain
 toolchains
