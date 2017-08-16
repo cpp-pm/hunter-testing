@@ -18,8 +18,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=default
+
+    # C++11 required
+    # - os: linux
+    #   env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=clang-libstdcxx
     - os: linux
@@ -40,8 +43,11 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=default
+
+    # C++11 required
+    # - os: osx
+    #   env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/intsizeof TOOLCHAIN=libcxx
     - os: osx
