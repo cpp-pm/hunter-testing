@@ -36,8 +36,8 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\intsizeof
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\intsizeof
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\intsizeof
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\intsizeof
