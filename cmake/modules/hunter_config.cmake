@@ -4,8 +4,10 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_fatal_error)
+include(hunter_pack_git_submodule)
 include(hunter_unsetvar)
 include(hunter_user_error)
+include(hunter_parse_cmake_args_for_keyword)
 
 macro(hunter_config)
   if(NOT HUNTER_ALLOW_CONFIG_LOADING)
@@ -16,7 +18,7 @@ macro(hunter_config)
         "error.unexpected.hunter_config"
     )
   endif()
-  set(_hunter_one_value VERSION)
+  set(_hunter_one_value VERSION GIT_SUBMODULE GIT_SUBMODULE_DIR)
   set(_hunter_multiple_values CMAKE_ARGS CONFIGURATION_TYPES)
   cmake_parse_arguments(
       _hunter
@@ -40,6 +42,40 @@ macro(hunter_config)
 
   # clear all
   hunter_unsetvar(${_hunter_root})
+
+  string(COMPARE NOTEQUAL "${_hunter_GIT_SUBMODULE}" "" _hunter_submodule_create)
+  if(_hunter_submodule_create)
+    # get HUNTER_SUBMODULE_SOURCE_SUBDIR from CMAKE_ARGS
+    hunter_parse_cmake_args_for_keyword(
+      CMAKE_ARGS ${_hunter_CMAKE_ARGS}
+      KEYWORD HUNTER_SUBMODULE_SOURCE_SUBDIR
+      OUTPUT _source_subdir
+    )
+
+    hunter_pack_git_submodule(
+        GIT_SUBMODULE "${_hunter_GIT_SUBMODULE}"
+        VERSION _hunter_VERSION
+        SUBMODULE_SOURCE_SUBDIR "${_source_subdir}"
+    )
+  endif()
+
+  string(COMPARE NOTEQUAL "${_hunter_GIT_SUBMODULE_DIR}" "" _hunter_submodule_consume)
+  if(_hunter_submodule_consume)
+    set_property(
+        GLOBAL
+        PROPERTY
+        "HUNTER_${_hunter_current_project}_GIT_SUBMODULE_DIR"
+        "${_hunter_GIT_SUBMODULE_DIR}"
+    )
+
+    set_property(
+        GLOBAL
+        APPEND
+        PROPERTY
+        HUNTER_SUBMODULE_PROJECTS
+        "${_hunter_current_project}"
+    )
+  endif()
 
   if(_hunter_VERSION)
     set(HUNTER_${_hunter_current_project}_VERSION ${_hunter_VERSION})
