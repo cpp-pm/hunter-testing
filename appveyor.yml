@@ -36,8 +36,10 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\CURL
 
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\CURL
+    # intsizeof dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2183/job/ki7kyoitifsu1y18
+    # - TOOLCHAIN: "vs-9-2008"
+    #   PROJECT_DIR: examples\CURL
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.900/job/c3b60wxb43qrpvs7
     # - TOOLCHAIN: "mingw"
