@@ -135,7 +135,7 @@ def run():
   travis_wait = False
   if (
       os.getenv('TRAVIS') and
-      (toolchain.startswith('android-') and
+      toolchain.startswith('android-') and
       (sys.platform == 'darwin')
   ):
     travis_wait = True
