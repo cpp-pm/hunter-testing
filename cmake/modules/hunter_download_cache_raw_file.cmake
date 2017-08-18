@@ -4,6 +4,7 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_check_download_error_message)
+include(hunter_init_not_found_counter)
 include(hunter_internal_error)
 include(hunter_sleep_before_download)
 include(hunter_status_debug)
@@ -60,22 +61,34 @@ function(hunter_download_cache_raw_file)
     return()
   endif()
 
-  foreach(server ${HUNTER_CACHE_SERVERS})
-    string(REGEX MATCH "^https://github.com/" is_github "${server}")
-    if(NOT is_github)
-      hunter_user_error("Unknown cache server: ${server}")
-    endif()
+  list(LENGTH HUNTER_CACHE_SERVERS number_of_servers)
+  hunter_init_not_found_counter(
+      NOT_FOUND_NEEDED not_found_counter "${number_of_servers}"
+  )
 
-    set(url "${server}/releases/download/cache/${suffix}")
+  set(total_retry 10)
+  foreach(x RANGE ${total_retry})
+    foreach(server ${HUNTER_CACHE_SERVERS})
+      string(REGEX MATCH "^https://github.com/" is_github "${server}")
+      if(NOT is_github)
+        set(url "${server}/raw/${suffix}")
+      else()
+        set(url "${server}/releases/download/cache/${suffix}")
+      endif()
 
-    set(total_retry 10)
-    foreach(x RANGE ${total_retry})
       hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${url}")
       hunter_status_debug("  -> ${x_LOCAL}")
 
       hunter_sleep_before_download("${x}")
-      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status)
+
+      if(HUNTER_STATUS_DEBUG)
+        set(showprogress SHOW_PROGRESS)
+      else()
+        set(showprogress "")
+      endif()
+
+      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status ${showprogress})
       file(SHA1 "${x_LOCAL}" local_sha1)
       string(COMPARE EQUAL "${local_sha1}" "${x_SHA1}" sha1_is_good)
 
@@ -86,6 +99,7 @@ function(hunter_download_cache_raw_file)
           ERROR_CODE "${error_code}"
           ERROR_MESSAGE "${error_message}"
           REMOVE_ON_ERROR "${x_LOCAL}"
+          NOT_FOUND_COUNTER not_found_counter
       )
 
       if(error_code EQUAL 0)
@@ -100,7 +114,9 @@ function(hunter_download_cache_raw_file)
         endif()
       elseif(error_code EQUAL 22)
         hunter_status_debug("File not found")
-        break()
+        if(NOT_FOUND_NEEDED EQUAL not_found_counter)
+          return()
+        endif()
       else()
         hunter_status_debug("Download error (${error_message})")
       endif()
