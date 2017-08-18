@@ -132,14 +132,6 @@ def run():
   ):
     verbose = False
 
-  travis_wait = False
-  if (
-      os.getenv('TRAVIS') and
-      toolchain.startswith('android-') and
-      (sys.platform == 'darwin')
-  ):
-    travis_wait = True
-
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
@@ -197,12 +189,7 @@ def run():
   print('Testing in: {}'.format(testing_dir))
   os.chdir(testing_dir)
 
-  args = []
-
-  if travis_wait:
-    args += ['travis_wait', '120']
-
-  args += [
+  args = [
       sys.executable,
       build_script,
       '--clear',
@@ -276,12 +263,7 @@ def run():
     clear_except_download(hunter_root)
 
     # Sanity check - run build again with disabled building from sources
-    args = []
-
-    if travis_wait:
-      args += ['travis_wait', '120']
-
-    args += [
+    args = [
         sys.executable,
         build_script,
         '--clear',
