@@ -31,7 +31,6 @@ All packages
 * `GSL <https://github.com/ruslo/hunter/wiki/pkg.gsl>`__
 * `GTest <https://github.com/ruslo/hunter/wiki/pkg.gtest>`__
 * `Igloo <https://github.com/ruslo/hunter/wiki/pkg.igloo>`__
-* `IntSizeof <https://github.com/ruslo/hunter/wiki/pkg.intsizeof>`__
 * `Jpeg <https://github.com/ruslo/hunter/wiki/pkg.jpeg>`__
 * `JsonSpirit <https://github.com/ruslo/hunter/wiki/pkg.jsonspirit>`__
 * `LLVM (Clang) <https://github.com/ruslo/hunter/wiki/pkg.llvm.clang>`__
@@ -60,6 +59,8 @@ All packages
 * `ZLIB <https://github.com/ruslo/hunter/wiki/pkg.zlib>`__
 * `ZMQPP <https://github.com/ruslo/hunter/wiki/pkg.zmqpp>`__
 * `ZeroMQ <https://github.com/ruslo/hunter/wiki/pkg.zeromq>`__
+* `aes <https://github.com/ruslo/hunter/wiki/pkg.aes>`__
+* `aglet <https://github.com/ruslo/hunter/wiki/pkg.aglet>`__
 * `boost-pba <https://github.com/ruslo/hunter/wiki/pkg.boost-pba>`__
 * `caffe <https://github.com/ruslo/hunter/wiki/pkg.caffe>`__
 * `ccv <https://github.com/ruslo/hunter/wiki/pkg.ccv>`__
@@ -81,6 +82,7 @@ All packages
 * `half <https://github.com/ruslo/hunter/wiki/pkg.half>`__
 * `hdf5 <https://github.com/ruslo/hunter/wiki/pkg.hdf5>`__
 * `imshow <https://github.com/ruslo/hunter/wiki/pkg.imshow>`__
+* `intsizeof <https://github.com/ruslo/hunter/wiki/pkg.intsizeof>`__
 * `ios_sim <https://github.com/ruslo/hunter/wiki/pkg.ios_sim>`__
 * `irrXML <https://github.com/ruslo/hunter/wiki/pkg.irrXML>`__
 * `libuv <https://github.com/ruslo/hunter/wiki/pkg.libuv>`__
