@@ -19,40 +19,22 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=default
-    - os: linux
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=sanitize-leak
-
-    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
-    # - os: linux
-    #   env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=sanitize-thread
-
     # }
+
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=clang-libstdcxx
-    - os: osx
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
     - os: osx
       env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/QtCMakeExtra TOOLCHAIN=analyze
     # }
 
 install:
