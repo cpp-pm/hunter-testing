@@ -26,8 +26,8 @@ matrix:
       env: PROJECT_DIR=examples/stormlib TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/stormlib TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/stormlib TOOLCHAIN=analyze
+    #- os: linux
+    #  env: PROJECT_DIR=examples/stormlib TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/stormlib TOOLCHAIN=sanitize-address
     - os: linux
@@ -52,8 +52,8 @@ matrix:
       env: PROJECT_DIR=examples/stormlib TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/stormlib TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/stormlib TOOLCHAIN=analyze
+    #- os: osx
+    #  env: PROJECT_DIR=examples/stormlib TOOLCHAIN=analyze
     # }
 
 install:
