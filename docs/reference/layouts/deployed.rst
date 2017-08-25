@@ -1,4 +1,4 @@
-.. Copyright (c) 2016, Ruslan Baratov
+.. Copyright (c) 2016-2017, Ruslan Baratov
 .. All rights reserved.
 
 Deployed
@@ -61,23 +61,23 @@ is to allow Hunter to be deployed inside
 for development.
 
 .. code-block:: none
-  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50
+  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54
 
   _Base/
   ├── <Hunter-ID>/
   │   ├── cmake.lock
   │   ├── SHA1                                 # SHA1 of Hunter archive
   │   ├── DONE
-  │   └── <Config-ID>/
+  │   └── <Toolchain-ID>/
   │       ├── cmake.lock
-  │       ├── SHA1                             # SHA1 of 'config.cmake'
+  │       ├── SHA1                             # SHA1 of 'toolchain.info'
   │       ├── DONE
-  │       ├── config.cmake                     # CMake file with unified hunter_config commands
-  │       └── <Toolchain-ID>/
+  │       ├── toolchain.info
+  │       └── <Config-ID>/
   │           ├── cmake.lock
-  │           ├── SHA1                         # SHA1 of 'toolchain.info'
+  │           ├── SHA1                         # SHA1 of 'config.cmake'
   │           ├── DONE
-  │           ├── toolchain.info
+  │           ├── config.cmake                 # CMake file with unified hunter_config commands
   │           ├── cache.cmake
   │           ├── Install/                     # Main directory with installed packages (global)
   │           │   ├── include/
@@ -113,15 +113,16 @@ for development.
   │                       ├── Install/
   │                       └── Dependencies/
   ├── Download/                                # see below
+  ├── Cellar/                                  # see below
   └── Cache/                                   # see below
 
 Download
 ========
 
 Directory for storing archives with sources. Sources will be unpacked to
-``<Hunter-ID>/<Config-ID>/<Toolchain-ID>/Build/<Package>/Source`` directory.
+``<Hunter-ID>/<Toolchain-ID>/<Config-ID>/Build/<Package>/Source`` directory.
 One exception is archives with Hunter itself since we have no information
-about ``<Config-ID>/<Toolchain-ID>`` part (we have to calculate them using
+about ``<Toolchain-ID>/<Config-ID>`` part (we have to calculate them using
 Hunter code).
 
 .. code-block:: none
@@ -145,6 +146,7 @@ Hunter code).
                ├── <Package>.tar.bz2     # Hunter archive
                ├── Build/
                └── Unpacked/             # Unpacked Hunter archive (HUNTER_SELF)
+
 
 Cache
 =====
@@ -199,3 +201,25 @@ arguments, dependencies, etc.).
                                 ├─ deps.info      # list of all dependencies and corresponding SHA1 of cache archive
                                 ├─ CACHE.DONE     # stamp: deps.info and cache.sha1 created and ready to be used
                                 └─ from.server    # info downloaded from server, no need to upload this entry
+
+Cellar
+======
+
+Cellar directory consists of unpacked raw cache archives and source archives of
+``url_sha1_unpack`` packages:
+
+.. code-block:: none
+  :emphasize-lines: 2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42
+
+  Cellar/
+  └─ <sha1>/                                      # SHA1 of unpacked archive
+     └─ <id>/                                     # first 7 digits of SHA1
+        ├─ cmake.lock
+        ├─ SHA1
+        ├─ DONE
+        ├─ unpack.DONE                            # stamp: unpack operation finished
+        ├─ directories.list                       # list of unpacked directories
+        ├─ files.list                             # list of unpacked files
+        ├─ link-all.sh                            # link script
+        ├─ licenses/
+        └─ raw/                                   # directory with unpacked files
