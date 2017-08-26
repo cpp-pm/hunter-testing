@@ -24,8 +24,11 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: At least API 21 required
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-address
     - os: linux
@@ -51,8 +54,10 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: At least API 21 required
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     # * https://travis-ci.org/ingenue/hunter/jobs/224868229
     # - os: osx
@@ -62,6 +67,10 @@ matrix:
 install:
   # Info about OS
   - uname -a
+
+  # Disable autoupdate
+  # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
+  - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
