@@ -24,8 +24,11 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: At least API 21 required
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-address
     - os: linux
@@ -51,8 +54,10 @@ matrix:
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/libuv TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: At least API 21 required
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     # * https://travis-ci.org/ingenue/hunter/jobs/224868229
     # - os: osx
