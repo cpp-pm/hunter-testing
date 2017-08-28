@@ -24,14 +24,26 @@ matrix:
       env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=sanitize-leak
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=analyze
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=sanitize-address
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
@@ -48,12 +60,23 @@ matrix:
       env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=analyze
+
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=ios-nocodesign-9-3
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME
+    # SDL dependency is broken
+    # - os: osx
+    #   env: PROJECT_DIR=examples/SDL_image TOOLCHAIN=analyze
+
     # }
 
 install:
