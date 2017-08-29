@@ -45,18 +45,18 @@ Next information will help you to set your environment.
 
 .. code-block:: shell
 
-  > docker pull quay.io/ruslo/hunter-travis # pull/update image
-  > docker run -it quay.io/ruslo/hunter-travis bash
-  travis@...:~$ (cd polly && git pull) # fetch last changes, note that branch "develop" is used!
+  > docker pull quay.io/ruslo/hunter-travis-trusty # pull/update image
+  > docker run -it quay.io/ruslo/hunter-travis-trusty bash
+  travis@...:~$ (cd polly && git pull) # fetch last changes
   travis@...:~$ (cd hunter && git pull) # - // -
-  travis@...:~$  cd hunter && TOOLCHAIN=gcc-4-8 PROJECT_DIR=examples/GTest ./jenkins.py --verbose --clear-except
+  travis@...:~$  cd hunter && TOOLCHAIN=gcc PROJECT_DIR=examples/GTest ./jenkins.py --verbose --clear-except
 
 Starting GUI:
 
 .. code-block:: shell
 
   > xhost +
-  > docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix quay.io/ruslo/hunter-travis bash
+  > docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix quay.io/ruslo/hunter-travis-trusty bash
   travis@...:~$ firefox
 
 Information from logs
@@ -133,11 +133,11 @@ in logs:
 
 .. code-block:: none
 
-  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/cef4daf/aa85dd8
+  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/aa85dd8
 
 .. code-block:: shell
 
-  > openssl sha1 /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > openssl sha1 /.../_Base/86b1bc9/aa85dd8/toolchain.info
   SHA1(toolchain.info)= aa85dd86f2feefe76397d7b624ccb6c09d971fe5
 
 You can see that there is no ``aa85dd8`` entry in cache:
@@ -159,7 +159,7 @@ Compare both files to figure out what's wrong:
 
 .. code-block:: shell
 
-  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/aa85dd8/toolchain.info
   ...
   < #define __GNUC_MINOR__ 8
   < #define __GNUC_PATCHLEVEL__ 1
@@ -231,7 +231,8 @@ for OS X  (see also `this repo <https://github.com/forexample/github-binary-rele
       # note that this is repository where password **will be used** in .travis.yml
       # this repository is a fork of https://github.com/ruslo/hunter
   > cd hunter
-  > gem install travis
+  > gem install travis # for Ubuntu it will be 'sudo gem install travis'
+  > travis login --pro # in case repository is private
   > travis encrypt GITHUB_USER_PASSWORD=very-secured-password
   ...
   Please add the following to your .travis file:
@@ -260,6 +261,18 @@ Now you can add secure variable to ``.travis.yml`` matrix:
 
   * `.travis.yml example <https://github.com/ingenue/hunter/blob/4f3b76832d2404c90af98c2557ec06ec7da9eb06/.travis.yml>`__
 
+.. note::
+
+  Instead of a password you can use GitHub token. Follow
+  `those instructions <https://help.github.com/articles/creating-an-access-token-for-command-line-use/>`__
+  and under the ``Select scopes`` choose ``public_repo``
+  (``Access public repositories``).
+
+.. warning::
+
+  If you're planning to use "bot" account, login to GitHub with **bot**
+  credentials.
+
 AppVeyor
 ~~~~~~~~
 
@@ -284,4 +297,3 @@ as an **owner** of repository):
 .. seealso::
 
   * `appveyor.yml example <https://github.com/ingenue/hunter/blob/4f3b76832d2404c90af98c2557ec06ec7da9eb06/appveyor.yml>`__
-
