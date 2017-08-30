@@ -48,8 +48,12 @@ matrix:
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=default
     - os: osx
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=clang-libstdcxx
+
+    # Lack of C++11 support:
+    # * https://travis-ci.org/ingenue/hunter/jobs/269726742
+    # - os: osx
+    #   env: PROJECT_DIR=examples/GTest TOOLCHAIN=clang-libstdcxx
+
     - os: osx
       osx_image: xcode8.2
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=xcode-cxx98
