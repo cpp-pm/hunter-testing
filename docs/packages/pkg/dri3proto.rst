@@ -1,8 +1,9 @@
 .. spelling::
 
-    dri3proto
+    dri
+    proto
 
-.. index:: unsorted ; dri3proto
+.. index:: x11 ; dri3proto
 
 .. _pkg.dri3proto:
 
