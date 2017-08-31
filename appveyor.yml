@@ -9,6 +9,8 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
+    # ceres-solver {
+
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
       PROJECT_DIR: examples\ceres-solver
 
@@ -50,6 +52,8 @@ environment:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/9vqsv6dqeo7f65q0
     #- TOOLCHAIN: "msys"
     #  PROJECT_DIR: examples\ceres-solver
+
+    # }
 
 install:
   # Python 3
