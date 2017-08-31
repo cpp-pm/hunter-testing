@@ -1,8 +1,8 @@
 .. spelling::
 
-    xorg-macros
+    xorg
 
-.. index:: unsorted ; xorg-macros
+.. index:: x11 ; xorg-macros
 
 .. _pkg.xorg-macros:
 

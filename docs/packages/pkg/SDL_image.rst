@@ -1,13 +1,13 @@
 .. spelling::
 
-    glproto
+    SDL_image
 
-.. index:: x11 ; glproto
+.. index:: unsorted ; SDL_image
 
-.. _pkg.glproto:
+.. _pkg.SDL_image:
 
-glproto
-=======
+SDL_image
+=========
 
 .. warning::
 

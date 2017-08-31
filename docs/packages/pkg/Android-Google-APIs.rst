@@ -1,8 +1,9 @@
 .. spelling::
 
     Android-Google-APIs
+    APIs
 
-.. index:: unsorted ; Android-Google-APIs
+.. index:: android_sdk_component ; Android-Google-APIs
 
 .. _pkg.Android-Google-APIs:
 

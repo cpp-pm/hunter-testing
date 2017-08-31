@@ -1,13 +1,13 @@
 .. spelling::
 
-    glproto
+    stormlib
 
-.. index:: x11 ; glproto
+.. index:: unsorted ; stormlib
 
-.. _pkg.glproto:
+.. _pkg.stormlib:
 
-glproto
-=======
+stormlib
+========
 
 .. warning::
 

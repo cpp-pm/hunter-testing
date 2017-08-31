@@ -1,8 +1,9 @@
 .. spelling::
 
-    yaml-cpp
+    yaml
+    cpp
 
-.. index:: unsorted ; yaml-cpp
+.. index:: yaml ; yaml-cpp
 
 .. _pkg.yaml-cpp:
 
