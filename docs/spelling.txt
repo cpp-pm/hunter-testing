@@ -3,6 +3,7 @@ Bonjour
 CGold
 CMake
 CPack
+Cap'n
 Config
 Cygwin
 GCC
@@ -14,6 +15,9 @@ IDEs
 Installable
 Makefile
 NMake
+Proto
+RPC
+SDK
 Scalable
 Shareable
 Stackoverflow
@@ -32,10 +36,15 @@ hunterized
 iOS
 internet
 login
+performant
+plugin
+plugins
 prebuilt
 reconstructible
 reproducibility
+runtime
 sanitizers
 shareable
+subfolder
 toolchain
 toolchains
