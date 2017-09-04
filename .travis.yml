@@ -39,6 +39,8 @@ matrix:
     # * this specific build succeeds, but won't work on android
     #- os: linux
     #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     - os: linux
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=analyze
     - os: linux
@@ -178,6 +180,8 @@ matrix:
     #  env: PROJECT_DIR=examples/LAPACK-dynamic TOOLCHAIN=ios-nocodesign-9-3
     #- os: osx
     #  env: PROJECT_DIR=examples/LAPACK-dynamic TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: osx
+    #  env: PROJECT_DIR=examples/LAPACK-dynamic TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     - os: osx
       env: PROJECT_DIR=examples/LAPACK-dynamic TOOLCHAIN=analyze
@@ -218,6 +222,7 @@ install:
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
 
 script:
   - python3 ./jenkins.py
