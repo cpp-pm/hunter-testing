@@ -34,8 +34,11 @@ matrix:
     #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # Broken build:
+    # * no Fortran compiler found in android toolchain
+    # * this specific build succeeds, but won't work on android
+    #- os: linux
+    #  env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/LAPACK TOOLCHAIN=analyze
     - os: linux
