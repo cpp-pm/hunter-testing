@@ -138,6 +138,9 @@ install:
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
+  # Install GCC and gfortran
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install gcc; fi
+
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
   - unzip master.zip
