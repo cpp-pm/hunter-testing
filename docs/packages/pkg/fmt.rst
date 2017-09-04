@@ -2,17 +2,20 @@
 
     fmt
 
-.. index:: filesystem ; fmt
+.. index:: logging ; fmt
 
 .. _pkg.fmt:
 
 fmt
 ===
 
+.. |hunter| image:: https://img.shields.io/badge/hunter-v0.14.22-blue.svg
+  :target: https://github.com/ruslo/hunter/releases/tag/v0.14.22
+  :alt: Hunter v0.14.22
+
 -  `Official <https://github.com/fmtlib/fmt>`__
 -  `Example <https://github.com/ruslo/hunter/blob/develop/examples/fmt/CMakeLists.txt>`__
--  Available since
-   `v0.14.22 <https://github.com/ruslo/hunter/releases/tag/v0.14.22>`__
+- Available since |hunter|
 -  Added by `Dmitry Panteleev <https://github.com/dpantele>`__
    (`pr-413 <https://github.com/ruslo/hunter/pull/413>`__)
 -  `Testing
@@ -25,7 +28,7 @@ fmt
     find_package(fmt CONFIG REQUIRED)
 
     # or fmt-header-only
-    target_link_libraries(... fmt) 
+    target_link_libraries(... fmt)
 
 Bugs
 ----

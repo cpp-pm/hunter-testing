@@ -2,12 +2,16 @@
 
     Qt
 
-.. index:: frameworks ; Qt
+.. index:: ui ; Qt
 
 .. _pkg.Qt:
 
 Qt
 ==
+
+.. |hunter| image:: https://img.shields.io/badge/hunter-v0.12.0-blue.svg
+  :target: https://github.com/ruslo/hunter/releases/tag/v0.12.0
+  :alt: Hunter v0.12.0
 
 -  `Official <http://qt.io>`__
 -  `Source archives <http://download.qt.io/archive/qt/>`__
@@ -15,8 +19,7 @@ Qt
 -  `iOS examples <https://github.com/forexample/qt-ios-examples>`__
 -  `Android
    example <https://github.com/forexample/android-cmake/tree/master/05-qt-hellogl2>`__
--  Available since
-   `v0.12.0 <https://github.com/ruslo/hunter/releases/tag/v0.12.0>`__
+- Available since |hunter|
 
 Usage
 -----
