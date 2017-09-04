@@ -11,12 +11,20 @@ sudo:
 dist:
   - trusty
 
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
+addons:
+  apt:
+    packages:
+      - gfortran
+
 env:
   global:
     - secure: "RXl1cmKQUgB/Lr6CFW82nYDFSyF5tYjG5N3+ZpZZWDbmVvm8Wj634GR1B5JVcLzoWLearGYtqOA2mQcK+vcp04/KMQC7mEEtUWix74wXz9djzUZMYuMz0VvImpqyE8KF8ZVgbQL5XFP1u+nRahLT9qtNX7VFTqgSB2PJ/kDEQQPV+H4lv/tVBv9ptMC4q9Nwev8qFzEPLqQgp6mqb05BBsgrExEbzVrX5kywb23TGcxMe3c6IHf63vCmr8aHAJFVsHHGkV2QhOoJKeMNa1xPJXGE+yf1rAACglTru7IXOlsZ4bym2qLtQRHz+2jHn1i+qQf0V5M+4H/OBkqOpU9AJ/ylF/WK2eBZedxC+4WPvuO/iDnrtNxikzS5avdFS7IMUJrIm9fP0B8efLovEiJaKwo5k1Yj0uw07b1PoyRE5x+ozRzSLzvWXgOIXbZjOM9BzYFfoNJ+dpjilELuxGn85HljeniK89H/d5gtEUPvSMQC/+RuMo420qaGGhy/lR4ivPTZwCqT7VPQ6+2HLz/wAF5S2jFLGjSZIbb/NMmrV6+puIEEicx0mj2eSpgt7cn9UguevnwtT5UoN2G+dZrI6RfUp0CSH8UHdcJtoSCmYVxO5LsRPXyCEFFF54EsfhqjWegYcxLmHqQQUKlJ8lX9dXMRftW7bIldb98PQGud6Fg="
 
 matrix:
   include:
+    # SuiteSparse {
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=default
@@ -63,6 +71,56 @@ matrix:
     #- os: osx
     #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=analyze
     # }
+    # } // SuiteSparse
+
+    # SuiteSparse-dynLAPACK {
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=default
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076560
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=gcc
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076562
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076563
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=sanitize-leak
+
+    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=sanitize-thread
+
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=default
+    - os: osx
+      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=libcxx
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076570
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=clang-libstdcxx
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076571
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=osx-10-11
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076572
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=ios-nocodesign-9-3
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076573
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076574
+    #- os: osx
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=analyze
+    # }
+    # } // SuiteSparse-dynLAPACK
 
 install:
   # Info about OS
@@ -79,6 +137,9 @@ install:
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+
+  # Install GCC and gfortran
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install gcc; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
