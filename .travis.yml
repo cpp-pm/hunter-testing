@@ -26,6 +26,8 @@ matrix:
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # OpenSSL fails to build for analyze
     # - os: linux
@@ -62,6 +64,8 @@ matrix:
 
     - os: osx
       env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: osx
+      env: PROJECT_DIR=examples/libjson-rpc-cpp TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # OpenSSL fails to build for analyze
     # - os: osx
@@ -99,6 +103,7 @@ install:
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
 
 script:
   - python3 ./jenkins.py
