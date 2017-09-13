@@ -63,21 +63,27 @@ macro(hunter_finalize)
   # * Read HUNTER_GATE_* variables
   # * Check cache HUNTER_* variables is up-to-date
   # * Update cache if needed
+  # * define HUNTER_ID_PATH
+  # * define HUNTER_TOOLCHAIN_ID_PATH
+  # * define HUNTER_CONFIG_ID_PATH
   hunter_apply_gate_settings()
 
   string(SUBSTRING "${HUNTER_SHA1}" 0 7 HUNTER_ID)
   string(SUBSTRING "${HUNTER_CONFIG_SHA1}" 0 7 HUNTER_CONFIG_ID)
   string(SUBSTRING "${HUNTER_TOOLCHAIN_SHA1}" 0 7 HUNTER_TOOLCHAIN_ID)
 
-  set(HUNTER_ID_PATH "${HUNTER_CACHED_ROOT}/_Base/${HUNTER_ID}")
-  set(HUNTER_CONFIG_ID_PATH "${HUNTER_ID_PATH}/${HUNTER_CONFIG_ID}")
-  set(
-      HUNTER_TOOLCHAIN_ID_PATH
-      "${HUNTER_CONFIG_ID_PATH}/${HUNTER_TOOLCHAIN_ID}"
-  )
-
-  set(HUNTER_INSTALL_PREFIX "${HUNTER_TOOLCHAIN_ID_PATH}/Install")
+  set(HUNTER_INSTALL_PREFIX "${HUNTER_CONFIG_ID_PATH}/Install")
   list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}")
+
+  # Override pkg-config default search path
+  # https://github.com/ruslo/hunter/issues/762
+  if(NOT MSVC)
+    set(_pkg_config_dir1 "${HUNTER_INSTALL_PREFIX}/lib/pkgconfig")
+    set(_pkg_config_dir2 "${HUNTER_INSTALL_PREFIX}/share/pkgconfig")
+    # This info is also in hunter_autotools_project.cmake
+    set(ENV{PKG_CONFIG_LIBDIR} "${_pkg_config_dir1}:${_pkg_config_dir2}")
+  endif()
+
   if(ANDROID)
     # OpenCV support: https://github.com/ruslo/hunter/issues/153
     list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}/sdk/native/jni")
@@ -91,12 +97,12 @@ macro(hunter_finalize)
   )
 
   set(_id_info "[ Hunter-ID: ${HUNTER_ID} |")
-  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} |")
-  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} ]")
+  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} |")
+  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} ]")
 
   hunter_status_print("${_id_info}")
 
-  set(HUNTER_CACHE_FILE "${HUNTER_TOOLCHAIN_ID_PATH}/cache.cmake")
+  set(HUNTER_CACHE_FILE "${HUNTER_CONFIG_ID_PATH}/cache.cmake")
   hunter_create_cache_file("${HUNTER_CACHE_FILE}")
 
   if(MSVC)
@@ -151,4 +157,15 @@ macro(hunter_finalize)
   # original path expected. E.g. NMake build:
   # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1412/job/o8a21ue85ivt5d0p
   string(REPLACE "\\" "\\\\" CMAKE_MAKE_PROGRAM "${CMAKE_MAKE_PROGRAM}")
+
+  if(CMAKE_INTERPROCEDURAL_OPTIMIZATION AND NOT POLICY CMP0069)
+    hunter_user_error("Unsuitable CMake version")
+  endif()
+
+  if(IOS AND NOT CMAKE_CROSSCOMPILING)
+    hunter_user_error(
+        "CMAKE_CROSSCOMPILING should be set on iOS."
+        " Please update your toolchain."
+    )
+  endif()
 endmacro()

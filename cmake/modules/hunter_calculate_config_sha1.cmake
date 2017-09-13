@@ -70,6 +70,11 @@ function(hunter_calculate_config_sha1 hunter_self hunter_base user_config)
   endif()
 
   set(projects "${real_projects}")
+  get_property(submodule_projects GLOBAL PROPERTY HUNTER_SUBMODULE_PROJECTS)
+  if(submodule_projects)
+    list(APPEND projects "${submodule_projects}")
+  endif()
+  list(REMOVE_DUPLICATES projects)
   list(SORT projects)
 
   # Create unified version
@@ -88,6 +93,7 @@ function(hunter_calculate_config_sha1 hunter_self hunter_base user_config)
           "hunter_config(${x} "
           "VERSION ${version}"
       )
+
       string(COMPARE NOTEQUAL "${HUNTER_${x}_CMAKE_ARGS}" "" have_args)
       if(have_args)
         file(APPEND "${input_file}" " CMAKE_ARGS")
@@ -95,6 +101,7 @@ function(hunter_calculate_config_sha1 hunter_self hunter_base user_config)
           file(APPEND "${input_file}" " \"${y}\"")
         endforeach()
       endif()
+
       string(COMPARE NOTEQUAL "${HUNTER_${x}_CONFIGURATION_TYPES}" "" have_types)
       if(have_types)
         file(APPEND "${input_file}" " CONFIGURATION_TYPES")
@@ -102,6 +109,25 @@ function(hunter_calculate_config_sha1 hunter_self hunter_base user_config)
           file(APPEND "${input_file}" " ${y}")
         endforeach()
       endif()
+
+      list(FIND submodule_projects "${x}" submodule_found)
+      if(NOT submodule_found EQUAL -1)
+        get_property(
+            git_submodule_dir
+            GLOBAL
+            PROPERTY
+            "HUNTER_${x}_GIT_SUBMODULE_DIR"
+        )
+        if(NOT EXISTS "${git_submodule_dir}")
+          hunter_internal_error("Property not found")
+        endif()
+        file(
+            APPEND
+            "${input_file}"
+            " GIT_SUBMODULE_DIR \"${git_submodule_dir}\""
+        )
+      endif()
+
       file(APPEND "${input_file}" ")\n")
     endif()
   endforeach()
@@ -109,9 +135,19 @@ function(hunter_calculate_config_sha1 hunter_self hunter_base user_config)
   file(SHA1 "${work_dir}/config.cmake" HUNTER_GATE_CONFIG_SHA1)
   set(HUNTER_GATE_CONFIG_SHA1 "${HUNTER_GATE_CONFIG_SHA1}" PARENT_SCOPE)
   hunter_make_directory("${hunter_base}" "${HUNTER_GATE_SHA1}" hunter_id_path)
+
   hunter_make_directory(
-      "${hunter_id_path}" "${HUNTER_GATE_CONFIG_SHA1}" hunter_config_id_path
+      "${hunter_id_path}"
+      "${HUNTER_GATE_TOOLCHAIN_SHA1}"
+      hunter_toolchain_id_path
   )
+
+  hunter_make_directory(
+      "${hunter_toolchain_id_path}"
+      "${HUNTER_GATE_CONFIG_SHA1}"
+      hunter_config_id_path
+  )
+
 
   set(dst "${hunter_config_id_path}/config.cmake")
 
