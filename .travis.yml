@@ -37,8 +37,11 @@ matrix:
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/274571283
+    # - os: linux
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # https://travis-ci.org/ingenue/hunter/jobs/146116369
     # - os: linux
@@ -74,8 +77,11 @@ matrix:
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=ios-nocodesign-9-3
     - os: osx
       env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/274571283
+    # - os: osx
+    #   env: PROJECT_DIR=examples/ogles_gpgpu TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # https://travis-ci.org/ingenue/hunter/jobs/146116390
     # - os: osx
