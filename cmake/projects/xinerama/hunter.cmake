@@ -34,10 +34,12 @@ hunter_cmake_args(
     xinerama
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
       DEPENDS_ON_PACKAGES=${xinerama_dependencies}
+      PKGCONFIG_EXPORT_TARGETS=xinerama
 )
 hunter_cacheable(xinerama)
 hunter_download(
     PACKAGE_NAME xinerama
+    PACKAGE_INTERNAL_DEPS_ID "1"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/libXinerama.la"
     "lib/pkgconfig/xinerama.pc"

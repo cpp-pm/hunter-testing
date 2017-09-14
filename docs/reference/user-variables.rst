@@ -50,6 +50,8 @@ HUNTER_STATUS_PRINT
 * Print current build status
 * Default: ``ON``
 
+.. _hunter_status_debug:
+
 HUNTER_STATUS_DEBUG
 ===================
 
@@ -80,7 +82,7 @@ HUNTER_JOBS_NUMBER
 ==================
 
 * Number of parallel builds that will be used in such native tools like ``make -jN`` or ``xcodebuild -jobs N``
-* For Visual Studio flag ``/MP`` will be used
+* For Visual Studio >= 12 2013 flag ``/maxcpucount:N`` will be added to ``MSBuild``
 * Set variable to ``0`` to disable adding any flags: ``HUNTER_JOBS_NUMBER=0``
 * Default: `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.2/command/cmake_host_system_information.html>`__
 
@@ -115,6 +117,8 @@ HUNTER_CACHE_SERVERS
 
 * Default: https://github.com/ingenue/hunter-cache
 
+.. _hunter_use_cache_servers:
+
 HUNTER_USE_CACHE_SERVERS
 ========================
 
@@ -143,6 +147,33 @@ HUNTER_PASSWORDS_PATH
 
 Path to file with passwords for packages with
 :doc:`protected sources </user-guides/cmake-user/protected-sources>`.
+
+HUNTER_KEEP_PACKAGE_SOURCES
+===========================
+
+If this variable is set to ``YES`` then Hunter will keep package sources
+after finishing installation. It may be useful for navigation in code while
+using debug version of libraries.
+
+This is a workaround for
+`issue #359 <https://github.com/ruslo/hunter/issues/359>`__
+and have some usage peculiarities:
+
+* It does not work well with Hunter cache mechanism. If package binaries will
+  be found on server, then there will be no build stage triggered, hence there
+  will be no sources kept. Use
+  :ref:`HUNTER_USE_CACHE_SERVERS=NO <hunter_use_cache_servers>`
+  for always building packages on local machine from sources.
+* Sources will be kept inside :doc:`Hunter-ID </overview/customization/hunter-id>`
+  directory. Hence even if all the packages will be using another
+  :doc:`Hunter-ID </overview/customization/hunter-id>`,
+  the old :doc:`Hunter-ID </overview/customization/hunter-id>` directory
+  should not be removed.
+* Some packages use in-source build (non-CMake packages) and keep all build
+  artifacts along with sources. Hunter will just keep directory and will not
+  track what files was the original sources/what is temporary files
+  for build. Combining with previous peculiarity it's expected that much
+  more disk space will be used than usually.
 
 Environment
 ~~~~~~~~~~~
