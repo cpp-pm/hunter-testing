@@ -42,8 +42,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\TIFF
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\TIFF
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2375/job/6ht373mmtq9mehnm
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\TIFF
 
 install:
   # Python 3
