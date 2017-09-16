@@ -25,8 +25,10 @@ env:
 
 matrix:
   include:
-    # Protobuf {
     # Linux {
+
+    # Protobuf {
+
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=default
     - os: linux
@@ -35,6 +37,8 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    - os: linux
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
     # - os: linux
@@ -44,58 +48,6 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=sanitize-thread
-    # }
-
-    # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=libcxx
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
-
-    - os: osx
-      osx_image: xcode8.2
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=xcode-nocxx
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=analyze
-
-    # }
-    # }
-
-    # Protobuf-legacy {
-    # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
-    # - os: linux
-    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
-
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
@@ -103,77 +55,30 @@ matrix:
 
     # }
 
-    # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=libcxx
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=clang-libstdcxx
-
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=analyze
-
-    # }
+    # Protobuf-legacy {
+    - os: linux
+      env: PROJECT_DIR=examples/Protobuf-legacy TOOLCHAIN=gcc
     # }
 
     # Protobuf-optimized {
-    # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # }
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
-    # - os: linux
-    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
-
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=libcxx
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440019
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=clang-libstdcxx
 
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=ios-nocodesign-9-3
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=xcode-nocxx
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Protobuf-optimized TOOLCHAIN=analyze
-
-    # }
     # }
 
 install:
