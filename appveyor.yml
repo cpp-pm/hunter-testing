@@ -7,26 +7,17 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+      secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
 
   matrix:
     # Protobuf {
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Protobuf
+
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
       PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Protobuf
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Protobuf
-
-    - TOOLCHAIN: "vs-11-2012"
       PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "vs-12-2013-win64"
@@ -40,10 +31,6 @@ environment:
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf
-
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
-    # - TOOLCHAIN: "vs-9-2008"
-    #   PROJECT_DIR: examples\Protobuf
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Protobuf
@@ -55,91 +42,13 @@ environment:
     # }
 
     # Protobuf-legacy {
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Protobuf-legacy
-
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf-legacy
-
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
-    # - TOOLCHAIN: "vs-9-2008"
-    #   PROJECT_DIR: examples\Protobuf-legacy
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Protobuf-legacy
-
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Protobuf-legacy
-
     # }
 
     # Protobuf-optimized {
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Protobuf-optimized
-
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Protobuf-optimized
-
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
-    # - TOOLCHAIN: "vs-9-2008"
-    #   PROJECT_DIR: examples\Protobuf-optimized
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Protobuf-optimized
-
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.835/job/0isajvkidnv2todp
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Protobuf-optimized
-
     # }
 
 install:
@@ -183,3 +92,5 @@ build_script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
