@@ -28,10 +28,8 @@ matrix:
     # Linux {
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=default
-
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
-
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc
     - os: linux
@@ -60,34 +58,13 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=libcxx
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/116592965
-    # * https://travis-ci.org/ingenue/hunter/jobs/116592974
-    # - os: osx
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
-
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-11
-
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-armv7
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-arm64
-
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # FIXME (TIFF broken)
-    # * https://travis-ci.org/ingenue/hunter/jobs/116592968
-    # - os: osx
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze
-
     # }
 
 install:
