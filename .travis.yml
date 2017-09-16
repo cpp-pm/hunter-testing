@@ -56,25 +56,12 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/flex TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/flex TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/flex TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/flex TOOLCHAIN=osx-10-11
     # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
     # - os: osx
     #   env: PROJECT_DIR=examples/flex TOOLCHAIN=ios-nocodesign-9-3
-    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
-    # - os: osx
-    #   env: PROJECT_DIR=examples/flex TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
-    # - os: osx
-    #   env: PROJECT_DIR=examples/flex TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    # FIXME: https://travis-ci.org/ingenue/hunter/builds/275212096
-    # - os: osx
-    #   env: PROJECT_DIR=examples/flex TOOLCHAIN=analyze
     # }
 
 install:
