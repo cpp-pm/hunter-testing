@@ -59,6 +59,14 @@ matrix:
       env: PROJECT_DIR=examples/Jpeg TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/Jpeg TOOLCHAIN=ios-nocodesign-9-3
+
+    # For OpenCV {
+    - os: osx
+      env: PROJECT_DIR=examples/Jpeg TOOLCHAIN=ios-nocodesign-9-3-armv7
+    - os: osx
+      env: PROJECT_DIR=examples/Jpeg TOOLCHAIN=ios-nocodesign-9-3-arm64
+    # }
+
     # }
 
 install:
