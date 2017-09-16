@@ -54,24 +54,11 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # FIXME: https://github.com/ruslo/hunter/issues/1037
-    # - os: osx
-    #   env: PROJECT_DIR=examples/double-conversion TOOLCHAIN=analyze
-
     # }
 
 install:
