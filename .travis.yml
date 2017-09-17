@@ -65,6 +65,12 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-armv7
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-arm64
+
+    # Upload from local machine {
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3
+    # }
+
     # }
 
 install:
