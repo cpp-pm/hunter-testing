@@ -51,21 +51,11 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=clang-libstdcxx
     # - os: osx
     #   env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=osx-10-11
     # - os: osx
     #   env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    # - os: osx
-    #   env: PROJECT_DIR=examples/cryptopp TOOLCHAIN=analyze
     # }
 
 install:
