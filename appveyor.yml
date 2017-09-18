@@ -42,8 +42,8 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\cryptopp
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\cryptopp
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\cryptopp
 
 install:
   # Python 3
