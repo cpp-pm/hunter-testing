@@ -1,3 +1,6 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 Hunter-ID
 ---------
 
@@ -5,7 +8,7 @@ First level of customization. Hunter archive.
 
 ``Hunter-ID`` is the first 7 digits of ``SHA1``
 of Hunter archive.  This level defines list of available packages and mapping
-``version -> URL/SHA1``. Several ``Hunter-ID`` can coexists in same
+``version -> URL/SHA1``. Several ``Hunter-ID`` can coexist in the same
 ``HUNTER_ROOT`` directory.  ``HunterGate`` command will control your choice:
 
 +-------------+----------------------------------------------------------------------------------------+
@@ -43,15 +46,16 @@ of Hunter archive.  This level defines list of available packages and mapping
 +-------------+-------------------+--------------+----------+------------------------------------------+
 
 
-.. [1] Yep, same version but different URL/SHA1. No conficts.
+.. [1] Yep, same version but different URL/SHA1. No conflicts.
 
 Message in logs:
 
-::
+.. code-block:: none
 
-  -- [hunter] [ Hunter-ID: 1eae623 | Config-ID: ... | Toolchain-ID: ... ]
-  -- [hunter] [ Hunter-ID: e07a124 | Config-ID: ... | Toolchain-ID: ... ]
+  -- [hunter] [ Hunter-ID: 1eae623 | Toolchain-ID: ... | Config-ID: ... ]
+  -- [hunter] [ Hunter-ID: e07a124 | Toolchain-ID: ... | Config-ID: ... ]
 
-.. seealso::
+.. admonition:: Hunter
 
-  * `Releases <https://github.com/ruslo/hunter/releases>`_
+  * `Releases <https://github.com/ruslo/hunter/releases>`__
+  * `Atom feed <https://github.com/ruslo/hunter/releases.atom>`__
