@@ -1,12 +1,20 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
+# Workaround for https://github.com/travis-ci/travis-ci/issues/8363
 language:
-  - cpp
+  - minimal
 
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
   - false
+
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
+addons:
+  apt:
+    packages:
+      - python3-pip
 
 dist:
   - trusty
@@ -52,24 +60,13 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=libcxx
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076570
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=clang-libstdcxx
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076571
     #- os: osx
     #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=osx-10-11
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076572
     #- os: osx
     #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=ios-nocodesign-9-3
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076573
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076574
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse TOOLCHAIN=analyze
     # }
     # } // SuiteSparse
 
@@ -85,6 +82,8 @@ matrix:
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076562
     #- os: linux
     #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #- os: linux
+    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076563
     #- os: linux
     #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=analyze
@@ -101,24 +100,13 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=libcxx
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076570
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=clang-libstdcxx
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076571
     #- os: osx
     #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=osx-10-11
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076572
     #- os: osx
     #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=ios-nocodesign-9-3
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076573
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076574
-    #- os: osx
-    #  env: PROJECT_DIR=examples/SuiteSparse-dynLAPACK TOOLCHAIN=analyze
     # }
     # } // SuiteSparse-dynLAPACK
 
@@ -156,6 +144,7 @@ install:
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
 
 script:
   - python3 ./jenkins.py
