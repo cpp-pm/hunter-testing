@@ -46,6 +46,46 @@ environment:
 
     # }
 
+    # ceres-solver-suitesparse-dynLAPACK {
+
+    - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    - TOOLCHAIN: "nmake-vs-12-2013-win64"
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    - TOOLCHAIN: "vs-12-2013-win64"
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    # only 64bit precompiled c-library provided
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    # only 64bit precompiled c-library provided
+    #- TOOLCHAIN: "vs-12-2013"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    # only 64bit precompiled c-library provided
+    #- TOOLCHAIN: "vs-14-2015"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/m4cnni7etx95m668
+    #- TOOLCHAIN: "vs-9-2008"
+    #  PROJECT_DIR: examples\ceres-solver
+
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/48gweqf10g59yj8s
+    #- TOOLCHAIN: "mingw"
+    #  PROJECT_DIR: examples\ceres-solver
+
+    # FIXME: issue with glog
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/9vqsv6dqeo7f65q0
+    #- TOOLCHAIN: "msys"
+    #  PROJECT_DIR: examples\ceres-solver
+
+    # }
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
