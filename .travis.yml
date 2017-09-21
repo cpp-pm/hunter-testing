@@ -33,8 +33,10 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=clang-libstdcxx
+    # FIXME: missing OpenMP include on clang
+    # * https://travis-ci.org/NeroBurner/hunter/jobs/278209343
+    #- os: linux
+    #  env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=gcc
 
