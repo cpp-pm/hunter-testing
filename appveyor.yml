@@ -29,6 +29,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\ceres-solver
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\ceres-solver
+
     # FIXME: issue with glog
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/m4cnni7etx95m668
     #- TOOLCHAIN: "vs-9-2008"
@@ -68,6 +71,9 @@ environment:
     # only 64bit precompiled c-library provided
     #- TOOLCHAIN: "vs-14-2015"
     #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
 
     # FIXME: issue with glog
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/m4cnni7etx95m668
