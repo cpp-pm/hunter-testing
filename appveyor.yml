@@ -11,20 +11,22 @@ environment:
 
     # ceres-solver {
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver
+    # old vc version not supported anymore, Thread-local storage needed
+    # * https://ci.appveyor.com/project/NeroBurner/hunter/build/1.0.11/job/cjyts9lok0ahx64x
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver
+    #- TOOLCHAIN: "vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\ceres-solver
+    #- TOOLCHAIN: "vs-12-2013-xp"
+    #  PROJECT_DIR: examples\ceres-solver
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\ceres-solver
+    #- TOOLCHAIN: "vs-12-2013"
+    #  PROJECT_DIR: examples\ceres-solver
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\ceres-solver
@@ -51,14 +53,15 @@ environment:
 
     # ceres-solver-suitesparse-dynLAPACK {
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+    # old vc version not supported anymore, Thread-local storage needed
+    #- TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+    #- TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
+    #- TOOLCHAIN: "vs-12-2013-win64"
+    #  PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
 
     # only 64bit precompiled c-library provided
     #- TOOLCHAIN: "vs-12-2013-xp"
