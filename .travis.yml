@@ -1,22 +1,25 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
+# Workaround for https://github.com/travis-ci/travis-ci/issues/8363
 language:
-  - cpp
+  - minimal
 
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
   - false
 
-dist:
-  - trusty
-
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
     packages:
+      - python3-pip
       - gfortran
+
+dist:
+  - trusty
+
 
 env:
   global:
@@ -66,13 +69,7 @@ matrix:
     # OSX {
 
     - os: osx
-      env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=libcxx
-
-    #Removed: eigen requires c++11 and libstdcxx does not support all of c++11
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=clang-libstdcxx
 
     - os: osx
       env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=osx-10-11
@@ -80,17 +77,6 @@ matrix:
     # FIXME: ceres requires a toolchain file in is directory to be called to setup builds
     #- os: osx
     #  env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=ios-nocodesign-9-3
-
-    # FIXME: issue with glog
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846142
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME: issue with glog
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846143
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=analyze
-
     # }
 
     # }
@@ -138,13 +124,7 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=libcxx
-
-    #Removed: eigen requires c++11 and libstdcxx does not support all of c++11
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=clang-libstdcxx
 
     # FIXME: no fortran compiler found
     # * https://travis-ci.org/ingenue/hunter/jobs/256904309#L752
@@ -154,19 +134,6 @@ matrix:
     # FIXME: ceres requires a toolchain file in is directory to be called to setup builds
     #- os: osx
     #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=ios-nocodesign-9-3
-
-    # FIXME: issue with glog
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846142
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    #- os: osx
-    #   env: PROJECT_DIR=examples/ceres-solver TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # FIXME: issue with glog
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846143
-    #- os: osx
-    #  env: PROJECT_DIR=examples/ceres-solver-suitesparse TOOLCHAIN=analyze
-
     # }
 
     # }
