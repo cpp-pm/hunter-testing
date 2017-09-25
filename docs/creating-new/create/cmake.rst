@@ -374,6 +374,11 @@ Substitute ``unsorted`` with some tag in directive
 ``.. index:: unsorted ; foo``. This tag will be used on
 :ref:`this page <genindex>`.
 
+.. seealso::
+
+  * `Gentoo packages <https://packages.gentoo.org/categories>`__
+  * `Ubuntu packages <https://packages.ubuntu.com/>`__
+
 .. note::
 
   Since you don't know a priory pull request number leave it as ``N`` for now.
@@ -435,6 +440,8 @@ Go back to Hunter repository and run test:
   [hunter]> which polly.py
   /.../bin/polly.py
   [hunter]> TOOLCHAIN=gcc PROJECT_DIR=examples/hunter_box_1 ./jenkins.py
+
+.. _ci testing:
 
 CI testing
 ==========
@@ -723,6 +730,6 @@ At this moment all branches can be removed:
   [hunter]> git push origin :pr.pkg.hunter_box_1
   [hunter]> git push origin :test.hunter_box_1
 
-  [hunter]> git branch -D :pr.hunter_box_1
-  [hunter]> git branch -D :pr.pkg.hunter_box_1
-  [hunter]> git branch -D :test.hunter_box_1
+  [hunter]> git branch -D pr.hunter_box_1
+  [hunter]> git branch -D pr.pkg.hunter_box_1
+  [hunter]> git branch -D test.hunter_box_1
