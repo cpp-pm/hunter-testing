@@ -32,12 +32,13 @@ matrix:
       env: PROJECT_DIR=examples/Libevent TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/Libevent TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Libevent TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Libevent TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/Libevent TOOLCHAIN=analyze
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276923018
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Libevent TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Libevent TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Libevent TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/Libevent TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,8 +55,9 @@ matrix:
       env: PROJECT_DIR=examples/Libevent TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/Libevent TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/Libevent TOOLCHAIN=ios-nocodesign-9-3
+    # FIXME: https://travis-ci.org/ingenue/hunter/builds/276923018
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Libevent TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
