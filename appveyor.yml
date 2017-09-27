@@ -46,7 +46,7 @@ environment:
       PROJECT_DIR: examples\ZLIB
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\Foo
+      PROJECT_DIR: examples\ZLIB
 
 install:
   # Python 3
