@@ -228,7 +228,6 @@ matrix:
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
 
     # }
 
