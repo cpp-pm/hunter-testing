@@ -50,6 +50,8 @@ HUNTER_STATUS_PRINT
 * Print current build status
 * Default: ``ON``
 
+.. _hunter_status_debug:
+
 HUNTER_STATUS_DEBUG
 ===================
 
@@ -75,6 +77,13 @@ HUNTER_CONFIGURATION_TYPES
 * Build type of the 3rd party packages
 * See `example <https://github.com/ruslo/hunter/wiki/example.hunter_configuration_types>`__
 * Default: ``Release``, ``Debug``
+
+HUNTER_BUILD_SHARED_LIBS
+========================
+
+* Value for
+  `BUILD_SHARED_LIBS <https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html>`__
+  for 3rd party packages
 
 HUNTER_JOBS_NUMBER
 ==================
@@ -157,7 +166,7 @@ This is a workaround for
 `issue #359 <https://github.com/ruslo/hunter/issues/359>`__
 and have some usage peculiarities:
 
-* It doesn't work well with Hunter cache mechanism. If package binaries will
+* It does not work well with Hunter cache mechanism. If package binaries will
   be found on server, then there will be no build stage triggered, hence there
   will be no sources kept. Use
   :ref:`HUNTER_USE_CACHE_SERVERS=NO <hunter_use_cache_servers>`
