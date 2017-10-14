@@ -66,8 +66,14 @@ matrix:
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=osx-10-11
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/287844550
+    # - os: osx
+    #   env: PROJECT_DIR=examples/drishti TOOLCHAIN=ios-nocodesign-9-3
+
     - os: osx
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=ios-nocodesign-10-1-arm64-dep-9-0-device-libcxx-hid-sections-lto
+
     # }
 
 install:
