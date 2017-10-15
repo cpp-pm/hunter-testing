@@ -71,6 +71,12 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3
     # }
 
+    # Extra toolchain for 'Drishti' {
+    - os: osx
+      osx_image: xcode8.1
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-1-arm64-dep-9-0-device-libcxx-hid-sections-lto
+    # }
+
     # }
 
 install:
