@@ -41,6 +41,12 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\OpenCV
 
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\OpenCV-drishti
+
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\OpenCV-drishti
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
