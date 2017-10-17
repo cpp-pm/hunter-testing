@@ -61,6 +61,12 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/PNG TOOLCHAIN=ios-nocodesign-9-3
 
+    # Extra toolchain for OpenCV {
+    - os: osx
+      osx_image: xcode7.3
+      env: PROJECT_DIR=examples/PNG TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+    # }
+
     # Extra toolchain for Drishti {
     - os: osx
       osx_image: xcode8.1
