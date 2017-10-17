@@ -71,7 +71,7 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3
     # }
 
-    # Extra toolchain for 'cvmatio' {
+    # Extra toolchain for 'cvmatio' (upload from local machine) {
     - os: osx
       osx_image: xcode7.3
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
