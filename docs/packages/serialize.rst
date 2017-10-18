@@ -2,6 +2,7 @@
 
   json
   deserialization
+  scalable
 
 Serialize
 ---------
@@ -10,6 +11,7 @@ Serialize
  * :ref:`pkg.CsvParserCPlusPlus` - C++ library for parsing text files.
  * :ref:`pkg.Expat` - XML parser library in C.
  * :ref:`pkg.flatbuffers` - Memory Efficient Serialization Library
+ * :ref:`pkg.gumbo` - An HTML5 parsing library in pure C99
  * :ref:`pkg.irrXML` -  simple and fast open source xml parser for C++
  * :ref:`pkg.JsonSpirit` - C++ JSON Library including both a json-data-structure and parser (based on Boost.Spirit>`.
  * :ref:`pkg.msgpack` - efficient binary serialization format.
@@ -18,5 +20,6 @@ Serialize
  * :ref:`pkg.Protobuf` - Protocol Buffers - Google's data interchange format
  * :ref:`pkg.RapidJSON` - A fast JSON parser/generator for C++ with both SAX/DOM style API
  * :ref:`pkg.RapidXML` - attempt to create the fastest XML parser possible, while retaining usability, portability and reasonable W3C compatibility.
+ * :ref:`pkg.thrift` - software framework for scalable cross-language services development
  * :ref:`pkg.yaml-cpp` - human friendly data serialization standard for all programming languages.
  * :ref:`pkg.jsoncpp` - A library that allows manipulating JSON values, including serialization and deserialization to and from strings.
