@@ -30,8 +30,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\c-ares
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\c-ares
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.105
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\c-ares
 
 install:
   # Python 3
