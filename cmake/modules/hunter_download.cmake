@@ -44,7 +44,7 @@ function(hunter_download)
 
   hunter_test_string_not_empty("${HUNTER_INSTALL_PREFIX}")
   hunter_test_string_not_empty("${HUNTER_PACKAGE_NAME}")
-  hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_ID_PATH}")
+  hunter_test_string_not_empty("${HUNTER_CONFIG_ID_PATH}")
   hunter_test_string_not_empty("${HUNTER_CACHE_FILE}")
 
   string(COMPARE NOTEQUAL "${HUNTER_BINARY_DIR}" "" hunter_has_binary_dir)
@@ -147,7 +147,7 @@ function(hunter_download)
   set(HUNTER_PACKAGE_SETUP_DIR "${HUNTER_SELF}/cmake/projects/${HUNTER_PACKAGE_NAME}")
   set(HUNTER_GLOBAL_SCRIPT_DIR "${HUNTER_SELF}/scripts")
   set(HUNTER_PACKAGE_SCRIPT_DIR "${HUNTER_PACKAGE_SETUP_DIR}/scripts/")
-  set(HUNTER_PACKAGE_HOME_DIR "${HUNTER_TOOLCHAIN_ID_PATH}/Build")
+  set(HUNTER_PACKAGE_HOME_DIR "${HUNTER_CONFIG_ID_PATH}/Build")
   set(
       HUNTER_PACKAGE_HOME_DIR
       "${HUNTER_PACKAGE_HOME_DIR}/${HUNTER_PACKAGE_NAME}"
@@ -277,7 +277,7 @@ function(hunter_download)
       "${HUNTER_PACKAGE_DOWNLOAD_DIR}" HUNTER_ALREADY_LOCKED_DIRECTORIES
   )
   hunter_lock_directory(
-      "${HUNTER_TOOLCHAIN_ID_PATH}" HUNTER_ALREADY_LOCKED_DIRECTORIES
+      "${HUNTER_CONFIG_ID_PATH}" HUNTER_ALREADY_LOCKED_DIRECTORIES
   )
   if(hunter_has_binary_dir)
     hunter_lock_directory(
@@ -311,11 +311,24 @@ function(hunter_download)
   endif()
 
   # load from cache using SHA1 of args.cmake file
+  set(package_cmake_args "")
+  list(APPEND package_cmake_args ${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS})
+
+  # Priority is higher than default CMAKE_ARGS from `hunter.cmake` but
+  # lower than user's CMAKE_ARGS from `config.cmake`.
+  string(COMPARE EQUAL "${HUNTER_CACHED_BUILD_SHARED_LIBS}" "" is_empty)
+  if(NOT is_empty)
+    list(
+        APPEND
+        package_cmake_args
+        "BUILD_SHARED_LIBS=${HUNTER_CACHED_BUILD_SHARED_LIBS}"
+    )
+  endif()
+
+  list(APPEND package_cmake_args ${HUNTER_${h_name}_CMAKE_ARGS})
+
   file(REMOVE "${HUNTER_ARGS_FILE}")
-  hunter_create_args_file(
-      "${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS};${HUNTER_${h_name}_CMAKE_ARGS}"
-      "${HUNTER_ARGS_FILE}"
-  )
+  hunter_create_args_file("${package_cmake_args}" "${HUNTER_ARGS_FILE}")
 
   # Check if package can be loaded from cache
   hunter_load_from_cache()
@@ -400,7 +413,7 @@ function(hunter_download)
   file(
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
-      "list(APPEND HUNTER_CACHE_SERVERS ${HUNTER_CACHE_SERVERS})\n"
+      "set(HUNTER_CACHE_SERVERS \"${HUNTER_CACHE_SERVERS}\" CACHE INTERNAL \"\")\n"
   )
   file(
       APPEND
