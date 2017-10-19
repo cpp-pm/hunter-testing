@@ -18,8 +18,9 @@ environment:
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\benchmark
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\benchmark
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2567
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\benchmark
 
     - TOOLCHAIN: "vs-12-2013"
       PROJECT_DIR: examples\benchmark
@@ -27,8 +28,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\benchmark
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\benchmark
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2567
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\benchmark
 
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\benchmark
