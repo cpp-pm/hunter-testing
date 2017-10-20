@@ -65,8 +65,8 @@ matrix:
 
     # Extra toolchain for Drishti {
     - os: osx
-      osx_image: xcode8.1
-      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign-10-1-arm64-dep-9-0-device-libcxx-hid-sections
+      osx_image: xcode9
+      env: PROJECT_DIR=examples/ZLIB TOOLCHAIN=ios-nocodesign-11-0-arm64-dep-9-0-device-libcxx-hid-sections
     # }
 
     # }
