@@ -35,10 +35,12 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/290428500
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/290428500
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
     # - os: linux
@@ -76,8 +78,9 @@ matrix:
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=xcode-nocxx
     - os: osx
       env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/290428500
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Protobuf TOOLCHAIN=ios-nocodesign-9-3
 
     # }
 
