@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import print_function
 
 import argparse
 import base64
@@ -8,6 +9,9 @@ import os
 import requests
 import sys
 import time
+
+class Error(Exception):
+  pass
 
 def sleep_time(attempt):
   if attempt <= 0:
@@ -32,14 +36,20 @@ def retry(func_in):
       i = i + 1
       try:
         return func_in(*args, **kwargs)
+      except Error as err:
+        # Treat Errors as fatal and do not retry.
+        # Also explicitly flush message to avoid "no output" issue on some CIs.
+        print('Error:\n  {}'.format(err))
+        sys.stdout.flush()
+        raise err
       except Exception as exc:
         if i > retry_max:
           raise exc
         print('Operation failed. Exception:\n  {}'.format(exc))
         sec = sleep_time(i)
         print('Retry #{} (of {}) after {} seconds'.format(i, retry_max, sec))
+        sys.stdout.flush()
         time.sleep(sec)
-    raise Exception('Unreachable')
   return func_out
 
 # http://stackoverflow.com/a/16696317/2288008
@@ -60,6 +70,8 @@ class Github:
     self.repo = repo
     self.auth = requests.auth.HTTPBasicAuth(username, password)
     self.simple_request()
+    self.release_id = None
+    self.upload_url = None
 
   @retry
   def simple_request(self):
@@ -87,12 +99,22 @@ class Github:
     )
 
     r = requests.get(url, auth=self.auth)
+    if r.status_code == 404:
+        raise Error('Release {} does not exist. Create a GitHub release for with this tag'.format(tagname))
     if not r.ok:
-      raise Exception('Get tag id failed. Requested url: {}'.format(url))
+        raise Exception(
+            'Get release id failed. Status code: {}. Requested url: {}'.format(
+                r.status_code, url))
 
-    tag_id = r.json()['id']
-    print('Tag id is {}'.format(tag_id))
-    return tag_id
+    release_id = r.json()['id']
+    upload_url = r.json()['upload_url']
+    uri_template_vars = '{?name,label}'
+    if uri_template_vars not in upload_url:
+        raise Exception('Unsupported upload URI template: {}'.format(upload_url))
+    upload_url = upload_url.replace(uri_template_vars, '?name={}')
+    print('Release id: {}'.format(release_id))
+    print('Upload URL: {}'.format(upload_url))
+    return release_id, upload_url
 
   @retry
   def find_asset_id_by_name(self, release_id, name):
@@ -171,22 +193,18 @@ class Github:
 
   def upload_raw_file(self, local_path):
     tagname = 'cache'
-    release_id = self.get_release_by_tag(tagname)
+    if self.release_id is None:
+        self.release_id, self.upload_url = self.get_release_by_tag(tagname)
 
     # https://developer.github.com/v3/repos/releases/#upload-a-release-asset
-    # POST https://<upload_url>/repos/:owner/:repo/releases/:id/assets?name=foo.zip
+    # POST to upload_url received in the release description
+    # in get_release_by_tag()
 
     asset_name = hashlib.sha1(open(local_path, 'rb').read()).hexdigest()
     asset_name = asset_name + '.tar.bz2'
 
-    url = 'https://uploads.github.com/repos/{}/{}/releases/{}/assets?name={}'.format(
-        self.repo_owner,
-        self.repo,
-        release_id,
-        asset_name
-    )
-
-    self.upload_bzip(url, local_path, release_id, asset_name)
+    url = self.upload_url.format(asset_name)
+    self.upload_bzip(url, local_path, self.release_id, asset_name)
 
   @retry
   def create_new_file(self, local_path, github_path):
