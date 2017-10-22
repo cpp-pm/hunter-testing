@@ -36,7 +36,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=clang-libstdcxx VERBOSE=0
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=gcc VERBOSE=0
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
