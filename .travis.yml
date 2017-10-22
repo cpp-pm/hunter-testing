@@ -34,7 +34,7 @@ matrix:
     #   env: PROJECT_DIR=examples/drishti TOOLCHAIN=default
 
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=clang-libstdcxx VERBOSE=0
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=gcc
     - os: linux
@@ -51,9 +51,9 @@ matrix:
     #   env: PROJECT_DIR=examples/drishti TOOLCHAIN=analyze
 
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-address VERBOSE=0
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-leak VERBOSE=0
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
