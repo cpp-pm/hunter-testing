@@ -34,6 +34,15 @@ matrix:
       env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=gcc
 
     # FIXME
+    # https://travis-ci.org/ingenue/hunter/jobs/139306958
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME
+    # - os: linux
+    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME
     # https://travis-ci.org/ingenue/hunter/jobs/138969013
     # - os: linux
     #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=analyze
@@ -52,45 +61,18 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=sanitize-thread
 
-    # FIXME
-    # https://travis-ci.org/ingenue/hunter/jobs/139306958
-    # - os: linux
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME
-    # - os: linux
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=clang-libstdcxx
-    - os: osx
       env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=osx-10-11
-
-    # FIXME
-    # https://travis-ci.org/ingenue/hunter/builds/138969008
-    # - os: osx
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=analyze
 
     # FIXME
     # https://travis-ci.org/ingenue/hunter/jobs/139306963
     # - os: osx
     #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=ios-nocodesign-9-3
-
-    # FIXME
-    # https://travis-ci.org/ingenue/hunter/jobs/139306964
-    # - os: osx
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME
-    # - os: osx
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # }
 
