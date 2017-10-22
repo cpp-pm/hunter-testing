@@ -17,6 +17,39 @@ hunter_add_version(
     PACKAGE_NAME
     OpenCV
     VERSION
+    "3.3.0-p2"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.0-p2.tar.gz"
+    SHA1
+    27be59f7978a4625401a1041af8d108a47ae745b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.3.0-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.0-p0.tar.gz"
+    SHA1
+    fc351142139be71b366458fa1572ab004c871774
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.2.0-p2"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.2.0-p2.tar.gz"
+    SHA1
+    99219206c4fb9b5b6f60e03112746461baf6c9ab
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
     "3.2.0-p1"
     URL
     "https://github.com/hunter-packages/opencv/archive/v3.2.0-p1.tar.gz"
@@ -85,7 +118,7 @@ hunter_add_version(
     VERSION
     "3.0.0-p11"
     URL
-    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p11.tar.gz"
+    "https://github.com/hunter-packages/opencv/releases/download/v3.0.0-p11/v3.0.0-p11.tar.gz"
     SHA1
     3fa05fadc5c2b5e02ada00ccb7752ede660699ab
 )
@@ -280,7 +313,7 @@ hunter_add_version(
 string(COMPARE EQUAL "${CMAKE_OSX_SYSROOT}" "iphoneos" _is_ios)
 
 if(_is_ios)
-  set(_ios_args ENABLE_NEON=ON)
+  set(_ios_args BUILD_WEBP=ON)
 else()
   set(_ios_args "")
 endif()
