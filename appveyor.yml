@@ -250,6 +250,9 @@ environment:
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\Boost-random
 
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost-math
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%

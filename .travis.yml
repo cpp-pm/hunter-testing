@@ -216,6 +216,11 @@ matrix:
       env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc
     # }
 
+    # Boost-math {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=gcc
+    # }
+
     # }
 
     # OSX {
@@ -314,6 +319,12 @@ matrix:
     - os: osx
       osx_image: xcode8.2
       env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=cxx11
+    # }
+
+    # Boost-math {
+    - os: osx
+      osx_image: xcode8.2
+      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=cxx11
     # }
 
     # }
