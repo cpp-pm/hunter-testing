@@ -4,7 +4,7 @@
 Why binaries from server not used?
 ==================================
 
-If settings and environment of your local project doesn't match environment
+If settings and environment of your local project does not match environment
 of Travis/AppVeyor services (this is where binaries usually uploaded from)
 you will see ``Cache miss`` message and package will be build locally:
 
@@ -133,11 +133,11 @@ in logs:
 
 .. code-block:: none
 
-  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/cef4daf/aa85dd8
+  -- [hunter *** DEBUG *** ...] HUNTER_TOOLCHAIN_ID_PATH: /.../_Base/86b1bc9/aa85dd8
 
 .. code-block:: shell
 
-  > openssl sha1 /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > openssl sha1 /.../_Base/86b1bc9/aa85dd8/toolchain.info
   SHA1(toolchain.info)= aa85dd86f2feefe76397d7b624ccb6c09d971fe5
 
 You can see that there is no ``aa85dd8`` entry in cache:
@@ -159,7 +159,7 @@ Compare both files to figure out what's wrong:
 
 .. code-block:: shell
 
-  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/cef4daf/aa85dd8/toolchain.info
+  > diff hunter-cache/8928885/toolchain.info /.../_Base/86b1bc9/aa85dd8/toolchain.info
   ...
   < #define __GNUC_MINOR__ 8
   < #define __GNUC_PATCHLEVEL__ 1
@@ -181,8 +181,8 @@ Uploading to server
 -------------------
 
 It is possible to upload Hunter binary cache to the server.
-For now only GitHub hosting supported. All big raw ``*.tar.bz2`` archives
-uploaded as assets to release with name ``cache`` (directory layout doesn't
+Next shown an example of using GitHub as a hosting. All big raw ``*.tar.bz2`` archives
+uploaded as assets to release with name ``cache`` (directory layout does not
 matter) and all small text files with meta information uploaded directly to
 branch ``master`` (directory layout matters) (see
 `hunter-cache <https://github.com/ingenue/hunter-cache>`__ as example).
@@ -198,21 +198,14 @@ done using Python script ``maintenance/upload-cache-to-github.py`` (which may be
 called by ``jenkins.py --upload``). Note that downloading from server done by
 ``file(DOWNLOAD ...)`` CMake commands, so client is still CMake-only based.
 
-Extra servers can be added by modifying variable
-`HUNTER_CACHE_SERVERS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_cache_servers>`__
-before ``HunterGate`` command:
-
-.. code-block:: cmake
-
-  list(APPEND HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
-  HunterGate(URL ... SHA1 ...)
+List of servers can be set in
+:ref:`HUNTER_CACHE_SERVERS <hunter_cache_servers>` variable.
 
 If you want to check that there is no 3rd party builds triggered by CMake and
 all packages downloaded from server you can use
-`HUNTER_DISABLE_BUILDS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_disable_builds>`__
-variable. Also variable
-`HUNTER_USE_CACHE_SERVERS <https://github.com/ruslo/hunter/wiki/usr.variables#hunter_use_cache_servers>`__
-can be used to specify downloading policy.
+:ref:`HUNTER_DISABLE_BUILDS <hunter_disable_builds>` variable. Also variable
+:ref:`HUNTER_USE_CACHE_SERVERS <hunter_use_cache_servers>` can be used to specify
+downloading policy.
 
 Uploading from CI servers like Travis or AppVeyor require to store password as
 an environment variable ``GITHUB_USER_PASSWORD`` (note that you can create

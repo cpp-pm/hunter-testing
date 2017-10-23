@@ -1,12 +1,20 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
+# Workaround for https://github.com/travis-ci/travis-ci/issues/8363
 language:
-  - cpp
+  - minimal
 
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
   - false
+
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
+addons:
+  apt:
+    packages:
+      - python3-pip
 
 dist:
   - trusty
@@ -28,6 +36,8 @@ matrix:
     # * https://travis-ci.org/ingenue/hunter/jobs/105848277
     # - os: linux
     #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # * https://travis-ci.org/ingenue/hunter/jobs/105848266
     # - os: linux
@@ -46,25 +56,13 @@ matrix:
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=default
-    - os: osx
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=osx-10-11
 
     # * https://travis-ci.org/ingenue/hunter/jobs/105848276
     # - os: osx
     #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=ios-nocodesign-9-3
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848265
-    # - os: osx
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # * https://travis-ci.org/ingenue/hunter/jobs/105848278
-    # - os: osx
-    #   env: PROJECT_DIR=examples/PostgreSQL TOOLCHAIN=analyze
 
     # }
 
@@ -99,6 +97,7 @@ install:
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
 
 script:
   - python3 ./jenkins.py
