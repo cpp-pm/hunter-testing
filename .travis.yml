@@ -54,6 +54,11 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread
 
+    # Extra toolchain for 'Drishti' {
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-5 VERBOSE=0
+    # }
+
     # }
 
     # OSX {
