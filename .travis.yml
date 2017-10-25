@@ -56,7 +56,7 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/CURL TOOLCHAIN=osx-10-11
     - os: osx
-      env: PROJECT_DIR=examples/CURL TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/CURL TOOLCHAIN=ios-nocodesign-9-3 VERBOSE=0
     # }
 
 install:
