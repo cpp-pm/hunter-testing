@@ -50,6 +50,8 @@ HUNTER_STATUS_PRINT
 * Print current build status
 * Default: ``ON``
 
+.. _hunter_status_debug:
+
 HUNTER_STATUS_DEBUG
 ===================
 
@@ -76,11 +78,18 @@ HUNTER_CONFIGURATION_TYPES
 * See `example <https://github.com/ruslo/hunter/wiki/example.hunter_configuration_types>`__
 * Default: ``Release``, ``Debug``
 
+HUNTER_BUILD_SHARED_LIBS
+========================
+
+* Value for
+  `BUILD_SHARED_LIBS <https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html>`__
+  for 3rd party packages
+
 HUNTER_JOBS_NUMBER
 ==================
 
 * Number of parallel builds that will be used in such native tools like ``make -jN`` or ``xcodebuild -jobs N``
-* For Visual Studio flag ``/MP`` will be used
+* For Visual Studio >= 12 2013 flag ``/maxcpucount:N`` will be added to ``MSBuild``
 * Set variable to ``0`` to disable adding any flags: ``HUNTER_JOBS_NUMBER=0``
 * Default: `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.2/command/cmake_host_system_information.html>`__
 
@@ -92,6 +101,8 @@ HUNTER_RUN_INSTALL
 Set this variable to ``ON`` to run auto-install procedure if it's disabled by
 :ref:`HUNTER_DISABLE_AUTOINSTALL <hunter disable install>` environment variable.
 
+.. _hunter_disable_builds:
+
 HUNTER_DISABLE_BUILDS
 =====================
 
@@ -100,20 +111,46 @@ HUNTER_DISABLE_BUILDS
   local/server cache
 * Default: ``NO``
 
+.. _hunter_cache_servers:
+
 HUNTER_CACHE_SERVERS
 ====================
 
 * Variable contains list of servers with cache binaries
-* For now only GitHub supported
-  (see :doc:`overview </faq/why-binaries-from-server-not-used>`)
 * Variable should be modified before ``HunterGate`` command:
 
 .. code-block:: cmake
 
-  list(APPEND HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
-  HunterGate(URL ... SHA1 ...)
+  set(
+      HUNTER_CACHE_SERVERS
+      "https://github.com/elucideye/hunter-cache"
+      CACHE
+      STRING
+      "Hunter cache servers"
+  )
+  HunterGate(URL "..." SHA1 "...")
+
+Using two servers:
+
+.. code-block:: cmake
+
+  set(
+      HUNTER_CACHE_SERVERS
+      "https://github.com/elucideye/hunter-cache;https://github.com/ingenue/hunter-cache"
+      CACHE
+      STRING
+      "Hunter cache servers"
+  )
+  HunterGate(URL "..." SHA1 "...")
 
 * Default: https://github.com/ingenue/hunter-cache
+
+.. seealso::
+
+  * :doc:`Why binaries from server not used? </faq/why-binaries-from-server-not-used>`
+  * :doc:`Using Nexus Repository </user-guides/hunter-user/nexus-cache-server>`
+
+.. _hunter_use_cache_servers:
 
 HUNTER_USE_CACHE_SERVERS
 ========================
@@ -143,6 +180,33 @@ HUNTER_PASSWORDS_PATH
 
 Path to file with passwords for packages with
 :doc:`protected sources </user-guides/cmake-user/protected-sources>`.
+
+HUNTER_KEEP_PACKAGE_SOURCES
+===========================
+
+If this variable is set to ``YES`` then Hunter will keep package sources
+after finishing installation. It may be useful for navigation in code while
+using debug version of libraries.
+
+This is a workaround for
+`issue #359 <https://github.com/ruslo/hunter/issues/359>`__
+and have some usage peculiarities:
+
+* It does not work well with Hunter cache mechanism. If package binaries will
+  be found on server, then there will be no build stage triggered, hence there
+  will be no sources kept. Use
+  :ref:`HUNTER_USE_CACHE_SERVERS=NO <hunter_use_cache_servers>`
+  for always building packages on local machine from sources.
+* Sources will be kept inside :doc:`Hunter-ID </overview/customization/hunter-id>`
+  directory. Hence even if all the packages will be using another
+  :doc:`Hunter-ID </overview/customization/hunter-id>`,
+  the old :doc:`Hunter-ID </overview/customization/hunter-id>` directory
+  should not be removed.
+* Some packages use in-source build (non-CMake packages) and keep all build
+  artifacts along with sources. Hunter will just keep directory and will not
+  track what files was the original sources/what is temporary files
+  for build. Combining with previous peculiarity it's expected that much
+  more disk space will be used than usually.
 
 Environment
 ~~~~~~~~~~~
