@@ -26,8 +26,12 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/yaml-cpp TOOLCHAIN=default
+
+    # Need C++11 support:
+    # * https://travis-ci.org/ingenue/hunter/jobs/292619745
+    # - os: linux
+    #   env: PROJECT_DIR=examples/yaml-cpp TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/yaml-cpp TOOLCHAIN=clang-libstdcxx
     - os: linux
