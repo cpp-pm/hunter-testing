@@ -1,5 +1,4 @@
 # Copyright (c) 2016-2017, Ruslan Baratov
-# Copyright (c) 2017, David Hirvonen
 # All rights reserved.
 
 # !!! DO NOT PLACE HEADER GUARDS HERE !!!
@@ -12,26 +11,28 @@ include(hunter_pick_scheme)
 
 hunter_add_version(
     PACKAGE_NAME
-    eigen3-nnls
+    drishti
     VERSION
-    1.0.0
+    0.8.4
     URL
-    "https://github.com/hunter-packages/eigen3-nnls/archive/v1.0.0.tar.gz"
+    "https://github.com/elucideye/drishti/archive/v0.8.4.tar.gz"
     SHA1
-    0bc34af72ace36e14dc8387e292e338ee30f620d
-    )
+    8d3bdc346073c0a1449b213fe374f6baf7589af1
+)
 
 hunter_add_version(
     PACKAGE_NAME
-    eigen3-nnls
+    drishti
     VERSION
-    1.0.1
+    0.8.6
     URL
-    "https://github.com/hunter-packages/eigen3-nnls/archive/v1.0.1.tar.gz"
+    "https://github.com/elucideye/drishti/archive/v0.8.6.tar.gz"
     SHA1
-    c324595a32b51476eb5e26ce70616709e97b2ec3
-    )
-  
+    180161389f017719380f344e09f76fd1cdae609d
+)
+
+hunter_cmake_args(drishti CMAKE_ARGS DRISHTI_BUILD_EXAMPLES=NO)
+
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(eigen3-nnls)
-hunter_download(PACKAGE_NAME eigen3-nnls)
+hunter_cacheable(drishti)
+hunter_download(PACKAGE_NAME drishti)
