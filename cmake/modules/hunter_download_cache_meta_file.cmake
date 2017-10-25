@@ -40,6 +40,9 @@ function(hunter_download_cache_meta_file)
   string(REPLACE "${cache_directory}/meta/" "" local_suffix "${x_LOCAL}")
   string(REPLACE "${cache_directory}/meta/" "" done_suffix "${x_DONE}")
 
+  set(local_temp "${x_LOCAL}.__HUNTER_TEMP__")
+  set(done_temp "${x_DONE}.__HUNTER_TEMP__")
+
   if(EXISTS "${x_DONE}")
     return()
   endif()
@@ -62,26 +65,27 @@ function(hunter_download_cache_meta_file)
     foreach(server ${HUNTER_CACHE_SERVERS})
       string(REGEX MATCH "^https://github.com/" is_github "${server}")
       if(NOT is_github)
-        hunter_user_error("Unknown cache server: ${server}")
+        set(local_url "${server}/meta/${local_suffix}")
+        set(done_url "${server}/meta/${done_suffix}")
+      else()
+        string(
+            REPLACE
+            "https://github.com/"
+            "https://raw.githubusercontent.com/"
+            url
+            "${server}"
+        )
+
+        set(local_url "${url}/master/${local_suffix}")
+        set(done_url "${url}/master/${done_suffix}")
       endif()
-
-      string(
-          REPLACE
-          "https://github.com/"
-          "https://raw.githubusercontent.com/"
-          url
-          "${server}"
-      )
-
-      set(local_url "${url}/master/${local_suffix}")
-      set(done_url "${url}/master/${done_suffix}")
 
       hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${done_url}")
       hunter_status_debug("  -> ${x_DONE}")
 
       hunter_sleep_before_download("${x}")
-      file(DOWNLOAD "${done_url}" "${x_DONE}" STATUS status)
+      file(DOWNLOAD "${done_url}" "${done_temp}" STATUS status)
 
       list(GET status 0 error_code)
       list(GET status 1 error_message)
@@ -89,7 +93,7 @@ function(hunter_download_cache_meta_file)
       hunter_check_download_error_message(
           ERROR_CODE "${error_code}"
           ERROR_MESSAGE "${error_message}"
-          REMOVE_ON_ERROR "${x_DONE}"
+          REMOVE_ON_ERROR "${done_temp}"
           NOT_FOUND_COUNTER not_found_counter
       )
 
@@ -117,7 +121,7 @@ function(hunter_download_cache_meta_file)
         hunter_status_debug("  -> ${x_LOCAL}")
 
         hunter_sleep_before_download("${x}")
-        file(DOWNLOAD "${local_url}" "${x_LOCAL}" STATUS status)
+        file(DOWNLOAD "${local_url}" "${local_temp}" STATUS status)
 
         list(GET status 0 error_code)
         list(GET status 1 error_message)
@@ -125,11 +129,16 @@ function(hunter_download_cache_meta_file)
         hunter_check_download_error_message(
             ERROR_CODE "${error_code}"
             ERROR_MESSAGE "${error_message}"
-            REMOVE_ON_ERROR "${x_LOCAL}"
+            REMOVE_ON_ERROR "${local_temp}"
             NOT_FOUND_COUNTER not_found_counter
         )
 
         if(error_code EQUAL 0)
+          # Success. Rename temporary files to the final destination.
+          # RENAME operation is atomic. Note that DONE should be the last to
+          # signal that everything ended as expected.
+          file(RENAME "${local_temp}" "${x_LOCAL}")
+          file(RENAME "${done_temp}" "${x_DONE}")
           return()
         elseif(error_code EQUAL 22)
           hunter_status_debug("File not found")
@@ -138,7 +147,7 @@ function(hunter_download_cache_meta_file)
         endif()
       endforeach()
 
-      file(REMOVE "${x_DONE}")
+      file(REMOVE "${done_temp}")
       hunter_internal_error(
           "Server error. File not exists but DONE stamp found.\n"
           "  file: ${local_url}"
