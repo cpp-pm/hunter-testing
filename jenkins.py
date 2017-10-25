@@ -107,7 +107,7 @@ def run():
   if (
       os.getenv('TRAVIS') and
       (project_dir == 'examples/OpenCV') and
-      (toolchain.startswith('ios-nocodesign'))
+      (toolchain == 'ios-nocodesign')
   ):
     verbose = False
 
@@ -115,13 +115,6 @@ def run():
       os.getenv('TRAVIS') and
       (project_dir == 'examples/OpenCV') and
       (toolchain == 'osx-10-11')
-  ):
-    verbose = False
-
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/OpenCV') and
-      (toolchain == 'android-ndk-r10e-api-19-armeabi-v7a-neon')
   ):
     verbose = False
 
