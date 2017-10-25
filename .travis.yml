@@ -26,6 +26,7 @@ env:
 matrix:
   include:
     # Linux {
+
     - os: linux
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=default
     - os: linux
@@ -51,73 +52,22 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-thread
 
+    - os: linux
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc
+
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=default
+
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=osx-10-11
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/163974428
-    # - os: osx
-    #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=analyze
-    # }
-
-    # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc-4-8
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/163974419
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-leak
-
-    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=sanitize-thread
-
-    # }
-
-    # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=clang-libstdcxx
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=ios-nocodesign-9-3
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/163974428
-    # - os: osx
-    #   env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=analyze
 
     # }
 
