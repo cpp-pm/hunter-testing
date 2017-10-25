@@ -321,12 +321,6 @@ matrix:
       env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=cxx11
     # }
 
-    # Boost-math {
-    - os: osx
-      osx_image: xcode8.2
-      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=cxx11
-    # }
-
     # }
 
 install:
