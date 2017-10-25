@@ -9,11 +9,15 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\OpenSSL
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2624/job/d3wwre7y5wkbne3f
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\OpenSSL
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\OpenSSL
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2624/job/dqmspg2i0otar5rr
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\OpenSSL
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\OpenSSL
