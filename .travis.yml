@@ -13,9 +13,16 @@ sudo:
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - python3-pip
       - libgl1-mesa-dev # GL library
+
+      # nlohmann/json
+      # * https://travis-ci.org/ingenue/hunter/jobs/291844331
+      - g++-5
+      - gcc-5
 
 dist:
   - trusty
@@ -36,7 +43,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=clang-libstdcxx VERBOSE=0
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=gcc VERBOSE=0
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=gcc-5 VERBOSE=0
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
