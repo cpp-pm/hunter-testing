@@ -15,19 +15,6 @@ environment:
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
       PROJECT_DIR: examples\aglet
 
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\aglet
-
-    # Lack of C++11 support:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/h52rpmxmbkpgsxi5
-    # - TOOLCHAIN: "vs-10-2010"
-    #   PROJECT_DIR: examples\aglet
-
-    # Lack of C++11 support:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/un3en9d67w22gip4
-    # - TOOLCHAIN: "vs-11-2012"
-    #   PROJECT_DIR: examples\aglet
-
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\aglet
 
@@ -40,11 +27,6 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\aglet
 
-    # Lack of C++11 support:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/afn35xyewd31s4wa
-    # - TOOLCHAIN: "vs-9-2008"
-    #   PROJECT_DIR: examples\aglet
-
     # GLEW is missing:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/7mx432diwehh6snf
     # - TOOLCHAIN: "mingw"
@@ -54,6 +36,14 @@ environment:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1979/job/1co843n92f2gwqec
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\aglet
+
+    # Extra toolchains for Drishti {
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\aglet
+
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\aglet
+    # }
 
 install:
   # Python 3
