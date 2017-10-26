@@ -13,8 +13,13 @@ sudo:
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - python3-pip
+
+      - g++-5
+      - gcc-5
 
 dist:
   - trusty
@@ -72,6 +77,11 @@ matrix:
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
     #   env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
+
+    # Extra toolchain for Drishti {
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-5
+    # }
 
     # }
 
