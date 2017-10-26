@@ -37,6 +37,14 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\aglet
 
+    # Extra toolchains for Drishti {
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\aglet
+
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\aglet
+    # }
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
