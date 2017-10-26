@@ -63,7 +63,7 @@ matrix:
 
     # Extra toolchain for Drishti {
     - os: linux
-      env: PROJECT_DIR=examples/aglet TOOLCHAIN=gcc-5
+      env: PROJECT_DIR=examples/aglet TOOLCHAIN=gcc-5 VERBOSE=0
     # }
 
     # }
