@@ -17,6 +17,9 @@ addons:
       - python3-pip
       - libgl1-mesa-dev # GL library
 
+      - g++-5
+      - gcc-5
+
 dist:
   - trusty
 
@@ -55,6 +58,11 @@ matrix:
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
     #   env: PROJECT_DIR=examples/aglet TOOLCHAIN=sanitize-thread
+
+    # Extra toolchain for Drishti {
+    - os: linux
+      env: PROJECT_DIR=examples/aglet TOOLCHAIN=gcc-5
+    # }
 
     # }
 
