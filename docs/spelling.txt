@@ -1,9 +1,9 @@
 AppVeyor
 Bonjour
-Cap'n
 CGold
 CMake
 CPack
+Cap'n
 Config
 Cygwin
 GCC
@@ -15,10 +15,11 @@ IDEs
 Installable
 Makefile
 NMake
+OSX
 Proto
 RPC
-Scalable
 SDK
+Scalable
 Shareable
 Stackoverflow
 Toolchain
@@ -32,6 +33,7 @@ configs
 customizable
 embeddable
 hunterization
+hunterize
 hunterized
 iOS
 internet
@@ -40,10 +42,13 @@ performant
 plugin
 plugins
 prebuilt
+priori
 reconstructible
 reproducibility
+runtime
 sanitizers
 shareable
 subfolder
+submodules
 toolchain
 toolchains
