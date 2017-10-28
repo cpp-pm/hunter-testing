@@ -30,8 +30,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\OpenAL
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\OpenAL
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.188
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\OpenAL
 
 install:
   # Python 3
