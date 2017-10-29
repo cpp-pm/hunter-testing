@@ -9,29 +9,39 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\foo
+    # FIXME: VS 2013 isn't supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/789poansyed7nyqr
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\debug_assert
+    
+    # FIXME: VS 2013 isn't supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/2eju62cm7y2eh7vx
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\debug_assert
+      
+    # FIXME: VS 2013 isn't supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/radv9tvf8b4ns3aq
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\debug_assert
+      
+    # FIXME: VS 2013 isn't supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/8tamu3a6s810t56f
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\debug_assert
+      
+    # FIXME: VS 2013 isn't supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/xkj1bcqj8xxsr7dy
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\debug_assert
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\debug_assert
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\debug_assert
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\debug_assert
 
 install:
   # Python 3
