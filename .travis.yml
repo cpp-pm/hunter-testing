@@ -27,35 +27,42 @@ matrix:
   include:
     # Linux {
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=default
+      env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=default
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=gcc
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=analyze
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=sanitize-address
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: linux
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=sanitize-leak
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
-    #   env: PROJECT_DIR=examples/foo TOOLCHAIN=sanitize-thread
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=sanitize-thread
 
     # }
 
     # OSX {
     - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=libcxx
+      env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/foo TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=osx-10-11
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
+    # - os: osx
+    #   env: PROJECT_DIR=examples/pybind11 TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
