@@ -8,30 +8,42 @@ environment:
 
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
+    
+    # FIXME: VS 2013 not supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/h3rpakygpylkbptg
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\type_safe
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+    # FIXME: VS 2013 not supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/v1yv2tyv49ptyw9t
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\type_safe
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+    # FIXME: VS 2013 not supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/49kw8ut2wngsp1mb
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\type_safe
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\foo
+    # FIXME: VS 2013 not supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/ojwrlpk3n9lhjy9r
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\type_safe
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\foo
+    # FIXME: VS 2013 not supported
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/px88h9e82vqal3s2
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\type_safe
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\foo
-
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\foo
+    # FIXME: paths too long
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/l5l4jg11ah30v8n8
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\type_safe
 
     - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\type_safe
 
     - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\type_safe
 
 install:
   # Python 3
