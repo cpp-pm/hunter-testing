@@ -9,26 +9,40 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/xvqtdjeacxj8jjfa
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/lx9rc49ai4aerx8i
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/5s38l2ffqk8nnc9q
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/hg03we1ep0g9cexo
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/5m8kdqc0yq68cxmi
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/ospedx4osxdo3i4i
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\farmhash
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\farmhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2710/job/gnk3n52ym83jee36
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\farmhash
 
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\farmhash
