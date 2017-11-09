@@ -26,18 +26,32 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=default
+
+    # C++11 required:
+    # * https://travis-ci.org/ingenue/hunter/jobs/299720390
+    # - os: linux
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/acf TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/acf TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/299720393
+    # - os: linux
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/299720394
+    # - os: linux
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # libtiff dependency:
+    # * https://travis-ci.org/ingenue/hunter/jobs/299720395
+    # - os: linux
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/acf TOOLCHAIN=sanitize-address
     - os: linux
