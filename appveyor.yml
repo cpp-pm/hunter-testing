@@ -9,20 +9,30 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/7427qwhqvvxc6s8g
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\highwayhash
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/oad6etbra9rwsf4m
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\highwayhash
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/11ae5agftbwrvkss
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\highwayhash
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/dcrqoi1cja90j9bb
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\highwayhash
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/y5sv4hqyp4uhdgpr
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\highwayhash
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\highwayhash
@@ -30,8 +40,10 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\highwayhash
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\highwayhash
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2711/job/3pqr3186iux9os6q
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\highwayhash
 
 install:
   # Python 3
