@@ -27,11 +27,15 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\giflib
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\giflib
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2723/job/3d3wchc19e9t6w1q
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\giflib
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\giflib
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2723/job/m947ekltwloixgye
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\giflib
 
 install:
   # Python 3

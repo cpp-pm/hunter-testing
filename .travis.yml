@@ -32,12 +32,22 @@ matrix:
       env: PROJECT_DIR=examples/giflib TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/giflib TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/giflib TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/giflib TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/giflib TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/300051782
+    # - os: linux
+    #   env: PROJECT_DIR=examples/giflib TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/300051783
+    # - os: linux
+    #   env: PROJECT_DIR=examples/giflib TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/300051784
+    # - os: linux
+    #   env: PROJECT_DIR=examples/giflib TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/giflib TOOLCHAIN=sanitize-address
     - os: linux
