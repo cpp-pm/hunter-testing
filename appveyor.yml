@@ -30,8 +30,10 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\re2
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\re2
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2728/job/6p5vc7rxf5b3v7gv
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\re2
 
 install:
   # Python 3
