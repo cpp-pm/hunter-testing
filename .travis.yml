@@ -26,18 +26,30 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/re2 TOOLCHAIN=default
+
+    # C++11 required
+    # * https://travis-ci.org/ingenue/hunter/jobs/300147722
+    # - os: linux
+    #   env: PROJECT_DIR=examples/re2 TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/re2 TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/re2 TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/re2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # Lack of C++11 support:
+    # * https://travis-ci.org/ingenue/hunter/jobs/300147725
+    # - os: linux
+    #   env: PROJECT_DIR=examples/re2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/re2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/re2 TOOLCHAIN=analyze
+
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/300147727
+    # - os: linux
+    #   env: PROJECT_DIR=examples/re2 TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/re2 TOOLCHAIN=sanitize-address
     - os: linux
