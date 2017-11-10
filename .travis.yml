@@ -50,12 +50,15 @@ matrix:
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=ios-nocodesign-9-3
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/300159973
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=libcxx
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/300159973
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=osx-10-11
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/300159973
+    # - os: osx
+    #   env: PROJECT_DIR=examples/LibCDS TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
