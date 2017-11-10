@@ -27,11 +27,15 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\lmdb
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\lmdb
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2735/job/8r2wwsejq3cagwca
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\lmdb
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\lmdb
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2735/job/32dgcmxy5upl3s3f
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\lmdb
 
 install:
   # Python 3
