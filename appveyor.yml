@@ -9,29 +9,37 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\nsync
+    # Lack of C++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2737/job/w7c3h8mqn6v5mrwp
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nsync
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\nsync
+    # Lack of C++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2737/job/giktjhj62wh2ce5i
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nsync
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\nsync
-
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\nsync
-
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\nsync
+    # Lack of C++11 support:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2737/job/73hvtm6a16scdmy1
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\nsync
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\nsync
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\nsync
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\nsync
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\nsync
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2737/job/2s2691kp4oxby0n4
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\nsync
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\nsync
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2737/job/wn6apjnneba13qcf
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\nsync
 
 install:
   # Python 3
