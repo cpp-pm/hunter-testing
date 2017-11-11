@@ -15,6 +15,7 @@ addons:
   apt:
     packages:
       - python3-pip
+      - golang
 
 dist:
   - trusty
