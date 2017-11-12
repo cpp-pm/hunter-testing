@@ -437,9 +437,38 @@ Go back to Hunter repository and run test:
 .. code-block:: none
 
   > cd hunter
+
   [hunter]> which polly.py
   /.../bin/polly.py
+
+  [hunter]> polly.py --help
+  Python version: 3.5
+  usage: polly.py [-h]
+  ...
+
   [hunter]> TOOLCHAIN=gcc PROJECT_DIR=examples/hunter_box_1 ./jenkins.py
+
+On Windows:
+
+.. code-block:: none
+
+  > cd hunter
+
+  [hunter]> where polly.py
+  C:\...\bin\polly.py
+
+  [hunter]> polly.py --help
+  Python version: 3.5
+  usage: polly.py [-h]
+  ...
+
+  [hunter]> set TOOLCHAIN=vs-12-2013
+  [hunter]> set PROJECT_DIR=examples\hunter_box_1
+  [hunter]> .\jenkins.py
+
+.. admonition:: Stackoverflow
+
+  * `How to execute Python scripts in Windows? <https://stackoverflow.com/a/1936078/2288008>`__
 
 .. _ci testing:
 
@@ -735,3 +764,21 @@ At this moment all branches can be removed:
   [hunter]> git branch -D pr.hunter_box_1
   [hunter]> git branch -D pr.pkg.hunter_box_1
   [hunter]> git branch -D test.hunter_box_1
+
+Badge
+=====
+
+Badge in ``README.rst`` can signal that package ``hunter_box_1`` is available
+via Hunter:
+
+.. code-block:: none
+
+  |hunter|
+
+  .. |hunter| image:: https://img.shields.io/badge/hunter-hunter_box_1-blue.svg
+    :target: https://docs.hunter.sh/en/latest/packages/pkg/hunter_box_1.html
+    :alt: Hunter
+
+Example:
+
+* https://github.com/hunter-packages/gauze/blob/master/README.rst
