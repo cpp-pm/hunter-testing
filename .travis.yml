@@ -29,8 +29,8 @@ matrix:
     # FIXME: C++ 11 not supported
     #* https://travis-ci.org/jowr/hunter/jobs/302754872
     #* https://github.com/nlohmann/json#supported-compilers
-    - os: linux
-      env: PROJECT_DIR=examples/inja TOOLCHAIN=default
+    #- os: linux
+    #  env: PROJECT_DIR=examples/inja TOOLCHAIN=default
     - os: linux
       env: PROJECT_DIR=examples/inja TOOLCHAIN=clang-libstdcxx
     # FIXME: C++ 11 not supported
