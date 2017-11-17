@@ -26,18 +26,29 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/cpr TOOLCHAIN=default
+    # FIXME: requires c++11
+    # https://travis-ci.org/dvirtz/hunter/jobs/303261698
+    # - os: linux
+    #   env: PROJECT_DIR=examples/cpr TOOLCHAIN=default
+    
     - os: linux
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/cpr TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      
+    # FIXME: 'to_string' is not a member of 'std'
+    # https://travis-ci.org/dvirtz/hunter/jobs/303261708
+    # - os: linux
+    #   env: PROJECT_DIR=examples/cpr TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    
     - os: linux
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/cpr TOOLCHAIN=analyze
+      
+    # FIXME: clang: command not found
+    # https://travis-ci.org/dvirtz/hunter/jobs/303261713
+    # - os: linux
+    #   env: PROJECT_DIR=examples/cpr TOOLCHAIN=analyze
+    
     - os: linux
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=sanitize-address
     - os: linux
@@ -54,8 +65,11 @@ matrix:
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/cpr TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/cpr TOOLCHAIN=ios-nocodesign-9-3
+    
+    # FIXME: timeout
+    # https://travis-ci.org/dvirtz/hunter/jobs/303261740
+    # - os: osx
+    #   env: PROJECT_DIR=examples/cpr TOOLCHAIN=ios-nocodesign-9-3
     # }
 
 install:
