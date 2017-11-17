@@ -19,8 +19,12 @@ macro(hunter_finalize)
   # Check preconditions
   hunter_sanity_checks()
 
-  list(APPEND HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
-  list(REMOVE_DUPLICATES HUNTER_CACHE_SERVERS)
+  string(COMPARE EQUAL "${HUNTER_CACHE_SERVERS}" "" _is_empty)
+  if(_is_empty)
+    hunter_status_debug("Using default cache server")
+    set(HUNTER_CACHE_SERVERS "https://github.com/ingenue/hunter-cache")
+  endif()
+
   hunter_status_debug("List of cache servers:")
   foreach(_server ${HUNTER_CACHE_SERVERS})
     hunter_status_debug("  * ${_server}")
@@ -63,20 +67,16 @@ macro(hunter_finalize)
   # * Read HUNTER_GATE_* variables
   # * Check cache HUNTER_* variables is up-to-date
   # * Update cache if needed
+  # * define HUNTER_ID_PATH
+  # * define HUNTER_TOOLCHAIN_ID_PATH
+  # * define HUNTER_CONFIG_ID_PATH
   hunter_apply_gate_settings()
 
   string(SUBSTRING "${HUNTER_SHA1}" 0 7 HUNTER_ID)
   string(SUBSTRING "${HUNTER_CONFIG_SHA1}" 0 7 HUNTER_CONFIG_ID)
   string(SUBSTRING "${HUNTER_TOOLCHAIN_SHA1}" 0 7 HUNTER_TOOLCHAIN_ID)
 
-  set(HUNTER_ID_PATH "${HUNTER_CACHED_ROOT}/_Base/${HUNTER_ID}")
-  set(HUNTER_CONFIG_ID_PATH "${HUNTER_ID_PATH}/${HUNTER_CONFIG_ID}")
-  set(
-      HUNTER_TOOLCHAIN_ID_PATH
-      "${HUNTER_CONFIG_ID_PATH}/${HUNTER_TOOLCHAIN_ID}"
-  )
-
-  set(HUNTER_INSTALL_PREFIX "${HUNTER_TOOLCHAIN_ID_PATH}/Install")
+  set(HUNTER_INSTALL_PREFIX "${HUNTER_CONFIG_ID_PATH}/Install")
   list(APPEND CMAKE_PREFIX_PATH "${HUNTER_INSTALL_PREFIX}")
 
   # Override pkg-config default search path
@@ -99,14 +99,17 @@ macro(hunter_finalize)
   hunter_status_debug(
       "HUNTER_CONFIGURATION_TYPES: ${HUNTER_CACHED_CONFIGURATION_TYPES}"
   )
+  hunter_status_debug(
+      "HUNTER_BUILD_SHARED_LIBS: ${HUNTER_BUILD_SHARED_LIBS}"
+  )
 
   set(_id_info "[ Hunter-ID: ${HUNTER_ID} |")
-  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} |")
-  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} ]")
+  set(_id_info "${_id_info} Toolchain-ID: ${HUNTER_TOOLCHAIN_ID} |")
+  set(_id_info "${_id_info} Config-ID: ${HUNTER_CONFIG_ID} ]")
 
   hunter_status_print("${_id_info}")
 
-  set(HUNTER_CACHE_FILE "${HUNTER_TOOLCHAIN_ID_PATH}/cache.cmake")
+  set(HUNTER_CACHE_FILE "${HUNTER_CONFIG_ID_PATH}/cache.cmake")
   hunter_create_cache_file("${HUNTER_CACHE_FILE}")
 
   if(MSVC)
