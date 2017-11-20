@@ -104,13 +104,6 @@ def run():
           )
       )
 
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/PocoCpp') and
-      toolchain.startswith('ios-nocodesign')
-  ):
-    verbose = False
-
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
 
@@ -262,6 +255,9 @@ def run():
         'TESTING_URL={}'.format(hunter_url),
         'TESTING_SHA1={}'.format(hunter_sha1)
     ]
+    if not verbose:
+      args += ['--discard', '10']
+      args += ['--tail', '200']
 
     print('Execute command: [')
     for i in args:
