@@ -18,6 +18,12 @@ addons:
     packages:
       - python3-pip
 
+      # For Qt: eGL library
+      - libegl1-mesa-dev
+
+      # For Qt: GL library
+      - libgl1-mesa-dev
+
       # nlohmann/json
       # * https://travis-ci.org/ingenue/hunter/jobs/291844331
       - g++-5
@@ -45,6 +51,8 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc VERBOSE=0
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
