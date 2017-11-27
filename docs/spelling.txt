@@ -42,6 +42,7 @@ performant
 plugin
 plugins
 prebuilt
+priori
 reconstructible
 reproducibility
 runtime
@@ -51,3 +52,4 @@ subfolder
 submodules
 toolchain
 toolchains
+multi
