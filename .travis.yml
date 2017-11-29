@@ -53,9 +53,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/opentracing-cpp TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/opentracing-cpp TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/opentracing-cpp TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/opentracing-cpp TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/opentracing-cpp TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
