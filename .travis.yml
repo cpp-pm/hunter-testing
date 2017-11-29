@@ -57,9 +57,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/GTest TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=ios-nocodesign-10-3
 
     - os: osx
       osx_image: xcode8.2
