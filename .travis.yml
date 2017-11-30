@@ -240,9 +240,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-10-3
 
     # }
 
@@ -251,9 +251,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign-10-3
 
     # Extra toolchain for Drishti {
     - os: osx
@@ -268,9 +268,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-10-3
 
     # }
 
@@ -279,11 +279,11 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-12
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105982177
     # - os: osx
-    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign-9-3
+    #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=ios-nocodesign-10-3
 
     # Keep: Not working on Linux but working on OSX
     - os: osx
@@ -296,9 +296,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-10-3
 
     # }
 
@@ -307,9 +307,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-10-3
 
     # }
 
@@ -318,9 +318,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-9-3
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-10-3
 
     # }
 
