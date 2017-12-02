@@ -67,7 +67,7 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign-10-3
 
     - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-12
 
     # }
 
