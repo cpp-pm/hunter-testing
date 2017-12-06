@@ -7,10 +7,10 @@ cmake_minimum_required(VERSION 3.0)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-foo)
+project(download-mojoshader)
 
-hunter_add_package(foo)
-find_package(foo CONFIG REQUIRED)
+hunter_add_package(mojoshader)
+find_package(mojoshader CONFIG REQUIRED)
 
 add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC foo::foo)
+target_link_libraries(boo PUBLIC mojoshader::mojoshader)

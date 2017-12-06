@@ -7,10 +7,10 @@ cmake_minimum_required(VERSION 3.0)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-foo)
+project(download-stb)
 
-hunter_add_package(foo)
-find_package(foo CONFIG REQUIRED)
+hunter_add_package(stb)
+find_package(stb CONFIG REQUIRED)
 
 add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC foo::foo)
+target_link_libraries(boo PUBLIC stb::stb)
