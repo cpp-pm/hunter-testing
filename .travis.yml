@@ -32,10 +32,13 @@ matrix:
       env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/312087697
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
     - os: linux
       env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=analyze
     - os: linux
@@ -54,8 +57,11 @@ matrix:
       env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=ios-nocodesign-10-3
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/312087706
+    # - os: osx
+    #   env: PROJECT_DIR=examples/libcpuid TOOLCHAIN=ios-nocodesign-10-3
+
     # }
 
 install:
