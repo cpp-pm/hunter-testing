@@ -30,8 +30,9 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\stb
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\stb
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2930/job/vvrdx9k8nou788lw
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\stb
 
 install:
   # Python 3
