@@ -28,8 +28,11 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=default
+
+    # opeddlparser: C++11 required
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=clang-libstdcxx
     - os: linux
