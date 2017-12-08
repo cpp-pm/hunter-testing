@@ -4,11 +4,10 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+      secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
 
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\irrXML
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/2rdedgnf2f3yiu0j
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -17,15 +16,6 @@ environment:
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/l01ja87ny6ofu8lv
     # - TOOLCHAIN: "nmake-vs-12-2013-win64"
     #   PROJECT_DIR: examples\irrXML
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\irrXML
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\irrXML
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\irrXML
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/w1gy5b2g5rg8b9xn
     # - TOOLCHAIN: "vs-12-2013-win64"
@@ -38,9 +28,6 @@ environment:
       PROJECT_DIR: examples\irrXML
 
     - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\irrXML
-
-    - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\irrXML
 
     - TOOLCHAIN: "mingw"
@@ -68,6 +55,8 @@ install:
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%
   - cmd: set PATH=%cd%\_ci\ninja;%PATH%
 
+  - cmd: git submodule update --init --recursive
+
   # Remove entry with sh.exe from PATH to fix error with MinGW toolchain
   # (For MinGW make to work correctly sh.exe must NOT be in your path)
   # * http://stackoverflow.com/a/3870338/2288008
@@ -80,8 +69,6 @@ install:
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
-  - git submodule update --init --recursive
-
 build_script:
   - cmd: python .\jenkins.py
 
@@ -90,3 +77,5 @@ build_script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
