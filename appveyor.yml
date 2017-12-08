@@ -4,11 +4,10 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+      secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
 
   matrix:
-    - TOOLCHAIN: "default"
-      PROJECT_DIR: examples\Assimp
+    # Note: 'default' toolchain is the same as 'vs-14-2015'
 
     # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
     # - TOOLCHAIN: "ninja-vs-12-2013-win64"
@@ -17,15 +16,6 @@ environment:
     # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
     # - TOOLCHAIN: "nmake-vs-12-2013-win64"
     #   PROJECT_DIR: examples\Assimp
-
-    - TOOLCHAIN: "nmake-vs-12-2013"
-      PROJECT_DIR: examples\Assimp
-
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\Assimp
-
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\Assimp
 
     # irrXML is broken: https://github.com/ingenue/hunter/blob/pkg.irrxml/appveyor.yml
     # - TOOLCHAIN: "vs-12-2013-win64"
@@ -39,10 +29,6 @@ environment:
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\Assimp
-
-    # openddlparser need c++11: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.612/job/6ecd7wcp37e24ftr
-    # - TOOLCHAIN: "vs-9-2008"
-    #   PROJECT_DIR: examples\Assimp
 
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\Assimp
@@ -71,6 +57,8 @@ install:
   - cmd: set PATH=%cd%\_ci\cmake\bin;%PATH%
   - cmd: set PATH=%cd%\_ci\ninja;%PATH%
 
+  - cmd: git submodule update --init --recursive
+
   # Remove entry with sh.exe from PATH to fix error with MinGW toolchain
   # (For MinGW make to work correctly sh.exe must NOT be in your path)
   # * http://stackoverflow.com/a/3870338/2288008
@@ -83,8 +71,6 @@ install:
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
 
-  - git submodule update --init --recursive
-
 build_script:
   - cmd: python .\jenkins.py
 
@@ -93,3 +79,5 @@ build_script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
