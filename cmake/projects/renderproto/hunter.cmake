@@ -5,6 +5,8 @@
 
 include(hunter_add_version)
 include(hunter_cacheable)
+include(hunter_cmake_args)
+include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
 
@@ -20,9 +22,16 @@ hunter_add_version(
     7ae9868a358859fe539482b02414aa15c2d8b1e4
 )
 
+hunter_configuration_types(renderproto CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
+hunter_cmake_args(
+    renderproto
+    CMAKE_ARGS
+    PKGCONFIG_EXPORT_TARGETS=renderproto
+)
 hunter_cacheable(renderproto)
 hunter_download(
     PACKAGE_NAME renderproto
+    PACKAGE_INTERNAL_DEPS_ID "2"
     PACKAGE_UNRELOCATABLE_TEXT_FILES "lib/pkgconfig/renderproto.pc"
 )
