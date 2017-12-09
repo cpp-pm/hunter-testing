@@ -118,8 +118,11 @@ if(WIN32 AND NOT CYGWIN)
 
     find_library(LIB_EAY_DEBUG
       NAMES
+        libcrypto${_OPENSSL_MSVC_RT_MODE}d
+        libcryptod
         libeay32${_OPENSSL_MSVC_RT_MODE}d
         libeay32d
+        cryptod
       HINTS
         "${OPENSSL_ROOT}"
       PATH_SUFFIXES
@@ -128,8 +131,11 @@ if(WIN32 AND NOT CYGWIN)
 
     find_library(LIB_EAY_RELEASE
       NAMES
+        libcrypto${_OPENSSL_MSVC_RT_MODE}
+        libcrypto
         libeay32${_OPENSSL_MSVC_RT_MODE}
         libeay32
+        crypto
       HINTS
         "${OPENSSL_ROOT}"
       PATH_SUFFIXES
@@ -138,8 +144,11 @@ if(WIN32 AND NOT CYGWIN)
 
     find_library(SSL_EAY_DEBUG
       NAMES
+        libssl${_OPENSSL_MSVC_RT_MODE}d
+        libssld
         ssleay32${_OPENSSL_MSVC_RT_MODE}d
         ssleay32d
+        ssld
       HINTS
         "${OPENSSL_ROOT}"
       PATH_SUFFIXES
@@ -148,6 +157,8 @@ if(WIN32 AND NOT CYGWIN)
 
     find_library(SSL_EAY_RELEASE
       NAMES
+        libssl${_OPENSSL_MSVC_RT_MODE}
+        libssl
         ssleay32${_OPENSSL_MSVC_RT_MODE}
         ssleay32
         ssl
@@ -251,10 +262,10 @@ else()
   mark_as_advanced(OPENSSL_CRYPTO_LIBRARY OPENSSL_SSL_LIBRARY)
 
   # compat defines
-  set(OPENSSL_SSL_LIBRARIES ${OPENSSL_SSL_LIBRARY})
-  set(OPENSSL_CRYPTO_LIBRARIES ${OPENSSL_CRYPTO_LIBRARY})
+  set(OPENSSL_SSL_LIBRARIES ${OPENSSL_SSL_LIBRARY} ${CMAKE_DL_LIBS})
+  set(OPENSSL_CRYPTO_LIBRARIES ${OPENSSL_CRYPTO_LIBRARY} ${CMAKE_DL_LIBS})
 
-  set(OPENSSL_LIBRARIES ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY})
+  set(OPENSSL_LIBRARIES ${OPENSSL_SSL_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} ${CMAKE_DL_LIBS})
 
 endif()
 
@@ -362,6 +373,15 @@ if(OPENSSL_FOUND)
     add_library(OpenSSL::Crypto UNKNOWN IMPORTED)
     set_target_properties(OpenSSL::Crypto PROPERTIES
       INTERFACE_INCLUDE_DIRECTORIES "${OPENSSL_INCLUDE_DIR}")
+    find_package(Threads REQUIRED)
+    if(WIN32)
+      # https://github.com/openssl/openssl/issues/1061
+      set(_openssl_win32_crypt "crypt32")
+    else()
+      set(_openssl_win32_crypt "")
+    endif()
+    set_target_properties(OpenSSL::Crypto PROPERTIES
+        INTERFACE_LINK_LIBRARIES "${CMAKE_DL_LIBS};Threads::Threads;${_openssl_win32_crypt}")
     if(EXISTS "${OPENSSL_CRYPTO_LIBRARY}")
       set_target_properties(OpenSSL::Crypto PROPERTIES
         IMPORTED_LINK_INTERFACE_LANGUAGES "C"
@@ -411,7 +431,10 @@ if(OPENSSL_FOUND)
     endif()
     if(TARGET OpenSSL::Crypto)
       set_target_properties(OpenSSL::SSL PROPERTIES
-        INTERFACE_LINK_LIBRARIES OpenSSL::Crypto)
+        INTERFACE_LINK_LIBRARIES "OpenSSL::Crypto;${CMAKE_DL_LIBS}")
+    else()
+      set_target_properties(OpenSSL::SSL PROPERTIES
+        INTERFACE_LINK_LIBRARIES "${CMAKE_DL_LIBS}")
     endif()
   endif()
 endif()
