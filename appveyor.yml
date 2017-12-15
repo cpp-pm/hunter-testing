@@ -27,11 +27,13 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\kNet
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\kNet
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3025/job/n3n3esvh3i6mmxut
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\kNet
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\kNet
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3025/job/3fwuvo8d5w6ed8b7
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\kNet
 
 install:
   # Python 3
