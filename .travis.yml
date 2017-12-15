@@ -52,9 +52,6 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=sanitize-thread
 
-    - os: linux
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=gcc
-
     # }
 
     # OSX {
@@ -65,9 +62,6 @@ matrix:
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=osx-10-12
     - os: osx
       env: PROJECT_DIR=examples/OpenSSL TOOLCHAIN=ios-nocodesign-10-3
-
-    - os: osx
-      env: PROJECT_DIR=examples/OpenSSL-imported TOOLCHAIN=osx-10-12
 
     # }
 
