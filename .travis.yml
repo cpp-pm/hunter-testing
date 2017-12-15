@@ -32,12 +32,18 @@ matrix:
       env: PROJECT_DIR=examples/civetweb TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/civetweb TOOLCHAIN=gcc
-    - os: linux
-      env: PROJECT_DIR=examples/civetweb TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/316852289
+    # - os: linux
+    #   env: PROJECT_DIR=examples/civetweb TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+
     - os: linux
       env: PROJECT_DIR=examples/civetweb TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/civetweb TOOLCHAIN=analyze
+
+    # OpenSSL dependency: https://travis-ci.org/ingenue/hunter/jobs/316852291
+    # - os: linux
+    #   env: PROJECT_DIR=examples/civetweb TOOLCHAIN=analyze
+
     - os: linux
       env: PROJECT_DIR=examples/civetweb TOOLCHAIN=sanitize-address
     - os: linux
