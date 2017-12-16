@@ -38,8 +38,10 @@ matrix:
       env: PROJECT_DIR=examples/odb TOOLCHAIN=gcc
     - os: linux
       env: PROJECT_DIR=examples/odb TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/odb TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/317349866
+    # - os: linux
+    #   env: PROJECT_DIR=examples/odb TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105847709
