@@ -1,15 +1,22 @@
 # Copyright (c) 2014, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_LLVMCOMPILERRT_HUNTER_CMAKE)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_LLVMCOMPILERRT_HUNTER_CMAKE 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    LLVMCompilerRT
+    VERSION
+    "4.0.1-patched"
+    URL
+    "https://github.com/hunter-packages/LLVMCompilerRT/archive/v4.0.1-p0.tar.gz"
+    SHA1
+    561c29f1595c29f1d083567a7e669fec30cdfa44
+)
 
 hunter_add_version(
     PACKAGE_NAME

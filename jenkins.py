@@ -5,6 +5,7 @@
 
 # https://github.com/ruslo/polly/wiki/Jenkins
 
+import argparse
 import hashlib
 import os
 import shutil
@@ -12,7 +13,23 @@ import subprocess
 import sys
 import tarfile
 import tempfile
-import argparse
+import time
+
+def clear_except_download(hunter_root):
+  base_dir = os.path.join(hunter_root, '_Base')
+  if os.path.exists(base_dir):
+    print('Clearing directory: {}'.format(base_dir))
+    hunter_download_dir = os.path.join(base_dir, 'Download', 'Hunter')
+    if os.path.exists(hunter_download_dir):
+      shutil.rmtree(hunter_download_dir)
+    for filename in os.listdir(base_dir):
+      if filename != 'Download':
+        to_remove = os.path.join(base_dir, filename)
+        if os.name == 'nt':
+          # Fix "path too long" error
+          subprocess.check_call(['cmd', '/c', 'rmdir', to_remove, '/S', '/Q'])
+        else:
+          shutil.rmtree(to_remove)
 
 def run():
   parser = argparse.ArgumentParser("Testing script")
@@ -20,6 +37,11 @@ def run():
       '--nocreate',
       action='store_true',
       help='Do not create Hunter archive (reusing old)'
+  )
+  parser.add_argument(
+      '--all-release',
+      action='store_true',
+      help='Release build type for all 3rd party packages'
   )
   parser.add_argument(
       '--clear',
@@ -32,12 +54,25 @@ def run():
       help='Remove old testing directories except `Download` directory'
   )
   parser.add_argument(
-      '--verbose',
+      '--disable-builds',
       action='store_true',
-      help='Verbose output'
+      help='Disable building of package (useful for checking package can be loaded from cache)'
+  )
+  parser.add_argument(
+      '--upload',
+      action='store_true',
+      help='Upload cache to server and run checks (clean up will be triggered, same as --clear-except-download)'
+  )
+  parser.add_argument(
+      '--skip-raw', action='store_true', help="Skip uploading of raw files"
   )
 
   parsed_args = parser.parse_args()
+
+  if parsed_args.upload:
+    password = os.getenv('GITHUB_USER_PASSWORD')
+    if password is None:
+      sys.exit('Expected environment variable GITHUB_USER_PASSWORD on uploading')
 
   cdir = os.getcwd()
   hunter_root = cdir
@@ -50,47 +85,24 @@ def run():
   if not project_dir:
     sys.exit('Expected environment variable PROJECT_DIR')
 
-  # Check broken builds --
-  if (project_dir == 'examples/Boost-filesystem') and (toolchain == 'analyze'):
-    print('Skip (https://github.com/ruslo/hunter/issues/25)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/Boost-system') and (toolchain == 'analyze'):
-    print('Skip (https://github.com/ruslo/hunter/issues/26)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'mingw'):
-    print('Skip (https://github.com/ruslo/hunter/issues/28)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'ios-7-0'):
-    print('Skip (https://github.com/ruslo/hunter/issues/29)')
-    sys.exit(0)
-
-  if (project_dir == 'examples/OpenSSL') and (toolchain == 'xcode'):
-    print('Skip (https://github.com/ruslo/hunter/issues/30)')
-    sys.exit(0)
-
   ci = os.getenv('TRAVIS') or os.getenv('APPVEYOR')
   if (ci and toolchain == 'dummy'):
     print('Skip build: CI dummy (workaround)')
     sys.exit(0)
-  # -- end
 
   verbose = True
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/CLAPACK') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
-
-  if (
-      os.getenv('TRAVIS') and
-      (project_dir == 'examples/GSL') and
-      (toolchain == 'xcode')
-  ):
-    verbose = False
+  env_verbose = os.getenv('VERBOSE')
+  if env_verbose:
+    if env_verbose == '0':
+      verbose = False
+    elif env_verbose == '1':
+      verbose = True
+    else:
+      sys.exit(
+          'Environment variable VERBOSE: expected 0 or 1, got "{}"'.format(
+              env_verbose
+          )
+      )
 
   project_dir = os.path.join(cdir, project_dir)
   project_dir = os.path.normpath(project_dir)
@@ -127,20 +139,7 @@ def run():
   hunter_root = os.path.join(testing_dir, 'Hunter')
 
   if parsed_args.clear_except_download:
-    base_dir = os.path.join(hunter_root, '_Base')
-    if os.path.exists(base_dir):
-      print('Clearing directory: {}'.format(base_dir))
-      hunter_download_dir = os.path.join(base_dir, 'Download', 'Hunter')
-      if os.path.exists(hunter_download_dir):
-        shutil.rmtree(hunter_download_dir)
-      for filename in os.listdir(base_dir):
-        if filename != 'Download':
-          to_remove = os.path.join(base_dir, filename)
-          if os.name == 'nt':
-            # Fix "path too long" error
-            subprocess.check_call(['cmd', '/c', 'rmdir', to_remove, '/S', '/Q'])
-          else:
-            shutil.rmtree(to_remove)
+    clear_except_download(hunter_root)
 
   if os.name == 'nt':
     which = 'where'
@@ -173,6 +172,8 @@ def run():
       '--home',
       project_dir,
       '--fwd',
+      'CMAKE_POLICY_DEFAULT_CMP0069=NEW',
+      'HUNTER_SUPPRESS_LIST_OF_FILES=ON',
       'HUNTER_ROOT={}'.format(hunter_root),
       'TESTING_URL={}'.format(hunter_url),
       'TESTING_SHA1={}'.format(hunter_sha1)
@@ -180,6 +181,12 @@ def run():
 
   if not parsed_args.nocreate:
     args += ['HUNTER_RUN_INSTALL=ON']
+
+  if parsed_args.disable_builds:
+    args += ['HUNTER_DISABLE_BUILDS=ON']
+
+  if parsed_args.all_release:
+    args += ['HUNTER_CONFIGURATION_TYPES=Release']
 
   args += ['--verbose']
   if not verbose:
@@ -192,6 +199,72 @@ def run():
   print(']')
 
   subprocess.check_call(args)
+
+  if parsed_args.upload:
+    upload_script = os.path.join(cdir, 'maintenance', 'upload-cache-to-github.py')
+
+    print('Uploading cache')
+    call_args = [
+        sys.executable,
+        upload_script,
+        '--username',
+        'ingenue',
+        '--repo-owner',
+        'ingenue',
+        '--repo',
+        'hunter-cache',
+        '--cache-dir',
+        os.path.join(hunter_root, '_Base', 'Cache'),
+        '--temp-dir',
+        os.path.join(hunter_root, '__TEMP')
+    ]
+
+    if parsed_args.skip_raw:
+      call_args.append('--skip-raw')
+
+    subprocess.check_call(call_args)
+
+    seconds = 60
+    print(
+        'Wait for GitHub changes became visible ({} seconds)...'.format(seconds)
+    )
+    time.sleep(seconds)
+
+    print('Run sanity build')
+
+    clear_except_download(hunter_root)
+
+    # Sanity check - run build again with disabled building from sources
+    args = [
+        sys.executable,
+        build_script,
+        '--clear',
+        '--verbose',
+        '--config',
+        'Release',
+        '--toolchain',
+        toolchain,
+        '--home',
+        project_dir,
+        '--fwd',
+        'HUNTER_DISABLE_BUILDS=ON',
+        'HUNTER_USE_CACHE_SERVERS=ONLY',
+        'CMAKE_POLICY_DEFAULT_CMP0069=NEW',
+        'HUNTER_SUPPRESS_LIST_OF_FILES=ON',
+        'HUNTER_ROOT={}'.format(hunter_root),
+        'TESTING_URL={}'.format(hunter_url),
+        'TESTING_SHA1={}'.format(hunter_sha1)
+    ]
+    if not verbose:
+      args += ['--discard', '10']
+      args += ['--tail', '200']
+
+    print('Execute command: [')
+    for i in args:
+      print('  `{}`'.format(i))
+    print(']')
+
+    subprocess.check_call(args)
 
 if __name__ == "__main__":
   run()

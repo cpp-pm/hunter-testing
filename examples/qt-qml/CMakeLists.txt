@@ -30,12 +30,27 @@ else()
 endif()
 
 add_executable(qmlexample main.cpp)
-target_link_libraries(
-    qmlexample Qt5::Widgets Qt5::Quick Qt5::QTcpServerConnection ${plugins}
-)
+target_link_libraries(qmlexample PUBLIC Qt5::Widgets Qt5::Quick ${plugins})
+
+if(TARGET Qt5::QTcpServerConnection)
+  target_link_libraries(qmlexample PUBLIC Qt5::QTcpServerConnection)
+endif()
 
 # Workaround for Linux's linker problems (*_MULTIPLICITY doesn't help, TODO) --
-if(UNIX AND NOT APPLE AND CMAKE_COMPILER_IS_GNUCXX)
+set(fix_cyclic FALSE)
+if(APPLE)
+  set(fix_cyclic FALSE)
+elseif(CMAKE_COMPILER_IS_GNUCXX)
+  # MinGW included
+  set(fix_cyclic TRUE)
+elseif(NOT UNIX)
+  set(fix_cyclic FALSE)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+  # Linux Clang
+  set(fix_cyclic TRUE)
+endif()
+
+if(fix_cyclic)
   string(
       REPLACE
       "<LINK_LIBRARIES>"
