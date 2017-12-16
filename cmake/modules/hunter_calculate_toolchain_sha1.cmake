@@ -1,4 +1,4 @@
-# Copyright (c) 2015, Ruslan Baratov
+# Copyright (c) 2015-2017, Ruslan Baratov
 # All rights reserved.
 
 include(hunter_internal_error)
@@ -64,6 +64,11 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
       "-B${temp_build_dir}"
   )
 
+  string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
+  if(has_make)
+    list(APPEND cmd "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}")
+  endif()
+
   string(COMPARE NOTEQUAL "${CMAKE_GENERATOR_TOOLSET}" "" has_toolset)
   if(has_toolset)
     list(APPEND cmd "-T" "${CMAKE_GENERATOR_TOOLSET}")
@@ -82,6 +87,11 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
         "-DCMAKE_${configuration_upper}_POSTFIX=${CMAKE_${configuration_upper}_POSTFIX}"
     )
   endforeach()
+
+  string(COMPARE EQUAL "${HUNTER_BUILD_SHARED_LIBS}" "" is_empty)
+  if(NOT is_empty)
+    list(APPEND cmd "-DHUNTER_BUILD_SHARED_LIBS=${HUNTER_BUILD_SHARED_LIBS}")
+  endif()
 
   hunter_print_cmd("${temp_project_dir}" "${cmd}")
 
@@ -107,12 +117,6 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
 
   hunter_make_directory(
       "${hunter_id_path}"
-      "${HUNTER_GATE_CONFIG_SHA1}"
-      hunter_config_id_path
-  )
-
-  hunter_make_directory(
-      "${hunter_config_id_path}"
       "${HUNTER_GATE_TOOLCHAIN_SHA1}"
       hunter_toolchain_id_path
   )
