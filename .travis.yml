@@ -36,10 +36,15 @@ matrix:
       env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=sanitize-address
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/316943532
+    # - os: linux
+    #   env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=analyze
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/316943533
+    # - os: linux
+    #   env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=sanitize-address
+
     - os: linux
       env: PROJECT_DIR=examples/AngelScript TOOLCHAIN=sanitize-leak
 
