@@ -1,16 +1,23 @@
 # Copyright (c) 2015, Ruslan Baratov, David Hirvonen
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_HALF_HUNTER_CMAKE_)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_HALF_HUNTER_CMAKE_ 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_cacheable)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    half
+    VERSION
+    "1.1.0-p1"
+    URL
+    "https://github.com/hunter-packages/half/archive/v1.1.0-p1.tar.gz"
+    SHA1
+    bc445fc2b91c7a2c4ea0025012068ecab18ef36d
+)
 
 hunter_add_version(
     PACKAGE_NAME

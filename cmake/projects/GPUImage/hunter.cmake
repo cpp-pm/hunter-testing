@@ -1,11 +1,7 @@
 # Copyright (c) 2015, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_GPUIMAGE_HUNTER_CMAKE)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_GPUIMAGE_HUNTER_CMAKE 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_cacheable)
@@ -21,7 +17,7 @@ hunter_add_version(
     URL
     "https://github.com/hunter-packages/GPUImage/archive/v0.1.6-p5.tar.gz"
     SHA1
-    463564d96442c214d21faa28a3ca229962ca086c
+    69a287016c57ca02012faf973e2eabda4ec87123    
 	)
 
   hunter_add_version(
