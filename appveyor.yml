@@ -4,7 +4,7 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: KbhVDnegXkjLm8H7lUZX9/t/4AL3dzhQLy8mWZ3Ldv0sXDs7d5bFz7+Yo3EFZNtw
+      secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
 
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
@@ -21,15 +21,6 @@ environment:
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/a18gvkh3ia0se5u7
 #    - TOOLCHAIN: "nmake-vs-12-2013-win64"
 #      PROJECT_DIR: examples\odb-boost
-# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/ej7wc2vcx5xby4d6
-#    - TOOLCHAIN: "nmake-vs-12-2013"
-#      PROJECT_DIR: examples\odb-boost
-# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/3qw1uxehmyg9st97
-#    - TOOLCHAIN: "vs-10-2010"
-#      PROJECT_DIR: examples\odb-boost
-# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/a62v3vjmriveu2jw
-#    - TOOLCHAIN: "vs-11-2012"
-#      PROJECT_DIR: examples\odb-boost
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/0v0j3ko2c9vh885v
 #    - TOOLCHAIN: "vs-12-2013-win64"
 #      PROJECT_DIR: examples\odb-boost
@@ -41,9 +32,6 @@ environment:
 #      PROJECT_DIR: examples\odb-boost
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/tjiw6gb8tva6u1i8
 #    - TOOLCHAIN: "vs-14-2015"
-#      PROJECT_DIR: examples\odb-boost
-# https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/s83x8x8nps6s77n6
-#    - TOOLCHAIN: "vs-9-2008"
 #      PROJECT_DIR: examples\odb-boost
 # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.288/job/c4o1tco7rcjwog31
 #    - TOOLCHAIN: "mingw"
