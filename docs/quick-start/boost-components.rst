@@ -33,8 +33,8 @@ this repository** in general, see `notes`_):
   :emphasize-lines: 2, 3
 
   HunterGate(
-      URL "https://github.com/ruslo/hunter/archive/v0.10.9.tar.gz"
-      SHA1 "53b198e364dc7bc8360fc545f798563229bd7e20"
+      URL "https://github.com/ruslo/hunter/archive/v0.16.15.tar.gz"
+      SHA1 "6974c2150fc0d3b09de3ad1efcbf15d360647ffa"
   )
 
 Now project can be started:
@@ -49,7 +49,7 @@ Let's download and install ``boost.{regex,system,filesystem}``:
 
   hunter_add_package(Boost COMPONENTS regex system filesystem)
 
-Hunter part is done, now well known CMake-style kung fu (see `pkg.boost`_):
+Hunter part is done, now well known CMake-style kung fu (see :ref:`pkg.Boost`):
 
 .. code-block:: cmake
 
@@ -90,4 +90,3 @@ Build it:
 .. _other options: https://github.com/hunter-packages/gate#effects
 .. _HunterGate: https://github.com/hunter-packages/gate
 .. _notes: https://github.com/hunter-packages/gate#notes
-.. _pkg.boost: https://github.com/ruslo/hunter/wiki/pkg.boost
