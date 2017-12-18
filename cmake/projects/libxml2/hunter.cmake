@@ -14,6 +14,17 @@ hunter_add_version(
     PACKAGE_NAME
     libxml2
     VERSION
+    "2.9.7"
+    URL
+    "http://xmlsoft.org/sources/libxml2-2.9.7.tar.gz"
+    SHA1
+    ab3325e6cdda50ab2382fdfe0bdb6f7d1b9224a6
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    libxml2
+    VERSION
     "2.9.4"
     URL
     "http://xmlsoft.org/sources/libxml2-2.9.4.tar.gz"
@@ -31,8 +42,9 @@ hunter_cmake_args(
 hunter_configuration_types(libxml2 CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_autotools)
 hunter_cacheable(libxml2)
-hunter_download(PACKAGE_NAME libxml2
-	PACKAGE_UNRELOCATABLE_TEXT_FILES
-	    lib/pkgconfig/libxml-2.0.pc
+hunter_download(
+    PACKAGE_NAME libxml2
+    PACKAGE_INTERNAL_DEPS_ID "1"
+    PACKAGE_UNRELOCATABLE_TEXT_FILES
+    "lib/pkgconfig/libxml-2.0.pc"
 )
-
