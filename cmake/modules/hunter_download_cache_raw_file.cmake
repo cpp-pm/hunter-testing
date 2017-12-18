@@ -71,10 +71,10 @@ function(hunter_download_cache_raw_file)
     foreach(server ${HUNTER_CACHE_SERVERS})
       string(REGEX MATCH "^https://github.com/" is_github "${server}")
       if(NOT is_github)
-        hunter_user_error("Unknown cache server: ${server}")
+        set(url "${server}/raw/${suffix}")
+      else()
+        set(url "${server}/releases/download/cache/${suffix}")
       endif()
-
-      set(url "${server}/releases/download/cache/${suffix}")
 
       hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${url}")
@@ -88,7 +88,7 @@ function(hunter_download_cache_raw_file)
         set(showprogress "")
       endif()
 
-      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status ${showprogress})
+      file(DOWNLOAD "${url}" "${x_LOCAL}" STATUS status ${showprogress} TLS_VERIFY ON)
       file(SHA1 "${x_LOCAL}" local_sha1)
       string(COMPARE EQUAL "${local_sha1}" "${x_SHA1}" sha1_is_good)
 

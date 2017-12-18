@@ -175,6 +175,8 @@ function(hunter_load_from_cache)
     return()
   endif()
 
+  set(HUNTER_SKIP_SCHEME_UNPACK TRUE)
+
   # Install dependencies
   file(STRINGS "${basic_deps_info}" basic_deps_list)
   foreach(dependency_string ${basic_deps_list})
@@ -203,10 +205,7 @@ function(hunter_load_from_cache)
       FROMSERVER "${from_server_file}"
   )
 
-  if(NOT EXISTS "${archive_file}")
-    hunter_internal_error("archive file not found: ${archive_file}")
-  endif()
-  hunter_unpack_directory("${archive_file}" "${HUNTER_INSTALL_PREFIX}")
+  hunter_unpack_directory(${cache_sha1})
 
   hunter_patch_unrelocatable_text_files(
       FROM "__HUNTER_PACKAGE_INSTALL_PREFIX__"
