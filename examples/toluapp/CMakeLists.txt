@@ -3,16 +3,18 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(TESTING_CONFIG_OPT FILEPATH "${CMAKE_CURRENT_LIST_DIR}/config.cmake")
+
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-foo)
+project(download-toluapp)
 
 # DOCUMENTATION_START {
-hunter_add_package(foo)
-find_package(foo CONFIG REQUIRED)
+hunter_add_package(toluapp)
+find_package(toluapp CONFIG REQUIRED)
 
 add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC foo::foo)
+target_link_libraries(boo PUBLIC toluapp::toluapp)
 # DOCUMENTATION_END }

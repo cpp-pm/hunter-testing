@@ -10,15 +10,15 @@ include(hunter_pick_scheme)
 
 hunter_add_version(
     PACKAGE_NAME
-    foo
+    toluapp
     VERSION
-    1.0.0
+    1.0.93-p0
     URL
-    "https://github.com/hunter-packages/foo/archive/v1.0.0.tar.gz"
+    "https://github.com/hunter-packages/toluapp/archive/v1.0.93-p0.tar.gz"
     SHA1
-    1111111111111111111111111111111111111111
+    851dabf207286e232c7e9eb1c92c7e62314c0202
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(foo)
-hunter_download(PACKAGE_NAME foo)
+hunter_cacheable(toluapp)
+hunter_download(PACKAGE_NAME toluapp)

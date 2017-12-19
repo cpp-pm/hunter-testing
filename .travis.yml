@@ -68,6 +68,11 @@ matrix:
 
     # }
 
+    # Urho3D-Lua {
+    - os: linux
+      env: PROJECT_DIR=examples/Urho3D-Lua TOOLCHAIN=gcc
+    # }
+
 install:
   # Info about OS
   - uname -a
