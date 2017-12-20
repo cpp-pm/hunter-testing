@@ -7,11 +7,10 @@ cmake_minimum_required(VERSION 3.0)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-SQLite3)
+project(download-sqlite3)
 
-hunter_add_package(SQLite3)
-find_package(SQLite3 REQUIRED)
+hunter_add_package(sqlite3)
+find_package(sqlite3 CONFIG REQUIRED)
 
-if(NOT TARGET SQLite3)
-  message(FATAL_ERROR "No SQLite3 target")
-endif()
+add_executable(boo boo.cpp)
+target_link_libraries(boo PUBLIC sqlite3::sqlite3)
