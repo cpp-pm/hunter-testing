@@ -16,31 +16,32 @@ hunter_add_package(Boost COMPONENTS system filesystem)
 find_package(Boost CONFIG REQUIRED system filesystem)
 
 if(ANDROID)
+  string(COMPARE EQUAL "${CMAKE_ANDROID_NDK}" "" is_empty)
+  if(is_empty)
+    message(FATAL_ERROR "CMAKE_ANDROID_NDK is empty")
+  endif()
   add_library(
       foo
       SHARED
       foo_android.cpp
-      "${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c"
+      "${CMAKE_ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c"
   )
 else()
   add_executable(foo foo.cpp)
 endif()
 
-target_link_libraries(foo Boost::system Boost::filesystem)
-
-# Compatibility mode
-set(Boost_USE_STATIC_LIBS ON)
-if(MSVC)
-  add_definitions(-DBOOST_ALL_NO_LIB=1)
-endif()
-find_package(Boost REQUIRED system filesystem)
-include_directories("${Boost_INCLUDE_DIRS}")
-target_link_libraries(foo ${Boost_LIBRARIES})
+target_link_libraries(
+    foo
+    Boost::filesystem
+    Boost::system # Should be last
+        # Boost 1.66.0, Linux, Clang with -stdlib=libstdc++:
+        # * https://travis-ci.org/ingenue/hunter/jobs/318140416#L2674
+)
 
 if(ANDROID)
   target_link_libraries(foo log android)
   target_include_directories(
-      foo PUBLIC "${ANDROID_NDK}/sources/android/native_app_glue"
+      foo PUBLIC "${CMAKE_ANDROID_NDK}/sources/android/native_app_glue"
   )
 
   if(NOT "$ENV{TRAVIS}")
@@ -56,6 +57,10 @@ if(ANDROID)
     message("Path to `emulator`: ${ANDROID-SDK_ROOT}/android-sdk/tools/emulator")
     message("Path to `adb`: ${ANDROID-SDK_ROOT}/android-sdk/platform-tools/adb")
 
-    android_create_apk(NAME foo DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/apk")
+    android_create_apk(
+        BASE_TARGET foo
+        LAUNCH_TARGET foo-launch
+        DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/apk"
+    )
   endif()
 endif()

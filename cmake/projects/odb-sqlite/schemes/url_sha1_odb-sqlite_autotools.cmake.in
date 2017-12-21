@@ -20,8 +20,8 @@ endif()
 hunter_add_package(odb)
 find_package(odb REQUIRED)
 
-hunter_add_package(SQLite3)
-find_package(SQLite3 REQUIRED)
+hunter_add_package(sqlite3)
+find_package(sqlite3 CONFIG REQUIRED)
 
 # Check preconditions
 hunter_test_string_not_empty("@HUNTER_SELF@")
@@ -53,8 +53,10 @@ hunter_autotools_project("@HUNTER_EP_NAME@"
       "@HUNTER_INSTALL_PREFIX@"
     PARALLEL_JOBS
       "@HUNTER_JOBS_OPTION@"
+    PACKAGE_CONFIGURATION_TYPES
+      "@HUNTER_PACKAGE_CONFIGURATION_TYPES@"
     CPPFLAGS
-      "-I${ODB_INCLUDE_DIR} -I${SQLITE3_INCLUDE_DIR}"
+      "-I${ODB_INCLUDE_DIR} -I${SQLITE3_ROOT}/include"
     LDFLAGS
-      "-L${ODB_LIB_DIR} -lodb -L${SQLITE3_LIB_DIR} -lsqlite3"
+      "-L${ODB_LIB_DIR} -lodb -L${SQLITE3_ROOT}/lib -lsqlite3"
 )
