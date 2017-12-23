@@ -39,7 +39,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -64,7 +64,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -78,11 +78,6 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread
 
-    # Extra toolchain for Drishti {
-    - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-5
-    # }
-
     # }
 
     # Boost-system {
@@ -92,7 +87,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -120,7 +115,7 @@ matrix:
     #   env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=clang-libstdcxx
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-5
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105856458
@@ -151,7 +146,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -174,7 +169,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -197,7 +192,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
@@ -218,17 +213,17 @@ matrix:
 
     # Boost-random {
     - os: linux
-      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc-5
     # }
 
     # Boost-test {
     - os: linux
-      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc-5
     # }
 
     # Boost-math {
     - os: linux
-      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=gcc-5
     # }
 
     # }
