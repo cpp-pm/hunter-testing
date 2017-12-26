@@ -43,9 +43,8 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
-    # FIXME
-    # - os: linux
-    #   env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    - os: linux
+      env: PROJECT_DIR=examples/SDL2 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # FIXME
     # https://travis-ci.org/ingenue/hunter/jobs/138969013
