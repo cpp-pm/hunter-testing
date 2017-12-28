@@ -16,6 +16,8 @@ dist:
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
       - python3-pip
 
@@ -30,9 +32,12 @@ addons:
       - libstdc++6:i386
       - zlib1g:i386
 
+      - g++-5
+      - gcc-5
+
 env:
   global:
-    - secure: "RXl1cmKQUgB/Lr6CFW82nYDFSyF5tYjG5N3+ZpZZWDbmVvm8Wj634GR1B5JVcLzoWLearGYtqOA2mQcK+vcp04/KMQC7mEEtUWix74wXz9djzUZMYuMz0VvImpqyE8KF8ZVgbQL5XFP1u+nRahLT9qtNX7VFTqgSB2PJ/kDEQQPV+H4lv/tVBv9ptMC4q9Nwev8qFzEPLqQgp6mqb05BBsgrExEbzVrX5kywb23TGcxMe3c6IHf63vCmr8aHAJFVsHHGkV2QhOoJKeMNa1xPJXGE+yf1rAACglTru7IXOlsZ4bym2qLtQRHz+2jHn1i+qQf0V5M+4H/OBkqOpU9AJ/ylF/WK2eBZedxC+4WPvuO/iDnrtNxikzS5avdFS7IMUJrIm9fP0B8efLovEiJaKwo5k1Yj0uw07b1PoyRE5x+ozRzSLzvWXgOIXbZjOM9BzYFfoNJ+dpjilELuxGn85HljeniK89H/d5gtEUPvSMQC/+RuMo420qaGGhy/lR4ivPTZwCqT7VPQ6+2HLz/wAF5S2jFLGjSZIbb/NMmrV6+puIEEicx0mj2eSpgt7cn9UguevnwtT5UoN2G+dZrI6RfUp0CSH8UHdcJtoSCmYVxO5LsRPXyCEFFF54EsfhqjWegYcxLmHqQQUKlJ8lX9dXMRftW7bIldb98PQGud6Fg="
+    - secure: "fVN184/3nwAB7opE8h3rhBwWrMeX7LW15b4IJQE2zDW9MYfm6BW/S1fPdniyRiFQbW6fNK9m6IKtjmk0xjOq2f4Wu9ULfMu+AgnCwlX6aV7s8bA2mRBqtL9zNTAAX3XHzTMwHx9nCJjYyYScIq7ApJ68et88lCaWwGn+kLdE2AOuOZY/msE+W9SgTotXV6aBK2l0oXuT4ph+ysfT7n3kaSPDBG//amhCSGDnkjBdEA0cw6tdwfsY2gdQfdUGyzC77c5NegYQmu86MnLVT7VQwfn4/av59grCLHQ5xn7IDJitTrcM7njCsfJEAjAGCGjPOYj9PT6btMbBf3iMWp9PPRY7uiLCt07yVgyplBbvrJKHgXwqyo5uK6ei4oc2NdfYZ9vkAbzKFY+U2d27yX5iIBrXYaMQ3aD04rFGJ+Xvo3i70AMTqM3Tmy2/WC1KkIOngfM9g1+PjazHHgz7PyrQlhbOZmYpM0F82qzjVkrZA81ujBrQ1KMST9ZVJicxE3zNeuJjLAQhFerMLgJc3ntudmwxi8UqoGKKlazO6qdJT7VLITJ9gVB3m+1LRQzo6ZDqs9V9RCMaGIy2t4bN3PAgMWdEJDoU1zhuy2V2AgeQGFzG4eanpYZQqAp6poV02DjegvkXC7cA5QrIcGZKdrIXLQk4TBXx2ZVigDio5gYLyrY="
 
 matrix:
   include:
@@ -46,7 +51,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # - os: linux
@@ -68,7 +73,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-5
 
     # FIXME:  https://travis-ci.org/ingenue/hunter/jobs/279645521
     # - os: linux
@@ -95,7 +100,7 @@ matrix:
     #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=clang-libstdcxx
 
     - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # - os: linux
@@ -108,7 +113,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     # - os: linux
@@ -123,7 +128,7 @@ matrix:
     # qt-core {
 
     - os: osx
-      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-12
 
     # }
 
@@ -132,9 +137,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
 
     # }
 
@@ -143,9 +148,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
 
     # }
 
@@ -154,9 +159,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/qt-location TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
 
     # }
 
@@ -165,9 +170,9 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-11
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-12
     - os: osx
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-9-3-wo-armv7s
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
 
     # }
 
