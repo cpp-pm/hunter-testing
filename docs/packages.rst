@@ -6,10 +6,20 @@ Packages
 
 List of packages and usage instructions for each package.
 
+.. sidebar:: All packages
+
+  * :doc:`Alphabetically </packages/all>`
+  * :ref:`Index <genindex>`
+
+.. toctree::
+   :hidden:
+
+   /packages/all
+
 .. toctree::
    :maxdepth: 1
 
-   /packages/all
+   /packages/cmake_modules
    /packages/concurrency
    /packages/containers
    /packages/commandline
@@ -30,7 +40,6 @@ List of packages and usage instructions for each package.
    /packages/scripting
    /packages/serialize
    /packages/os
-   /packages/misc
 
 .. note::
 
