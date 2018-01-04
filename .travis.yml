@@ -31,22 +31,22 @@ env:
 matrix:
   include:
     # Linux {
-    
+
     # FIXME: requires C++11
     # https://travis-ci.org/dvirtz/hunter/jobs/323545384
     # - os: linux
     #   env: PROJECT_DIR=examples/range-v3 TOOLCHAIN=default
-    
+
     - os: linux
       env: PROJECT_DIR=examples/range-v3 TOOLCHAIN=clang-libstdcxx
     - os: linux
       env: PROJECT_DIR=examples/range-v3 TOOLCHAIN=gcc-5
-      
+
     # FIXME: error: '_Exit' was not declared in this scope
     # https://travis-ci.org/dvirtz/hunter/jobs/323545387
     # - os: linux
     #   env: PROJECT_DIR=examples/range-v3 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    
+
     - os: linux
       env: PROJECT_DIR=examples/range-v3 TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
     - os: linux
