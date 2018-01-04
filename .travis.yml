@@ -18,6 +18,9 @@ addons:
     packages:
       - python3-pip
 
+      # GL library
+      - libgl1-mesa-dev
+
       - g++-5
       - gcc-5
 
