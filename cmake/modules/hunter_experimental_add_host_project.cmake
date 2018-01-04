@@ -4,7 +4,7 @@
 # ************************* !!! WARNING !!! *************************
 #
 # You're using experimental feature. This may not work well
-# and can be removed anytime. It's a workaround for existsing
+# and can be removed anytime. It's a workaround for existing
 # feature request:
 #
 # https://github.com/ruslo/hunter/issues/495
@@ -20,16 +20,21 @@
 
 include(CMakeParseArguments) # cmake_parse_arguments
 
-include(hunter_user_error)
-include(hunter_status_print)
 include(hunter_status_debug)
+include(hunter_status_print)
+include(hunter_test_string_not_empty)
+include(hunter_user_error)
 
 function(hunter_experimental_add_host_project)
+  hunter_test_string_not_empty("${HUNTER_GATE_SHA1}")
+  hunter_test_string_not_empty("${HUNTER_GATE_URL}")
+  hunter_test_string_not_empty("${HUNTER_ROOT}")
+
   hunter_status_print("
 ************************* !!! WARNING !!! *************************
 
 You're using experimental feature. This may not work well
-and can be removed anytime. It's a workaround for existsing
+and can be removed anytime. It's a workaround for existing
 feature request:
 
 https://github.com/ruslo/hunter/issues/495
