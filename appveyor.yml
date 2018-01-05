@@ -27,11 +27,15 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\rabit
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\rabit
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3187/job/70uhj1djhk53conm
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\rabit
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\rabit
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3187/job/yg4m496g1mt19th2
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\rabit
 
 install:
   # Python 3
