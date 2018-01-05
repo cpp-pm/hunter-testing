@@ -62,11 +62,8 @@ matrix:
       env: PROJECT_DIR=examples/toluapp TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/toluapp TOOLCHAIN=osx-10-12
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/317709024
-    # - os: osx
-    #   env: PROJECT_DIR=examples/toluapp TOOLCHAIN=ios-nocodesign-10-3
-
+    - os: osx
+      env: PROJECT_DIR=examples/toluapp TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
