@@ -67,11 +67,8 @@ matrix:
       env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=osx-10-12
-
-    # FIXME: SDL2
-    # - os: osx
-    #   env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=ios-nocodesign-10-3
-
+    - os: osx
+      env: PROJECT_DIR=examples/Urho3D TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
