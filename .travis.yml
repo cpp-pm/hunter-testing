@@ -45,9 +45,8 @@ matrix:
     # https://travis-ci.org/ingenue/hunter/jobs/145968784
     # - os: linux
     #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    - os: linux
-      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # - os: linux
+    #   env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
 
     # https://travis-ci.org/ingenue/hunter/jobs/145968785
     # - os: linux
@@ -59,6 +58,11 @@ matrix:
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=sanitize-leak
     - os: linux
       env: PROJECT_DIR=examples/xgboost TOOLCHAIN=sanitize-thread
+
+    # Extra {
+    - os: linux
+      env: PROJECT_DIR=examples/xgboost TOOLCHAIN=android-ndk-r16b-api-24-armeabi-v7a-neon-clang-libcxx
+    # }
 
     # }
 
