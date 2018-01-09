@@ -58,8 +58,11 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/rocksdb TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/rocksdb TOOLCHAIN=sanitize-thread
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/326883069
+    # - os: linux
+    #   env: PROJECT_DIR=examples/rocksdb TOOLCHAIN=sanitize-thread
+
     # }
 
     # OSX {
