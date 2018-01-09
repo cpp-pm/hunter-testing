@@ -60,6 +60,12 @@ matrix:
       env: PROJECT_DIR=examples/rabit TOOLCHAIN=sanitize-leak
     - os: linux
       env: PROJECT_DIR=examples/rabit TOOLCHAIN=sanitize-thread
+
+    # Extra {
+    - os: linux
+      env: PROJECT_DIR=examples/rabit TOOLCHAIN=android-ndk-r16b-api-24-armeabi-v7a-neon-clang-libcxx
+    # }
+
     # }
 
     # OSX {
