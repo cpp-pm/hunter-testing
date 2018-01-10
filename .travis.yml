@@ -55,10 +55,8 @@ matrix:
 
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address
-
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak
-
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread
 
