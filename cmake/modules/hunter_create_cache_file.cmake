@@ -160,6 +160,11 @@ function(hunter_create_cache_file cache_path)
   file(
       APPEND
       "${temp_path}"
+      "set(HUNTER_URL \"${HUNTER_URL}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${temp_path}"
       "set(HUNTER_CONFIG_SHA1 \"${HUNTER_CONFIG_SHA1}\" CACHE INTERNAL \"\")\n"
   )
   file(
@@ -176,6 +181,11 @@ function(hunter_create_cache_file cache_path)
       APPEND
       "${temp_path}"
       "set(HUNTER_CACHED_CONFIGURATION_TYPES \"${HUNTER_CACHED_CONFIGURATION_TYPES}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${temp_path}"
+      "set(HUNTER_CACHED_BUILD_SHARED_LIBS \"${HUNTER_CACHED_BUILD_SHARED_LIBS}\" CACHE INTERNAL \"\")\n"
   )
 
   # CMP0069 should be set to NEW so we can build old projects with LTO
