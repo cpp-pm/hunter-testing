@@ -73,7 +73,7 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=libcxx
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-12
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-12 VERBOSE=0
 
     # Upload from local machine {
     - os: osx
