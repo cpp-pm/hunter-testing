@@ -82,7 +82,7 @@ matrix:
 
     # Extra {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3-armv7
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3-armv7 VERBOSE=0
     - os: osx
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3-arm64 VERBOSE=0
     # }
