@@ -95,6 +95,50 @@ matrix:
 
     # }
 
+    # Linux {
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=clang-libstdcxx VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-5
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-pic
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx VERBOSE=0
+
+    # FIXME (TIFF broken)
+    # * https://travis-ci.org/ingenue/hunter/jobs/116592968
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=analyze
+
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-address VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-leak VERBOSE=0
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-thread VERBOSE=0
+    # }
+
+    # OSX {
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-12 VERBOSE=0
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3-armv7 VERBOSE=0
+
+    # Upload from local machine {
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3-arm64 VERBOSE=0
+    - os: osx
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3
+    # }
+
+    # }
+
 install:
   # Info about OS
   - uname -a
