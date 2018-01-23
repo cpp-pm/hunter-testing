@@ -139,6 +139,12 @@ matrix:
 
     # }
 
+    # Dependencies:
+    # * Eigen
+    # * PNG
+    # * Jpeg
+    # * TIFF
+
 install:
   # Info about OS
   - uname -a
