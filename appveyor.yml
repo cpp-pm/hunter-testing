@@ -49,20 +49,25 @@ environment:
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\OpenCV-drishti
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\OpenCV-extra
+    # FIXME {
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3252
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\OpenCV-extra
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\OpenCV-extra
 
-    - TOOLCHAIN: "vs-12-2013-win64"
-      PROJECT_DIR: examples\OpenCV-extra
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\OpenCV-extra
 
-    - TOOLCHAIN: "vs-12-2013-xp"
-      PROJECT_DIR: examples\OpenCV-extra
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\OpenCV-extra
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\OpenCV-extra
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\OpenCV-extra
+
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\OpenCV-extra
+
+    # }
 
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\OpenCV-extra
