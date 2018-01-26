@@ -31,24 +31,24 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=gcc-5
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-thread
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=default
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=clang-libstdcxx
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=gcc-5
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=analyze
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-address
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-leak
+    # - os: linux
+    #   env: PROJECT_DIR=examples/GPUImage TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
