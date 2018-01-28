@@ -9,11 +9,15 @@ environment:
   matrix:
     # Note: 'default' toolchain is the same as 'vs-14-2015'
 
-    - TOOLCHAIN: "ninja-vs-12-2013-win64"
-      PROJECT_DIR: examples\cvsteer
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3282/job/k8orxcuvjx3njah5
+    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\cvsteer
 
-    - TOOLCHAIN: "nmake-vs-12-2013-win64"
-      PROJECT_DIR: examples\cvsteer
+    # OpenCV dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3282/job/corqrq2nd6g81a1n
+    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    #   PROJECT_DIR: examples\cvsteer
 
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\cvsteer
@@ -27,11 +31,15 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\cvsteer
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\cvsteer
+    # OpenCV dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3282/job/jq8tf4nab7qjhq2c
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\cvsteer
 
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\cvsteer
+    # TIFF dependency:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3282/job/saeykayor8flaqsq
+    # - TOOLCHAIN: "msys"
+    #   PROJECT_DIR: examples\cvsteer
 
 install:
   # Python 3
