@@ -31,8 +31,12 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/stdext-path TOOLCHAIN=default
+
+    # C++11 needed:
+    # * https://travis-ci.org/ingenue/hunter/jobs/336596288
+    # - os: linux
+    #   env: PROJECT_DIR=examples/stdext-path TOOLCHAIN=default
+
     - os: linux
       env: PROJECT_DIR=examples/stdext-path TOOLCHAIN=clang-libstdcxx
     - os: linux
