@@ -43,11 +43,13 @@ environment:
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\OpenCV
 
+    # Extra toolchains for Drishti {
     - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
-      PROJECT_DIR: examples\OpenCV-drishti
+      PROJECT_DIR: examples\OpenCV
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\OpenCV-drishti
+      PROJECT_DIR: examples\OpenCV
+    # }
 
     # FIXME {
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3252
