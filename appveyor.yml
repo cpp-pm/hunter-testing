@@ -29,7 +29,6 @@ environment:
     - TOOLCHAIN: "vs-14-2015"
       PROJECT_DIR: examples\cvmatio
 
-
     # FIXME: no such toolchain for OpenCV
     # - TOOLCHAIN: "mingw"
     #   PROJECT_DIR: examples\cvmatio
@@ -37,6 +36,14 @@ environment:
     # FIXME: no such toolchain for Boost
     # - TOOLCHAIN: "msys"
     #   PROJECT_DIR: examples\cvmatio
+
+    # Extra toolchains for Drishti {
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\cvmatio
+
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\cvmatio
+    # }
 
 install:
   # Python 3
