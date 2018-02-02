@@ -60,7 +60,7 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-leak VERBOSE=0
     - os: linux
-      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/drishti TOOLCHAIN=sanitize-thread VERBOSE=0
     # }
 
     # OSX {
