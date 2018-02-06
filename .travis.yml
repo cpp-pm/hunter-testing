@@ -49,6 +49,10 @@ matrix:
 #       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-leak
 #     - os: linux
 #       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-thread
+      - os: linux
+        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=gcc-5-cxx14-c11 # cxx14
+      - os: linux
+        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r16b-api-24-armeabi-v7a-neon-clang-libcxx14 # cxx14
     # }
 
     # OSX {
@@ -58,6 +62,10 @@ matrix:
 #       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=osx-10-12
 #     - os: osx
 #       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign-10-3
+      - os: osx
+        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=libcxx14 # c++14
+      - os: osx
+        env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign # c++14
     # }
 
 install:
