@@ -31,33 +31,33 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=gcc-5
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-thread
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=default
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=clang-libstdcxx
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=gcc-5
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=analyze
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-address
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-leak
+#     - os: linux
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=sanitize-thread
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign-10-3
+#     - os: osx
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=libcxx
+#     - os: osx
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=osx-10-12
+#     - os: osx
+#       env: PROJECT_DIR=examples/FunctionalPlus TOOLCHAIN=ios-nocodesign-10-3
     # }
 
 install:
