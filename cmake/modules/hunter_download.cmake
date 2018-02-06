@@ -1,5 +1,6 @@
-# Copyright (c) 2013-2017, Ruslan Baratov
-# Copyright (c) 2015, Aaditya Kalsi
+# Copyright (c) 2013-2018, Ruslan Baratov
+# Copyright (c) 2015-2018, Aaditya Kalsi
+# Copyright (c) 2018, David Hirvonen
 # All rights reserved.
 
 include(CMakeParseArguments) # cmake_parse_arguments
@@ -80,6 +81,12 @@ function(hunter_download)
   set(HUNTER_PACKAGE_VERSION "${HUNTER_${h_name}_VERSION}")
   set(ver "${HUNTER_PACKAGE_VERSION}")
   set(HUNTER_PACKAGE_SHA1 "${HUNTER_${h_name}_SHA1}")
+
+  string(COMPARE EQUAL "${HUNTER_PACKAGE_SHA1}" "" version_not_found)
+  if(version_not_found)
+    hunter_user_error("Version not found: ${ver}. See 'hunter_config' command.")
+  endif()
+  
   # set download URL, either direct download or redirected if HUNTER_DOWNLOAD_SERVER is set
   hunter_download_server_url(
     PACKAGE "${HUNTER_PACKAGE_NAME}"
@@ -110,11 +117,6 @@ function(hunter_download)
   hunter_test_string_not_empty("${HUNTER_PACKAGE_CONFIGURATION_TYPES}")
 
   string(COMPARE EQUAL "${HUNTER_PACKAGE_URL}" "" hunter_no_url)
-
-  string(COMPARE EQUAL "${HUNTER_PACKAGE_SHA1}" "" version_not_found)
-  if(version_not_found)
-    hunter_user_error("Version not found: ${ver}. See 'hunter_config' command.")
-  endif()
 
   hunter_test_string_not_empty("${HUNTER_PACKAGE_URL}")
   hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
@@ -463,6 +465,11 @@ function(hunter_download)
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_DOWNLOAD_SERVER \"${HUNTER_DOWNLOAD_SERVER}\" CACHE INTERNAL \"\")\n"
   )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_TLS_VERIFY \"${HUNTER_TLS_VERIFY}\" CACHE INTERNAL \"\")\n"
+  )
 
   string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
   if(has_make)
@@ -493,6 +500,7 @@ function(hunter_download)
         "Configuration types: ${HUNTER_PACKAGE_CONFIGURATION_TYPES}"
     )
   endif()
+  hunter_status_debug("HUNTER_TLS_VERIFY: ${HUNTER_TLS_VERIFY}")
 
   if(has_internal_deps_id)
     hunter_status_debug(
