@@ -253,6 +253,41 @@ environment:
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\Boost-math
 
+    ### Boost-fiber ###
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/y8cruqe3w08qiay0
+    # - TOOLCHAIN: "vs-12-2013-win64"
+    #   PROJECT_DIR: examples\Boost-fiber
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/retbc815gpg02q56
+    # - TOOLCHAIN: "vs-12-2013-xp"
+    #   PROJECT_DIR: examples\Boost-fiber
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/ygt0ncy6cioj3p3i
+    # - TOOLCHAIN: "vs-12-2013"
+    #   PROJECT_DIR: examples\Boost-fiber
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/ttbhytj9qjvryddk
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\Boost-fiber
+
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\Boost-fiber
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/h3yp814xsdeyu31y
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\Boost-fiber
+
+    # FIXME:
+    # https://ci.appveyor.com/project/gumb0/hunter/build/job/03rw8pxfqea4j2q9
+    # - TOOLCHAIN: "mingw-c11"
+    #   PROJECT_DIR: examples\Boost-fiber
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%

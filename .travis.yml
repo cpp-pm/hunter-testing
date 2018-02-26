@@ -228,6 +228,29 @@ matrix:
 
     # }
 
+    # Boost-fiber {
+
+    # FIXME:
+    # * https://travis-ci.org/gumb0/hunter/jobs/328218513
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=clang-libstdcxx
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=gcc-5
+    # FIXME:
+    # * https://travis-ci.org/gumb0/hunter/jobs/328218524
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    # FIXME:
+    # * https://travis-ci.org/gumb0/hunter/jobs/328218527
+    # - os: linux
+    #   env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=analyze
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=sanitize-address
+    - os: linux
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=sanitize-leak
+
     # OSX {
 
     # Boost {
@@ -330,6 +353,19 @@ matrix:
     - os: osx
       osx_image: xcode8.2
       env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=cxx11
+    # }
+
+    # Boost-fiber {
+
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=libcxx
+    - os: osx
+      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=osx-10-12
+    # FIXME:
+    # * https://travis-ci.org/gumb0/hunter/jobs/328218629
+    # - os: osx
+    #   env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=ios-nocodesign-10-3
+
     # }
 
     # }
