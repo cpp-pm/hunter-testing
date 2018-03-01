@@ -77,7 +77,7 @@ matrix:
 
     # Upload from local machine {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3 VERBOSE=0
     # }
 
     # Extra {
@@ -134,7 +134,7 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3-arm64 VERBOSE=0
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3 VERBOSE=0
     # }
 
     # }
