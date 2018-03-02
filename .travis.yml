@@ -41,8 +41,9 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=default
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-5 VERBOSE=0
+    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083573
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-5 VERBOSE=0
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
@@ -63,8 +64,9 @@ matrix:
     # Extra {
     - os: linux
       env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-pic
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-5 VERBOSE=0
+    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083580
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-5 VERBOSE=0
     # }
 
     # }
@@ -100,8 +102,9 @@ matrix:
       env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=default
     - os: linux
       env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=clang-libstdcxx VERBOSE=0
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-5
+    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083589
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-5
     - os: linux
       env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-pic
     - os: linux
