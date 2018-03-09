@@ -29,11 +29,13 @@ environment:
     # - TOOLCHAIN: "vs-12-2013"
     #   PROJECT_DIR: examples\opentracing-cpp
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\opentracing-cpp
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.367
+    # - TOOLCHAIN: "vs-14-2015"
+    #   PROJECT_DIR: examples\opentracing-cpp
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\opentracing-cpp
+    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.367
+    # - TOOLCHAIN: "mingw"
+    #   PROJECT_DIR: examples\opentracing-cpp
 
     - TOOLCHAIN: "msys"
       PROJECT_DIR: examples\opentracing-cpp
