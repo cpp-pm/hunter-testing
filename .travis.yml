@@ -41,8 +41,13 @@ matrix:
       env: PROJECT_DIR=examples/WebP TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     - os: linux
       env: PROJECT_DIR=examples/WebP TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/WebP TOOLCHAIN=analyze
+      
+    # FIXME:
+    # * Fails due to dependency failure (see pkg.png)
+    # * https://travis-ci.org/ingenue/hunter/jobs/105845420
+    # - os: linux
+    #   env: PROJECT_DIR=examples/WebP TOOLCHAIN=analyze
+      
     - os: linux
       env: PROJECT_DIR=examples/WebP TOOLCHAIN=sanitize-address
     - os: linux
