@@ -61,8 +61,21 @@ matrix:
       env: PROJECT_DIR=examples/WebP TOOLCHAIN=libcxx
     - os: osx
       env: PROJECT_DIR=examples/WebP TOOLCHAIN=osx-10-12
+
+    # We cannot do iphoneos+iphonesimulator universal binary because the SIMD
+    # instruction set locks to neon for armv7 and arm64 cpu, and the simulator
+    # will fail since neon is unavailable on x86 and x64 cpu type.
+    #- os: osx
+    #  env: PROJECT_DIR=examples/WebP TOOLCHAIN=ios-nocodesign-10-3
+    
+    # Since we cannot do iphoneos+iphonesimulator universal binary, we can
+    # always build ios for individual cpu achitecture, so we are enabling
+    # both armv7 and arm64 ios build.
     - os: osx
-      env: PROJECT_DIR=examples/WebP TOOLCHAIN=ios-nocodesign-10-3
+      env: PROJECT_DIR=examples/WebP TOOLCHAIN=ios-nocodesign-10-3-armv7
+    - os: osx
+      env: PROJECT_DIR=examples/WebP TOOLCHAIN=ios-nocodesign-10-3-arm64
+      
     # }
 
 install:
