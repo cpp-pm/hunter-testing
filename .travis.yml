@@ -24,8 +24,7 @@ addons:
       # For Qt: GL library
       - libgl1-mesa-dev
 
-      - g++-5
-      - gcc-5
+      - g++-7
 
 dist:
   - trusty
@@ -37,116 +36,123 @@ env:
 matrix:
   include:
     # Linux {
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-cxx17
+
     # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083573
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-5 VERBOSE=0
+    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze
+    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze-cxx17
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address-cxx17
 
-    # Extra {
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-pic
-    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083580
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-5 VERBOSE=0
-    # }
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak-cxx17
+
+    - os: linux
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
 
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-12 VERBOSE=0
 
-    # Upload from local machine {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3 VERBOSE=0
-    # }
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-13-make-cxx14
 
-    # Extra {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3-armv7 VERBOSE=0
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-10-3-arm64 VERBOSE=0
-    # }
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-13-cxx14 VERBOSE=0
 
-    # Extra toolchain for 'Drishti' {
+    # Upload from local machine
     - os: osx
-      osx_image: xcode9
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-0-arm64-dep-9-0-device-libcxx-hid-sections
-    # }
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3 VERBOSE=0
 
     # }
+
+    # OpenCV-extra {
 
     # Linux {
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=clang-libstdcxx VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=clang-cxx17 VERBOSE=0
+
     # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083589
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-5
+    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-7-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-pic
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon VERBOSE=0
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14 VERBOSE=0
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=analyze
+    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=analyze-cxx17
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-address VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-address-cxx17 VERBOSE=0
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-leak VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-leak-cxx17 VERBOSE=0
+
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-thread VERBOSE=0
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
+
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-12 VERBOSE=0
-    - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3-armv7 VERBOSE=0
 
-    # Upload from local machine {
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3-arm64 VERBOSE=0
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-13-make-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-10-3 VERBOSE=0
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-13-cxx14 VERBOSE=0
+
+    # Upload from local machine
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3 VERBOSE=0
+
     # }
 
     # }
 
-    # Dependencies:
-    # * Eigen
-    # * PNG
-    # * Jpeg
-    # * TIFF
+    # Extra {
+
+    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083580
+    # - os: linux
+    #   env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
+
+    # Upload from local machine
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
+
+    # }
 
 install:
   # Info about OS
