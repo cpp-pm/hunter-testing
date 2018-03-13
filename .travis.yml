@@ -17,9 +17,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
-
-      - g++-5
-      - gcc-5
+      - g++-7
 
 dist:
   - trusty
@@ -31,45 +29,46 @@ env:
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=default
-
-    # Lack of C++11 support:
-    # * https://travis-ci.org/ingenue/hunter/jobs/269726742
-    # - os: linux
-    #   env: PROJECT_DIR=examples/GTest TOOLCHAIN=clang-libstdcxx
 
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=gcc-5
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=clang-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=gcc-7-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/338205722
     # - os: linux
-    #   env: PROJECT_DIR=examples/GTest TOOLCHAIN=analyze
+    #   env: PROJECT_DIR=examples/GTest TOOLCHAIN=analyze-cxx17
 
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-address
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-address-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-leak
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-leak-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-thread
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=sanitize-thread-cxx17
+
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=ios-nocodesign-10-3
 
     - os: osx
-      osx_image: xcode8.2
-      env: PROJECT_DIR=examples/GTest TOOLCHAIN=xcode-cxx98
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-13-make-cxx14
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=osx-10-13-cxx14
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/GTest TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+
     # }
 
 install:
