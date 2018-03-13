@@ -32,8 +32,7 @@ addons:
       - libstdc++6:i386
       - zlib1g:i386
 
-      - g++-5
-      - gcc-5
+      - g++-7
 
 env:
   global:
@@ -43,136 +42,126 @@ matrix:
   include:
     # Linux {
 
-    # qt-widgets {
-
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=default
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
 
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-libstdcxx
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
+
     - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-5
-    - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
     # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze-cxx17
+
     # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-address
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-address-cxx17
+
     # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-leak
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-leak-cxx17
+
     # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-thread
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=sanitize-thread-cxx17
 
     # }
 
-    # qt-camera {
-
-    - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-5
-
-    # FIXME:  https://travis-ci.org/ingenue/hunter/jobs/279645521
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # }
-
-    # qt-location {
-
-    # FIXME:
-    # In file included from sweep/cdt.cpp:31:
-    # In file included from sweep/cdt.h:35:
-    # In file included from sweep/advancing_front.h:35:
-    # In file included from sweep/../common/shapes.h:39:
-    # In file included from /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../include/c++/4.8/cmath:44:
-    # In file included from /usr/include/math.h:427:
-    # /usr/include/x86_64-linux-gnu/bits/math-finite.h:177:1: error: unknown type name '__extern_always_inline'
-    # __extern_always_inline double __NTH (lgamma (double __d))
-    #
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=clang-libstdcxx
-
-    - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-5
-    - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # }
-
-    # qt-qml {
-
-    - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-5
-    - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-
-    # }
-
-    # }
 
     # OSX {
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-make-cxx14
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-cxx14
+
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+
+    # }
+
+    # Extra {
+
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # qt-core {
 
     - os: osx
-      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-12
-
-    # }
-
-    # qt-widgets {
-
-    - os: osx
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-12
-    - os: osx
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-13-cxx14
 
     # }
 
     # qt-camera {
 
+    - os: linux
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
+
+    - os: linux
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=libcxx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-make-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-12
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
     # qt-location {
 
+    - os: linux
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-7-cxx17
+
+    - os: linux
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=libcxx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-make-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-12
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
     # qt-qml {
 
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
+
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
+
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=libcxx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-make-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-12
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-cxx14
+
     - os: osx
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-10-3-wo-armv7s
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
@@ -213,6 +202,7 @@ install:
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
   - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
+  - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
 
 script:
   - >
