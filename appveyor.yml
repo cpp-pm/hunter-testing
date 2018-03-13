@@ -16,9 +16,10 @@ environment:
     #   TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\qt-widgets
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\qt-widgets
+    # FIXME: Not able to reproduce environment locally
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\qt-widgets
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
@@ -36,9 +37,10 @@ environment:
 
     # qt-core {
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\qt-core
+    # FIXME: Not able to reproduce environment locally
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\qt-core
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
@@ -48,9 +50,10 @@ environment:
 
     # qt-qml {
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\qt-qml
+    # FIXME: Not able to reproduce environment locally
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\qt-qml
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
@@ -64,9 +67,10 @@ environment:
 
     # qt-location {
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\qt-location
+    # FIXME: Not able to reproduce environment locally
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\qt-location
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
@@ -80,9 +84,10 @@ environment:
 
     # qt-camera {
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\qt-camera
+    # FIXME: Not able to reproduce environment locally
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\qt-camera
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
