@@ -22,7 +22,7 @@ environment:
     #   PROJECT_DIR: examples\qt-widgets
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\qt-widgets
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -43,7 +43,7 @@ environment:
     #   PROJECT_DIR: examples\qt-core
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\qt-core
 
     # }
@@ -56,7 +56,7 @@ environment:
     #   PROJECT_DIR: examples\qt-qml
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\qt-qml
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -73,7 +73,7 @@ environment:
     #   PROJECT_DIR: examples\qt-location
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\qt-location
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -90,7 +90,7 @@ environment:
     #   PROJECT_DIR: examples\qt-camera
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\qt-camera
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
