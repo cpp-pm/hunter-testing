@@ -18,9 +18,10 @@ environment:
     #   TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\OpenCV
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\OpenCV
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3441/job/unlf97gahmsmwywo
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\OpenCV
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
@@ -54,9 +55,10 @@ environment:
     #   TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\OpenCV-extra
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\OpenCV-extra
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3441/job/unlf97gahmsmwywo
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\OpenCV-extra
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "vs-14-2015"
