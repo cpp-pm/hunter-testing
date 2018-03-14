@@ -45,7 +45,7 @@ matrix:
     #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14 VERBOSE=0
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
