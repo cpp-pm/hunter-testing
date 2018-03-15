@@ -42,8 +42,9 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
 
     - os: linux
       env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
@@ -102,8 +103,9 @@ matrix:
 
     # qt-camera {
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
 
     - os: linux
       env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
@@ -151,8 +153,9 @@ matrix:
 
     # qt-qml {
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
 
     - os: linux
       env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
