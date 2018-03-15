@@ -46,8 +46,9 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
 
     # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
     # - os: linux
@@ -107,8 +108,9 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
 
     # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
     # - os: osx
@@ -128,8 +130,9 @@ matrix:
 
     # qt-location {
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-7-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-7-cxx17
 
     # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
     # - os: linux
@@ -157,8 +160,9 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
+    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
+    # - os: linux
+    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
 
     # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
     # - os: linux
