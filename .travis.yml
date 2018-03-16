@@ -89,9 +89,10 @@ matrix:
 
     # Extra {
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    # FIXME
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # qt-core {
 
@@ -122,9 +123,10 @@ matrix:
     #   osx_image: xcode9.2
     #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-cxx14
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    # FIXME
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
@@ -148,9 +150,10 @@ matrix:
     #   osx_image: xcode9.2
     #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-cxx14
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    # FIXME
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
@@ -178,9 +181,10 @@ matrix:
     #   osx_image: xcode9.2
     #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-cxx14
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    # FIXME
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
