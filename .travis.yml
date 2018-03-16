@@ -52,7 +52,7 @@ matrix:
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-leak-cxx17 VERBOSE=0
 
     - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-thread-cxx17
+      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
 
     # }
 
