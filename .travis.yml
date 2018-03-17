@@ -42,17 +42,14 @@ matrix:
   include:
     # Linux {
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=clang-cxx17
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=gcc-7-cxx17
 
-    # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+    - os: linux
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
     # - os: linux
     #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=analyze-cxx17
@@ -71,120 +68,100 @@ matrix:
 
     # OSX {
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-make-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-make-cxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=osx-10-13-cxx14
 
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
 
     # }
 
     # Extra {
 
-    # FIXME
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-widgets TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # qt-core {
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-core TOOLCHAIN=osx-10-13-cxx14
 
     # }
 
     # qt-camera {
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=clang-cxx17
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=gcc-7-cxx17
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-make-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-make-cxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=osx-10-13-cxx14
 
-    # FIXME
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-camera TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
     # qt-location {
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-7-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=gcc-7-cxx17
 
-    # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+    - os: linux
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-make-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-make-cxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=osx-10-13-cxx14
 
-    # FIXME
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-location TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
     # qt-qml {
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=clang-cxx17
 
-    # FIXME: ERROR: Feature 'xcb' was enabled, but the pre-condition 'libs.xcb' failed.
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=gcc-7-cxx17
 
-    # FIXME: qtbase/config.tests/arch/arch.cpp:43:19: fatal error: stdio.h: No such file or directory
-    # - os: linux
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+    - os: linux
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-make-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-make-cxx14
 
-    # FIXME: qcoregraphics.mm:82:38: error: use of undeclared identifier 'InvalidBounds'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=osx-10-13-cxx14
 
-    # FIXME
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
+    - os: osx
+      osx_image: xcode9.2
+      env: PROJECT_DIR=examples/qt-qml TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
 
     # }
 
