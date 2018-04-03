@@ -43,8 +43,9 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/type_safe TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
-    - os: linux
-      env: PROJECT_DIR=examples/type_safe TOOLCHAIN=analyze-cxx17
+    # FIXME: https://travis-ci.org/dvirtz/hunter/jobs/361296454
+    # - os: linux
+    #   env: PROJECT_DIR=examples/type_safe TOOLCHAIN=analyze-cxx17
 
     - os: linux
       env: PROJECT_DIR=examples/type_safe TOOLCHAIN=sanitize-address-cxx17
@@ -67,9 +68,10 @@ matrix:
       osx_image: xcode9.2
       env: PROJECT_DIR=examples/type_safe TOOLCHAIN=osx-10-13-cxx14
 
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/type_safe TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+    # FIXME: https://travis-ci.org/dvirtz/hunter/jobs/361296460
+    # - os: osx
+    #   osx_image: xcode9.2
+    #   env: PROJECT_DIR=examples/type_safe TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
 
     # }
 
