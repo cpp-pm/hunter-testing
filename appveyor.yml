@@ -24,10 +24,9 @@ environment:
       TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\benchmark
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2567
-    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-    #   TOOLCHAIN: "mingw-cxx17"
-    #   PROJECT_DIR: examples\benchmark
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\benchmark
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       TOOLCHAIN: "msys-cxx17"
