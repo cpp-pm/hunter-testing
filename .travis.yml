@@ -37,8 +37,10 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/acf TOOLCHAIN=clang-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/acf TOOLCHAIN=gcc-7-cxx17
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/364051090
+    # - os: linux
+    #   env: PROJECT_DIR=examples/acf TOOLCHAIN=gcc-7-cxx17
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/299720393
