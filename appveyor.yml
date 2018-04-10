@@ -61,7 +61,7 @@ environment:
     #   PROJECT_DIR: examples\OpenCV-extra
 
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "vs-14-2015"
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\OpenCV-extra
 
     # FIXME:
