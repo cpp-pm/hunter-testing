@@ -10,283 +10,161 @@ environment:
       secure: 9/qGB8wlVXAbzkn7xyfK4JJbaRJ/Uh8UwYXX0DcFqzTFDjc1aSGK5eNtyxWIpvmt
 
   matrix:
-    # Note: 'default' toolchain is the same as 'vs-14-2015'
-
-    ### Boost ###
 
     # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\Boost
 
     # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #   TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
     #   PROJECT_DIR: examples\Boost
 
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost
-
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\Boost
-
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost
-
-    - TOOLCHAIN: "mingw-c11"
-      PROJECT_DIR: examples\Boost
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
+    # FIXME:
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\Boost
 
-    ### Boost-filesystem ###
+    # Extra {
 
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-filesystem
+    # Boost-filesystem {
 
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-filesystem
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-filesystem
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-filesystem
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-filesystem
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-filesystem
+    # }
 
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\Boost-filesystem
+    # Boost-system {
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-filesystem
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-filesystem
-
-    ### Boost-system ###
-
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-system
-
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-system
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-system
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-system
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-system
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-system
+    # }
 
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\Boost-system
+    # Boost-iostreams {
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-system
-
-    - TOOLCHAIN: "mingw-c11"
-      PROJECT_DIR: examples\Boost-system
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-system
-
-    ### Boost-iostreams ###
-
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-iostreams
-
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-iostreams
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-iostreams
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-iostreams
 
-    - TOOLCHAIN: "vs-12-2013"
-      PROJECT_DIR: examples\Boost-iostreams
+    # }
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-iostreams
+    # Boost-thread {
 
-    # FIXME:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.81/job/gyvurjesgb2gtcyw
-    # - TOOLCHAIN: "mingw"
-    #  PROJECT_DIR: examples\Boost-iostreams
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-iostreams
-
-    ### Boost-thread ###
-
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-thread
-
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-thread
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-thread
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-thread
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-thread
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-thread
+    # }
 
-    - TOOLCHAIN: "vs-14-2015-win64"
-      PROJECT_DIR: examples\Boost-thread
+    # Boost-chrono {
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-thread
-
-    - TOOLCHAIN: "mingw-c11"
-      PROJECT_DIR: examples\Boost-thread
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-thread
-
-    ### Boost-chrono ###
-
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-chrono
-
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-chrono
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-chrono
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-chrono
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-chrono
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-chrono
+    # }
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-chrono
+    # Boost-serialization {
 
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-chrono
-
-    ### Boost-serialization ###
-
-    # FIXME:
-    # - TOOLCHAIN: "ninja-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-serialization
-
-    # FIXME:
-    # - TOOLCHAIN: "nmake-vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-serialization
-
-    - TOOLCHAIN: "vs-12-2013-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-serialization
 
-    - TOOLCHAIN: "vs-12-2013-xp"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-serialization
 
-    - TOOLCHAIN: "vs-12-2013"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-serialization
 
-    - TOOLCHAIN: "vs-14-2015"
-      PROJECT_DIR: examples\Boost-serialization
+    # }
 
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\Boost-serialization
-
-    # timeout: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.651/job/h2lruqh872w9x2qa
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\Boost-serialization
-
-    - TOOLCHAIN: "mingw-c11"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Boost-program-options
 
-    - TOOLCHAIN: "vs-14-2015-win64"
+    # Boost-test {
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-test
 
-    - TOOLCHAIN: "mingw-c11"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Boost-test
 
-    - TOOLCHAIN: "vs-14-2015-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\Boost-test
+
+    # }
+
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-random
 
-    - TOOLCHAIN: "vs-14-2015-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-math
 
-    ### Boost-fiber ###
-
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/y8cruqe3w08qiay0
-    # - TOOLCHAIN: "vs-12-2013-win64"
-    #   PROJECT_DIR: examples\Boost-fiber
-
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/retbc815gpg02q56
-    # - TOOLCHAIN: "vs-12-2013-xp"
-    #   PROJECT_DIR: examples\Boost-fiber
-
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/ygt0ncy6cioj3p3i
-    # - TOOLCHAIN: "vs-12-2013"
-    #   PROJECT_DIR: examples\Boost-fiber
-
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/ttbhytj9qjvryddk
-    # - TOOLCHAIN: "vs-14-2015"
-    #   PROJECT_DIR: examples\Boost-fiber
-
-    - TOOLCHAIN: "vs-14-2015-win64"
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Boost-fiber
 
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/h3yp814xsdeyu31y
-    # - TOOLCHAIN: "mingw"
-    #   PROJECT_DIR: examples\Boost-fiber
-
-    # FIXME:
-    # https://ci.appveyor.com/project/gumb0/hunter/build/job/03rw8pxfqea4j2q9
-    # - TOOLCHAIN: "mingw-c11"
-    #   PROJECT_DIR: examples\Boost-fiber
+    # }
 
 install:
   # Python 3
@@ -314,12 +192,13 @@ install:
   # * http://stackoverflow.com/a/3870338/2288008
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 
-  # Use MinGW from Qt tools because version is higher
-  # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
+
+  # Visual Studio 15 2017: Mimic behavior of older versions
+  - cmd: set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools
 
 build_script:
   - cmd: python .\jenkins.py --upload
