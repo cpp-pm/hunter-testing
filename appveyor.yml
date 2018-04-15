@@ -9,6 +9,7 @@ environment:
   matrix:
 
     # FIXME: VS 2017 not supported by this package
+    #  * https://ci.appveyor.com/project/lsolanka/hunter/build/1.0.6
     #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
     #  PROJECT_DIR: examples\ros_console_bridge
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
