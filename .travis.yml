@@ -42,121 +42,153 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/OpenCV
 
     # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083573
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/OpenCV
+    #     VERBOSE=0
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14 VERBOSE=0
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
 
     # FIXME (TIFF broken)
     # * https://travis-ci.org/ingenue/hunter/jobs/116592968
     # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=analyze-cxx17
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/OpenCV
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/OpenCV
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/OpenCV
 
     - os: linux
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/OpenCV
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=osx-10-13-cxx14 VERBOSE=0
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
 
     # Upload from local machine
-    # FIXME: modules/core/src/parallel_impl.cpp:396:21: error: implicitly declaring library function '_mm_pause' with type 'void ()'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3 VERBOSE=0
-
-    # }
-
-    # OpenCV-extra {
-
-    # Linux {
-
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=clang-cxx17 VERBOSE=0
-
-    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083589
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=gcc-7-cxx17
-
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14 VERBOSE=0
-
-    # FIXME (TIFF broken)
-    # * https://travis-ci.org/ingenue/hunter/jobs/116592968
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=analyze-cxx17
-
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-address-cxx17 VERBOSE=0
-
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-leak-cxx17 VERBOSE=0
-
-    - os: linux
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
-
-    # }
-
-    # OSX {
-
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-13-make-cxx14
-
-    - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=osx-10-13-cxx14 VERBOSE=0
-
-    # Upload from local machine
-    # FIXME: modules/core/src/parallel_impl.cpp:396:21: error: implicitly declaring library function '_mm_pause' with type 'void ()'
-    # - os: osx
-    #   osx_image: xcode9.2
-    #   env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3 VERBOSE=0
-
-    # }
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
 
     # }
 
     # Extra {
 
-    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083580
-    # - os: linux
-    #   env: PROJECT_DIR=examples/OpenCV-Qt TOOLCHAIN=gcc-7-cxx17 VERBOSE=0
+    # Linux {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    # }
+
+    # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/OpenCV-extra
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7 VERBOSE=0
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
 
-    # Upload from local machine
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/OpenCV-extra TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-arm64 VERBOSE=0
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    # }
 
     # }
 
@@ -169,6 +201,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
