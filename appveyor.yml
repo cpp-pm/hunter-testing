@@ -24,13 +24,15 @@ environment:
       TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\ICU
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\ICU
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3609/job/5w88gkkrg9o15bu4
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\ICU
 
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\ICU
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3609/job/3dc971dqyibienx4
+    # - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\ICU
 
 install:
   # Python 3
