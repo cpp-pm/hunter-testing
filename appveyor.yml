@@ -8,17 +8,18 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ros_console_bridge
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: VS 2017 not supported by this package
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ros_console_bridge
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ros_console_bridge
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ros_console_bridge
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ros_console_bridge
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ros_console_bridge
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\ros_console_bridge
