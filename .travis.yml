@@ -40,8 +40,9 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/gauze TOOLCHAIN=gcc-7-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/gauze TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+    # FIXME: Upload error
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gauze TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
 
     - os: linux
       env: PROJECT_DIR=examples/gauze TOOLCHAIN=analyze-cxx17
