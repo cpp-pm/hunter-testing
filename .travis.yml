@@ -35,41 +35,61 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=analyze-cxx17
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost
 
     # }
 
@@ -80,41 +100,61 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=analyze-cxx17
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-filesystem
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-filesystem
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-filesystem TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-filesystem
 
     # }
 
@@ -125,41 +165,61 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=analyze-cxx17
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-system
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-system
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-system
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-system TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-system
 
     # }
 
@@ -170,33 +230,47 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-iostreams
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-iostreams
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-iostreams
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-iostreams
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-iostreams
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-iostreams
 
     # Keep: Not working on Linux but working on OSX
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-iostreams TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+        PROJECT_DIR=examples/Boost-iostreams
 
     # }
 
@@ -207,41 +281,61 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=analyze-cxx17
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-thread
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-thread
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-thread
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-thread TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-thread
 
     # }
 
@@ -252,41 +346,61 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=analyze-cxx17
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-chrono
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-chrono
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-chrono TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-chrono
 
     # }
 
@@ -295,18 +409,24 @@ matrix:
     # Boost-test {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-test
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-test TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-test
 
     # }
 
     # Boost-math {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-math TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-math
 
     # }
 
@@ -315,38 +435,56 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=sanitize-thread-cxx17
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Boost-serialization
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-serialization
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-serialization TOOLCHAIN=ios-nocodesign-11-2-dep-9-3
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-serialization
 
     # }
 
@@ -355,11 +493,15 @@ matrix:
     # Boost-random {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-random
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-random TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-random
 
     # }
 
@@ -368,28 +510,40 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=clang-cxx17
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Boost-fiber
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=gcc-7-cxx17
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-fiber
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=sanitize-address-cxx17
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Boost-fiber
 
     - os: linux
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=sanitize-leak-cxx17
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Boost-fiber
 
     # }
 
     # OSX {
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=osx-10-13-make-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Boost-fiber
 
     - os: osx
-      osx_image: xcode9.2
-      env: PROJECT_DIR=examples/Boost-fiber TOOLCHAIN=osx-10-13-cxx14
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Boost-fiber
 
     # }
 
@@ -406,6 +560,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
