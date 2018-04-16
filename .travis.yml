@@ -265,12 +265,13 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/Boost-iostreams
 
-    # Keep: Not working on Linux but working on OSX
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-        PROJECT_DIR=examples/Boost-iostreams
+    # Was working on OSX before, now not working at all:
+    # * https://github.com/boostorg/build/issues/300
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #     PROJECT_DIR=examples/Boost-iostreams
 
     # }
 
