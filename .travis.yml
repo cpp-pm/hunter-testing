@@ -550,6 +550,12 @@ matrix:
 
     # }
 
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Boost-system-1-66
+
     # }
 
 install:
