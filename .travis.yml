@@ -556,6 +556,11 @@ matrix:
         TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
         PROJECT_DIR=examples/Boost-system-1-66
 
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-contract
+
     # }
 
 install:
