@@ -114,6 +114,12 @@ matrix:
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/Boost-filesystem
 
+    # 1.67.0-p0 patch testing
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-filesystem
+
     - os: linux
       env: >
         TOOLCHAIN=analyze-cxx17
@@ -294,6 +300,12 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Boost-thread
+
+    # 1.67.0-p0 patch testing
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-clang-libcxx14
         PROJECT_DIR=examples/Boost-thread
 
     - os: linux
