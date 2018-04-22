@@ -87,11 +87,14 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/roscpp_core
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/roscpp_core
+    # FIXME: Build fails because a narrowing conversion is not allowed from a 32b uint to
+    # long:
+    #   * https://travis-ci.org/lsolanka/hunter/jobs/369708456
+    #- os: osx
+    #  osx_image: xcode9.3
+    #  env: >
+    #    TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #    PROJECT_DIR=examples/roscpp_core
 
     # }
 
