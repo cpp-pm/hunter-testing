@@ -34,7 +34,7 @@ hunter_test_string_not_empty("${HUNTER_CONFIGURATION_TYPES}")
 file(
     WRITE
     "${TOOLCHAIN_INFO_FILE}"
-    "Cache version: 4\n"
+    "Cache version: 6\n"
     "Polly toolchains:\n"
     "    IPHONEOS_ARCHS: ${IPHONEOS_ARCHS}\n"
     "    IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}\n"
@@ -43,6 +43,15 @@ file(
     "    HUNTER_CONFIGURATION_TYPES: ${HUNTER_CONFIGURATION_TYPES}\n"
     "    HUNTER_TOOLCHAIN_UNDETECTABLE_ID: ${HUNTER_TOOLCHAIN_UNDETECTABLE_ID}\n"
 )
+
+string(COMPARE EQUAL "${HUNTER_BUILD_SHARED_LIBS}" "" is_empty)
+if(NOT is_empty)
+  file(
+      APPEND
+      "${TOOLCHAIN_INFO_FILE}"
+      "    HUNTER_BUILD_SHARED_LIBS: ${HUNTER_BUILD_SHARED_LIBS}\n"
+  )
+endif()
 
 string(COMPARE EQUAL "${OSX_SDK_VERSION}" "" is_empty)
 if(NOT is_empty)
@@ -73,7 +82,10 @@ try_compile(
 )
 
 if(NOT try_compile_result)
-  hunter_internal_error("Compilation of ${predefined} failed")
+  hunter_internal_error(
+      "Compilation of ${predefined} failed. Result: ${try_compile_result}\n"
+      "Output:\n--- OUTPUT BEGIN ---\n${outresult}\n--- OUTPUT END ---"
+  )
 endif()
 
 function(split_string string_in result)
