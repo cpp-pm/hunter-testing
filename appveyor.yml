@@ -8,29 +8,39 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/374sgy84v86mp67e
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\folly
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/kchuogwgb72kiuls
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\folly
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\folly
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/h0t860d3ju0u5cw5
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\folly
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (glog):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/0f185lr9xpas6guj
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\folly
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/gh4a21mrbdj9rghc
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\folly
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
