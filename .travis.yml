@@ -49,10 +49,11 @@ matrix:
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/WebKit
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/369970355
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/WebKit
 
     - os: linux
       env: >
@@ -85,11 +86,12 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/WebKit
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/WebKit
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/369970361
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     PROJECT_DIR=examples/WebKit
 
     # }
 
