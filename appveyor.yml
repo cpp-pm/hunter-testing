@@ -19,18 +19,25 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\WebKit
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\WebKit
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # Visual Studio 15 2017 is minimum:
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3685/job/qk5d3kistd5te39w
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\WebKit
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\WebKit
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (ICU):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3685/job/lpf69l9muwa5v3es
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\WebKit
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\WebKit
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (ICU):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3685/job/y597wsp5guyrr8ro
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\WebKit
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
