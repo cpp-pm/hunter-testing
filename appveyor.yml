@@ -24,8 +24,8 @@ environment:
       PROJECT_DIR: examples\ros_gencpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME: mingw and msys can't find python package ros_gencpp, which could point to some
-    # python paths not being set up correctly after ros_gencpp is installed to the cache
+    # FIXME: mingw and msys can't find python package catkin, which could point to some
+    # python paths not being set up correctly after catkin is installed to the cache
     #  * https://ci.appveyor.com/project/lsolanka/hunter/build/1.0.16
     # - TOOLCHAIN: "mingw-cxx17"
     #   PROJECT_DIR: examples\ros_gencpp
