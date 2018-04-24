@@ -22,6 +22,9 @@ addons:
     packages:
       - python3-pip
       - g++-7
+      - python-pip
+      - python-empy
+      - python-yaml
 
 dist:
   - trusty
@@ -37,37 +40,37 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     # }
 
@@ -77,19 +80,19 @@ matrix:
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: osx
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     - os: osx
       osx_image: xcode9.3
       env: >
         TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/ros_genpy
 
     # }
 
@@ -109,6 +112,10 @@ install:
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+
+  # Install python packages required to build ROS components
+  - if [[ "`uname`" == "Darwin" ]]; then pip install --user empy catkin_pkg pyyaml; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip install --user catkin_pkg; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
