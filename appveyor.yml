@@ -81,6 +81,11 @@ environment:
       PROJECT_DIR: examples\Boost-iostreams
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # Check library prefix removed correctly
+    - TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\Boost-iostreams
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
     # }
 
     # Boost-thread {

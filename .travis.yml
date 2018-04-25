@@ -279,6 +279,34 @@ matrix:
     #     TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
     #     PROJECT_DIR=examples/Boost-iostreams
 
+    # Upload for Linux
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=android-ndk-r15c-api-16-armeabi-v7a-neon-clang-libcxx
+        PROJECT_DIR=examples/Boost-iostreams-1-64
+
+    # Upload for Linux
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=android-ndk-r15c-api-16-armeabi-clang-libcxx
+        PROJECT_DIR=examples/Boost-iostreams-1-64
+
+    # Upload for Linux
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=android-ndk-r15c-api-16-mips-clang-libcxx
+        PROJECT_DIR=examples/Boost-iostreams-1-64
+
+    # Upload for Linux
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=android-ndk-r15c-api-16-x86-clang-libcxx
+        PROJECT_DIR=examples/Boost-iostreams-1-64
+
     # }
 
     # }
