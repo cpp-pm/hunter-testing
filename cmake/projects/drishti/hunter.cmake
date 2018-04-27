@@ -20,7 +20,34 @@ hunter_add_version(
     8d3bdc346073c0a1449b213fe374f6baf7589af1
 )
 
-hunter_cmake_args(drishti CMAKE_ARGS DRISHTI_BUILD_EXAMPLES=NO)
+hunter_add_version(
+    PACKAGE_NAME
+    drishti
+    VERSION
+    0.8.6
+    URL
+    "https://github.com/elucideye/drishti/archive/v0.8.6.tar.gz"
+    SHA1
+    180161389f017719380f344e09f76fd1cdae609d
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    drishti
+    VERSION
+    0.8.9
+    URL
+    "https://github.com/elucideye/drishti/archive/v0.8.9.tar.gz"
+    SHA1
+    b53bd5e779c2f1cca85c74d0c9dce7dd5c2b92f1
+    )
+
+hunter_cmake_args(
+    drishti
+    CMAKE_ARGS
+    DRISHTI_BUILD_EXAMPLES=NO
+    DRISHTI_BUILD_OGLES_GPGPU=ON
+)
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(drishti)
