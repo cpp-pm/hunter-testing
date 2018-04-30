@@ -44,29 +44,26 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/thrift
 
-    # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/thrift
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/thrift
 
-    # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
+    # FIXME: https://travis-ci.org/isaachier/hunter/builds/372820536
     # - os: linux
     #   env: >
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/thrift
 
-    # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=sanitize-address-cxx17
-    #     PROJECT_DIR=examples/thrift
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/thrift
 
-    # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=sanitize-leak-cxx17
-    #     PROJECT_DIR=examples/thrift
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/thrift
 
     - os: linux
       env: >
@@ -89,12 +86,11 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/thrift
 
-    # FIXME: https://travis-ci.org/isaachier/hunter/builds/280841161
-    # - os: osx
-    #   osx_image: xcode9.3
-    #   env: >
-    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-    #     PROJECT_DIR=examples/thrift
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/thrift
 
     # }
 
