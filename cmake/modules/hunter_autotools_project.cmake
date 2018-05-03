@@ -111,6 +111,8 @@ function(hunter_autotools_project target_name)
   set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
   set(shell_env_path "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}")
 
+  set(shell_ld_path "LD_LIBRARY_PATH=${PARAM_GLOBAL_INSTALL_DIR}/lib")
+
   set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
   set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
   set(shell_pkg_config_libdir "PKG_CONFIG_LIBDIR=${d1}:${d2}")
@@ -123,6 +125,7 @@ function(hunter_autotools_project target_name)
       &&
       ${shell_env_path}
       ${shell_pkg_config_libdir}
+      ${shell_ld_path}
   )
 
   # Build command and options
@@ -173,6 +176,8 @@ function(hunter_autotools_project target_name)
           ${PARAM_URL_HASH}
         DOWNLOAD_DIR
           ${PARAM_DOWNLOAD_DIR}
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}
         INSTALL_DIR
@@ -195,6 +200,8 @@ function(hunter_autotools_project target_name)
     ExternalProject_Add(${ios_universal_target}
         DOWNLOAD_COMMAND
           ""
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}/universal
         INSTALL_DIR
@@ -241,6 +248,9 @@ function(hunter_autotools_project target_name)
       else()
         set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONEOS_SDK_ROOT} -miphoneos-version-min=${IOS_SDK_VERSION} ")
       endif()
+      set(arch_install_dir
+          ${multi_arch_install_root}/${ios_architecture}
+      )
       hunter_autotools_configure_command(autotools_configure_command
           PACKAGE_INSTALL_DIR
             ${arch_install_dir}
@@ -270,9 +280,6 @@ function(hunter_autotools_project target_name)
       set(arch_target
           ${target_name}-${ios_architecture}
       )
-      set(arch_install_dir
-          ${multi_arch_install_root}/${ios_architecture}
-      )
       ExternalProject_Add(${arch_target}
           URL
             ${PARAM_URL}
@@ -280,6 +287,8 @@ function(hunter_autotools_project target_name)
             ${PARAM_URL_HASH}
           DOWNLOAD_DIR
             ${PARAM_DOWNLOAD_DIR}
+          TLS_VERIFY
+            "${HUNTER_TLS_VERIFY}"
           SOURCE_DIR
             ${arch_source_dir}
           INSTALL_DIR
