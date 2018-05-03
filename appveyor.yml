@@ -8,13 +8,17 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\Leathers
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3834/job/r823vpod6gyg19tc
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\Leathers
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\Leathers
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3834/job/0eqbkcdpo8pcion5
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\Leathers
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\Leathers
@@ -28,9 +32,11 @@ environment:
       PROJECT_DIR: examples\Leathers
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\Leathers
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (Boost):
+    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3834/job/45svbb3imlwe087u
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\Leathers
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
