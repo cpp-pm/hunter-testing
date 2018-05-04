@@ -49,10 +49,13 @@ matrix:
         TOOLCHAIN=android-ndk-r16b-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/PROJ4
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/PROJ4
+    # FIXME: Unused variable 'xy' in PJ_chamb.c:53
+    # * https://travis-ci.org/michael-herwig/hunter/jobs/374980003
+    # * https://github.com/OSGeo/proj.4/issues/977
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/PROJ4
 
     - os: linux
       env: >
