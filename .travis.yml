@@ -21,6 +21,7 @@ addons:
     packages:
       - python3-pip
       - g++-7
+      - python-dev
       - python-pip
       - python-empy
       - python-yaml
