@@ -133,6 +133,10 @@ set(
     --user-config="${boost_user_jam}"
 )
 
+set(BOOST_VERSION "@HUNTER_Boost_VERSION@")
+
+# Use:
+# * BOOST_VERSION
 hunter_boost_component_b2_args(
   "@HUNTER_PACKAGE_COMPONENT@"
   "@HUNTER_Boost_CMAKE_ARGS@"
@@ -150,7 +154,11 @@ endif()
 
 string(COMPARE NOTEQUAL "@HUNTER_JOBS_OPTION@" "" have_jobs)
 if(have_jobs)
-  list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  if("@HUNTER_JOBS_OPTION@" GREATER "256")
+    list(APPEND build_opts "-j" 256)
+  else()
+    list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  endif()
 endif()
 
 set(
