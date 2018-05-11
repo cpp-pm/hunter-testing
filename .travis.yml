@@ -92,6 +92,10 @@ matrix:
     #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
     #     PROJECT_DIR=examples/ethash
 
+    # }
+
+    # Extra {
+
     - os: osx
       osx_image: xcode9.3
       env: >
