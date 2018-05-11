@@ -449,15 +449,18 @@ function(hunter_download)
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_CACHE_SERVERS \"${HUNTER_CACHE_SERVERS}\" CACHE INTERNAL \"\")\n"
   )
-  # Fix Windows slashes
-  get_filename_component(
-      passwords_path "${HUNTER_PASSWORDS_PATH}" ABSOLUTE
-  )
-  file(
-      APPEND
-      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
-      "set(HUNTER_PASSWORDS_PATH \"${passwords_path}\" CACHE INTERNAL \"\")\n"
-  )
+  string(COMPARE NOTEQUAL "${HUNTER_PASSWORDS_PATH}" "" has_passwords)
+  if(has_passwords)
+    # Fix Windows slashes
+    get_filename_component(
+        passwords_path "${HUNTER_PASSWORDS_PATH}" ABSOLUTE
+    )
+    file(
+        APPEND
+        "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+        "set(HUNTER_PASSWORDS_PATH \"${passwords_path}\" CACHE INTERNAL \"\")\n"
+    )
+  endif()
   file(
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
@@ -482,6 +485,11 @@ function(hunter_download)
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_RUN_UPLOAD \"${HUNTER_RUN_UPLOAD}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_JOBS_NUMBER \"${HUNTER_JOBS_NUMBER}\" CACHE INTERNAL \"\")\n"
   )
 
   string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
