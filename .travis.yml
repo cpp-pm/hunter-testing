@@ -84,10 +84,24 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/ethash
 
+    # FIXME: https://travis-ci.org/chfast/hunter/jobs/377637356
+    # thead_local not supported by the compiler
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     PROJECT_DIR=examples/ethash
+
     - os: osx
       osx_image: xcode9.3
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        PROJECT_DIR=examples/ethash
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
         PROJECT_DIR=examples/ethash
 
     # }
