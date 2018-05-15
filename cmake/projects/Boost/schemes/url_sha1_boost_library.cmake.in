@@ -214,6 +214,10 @@ if("@MINGW@")
   set(build_opts target-os=windows ${build_opts})
 endif()
 
+set(BOOST_VERSION "@HUNTER_Boost_VERSION@")
+
+# Use:
+# * BOOST_VERSION
 hunter_boost_component_b2_args(
     "@HUNTER_PACKAGE_COMPONENT@"
     "@HUNTER_Boost_CMAKE_ARGS@"
@@ -303,7 +307,11 @@ endif()
 
 string(COMPARE NOTEQUAL "@HUNTER_JOBS_OPTION@" "" have_jobs)
 if(have_jobs)
-  list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  if("@HUNTER_JOBS_OPTION@" GREATER "256")
+    list(APPEND build_opts "-j" 256)
+  else()
+    list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  endif()
 endif()
 
 if(@HUNTER_STATUS_DEBUG@)
@@ -320,10 +328,6 @@ if(CMAKE_HOST_WIN32)
     set(patch_cmd "@CMAKE_COMMAND@" -E copy "@HUNTER_PACKAGE_DOWNLOAD_DIR@/patched_boostrap.bat" "@HUNTER_PACKAGE_SOURCE_DIR@/patched_boostrap.bat")
     set(bootstrap_cmd "patched_boostrap.bat")
   else()
-    if ("@ANDROID@")
-      # cross compile from "windows" to "android"
-      set(build_opts target-os=android ${build_opts})
-    endif()
     set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
     set(bootstrap_cmd "bootstrap.bat")
   endif()
@@ -335,6 +339,10 @@ endif()
 
 if("@MINGW@")
   list(APPEND bootstrap_cmd "gcc")
+endif()
+
+if("@ANDROID@")
+  list(APPEND build_opts target-os=android)
 endif()
 
 if(HUNTER_STATUS_DEBUG)
