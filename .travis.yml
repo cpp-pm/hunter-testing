@@ -1,8 +1,7 @@
 # OSX/Linux (https://github.com/travis-ci-tester/toolchain-table)
 
-os:
-  - linux
-  - osx
+language:
+  - cpp
 
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
@@ -11,50 +10,131 @@ sudo:
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
+# List of available packages:
+# * https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-trusty
+# List of available sources:
+# * https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - cmake
-      - python3
+      - python3-pip
+      - g++-7
 
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+dist:
+  - trusty
 
 env:
-  - PROJECT_DIR=examples/Android-Build-Tools TOOLCHAIN=default
+  global:
+    - secure: "QjDKH5FkegIqF++LRGoC7Rlag8cckWv0NnpJ7xWN40JEIqrD8g0IONW24+D5iEVQCU6RO2dIOzYxXdTjL7wKd5Lt8NQPfidIfwF7CEj+d7w6PtgzE3EKijlYyjWSRHnQ8vacBV3h4iiY0v+VFjqQeMEemIH2lmPd8pAELE7aSfKcgQfqsO59d9OCHbEvNjGZQVPSrPfjESYS7CW+r2v1Ik712r2p5oY5sLIXHLUGWWL6nb8chC+HwQE2SkzsBBVvJGpKAdfIBrm7jU0gw8KaVFQo6/Eg5+0l4IL7ns+GEYV7k2F5/ZLf3OeygZh0RRVAM5YAf6HoWd1s0kpxOxCVw2lb4abFPJZS7LnhOdS8hW5tbKiCM1AQPXyIN4PccyThocen5RGjbSPslDX0RDEVfmwnK0TlBPss0AsZS+Of0JzFAkXwr6/raya2brDXhmJVr269nictY5uwBbhbsSYHLbU42Fa2zLFXrDdCxOnCD7m9GaJN4gsvZsA6qkkeHrWhZw4wqMRrlTRDwHRJmaXYjFzXHjQfH4gegpzDhLeovan7AOUMCeBWj3LvhY7T6/u9J49b3zXT21bs/I4KylYZz6JQdM17WNpj6IxXNSaeTy5TWubWWDuEKM7IC76QlFpsCqB7ET/TN8HHBZB9CCFozvq4YI5jS7oSznjTFIf1fJM="
+
+matrix:
+  include:
+    # Linux {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    # }
+
+    # OSX {
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/Android-Build-Tools
+
+    # }
 
 install:
-  - ./ci/install-deps.sh
+  # Info about OS
+  - uname -a
 
-  # Installed by install-deps.sh if platform is Linux;
-  # (directory doesn't exist for OSX)
-  - export PATH="`pwd`/cmake-3.4.0-Linux-x86_64/bin:${PATH}"
+  # Disable autoupdate
+  # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
+  - export HOMEBREW_NO_AUTO_UPDATE=1
 
-  # Installed by install-deps.sh if platform is OSX;
-  # (directory doesn't exist for Linux)
-  - export PATH="`pwd`/cmake-3.3.2-Darwin-x86_64/bin:${PATH}"
+  # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
-  # Installed by install-deps.sh if toolchain is Android
-  # (otherwise directory doesn't exist)
-  - export ANDROID_NDK_r10e="`pwd`/android-ndk-r10e"
+  # Install Python package 'requests'
+  # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
+  - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
 
-  # Install Polly toolchains
-  - POLLY_VERSION="0.9.0"
-  - wget "https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.tar.gz"
-  - tar xf "v${POLLY_VERSION}.tar.gz"
-  - export PATH="`pwd`/polly-${POLLY_VERSION}/bin:${PATH}"
+  # Install latest Polly toolchains and scripts
+  - wget https://github.com/ruslo/polly/archive/master.zip
+  - unzip master.zip
+  - POLLY_ROOT="`pwd`/polly-master"
+  - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
-  # Check versions of tools
-  - which cmake
-  - cmake --version
-  - which python3
-  - python3 --version
+  # Install dependencies (CMake, Android NDK)
+  - install-ci-dependencies.py
+
+  # Tune locations
+  - export PATH="`pwd`/_ci/cmake/bin:${PATH}"
+
+  # Installed if toolchain is Android (otherwise directory doesn't exist)
+  - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
+  - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
+  - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
+  - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
 script:
   - python3 ./jenkins.py
+
+# https://docs.travis-ci.com/user/customizing-the-build/#Whitelisting-or-blacklisting-branches
+# Exclude branch 'pkg.template'. Nothing to build there.
+branches:
+  except:
+    - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/

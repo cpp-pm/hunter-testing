@@ -11,16 +11,28 @@ function(hunter_jobs_number jobs_options_varname toolchain_path)
   string(COMPARE EQUAL "${HUNTER_JOBS_NUMBER}" "" use_default_jobs)
   if(use_default_jobs)
     cmake_host_system_information(
-        RESULT jobs_number
+        RESULT l_cores
         QUERY NUMBER_OF_LOGICAL_CORES
     )
+    cmake_host_system_information(
+        RESULT p_cores
+        QUERY NUMBER_OF_PHYSICAL_CORES
+    )
+    hunter_status_debug("Number of physical cores: ${p_cores}")
+    hunter_status_debug("Number of logical cores: ${l_cores}")
+
+    set(jobs_number ${p_cores})
+    if(jobs_number LESS l_cores)
+      set(jobs_number ${l_cores})
+    endif()
+
     string(COMPARE EQUAL "${jobs_number}" "0" is_zero)
     if(is_zero)
-      hunter_status_debug("Number of logical cores is 0 - forcing 1")
+      hunter_status_debug("Force jobs number: 1")
       set(jobs_number "1")
-    else()
-      hunter_status_debug("Number of logical cores: ${jobs_number}")
     endif()
+
+    hunter_status_debug("Number of jobs: ${jobs_number}")
   else()
     set(jobs_number "${HUNTER_JOBS_NUMBER}")
   endif()

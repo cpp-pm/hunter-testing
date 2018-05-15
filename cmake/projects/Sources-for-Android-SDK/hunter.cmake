@@ -1,11 +1,7 @@
 # Copyright (c) 2015, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_SOURCES_FOR_ANDROID_SDK_HUNTER_CMAKE_)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_SOURCES_FOR_ANDROID_SDK_HUNTER_CMAKE_ 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_download)
@@ -55,6 +51,17 @@ hunter_add_version(
     "http://dl-ssl.google.com/android/repository/sources-16_r02.zip"
     SHA1
     0f83c14ed333c45d962279ab5d6bc98a0269ef84
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Sources-for-Android-SDK
+    VERSION
+    "24" # version affects layout: <sdk>/sources/android-24
+    URL
+    "http://dl-ssl.google.com/android/repository/sources-24_r01.zip"
+    SHA1
+    6b96115830a83d654479f32ce4b724ca9011148b
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_unpack)
