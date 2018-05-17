@@ -44,6 +44,9 @@ environment:
     #  PROJECT_DIR: examples\libunibreak
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    - TOOLCHAIN: dummy
+      PROJECT_DIR: examples\libunibreak
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
