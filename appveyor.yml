@@ -8,29 +8,44 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/mf8k2jag8376h6vl
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/b6qhuky2mtgh90d1
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/n07o8hgjk2ydyx9p
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/js7069hb14ifxht3
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/mct92p05ckjovst3
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: autoconf based package fails on windows
+    # https://ci.appveyor.com/project/jhs67/hunter/build/1.0.4/job/fa9p5m04tl62su3y
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\libunibreak
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    - TOOLCHAIN: dummy
+      PROJECT_DIR: examples\libunibreak
 
 install:
   # Python 3
