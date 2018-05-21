@@ -42,6 +42,7 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/dlib
+        HUNTER_JOBS_NUMBER=1
 
     # Requires std::round or newer NDK
     # - os: linux
