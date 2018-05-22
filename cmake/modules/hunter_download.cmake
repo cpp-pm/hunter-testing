@@ -1,9 +1,12 @@
-# Copyright (c) 2013-2015, Ruslan Baratov, Aaditya Kalsi
+# Copyright (c) 2013-2018, Ruslan Baratov
+# Copyright (c) 2015-2018, Aaditya Kalsi
+# Copyright (c) 2018, David Hirvonen
 # All rights reserved.
 
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_create_args_file)
+include(hunter_download_server_url)
 include(hunter_find_licenses)
 include(hunter_find_stamps)
 include(hunter_internal_error)
@@ -16,6 +19,7 @@ include(hunter_save_to_cache)
 include(hunter_status_debug)
 include(hunter_status_print)
 include(hunter_test_string_not_empty)
+include(hunter_upload_cache)
 include(hunter_user_error)
 
 # Note: 'hunter_find_licenses' should be called before each return point
@@ -43,7 +47,7 @@ function(hunter_download)
 
   hunter_test_string_not_empty("${HUNTER_INSTALL_PREFIX}")
   hunter_test_string_not_empty("${HUNTER_PACKAGE_NAME}")
-  hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_ID_PATH}")
+  hunter_test_string_not_empty("${HUNTER_CONFIG_ID_PATH}")
   hunter_test_string_not_empty("${HUNTER_CACHE_FILE}")
 
   string(COMPARE NOTEQUAL "${HUNTER_BINARY_DIR}" "" hunter_has_binary_dir)
@@ -77,8 +81,21 @@ function(hunter_download)
 
   set(HUNTER_PACKAGE_VERSION "${HUNTER_${h_name}_VERSION}")
   set(ver "${HUNTER_PACKAGE_VERSION}")
-  set(HUNTER_PACKAGE_URL "${HUNTER_${h_name}_URL}")
   set(HUNTER_PACKAGE_SHA1 "${HUNTER_${h_name}_SHA1}")
+
+  string(COMPARE EQUAL "${HUNTER_PACKAGE_SHA1}" "" version_not_found)
+  if(version_not_found)
+    hunter_user_error("Version not found: ${ver}. See 'hunter_config' command.")
+  endif()
+
+  # set download URL, either direct download or redirected if HUNTER_DOWNLOAD_SERVER is set
+  hunter_download_server_url(
+    PACKAGE "${HUNTER_PACKAGE_NAME}"
+    VERSION "${HUNTER_PACKAGE_VERSION}"
+    SHA1    "${HUNTER_PACKAGE_SHA1}"
+    URL     "${HUNTER_${h_name}_URL}"
+    OUTPUT  HUNTER_PACKAGE_URL
+  )
   set(
       HUNTER_PACKAGE_CONFIGURATION_TYPES
       "${HUNTER_${h_name}_CONFIGURATION_TYPES}"
@@ -102,11 +119,6 @@ function(hunter_download)
 
   string(COMPARE EQUAL "${HUNTER_PACKAGE_URL}" "" hunter_no_url)
 
-  string(COMPARE EQUAL "${HUNTER_PACKAGE_SHA1}" "" version_not_found)
-  if(version_not_found)
-    hunter_user_error("Version not found: ${ver}. See 'hunter_config' command.")
-  endif()
-
   hunter_test_string_not_empty("${HUNTER_PACKAGE_URL}")
   hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
 
@@ -115,7 +127,6 @@ function(hunter_download)
       "${HUNTER_PACKAGE_SHA1}"
       HUNTER_PACKAGE_DOWNLOAD_DIR
   )
-
 
   # Check that only one scheme is set to 1
   set(all_schemes "")
@@ -146,7 +157,7 @@ function(hunter_download)
   set(HUNTER_PACKAGE_SETUP_DIR "${HUNTER_SELF}/cmake/projects/${HUNTER_PACKAGE_NAME}")
   set(HUNTER_GLOBAL_SCRIPT_DIR "${HUNTER_SELF}/scripts")
   set(HUNTER_PACKAGE_SCRIPT_DIR "${HUNTER_PACKAGE_SETUP_DIR}/scripts/")
-  set(HUNTER_PACKAGE_HOME_DIR "${HUNTER_TOOLCHAIN_ID_PATH}/Build")
+  set(HUNTER_PACKAGE_HOME_DIR "${HUNTER_CONFIG_ID_PATH}/Build")
   set(
       HUNTER_PACKAGE_HOME_DIR
       "${HUNTER_PACKAGE_HOME_DIR}/${HUNTER_PACKAGE_NAME}"
@@ -157,11 +168,15 @@ function(hunter_download)
         "${HUNTER_PACKAGE_HOME_DIR}/__${HUNTER_PACKAGE_COMPONENT}"
     )
   endif()
-  set(HUNTER_PACKAGE_DONE_STAMP "${HUNTER_PACKAGE_HOME_DIR}/DONE")
   if(hunter_has_binary_dir)
+    # When cross-compiling we may need two build directories for
+    # the package - one for host and one for target. To avoid conflicts
+    # add random string.
+    string(RANDOM random)
+    set(helper_dir_to_remove "${HUNTER_BINARY_DIR}/${random}")
     set(
         HUNTER_PACKAGE_BUILD_DIR
-        "${HUNTER_BINARY_DIR}/${HUNTER_PACKAGE_NAME}"
+        "${helper_dir_to_remove}/${HUNTER_PACKAGE_NAME}"
     )
     if(hunter_has_component)
       set(
@@ -169,10 +184,13 @@ function(hunter_download)
           "${HUNTER_PACKAGE_BUILD_DIR}/__${HUNTER_PACKAGE_COMPONENT}"
       )
     endif()
+    if(EXISTS ${HUNTER_PACKAGE_BUILD_DIR})
+      hunter_internal_error("Not so random...")
+    endif()
   else()
     set(HUNTER_PACKAGE_BUILD_DIR "${HUNTER_PACKAGE_HOME_DIR}/Build")
+    set(helper_dir_to_remove "${HUNTER_PACKAGE_BUILD_DIR}")
   endif()
-  set(HUNTER_PACKAGE_SOURCE_DIR "${HUNTER_PACKAGE_HOME_DIR}/Source")
 
   if(HUNTER_PACKAGE_CACHEABLE)
     if(NOT HUNTER_PACKAGE_SCHEME_INSTALL)
@@ -181,6 +199,25 @@ function(hunter_download)
     set(HUNTER_PACKAGE_INSTALL_PREFIX "${HUNTER_PACKAGE_HOME_DIR}/Install")
   else()
     set(HUNTER_PACKAGE_INSTALL_PREFIX "${HUNTER_INSTALL_PREFIX}")
+  endif()
+
+  if(HUNTER_PACKAGE_SCHEME_UNPACK)
+    string(SUBSTRING "${HUNTER_PACKAGE_SHA1}" 0 7 x)
+    set(hunter_lock_sources TRUE)
+    set(
+        hunter_lock_sources_dir
+        "${HUNTER_CACHED_ROOT}/_Base/Cellar/${HUNTER_PACKAGE_SHA1}/${x}"
+    )
+    set(HUNTER_PACKAGE_SOURCE_DIR "${hunter_lock_sources_dir}/raw")
+    set(HUNTER_PACKAGE_DONE_STAMP "${hunter_lock_sources_dir}/unpack.DONE")
+    set(HUNTER_PACKAGE_LICENSE_DIR "${hunter_lock_sources_dir}/licenses")
+    set(HUNTER_PACKAGE_LICENSE_SEARCH_DIR "${HUNTER_PACKAGE_LICENSE_DIR}")
+  else()
+    set(hunter_lock_sources FALSE)
+    set(HUNTER_PACKAGE_SOURCE_DIR "${HUNTER_PACKAGE_HOME_DIR}/Source")
+    set(HUNTER_PACKAGE_DONE_STAMP "${HUNTER_PACKAGE_HOME_DIR}/DONE")
+    set(HUNTER_PACKAGE_LICENSE_DIR "${HUNTER_PACKAGE_INSTALL_PREFIX}/licenses/${HUNTER_PACKAGE_NAME}")
+    set(HUNTER_PACKAGE_LICENSE_SEARCH_DIR "${HUNTER_INSTALL_PREFIX}/licenses/${HUNTER_PACKAGE_NAME}")
   endif()
 
   if(HUNTER_PACKAGE_SCHEME_INSTALL)
@@ -206,9 +243,6 @@ function(hunter_download)
       hunter_internal_error("Invalid scheme")
     endif()
   endif()
-
-  # license file variable
-  set(HUNTER_PACKAGE_LICENSE_DIR "${HUNTER_PACKAGE_INSTALL_PREFIX}/licenses/${HUNTER_PACKAGE_NAME}")
 
   set(${root_name} "${${root_name}}" PARENT_SCOPE)
   set(ENV{${root_name}} "${${root_name}}")
@@ -246,8 +280,11 @@ function(hunter_download)
     endif()
 
     # In:
-    # * HUNTER_INSTALL_PREFIX
+    # * HUNTER_PACKAGE_HOME_DIR
+    # * HUNTER_PACKAGE_LICENSE_SEARCH_DIR
     # * HUNTER_PACKAGE_NAME
+    # * HUNTER_PACKAGE_SCHEME_UNPACK
+    # * HUNTER_PACKAGE_SHA1
     # Out:
     # * ${HUNTER_PACKAGE_NAME}_LICENSES (parent scope)
     hunter_find_licenses()
@@ -259,11 +296,11 @@ function(hunter_download)
       "${HUNTER_PACKAGE_DOWNLOAD_DIR}" HUNTER_ALREADY_LOCKED_DIRECTORIES
   )
   hunter_lock_directory(
-      "${HUNTER_TOOLCHAIN_ID_PATH}" HUNTER_ALREADY_LOCKED_DIRECTORIES
+      "${HUNTER_CONFIG_ID_PATH}" HUNTER_ALREADY_LOCKED_DIRECTORIES
   )
-  if(hunter_has_binary_dir)
+  if(hunter_lock_sources)
     hunter_lock_directory(
-        "${HUNTER_BINARY_DIR}" HUNTER_ALREADY_LOCKED_DIRECTORIES
+        "${hunter_lock_sources_dir}" HUNTER_ALREADY_LOCKED_DIRECTORIES
     )
   endif()
 
@@ -275,8 +312,11 @@ function(hunter_download)
     endif()
 
     # In:
-    # * HUNTER_INSTALL_PREFIX
+    # * HUNTER_PACKAGE_HOME_DIR
+    # * HUNTER_PACKAGE_LICENSE_SEARCH_DIR
     # * HUNTER_PACKAGE_NAME
+    # * HUNTER_PACKAGE_SCHEME_UNPACK
+    # * HUNTER_PACKAGE_SHA1
     # Out:
     # * ${HUNTER_PACKAGE_NAME}_LICENSES (parent scope)
     hunter_find_licenses()
@@ -285,17 +325,36 @@ function(hunter_download)
   endif()
 
   # load from cache using SHA1 of args.cmake file
+  set(package_cmake_args "")
+  list(APPEND package_cmake_args ${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS})
+
+  # Priority is higher than default CMAKE_ARGS from `hunter.cmake` but
+  # lower than user's CMAKE_ARGS from `config.cmake`.
+  string(COMPARE EQUAL "${HUNTER_CACHED_BUILD_SHARED_LIBS}" "" is_empty)
+  if(NOT is_empty)
+    list(
+        APPEND
+        package_cmake_args
+        "BUILD_SHARED_LIBS=${HUNTER_CACHED_BUILD_SHARED_LIBS}"
+    )
+  endif()
+
+  list(APPEND package_cmake_args ${HUNTER_${h_name}_CMAKE_ARGS})
+
   file(REMOVE "${HUNTER_ARGS_FILE}")
-  hunter_create_args_file(
-      "${HUNTER_${h_name}_DEFAULT_CMAKE_ARGS};${HUNTER_${h_name}_CMAKE_ARGS}"
-      "${HUNTER_ARGS_FILE}"
-  )
+  hunter_create_args_file("${package_cmake_args}" "${HUNTER_ARGS_FILE}")
 
   # Check if package can be loaded from cache
   hunter_load_from_cache()
 
   if(HUNTER_CACHE_RUN)
     # No need for licenses here (no 'hunter_find_licenses' call)
+    return()
+  endif()
+
+  if(HUNTER_PACKAGE_SCHEME_UNPACK AND HUNTER_SKIP_SCHEME_UNPACK)
+    # We don't need sources if parent is available in cache
+    hunter_status_debug("Skip unpacking of ${HUNTER_PACKAGE_NAME}")
     return()
   endif()
 
@@ -306,8 +365,11 @@ function(hunter_download)
     endif()
 
     # In:
-    # * HUNTER_INSTALL_PREFIX
+    # * HUNTER_PACKAGE_HOME_DIR
+    # * HUNTER_PACKAGE_LICENSE_SEARCH_DIR
     # * HUNTER_PACKAGE_NAME
+    # * HUNTER_PACKAGE_SCHEME_UNPACK
+    # * HUNTER_PACKAGE_SHA1
     # Out:
     # * ${HUNTER_PACKAGE_NAME}_LICENSES (parent scope)
     hunter_find_licenses()
@@ -334,10 +396,25 @@ function(hunter_download)
   file(REMOVE "${HUNTER_PACKAGE_HOME_DIR}/CMakeLists.txt")
   file(REMOVE "${HUNTER_DOWNLOAD_TOOLCHAIN}")
 
+  get_property(
+    keep_sources
+    GLOBAL
+    PROPERTY
+    "HUNTER_${h_name}_KEEP_PACKAGE_SOURCES"
+    )
+
+  if(HUNTER_KEEP_PACKAGE_SOURCES OR keep_sources)
+    set(_hunter_keep_package_sources ON)
+  else()
+    set(_hunter_keep_package_sources OFF)
+  endif()
+  hunter_status_debug("Keep package sources: ${_hunter_keep_package_sources}")
+
   file(WRITE "${HUNTER_DOWNLOAD_TOOLCHAIN}" "")
 
   hunter_jobs_number(HUNTER_JOBS_OPTION "${HUNTER_DOWNLOAD_TOOLCHAIN}")
   hunter_status_debug("HUNTER_JOBS_NUMBER: ${HUNTER_JOBS_NUMBER}")
+  hunter_status_debug("HUNTER_JOBS_NUMBER (env): $ENV{HUNTER_JOBS_NUMBER}")
   hunter_status_debug("HUNTER_JOBS_OPTION: ${HUNTER_JOBS_OPTION}")
 
   # support for toolchain file forwarding
@@ -371,17 +448,49 @@ function(hunter_download)
   file(
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
-      "list(APPEND HUNTER_CACHE_SERVERS ${HUNTER_CACHE_SERVERS})\n"
+      "set(HUNTER_CACHE_SERVERS \"${HUNTER_CACHE_SERVERS}\" CACHE INTERNAL \"\")\n"
   )
-  file(
-      APPEND
-      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
-      "set(HUNTER_PASSWORDS_PATH \"${HUNTER_PASSWORDS_PATH}\" CACHE INTERNAL \"\")\n"
-  )
+  string(COMPARE NOTEQUAL "${HUNTER_PASSWORDS_PATH}" "" has_passwords)
+  if(has_passwords)
+    # Fix Windows slashes
+    get_filename_component(
+        passwords_path "${HUNTER_PASSWORDS_PATH}" ABSOLUTE
+    )
+    file(
+        APPEND
+        "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+        "set(HUNTER_PASSWORDS_PATH \"${passwords_path}\" CACHE INTERNAL \"\")\n"
+    )
+  endif()
   file(
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_KEEP_PACKAGE_SOURCES \"${HUNTER_KEEP_PACKAGE_SOURCES}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_SUPPRESS_LIST_OF_FILES \"${HUNTER_SUPPRESS_LIST_OF_FILES}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_DOWNLOAD_SERVER \"${HUNTER_DOWNLOAD_SERVER}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_TLS_VERIFY \"${HUNTER_TLS_VERIFY}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_RUN_UPLOAD \"${HUNTER_RUN_UPLOAD}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_JOBS_NUMBER \"${HUNTER_JOBS_NUMBER}\" CACHE INTERNAL \"\")\n"
   )
 
   string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
@@ -413,6 +522,7 @@ function(hunter_download)
         "Configuration types: ${HUNTER_PACKAGE_CONFIGURATION_TYPES}"
     )
   endif()
+  hunter_status_debug("HUNTER_TLS_VERIFY: ${HUNTER_TLS_VERIFY}")
 
   if(has_internal_deps_id)
     hunter_status_debug(
@@ -465,6 +575,18 @@ function(hunter_download)
   string(COMPARE EQUAL "${HUNTER_USE_CACHE_SERVERS}" "ONLY" only_server)
   if(only_server)
     set(allow_builds FALSE)
+  endif()
+
+  # Always allow builds of submodules
+  get_property(submodule_projects GLOBAL PROPERTY HUNTER_SUBMODULE_PROJECTS)
+  if(submodule_projects)
+    list(FIND submodule_projects "${HUNTER_PACKAGE_NAME}" submodule_found)
+    if(NOT submodule_found EQUAL -1)
+      set(allow_builds TRUE)
+      if(hunter_has_component)
+        hunter_internal_error("Submodule with components")
+      endif()
+    endif()
   endif()
 
   if(NOT allow_builds AND HUNTER_PACKAGE_SCHEME_INSTALL)
@@ -563,9 +685,11 @@ function(hunter_download)
 
   hunter_status_debug("Cleaning up build directories...")
 
+  file(REMOVE_RECURSE "${helper_dir_to_remove}")
+
   file(REMOVE_RECURSE "${HUNTER_PACKAGE_BUILD_DIR}")
   if(HUNTER_PACKAGE_SCHEME_INSTALL)
-    if(HUNTER_KEEP_PACKAGE_SOURCES)
+    if(_hunter_keep_package_sources)
       hunter_status_debug("Keep source directory '${HUNTER_PACKAGE_SOURCE_DIR}'")
     else()
       # Unpacked directory not needed (save some disk space)
@@ -585,9 +709,15 @@ function(hunter_download)
 
   file(WRITE "${HUNTER_PACKAGE_DONE_STAMP}" "")
 
+  # Note: will remove 'HUNTER_PACKAGE_BUILD_DIR'
+  hunter_upload_cache()
+
   # In:
-  # * HUNTER_INSTALL_PREFIX
+  # * HUNTER_PACKAGE_HOME_DIR
+  # * HUNTER_PACKAGE_LICENSE_SEARCH_DIR
   # * HUNTER_PACKAGE_NAME
+  # * HUNTER_PACKAGE_SCHEME_UNPACK
+  # * HUNTER_PACKAGE_SHA1
   # Out:
   # * ${HUNTER_PACKAGE_NAME}_LICENSES (parent scope)
   hunter_find_licenses()
