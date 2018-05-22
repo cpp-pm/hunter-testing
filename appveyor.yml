@@ -47,7 +47,7 @@ install:
   - cmd: pip install gitpython
 
   # Install ROS build dependencies
-  - cmd: pip install empy catkin_pkg
+  - cmd: pip install empy catkin_pkg pyyaml
 
   # Install latest Polly toolchains and scripts
   - cmd: appveyor DownloadFile https://github.com/ruslo/polly/archive/master.zip
