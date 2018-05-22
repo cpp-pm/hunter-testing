@@ -33,15 +33,17 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/tacopie
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/382339170
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/tacopie
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/tacopie
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/382339171
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/tacopie
 
     # FIXME: fails on "ld: cannot find -lpthread"
     # - os: linux
@@ -55,20 +57,23 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/tacopie
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/tacopie
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/382339172
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/tacopie
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/tacopie
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/382339173
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/tacopie
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/tacopie
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/382339174
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/tacopie
 
     # }
 
