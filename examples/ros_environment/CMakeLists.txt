@@ -7,12 +7,11 @@ cmake_minimum_required(VERSION 3.0)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-libogg)
+project(download_ros_environment)
 
 # DOCUMENTATION_START {
-hunter_add_package(libogg)
-find_package(libogg CONFIG REQUIRED)
+hunter_add_package(ros_environment)
+find_package(catkin CONFIG REQUIRED COMPONENTS ros_environment)
 
-add_executable(foo foo.cpp)
-target_link_libraries(foo libogg::ogg)
+catkin_package()
 # DOCUMENTATION_END }
