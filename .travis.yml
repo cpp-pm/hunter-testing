@@ -44,12 +44,14 @@ matrix:
         PROJECT_DIR=examples/tacopie
 
     # FIXME: fails on "ld: cannot find -lpthread"
+    # https://travis-ci.org/szatan/hunter/jobs/382163759
     # - os: linux
     #   env: >
     #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
     #     PROJECT_DIR=examples/tacopie
 
     # FIXME
+    # https://travis-ci.org/szatan/hunter/jobs/382163760
     # - os: linux
     #   env: >
     #     TOOLCHAIN=analyze-cxx17
