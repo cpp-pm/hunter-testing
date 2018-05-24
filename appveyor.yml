@@ -16,18 +16,22 @@ environment:
       PROJECT_DIR: examples\tacopie
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\tacopie
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\tacopie
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-    #   PROJECT_DIR: examples\tacopie
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\tacopie
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # FIXME
+    # https://ci.appveyor.com/project/szatan/hunter/build/1.0.6/job/yn3dxtaf86ufvtu1
     # - TOOLCHAIN: "mingw-cxx17"
     #   PROJECT_DIR: examples\tacopie
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # FIXME
+    # https://ci.appveyor.com/project/szatan/hunter/build/1.0.6/job/5r6rx8nmkq7s5sxs
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\tacopie
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
