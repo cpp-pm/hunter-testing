@@ -39,6 +39,22 @@ function(hunter_flush_cache_variables hunter_self)
     endif()
     # }
 
+    # From OpenCV Android {
+    if(x MATCHES "^OpenCV_3RDPARTY_LIB_DIR_(OPT|DBG)$")
+      set(cleanup TRUE)
+    endif()
+
+    if(x MATCHES "^OpenCV_CONFIG_PATH$")
+      set(cleanup TRUE)
+    endif()
+    # }
+
+    # From FindOpenSSL.cmake {
+    if(x MATCHES "^OPENSSL_(SSL|CRYPTO)_LIBRARY$")
+      set(cleanup TRUE)
+    endif()
+    # }
+
     # Exclude standard variables {
     set(
         std_variables_list
