@@ -18,25 +18,26 @@ include(ExternalProject) # ExternalProject_Add
 list(APPEND CMAKE_MODULE_PATH "@HUNTER_SELF@/cmake/modules")
 
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_user_error)
 
 hunter_status_debug("Scheme: url_sha1_cmake")
 
 # Check preconditions
-hunter_test_string_not_empty("@HUNTER_SELF@")
-hunter_test_string_not_empty("@HUNTER_EP_NAME@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_URL@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SHA1@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SOURCE_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_INSTALL_PREFIX@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_CONFIGURATION_TYPES@")
-hunter_test_string_not_empty("@HUNTER_CACHE_FILE@")
-hunter_test_string_not_empty("@HUNTER_ARGS_FILE@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_LICENSE_FILE@")
-hunter_test_string_not_empty("@CMAKE_GENERATOR@")
-hunter_test_string_not_empty("${CMAKE_TOOLCHAIN_FILE}")
+hunter_assert_not_empty_string("@HUNTER_SELF@")
+hunter_assert_not_empty_string("@HUNTER_EP_NAME@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_URL@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SHA1@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SOURCE_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_INSTALL_PREFIX@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_CONFIGURATION_TYPES@")
+hunter_assert_not_empty_string("@HUNTER_CACHE_FILE@")
+hunter_assert_not_empty_string("@HUNTER_ARGS_FILE@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_LICENSE_DIR@")
+hunter_assert_not_empty_string("@CMAKE_GENERATOR@")
+hunter_assert_not_empty_string("${CMAKE_TOOLCHAIN_FILE}")
+hunter_assert_not_empty_string("@HUNTER_TLS_VERIFY@")
 
 if(IOS)
   if(CMAKE_VERSION VERSION_LESS 3.5)
@@ -73,7 +74,7 @@ else()
   set(log_build 0)
 endif()
 
-if("@HUNTER_PACKAGE_LOG_INSTALL@")
+if("@HUNTER_PACKAGE_LOG_INSTALL@" OR "@HUNTER_SUPPRESS_LIST_OF_FILES@")
   set(log_install 1)
 else()
   set(log_install 0)
@@ -90,6 +91,15 @@ else()
   )
 endif()
 
+string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
+if(has_make)
+  set(make_args "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}")
+else()
+  set(make_args "")
+endif()
+
+string(COMPARE EQUAL "${CMAKE_CFG_INTDIR}" "." is_single)
+
 foreach(configuration @HUNTER_PACKAGE_CONFIGURATION_TYPES@)
   # All configurations use the same URL which will be downloaded only once
   # i.e. overhead only for unpacking archive + no files from the previous
@@ -105,6 +115,12 @@ foreach(configuration @HUNTER_PACKAGE_CONFIGURATION_TYPES@)
 
   set(current_project "@HUNTER_EP_NAME@-${configuration}")
 
+  if(is_single)
+    set(build_type_opts "-DCMAKE_BUILD_TYPE=${configuration}")
+  else()
+    set(build_type_opts "-DCMAKE_CONFIGURATION_TYPES=${configuration}")
+  endif()
+
   ExternalProject_Add(
       "${current_project}"
       URL
@@ -114,35 +130,41 @@ foreach(configuration @HUNTER_PACKAGE_CONFIGURATION_TYPES@)
       ${http_credentials}
       DOWNLOAD_DIR
       "@HUNTER_PACKAGE_DOWNLOAD_DIR@"
+      TLS_VERIFY
+      "@HUNTER_TLS_VERIFY@"
       SOURCE_DIR
       "@HUNTER_PACKAGE_SOURCE_DIR@"
       INSTALL_DIR
       "@HUNTER_PACKAGE_INSTALL_PREFIX@"
           # not used, just avoid creating Install/<name> empty directory
-      BUILD_COMMAND ""
-          # this command is empty because all necessary targets will
-          # be built on install stage
+      BUILD_COMMAND
+          # Separate build and install stage so we can suppress install log
+          # which may consist of a long list of files
+          "@CMAKE_COMMAND@"
+          --build .
+          --config ${configuration}
+          --
+          ${jobs_option}
       CMAKE_ARGS
       "-G@CMAKE_GENERATOR@"
       "-C@HUNTER_CACHE_FILE@"
       "-C@HUNTER_ARGS_FILE@"
       "-D${postfix_name}=${${postfix_name}}"
-      "-DCMAKE_BUILD_TYPE=${configuration}"
-      "-DCMAKE_CONFIGURATION_TYPES=${configuration}"
+      "${build_type_opts}"
       "-DCMAKE_INSTALL_PREFIX=@HUNTER_PACKAGE_INSTALL_PREFIX@"
       "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}"
+      "${make_args}"
       ${ios_opts}
       INSTALL_COMMAND
           "@CMAKE_COMMAND@"
           --build .
           --target install
           --config ${configuration}
-          --
-          ${jobs_option}
         COMMAND # Copy license files
           "@CMAKE_COMMAND@"
+          "-C@HUNTER_ARGS_FILE@" # for 'HUNTER_INSTALL_LICENSE_FILES'
           "-Dsrcdir=@HUNTER_PACKAGE_SOURCE_DIR@"
-          "-Ddstfile=@HUNTER_PACKAGE_LICENSE_FILE@"
+          "-Ddstdir=@HUNTER_PACKAGE_LICENSE_DIR@"
           -P
           "@HUNTER_SELF@/scripts/try-copy-license.cmake"
       LOG_BUILD ${log_build}

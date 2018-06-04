@@ -1,4 +1,4 @@
-# Copyright (c) 2015, Ruslan Baratov
+# Copyright (c) 2015-2017, Ruslan Baratov
 # All rights reserved.
 
 include(hunter_internal_error)
@@ -7,13 +7,13 @@ include(hunter_make_directory)
 include(hunter_print_cmd)
 include(hunter_status_debug)
 include(hunter_status_print)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
-  hunter_test_string_not_empty("${hunter_self}")
-  hunter_test_string_not_empty("${hunter_base}")
-  hunter_test_string_not_empty("${CMAKE_BINARY_DIR}")
-  hunter_test_string_not_empty("${CMAKE_GENERATOR}")
+  hunter_assert_not_empty_string("${hunter_self}")
+  hunter_assert_not_empty_string("${hunter_base}")
+  hunter_assert_not_empty_string("${CMAKE_BINARY_DIR}")
+  hunter_assert_not_empty_string("${CMAKE_GENERATOR}")
 
   if(CMAKE_TOOLCHAIN_FILE)
     set(use_toolchain "-DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE}")
@@ -64,6 +64,11 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
       "-B${temp_build_dir}"
   )
 
+  string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
+  if(has_make)
+    list(APPEND cmd "-DCMAKE_MAKE_PROGRAM=${CMAKE_MAKE_PROGRAM}")
+  endif()
+
   string(COMPARE NOTEQUAL "${CMAKE_GENERATOR_TOOLSET}" "" has_toolset)
   if(has_toolset)
     list(APPEND cmd "-T" "${CMAKE_GENERATOR_TOOLSET}")
@@ -82,6 +87,11 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
         "-DCMAKE_${configuration_upper}_POSTFIX=${CMAKE_${configuration_upper}_POSTFIX}"
     )
   endforeach()
+
+  string(COMPARE EQUAL "${HUNTER_BUILD_SHARED_LIBS}" "" is_empty)
+  if(NOT is_empty)
+    list(APPEND cmd "-DHUNTER_BUILD_SHARED_LIBS=${HUNTER_BUILD_SHARED_LIBS}")
+  endif()
 
   hunter_print_cmd("${temp_project_dir}" "${cmd}")
 
@@ -107,12 +117,6 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
 
   hunter_make_directory(
       "${hunter_id_path}"
-      "${HUNTER_GATE_CONFIG_SHA1}"
-      hunter_config_id_path
-  )
-
-  hunter_make_directory(
-      "${hunter_config_id_path}"
       "${HUNTER_GATE_TOOLCHAIN_SHA1}"
       hunter_toolchain_id_path
   )
@@ -129,7 +133,11 @@ function(hunter_calculate_toolchain_sha1 hunter_self hunter_base)
     return()
   endif()
 
-  configure_file("${local_toolchain_info}" "${global_toolchain_info}" COPYONLY)
+  set(temp "${hunter_toolchain_id_path}/toolchain.info.TEMP")
+  configure_file("${local_toolchain_info}" "${temp}" COPYONLY)
+
+  file(RENAME "${temp}" "${global_toolchain_info}")
+
   hunter_status_debug("Toolchain info: ${global_toolchain_info}")
   hunter_status_debug("Toolchain SHA1: ${HUNTER_GATE_TOOLCHAIN_SHA1}")
 

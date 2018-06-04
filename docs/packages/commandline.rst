@@ -6,4 +6,5 @@
 Commandline Tools
 -----------------
 
- * `gflags <https://github.com/ruslo/hunter/wiki/pkg.gflags>`_ - contains a C++ library that implements commandline flags processing.
+ - :ref:`pkg.gflags` - contains a C++ library that implements commandline flags processing
+ - :ref:`pkg.cxxopts` - Lightweight C++ command line option parser
