@@ -83,11 +83,12 @@ Default version from `default.cmake`_
 
 .. code-block:: cmake
 
-  hunter_config(OpenSSL VERSION 1.0.2g)
+  hunter_default_version(OpenSSL VERSION 1.0.2g)
 
 .. seealso::
 
   * :doc:`Detailed sources layout </reference/layouts/sources>`
+  * :doc:`Creating version on the fly from Git submodule </user-guides/hunter-user/git-submodule>`
 
 .. _release: https://github.com/ruslo/hunter/releases
 .. _Atom feed: https://github.com/ruslo/hunter/releases.atom
