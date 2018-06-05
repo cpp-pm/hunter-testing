@@ -44,11 +44,10 @@ matrix:
         PROJECT_DIR=examples/dlib
         HUNTER_JOBS_NUMBER=1
 
-    # Requires std::round or newer NDK
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/dlib
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/dlib
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/152423598
     # - os: linux
