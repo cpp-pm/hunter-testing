@@ -43,12 +43,10 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/giflib
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/300051782
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/giflib
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/giflib
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/300051784
