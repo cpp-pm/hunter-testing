@@ -355,12 +355,12 @@ User can overwrite this default by using
 Set default version
 ===================
 
-Add ``hunter_config`` directive with default version to
+Add ``hunter_default_version`` directive with default version to
 ``cmake/configs/default.cmake``:
 
 .. code-block:: cmake
 
-  hunter_config(hunter_box_1 VERSION 1.0.0)
+  hunter_default_version(hunter_box_1 VERSION 1.0.0)
 
 Create example
 ==============
@@ -393,8 +393,16 @@ the project name (for example ``hunter_box_1``):
 Open file ``docs/packages/pkg/hunter_box_1.rst`` and tweak all entries.
 
 Substitute ``unsorted`` with some tag in directive
-``.. index:: unsorted ; foo``. This tag will be used on
+``single: unsorted ; foo``. This tag will be used on
 :ref:`this page <genindex>`.
+
+If you want to have two tags add another line with ``single``:
+
+.. code-block:: none
+
+  .. index::
+    single: category_1 ; foo
+    single: category_2 ; foo
 
 .. seealso::
 
