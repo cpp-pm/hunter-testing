@@ -6,15 +6,15 @@ include(hunter_get_passwords_path)
 include(hunter_http_password)
 include(hunter_internal_error)
 include(hunter_private_data_password)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_upload_password)
 include(hunter_upload_to_custom_server)
 include(hunter_user_error)
 
 function(hunter_upload_cache)
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_BUILD_DIR}")
-  hunter_test_string_not_empty("${HUNTER_SELF}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_BUILD_DIR}")
+  hunter_assert_not_empty_string("${HUNTER_SELF}")
 
   if(NOT HUNTER_RUN_UPLOAD)
     return()
@@ -96,9 +96,6 @@ function(hunter_upload_cache)
     hunter_internal_error("Script not found: ${upload_script}")
   endif()
 
-  set(temp_dir "${HUNTER_PACKAGE_BUILD_DIR}/__temp")
-  file(MAKE_DIRECTORY "${temp_dir}")
-
   set(cache_directory "${HUNTER_CACHED_ROOT}/_Base/Cache")
 
   execute_process(
@@ -110,7 +107,6 @@ function(hunter_upload_cache)
       --username "${HUNTER_UPLOAD_USERNAME}"
       --password "${HUNTER_UPLOAD_PASSWORD}"
       --cache-dir "${cache_directory}"
-      --temp-dir "${temp_dir}"
       WORKING_DIRECTORY "${CELLAR_RAW_DIRECTORY}"
       RESULT_VARIABLE result
   )
