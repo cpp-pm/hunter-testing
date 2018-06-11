@@ -98,12 +98,13 @@ matrix:
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/OpenCV
-        VERBOSE=0
+    # FIXME: WebP dependency
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     PROJECT_DIR=examples/OpenCV
+    #     VERBOSE=0
 
     # }
 
@@ -156,6 +157,20 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
     - os: osx
