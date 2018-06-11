@@ -2,17 +2,17 @@
 # All rights reserved.
 
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 function(hunter_create_cache_file cache_path)
-  hunter_test_string_not_empty("${cache_path}")
+  hunter_assert_not_empty_string("${cache_path}")
 
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_SHA1}")
-  hunter_test_string_not_empty("${HUNTER_CONFIG_SHA1}")
-  hunter_test_string_not_empty("${HUNTER_CONFIG_ID_PATH}")
-  hunter_test_string_not_empty("${HUNTER_VERSION}")
-  hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CONFIG_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CONFIG_ID_PATH}")
+  hunter_assert_not_empty_string("${HUNTER_VERSION}")
+  hunter_assert_not_empty_string("${HUNTER_TOOLCHAIN_SHA1}")
 
   if(EXISTS "${cache_path}")
     return()
@@ -117,13 +117,6 @@ function(hunter_create_cache_file cache_path)
     )
   endif()
 
-  # Let all project build with the same number of jobs
-  file(
-      APPEND
-      "${temp_path}"
-      "set(HUNTER_JOBS_NUMBER \"${HUNTER_JOBS_NUMBER}\" CACHE INTERNAL \"\")\n"
-  )
-
   # Let all projects have same postfixes
   foreach(configuration ${HUNTER_CACHED_CONFIGURATION_TYPES})
     string(TOUPPER "${configuration}" configuration_upper)
@@ -214,6 +207,13 @@ function(hunter_create_cache_file cache_path)
       "set(CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY ON CACHE INTERNAL \"\")\n"
   )
   # }
+
+  # Package can use this variable to check if it's building by Hunter
+  file(
+      APPEND
+      "${temp_path}"
+      "set(HUNTER_PACKAGE_BUILD ON CACHE INTERNAL \"\")\n"
+  )
 
   # Atomic operation
   file(RENAME "${temp_path}" "${cache_path}")
