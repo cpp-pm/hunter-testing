@@ -98,7 +98,11 @@ matrix:
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
-    # FIXME: WebP dependency
+    # FIXME (-arch x86_64):
+    #
+    #   modules/core/src/parallel_impl.cpp:396:21:
+    #     error: implicitly declaring library function '_mm_pause' with type 'void ()'
+    #
     # - os: osx
     #   osx_image: xcode9.3
     #   env: >
