@@ -98,12 +98,17 @@ matrix:
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-        PROJECT_DIR=examples/OpenCV
-        VERBOSE=0
+    # FIXME (-arch x86_64):
+    #
+    #   modules/core/src/parallel_impl.cpp:396:21:
+    #     error: implicitly declaring library function '_mm_pause' with type 'void ()'
+    #
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     PROJECT_DIR=examples/OpenCV
+    #     VERBOSE=0
 
     # }
 
@@ -156,6 +161,20 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
     - os: osx
