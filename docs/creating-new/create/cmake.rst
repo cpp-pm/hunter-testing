@@ -6,9 +6,29 @@
 CMake (no dependencies)
 -----------------------
 
-CMake project without third party dependencies can be used **as is** in Hunter.
-However you need to check that CMake code is correctly written and use best
-CMake practices.
+If your CMake code is correctly written and has no dependencies then release
+with sources can be used **as is** in Hunter. There is no need to have
+``HunterGate``/``hunter_add_package`` calls and no need to have a maintenance fork.
+
+Examples of such packages:
+
+* :ref:`pkg.flatbuffers`
+
+  * https://github.com/google/flatbuffers
+  * See `flatbuffers/hunter.cmake <https://github.com/ruslo/hunter/blob/08a6cbcf06bb5934b6b18aa1f2028cf56a1063b7/cmake/projects/flatbuffers/hunter.cmake#L23-L32>`__
+  * Testing table: `AppVeyor <https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3215>`__, `Travis <https://travis-ci.org/ingenue/hunter/builds/326881125>`__
+
+* :ref:`pkg.rocksdb`
+
+  * https://github.com/facebook/rocksdb
+  * See `rocksdb/hunter.cmake <https://github.com/ruslo/hunter/blob/08a6cbcf06bb5934b6b18aa1f2028cf56a1063b7/cmake/projects/rocksdb/hunter.cmake#L19-L23>`__
+  * Testing table: `Travis <https://travis-ci.org/ingenue/hunter/builds/326905326>`__
+
+* :ref:`pkg.nlohmann_json`
+
+  * https://github.com/nlohmann/json
+  * See `nlohmann_json/hunter.cmake <https://github.com/ruslo/hunter/blob/08a6cbcf06bb5934b6b18aa1f2028cf56a1063b7/cmake/projects/nlohmann_json/hunter.cmake#L53-L58>`__
+  * Testing table: `AppVeyor <https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3217>`__, `Travis <https://travis-ci.org/ingenue/hunter/builds/326883658>`__
 
 Default behavior
 ================
@@ -109,6 +129,8 @@ compiler id, platforms, generators, architectures: ``WIN32``, ``IOS``,
 .. admonition:: CGold
 
   * `Depending on environment variable <http://cgold.readthedocs.io/en/latest/tutorials/variables/environment.html#no-tracking>`__
+
+.. _create new install xxxconfig:
 
 Install XXXConfig.cmake
 =======================
@@ -333,12 +355,12 @@ User can overwrite this default by using
 Set default version
 ===================
 
-Add ``hunter_config`` directive with default version to
+Add ``hunter_default_version`` directive with default version to
 ``cmake/configs/default.cmake``:
 
 .. code-block:: cmake
 
-  hunter_config(hunter_box_1 VERSION 1.0.0)
+  hunter_default_version(hunter_box_1 VERSION 1.0.0)
 
 Create example
 ==============
@@ -371,8 +393,16 @@ the project name (for example ``hunter_box_1``):
 Open file ``docs/packages/pkg/hunter_box_1.rst`` and tweak all entries.
 
 Substitute ``unsorted`` with some tag in directive
-``.. index:: unsorted ; foo``. This tag will be used on
+``single: unsorted ; foo``. This tag will be used on
 :ref:`this page <genindex>`.
+
+If you want to have two tags add another line with ``single``:
+
+.. code-block:: none
+
+  .. index::
+    single: category_1 ; foo
+    single: category_2 ; foo
 
 .. seealso::
 
