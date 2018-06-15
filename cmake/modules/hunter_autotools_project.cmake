@@ -59,10 +59,11 @@ include(CMakeParseArguments) # cmake_parse_arguments
 include(hunter_autotools_configure_command)
 include(hunter_fatal_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * xau
+# * gstreamer
 function(hunter_autotools_project target_name)
   set(optional_params)
   set(one_value_params
@@ -103,10 +104,10 @@ function(hunter_autotools_project target_name)
     )
   endif()
 
-  hunter_test_string_not_empty("${PARAM_BUILD_DIR}")
-  hunter_test_string_not_empty("${PARAM_GLOBAL_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
+  hunter_assert_not_empty_string("${PARAM_BUILD_DIR}")
+  hunter_assert_not_empty_string("${PARAM_GLOBAL_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
 
   set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
   set(shell_env_path "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}")
