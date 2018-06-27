@@ -33,15 +33,19 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/ZMQPP
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/397359631
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/ZMQPP
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/ZMQPP
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/397359632
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/ZMQPP
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/119710977
@@ -57,41 +61,50 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/ZMQPP
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/ZMQPP
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/ZMQPP
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/ZMQPP
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/ZMQPP
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/ZMQPP
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/ZMQPP
 
     # }
 
     # OSX {
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/ZMQPP
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-make-cxx14
+    #     PROJECT_DIR=examples/ZMQPP
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/ZMQPP
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-cxx14
+    #     PROJECT_DIR=examples/ZMQPP
 
-    - os: osx
-      osx_image: xcode9.3
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     PROJECT_DIR=examples/ZMQPP
+
+    # }
+
+    # Extra {
+
+    - os: linux
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        TOOLCHAIN=gcc-7
         PROJECT_DIR=examples/ZMQPP
 
     # }
