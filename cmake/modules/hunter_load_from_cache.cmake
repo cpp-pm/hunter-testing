@@ -8,8 +8,9 @@ include(hunter_create_dependency_entry)
 include(hunter_download_cache_meta_file)
 include(hunter_download_cache_raw_file)
 include(hunter_internal_error)
+include(hunter_patch_unrelocatable_text_files)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_unpack_directory)
 
 # Try to load package from cache
@@ -20,14 +21,14 @@ include(hunter_unpack_directory)
 #   3. Toolchain-ID directory already locked
 #   4. Cache directory is not locked
 function(hunter_load_from_cache)
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_INSTALL_PREFIX}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_DONE_STAMP}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_HOME_DIR}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_NAME}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_INSTALL_PREFIX}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_DONE_STAMP}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_HOME_DIR}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_NAME}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_SHA1}")
 
-  hunter_test_string_not_empty("${CMAKE_BINARY_DIR}")
+  hunter_assert_not_empty_string("${CMAKE_BINARY_DIR}")
 
   set(human_readable "${HUNTER_PACKAGE_NAME}")
   string(COMPARE NOTEQUAL "${HUNTER_PACKAGE_COMPONENT}" "" has_component)
@@ -132,7 +133,7 @@ function(hunter_load_from_cache)
   hunter_status_debug("Loading basic dependencies finished")
 
   # Note: we can't use cache directory since it need to be locked in this case
-  set(temp_deps_info "${CMAKE_BINARY_DIR}/_3rdParty/hunter/deps.info")
+  set(temp_deps_info "${CMAKE_BINARY_DIR}/_3rdParty/Hunter/deps.info")
   file(REMOVE "${temp_deps_info}")
   hunter_create_deps_info("${temp_deps_info}")
   if(NOT EXISTS "${temp_deps_info}")
@@ -174,6 +175,8 @@ function(hunter_load_from_cache)
     return()
   endif()
 
+  set(HUNTER_SKIP_SCHEME_UNPACK TRUE)
+
   # Install dependencies
   file(STRINGS "${basic_deps_info}" basic_deps_list)
   foreach(dependency_string ${basic_deps_list})
@@ -202,9 +205,13 @@ function(hunter_load_from_cache)
       FROMSERVER "${from_server_file}"
   )
 
-  if(NOT EXISTS "${archive_file}")
-    hunter_internal_error("archive file not found: ${archive_file}")
-  endif()
-  hunter_unpack_directory("${archive_file}" "${HUNTER_INSTALL_PREFIX}")
+  hunter_unpack_directory(${cache_sha1})
+
+  hunter_patch_unrelocatable_text_files(
+      FROM "__HUNTER_PACKAGE_INSTALL_PREFIX__"
+      TO "${HUNTER_INSTALL_PREFIX}"
+      INSTALL_PREFIX "${HUNTER_INSTALL_PREFIX}"
+  )
+
   file(WRITE "${HUNTER_PACKAGE_DONE_STAMP}" "")
 endfunction()
