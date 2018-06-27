@@ -126,13 +126,18 @@ HUNTER_BUILD_SHARED_LIBS
   `BUILD_SHARED_LIBS <https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html>`__
   for 3rd party packages
 
+.. _hunter jobs number:
+
 HUNTER_JOBS_NUMBER
 ==================
 
 * Number of parallel builds that will be used in such native tools like ``make -jN`` or ``xcodebuild -jobs N``
 * For Visual Studio >= 12 2013 flag ``/maxcpucount:N`` will be added to ``MSBuild``
 * Set variable to ``0`` to disable adding any flags: ``HUNTER_JOBS_NUMBER=0``
-* Default: `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.2/command/cmake_host_system_information.html>`__
+* Defaults to maximum of two:
+
+  * `NUMBER_OF_LOGICAL_CORES <http://www.cmake.org/cmake/help/v3.11/command/cmake_host_system_information.html>`__
+  * `NUMBER_OF_PHYSICAL_CORES <http://www.cmake.org/cmake/help/v3.11/command/cmake_host_system_information.html>`__
 
 .. _hunter run install:
 
@@ -381,3 +386,15 @@ HUNTER_PASSWORDS_PATH
 
 Environment variable with functionality similar to CMake variable with
 :ref:`the same name <hunter passwords path>`.
+
+.. _hunter git executable env:
+
+HUNTER_GIT_EXECUTABLE
+=====================
+
+Path to Git executable
+
+HUNTER_JOBS_NUMBER
+==================
+
+See :ref:`HUNTER_JOBS_NUMBER <hunter jobs number>` CMake variable
