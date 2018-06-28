@@ -8,82 +8,113 @@ language:
 sudo:
   - false
 
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
+# List of available packages:
+# * https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-trusty
+# List of available sources:
+# * https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - python3-pip
+      - g++-7
+
 dist:
   - trusty
 
 env:
   global:
-    - secure: "RXl1cmKQUgB/Lr6CFW82nYDFSyF5tYjG5N3+ZpZZWDbmVvm8Wj634GR1B5JVcLzoWLearGYtqOA2mQcK+vcp04/KMQC7mEEtUWix74wXz9djzUZMYuMz0VvImpqyE8KF8ZVgbQL5XFP1u+nRahLT9qtNX7VFTqgSB2PJ/kDEQQPV+H4lv/tVBv9ptMC4q9Nwev8qFzEPLqQgp6mqb05BBsgrExEbzVrX5kywb23TGcxMe3c6IHf63vCmr8aHAJFVsHHGkV2QhOoJKeMNa1xPJXGE+yf1rAACglTru7IXOlsZ4bym2qLtQRHz+2jHn1i+qQf0V5M+4H/OBkqOpU9AJ/ylF/WK2eBZedxC+4WPvuO/iDnrtNxikzS5avdFS7IMUJrIm9fP0B8efLovEiJaKwo5k1Yj0uw07b1PoyRE5x+ozRzSLzvWXgOIXbZjOM9BzYFfoNJ+dpjilELuxGn85HljeniK89H/d5gtEUPvSMQC/+RuMo420qaGGhy/lR4ivPTZwCqT7VPQ6+2HLz/wAF5S2jFLGjSZIbb/NMmrV6+puIEEicx0mj2eSpgt7cn9UguevnwtT5UoN2G+dZrI6RfUp0CSH8UHdcJtoSCmYVxO5LsRPXyCEFFF54EsfhqjWegYcxLmHqQQUKlJ8lX9dXMRftW7bIldb98PQGud6Fg="
+    - secure: "QjDKH5FkegIqF++LRGoC7Rlag8cckWv0NnpJ7xWN40JEIqrD8g0IONW24+D5iEVQCU6RO2dIOzYxXdTjL7wKd5Lt8NQPfidIfwF7CEj+d7w6PtgzE3EKijlYyjWSRHnQ8vacBV3h4iiY0v+VFjqQeMEemIH2lmPd8pAELE7aSfKcgQfqsO59d9OCHbEvNjGZQVPSrPfjESYS7CW+r2v1Ik712r2p5oY5sLIXHLUGWWL6nb8chC+HwQE2SkzsBBVvJGpKAdfIBrm7jU0gw8KaVFQo6/Eg5+0l4IL7ns+GEYV7k2F5/ZLf3OeygZh0RRVAM5YAf6HoWd1s0kpxOxCVw2lb4abFPJZS7LnhOdS8hW5tbKiCM1AQPXyIN4PccyThocen5RGjbSPslDX0RDEVfmwnK0TlBPss0AsZS+Of0JzFAkXwr6/raya2brDXhmJVr269nictY5uwBbhbsSYHLbU42Fa2zLFXrDdCxOnCD7m9GaJN4gsvZsA6qkkeHrWhZw4wqMRrlTRDwHRJmaXYjFzXHjQfH4gegpzDhLeovan7AOUMCeBWj3LvhY7T6/u9J49b3zXT21bs/I4KylYZz6JQdM17WNpj6IxXNSaeTy5TWubWWDuEKM7IC76QlFpsCqB7ET/TN8HHBZB9CCFozvq4YI5jS7oSznjTFIf1fJM="
 
 matrix:
   include:
     # Linux {
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=gcc
-
-    # FIXME: At least API 21 required
-    # - os: linux
-    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-leak
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/libuv
 
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/libuv
+
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/libuv
+
+    # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/224868220
     # - os: linux
-    #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/libuv
 
-    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
-    # - os: linux
-    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=sanitize-thread
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/libuv
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/libuv
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/libuv
+
     # }
 
     # OSX {
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=default
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=ios-nocodesign-9-3
-
-    # FIXME: At least API 21 required
-    # - os: osx
-    #   env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     - os: osx
-      env: PROJECT_DIR=examples/libuv TOOLCHAIN=android-ndk-r15c-api-21-armeabi-v7a-neon-clang-libcxx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/libuv
 
-    # * https://travis-ci.org/ingenue/hunter/jobs/224868229
-    # - os: osx
-    #  env: PROJECT_DIR=examples/libuv TOOLCHAIN=analyze
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/libuv
+
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/libuv
+
     # }
 
 install:
   # Info about OS
   - uname -a
 
+  # Info about available disk space
+  - df -h $HOME
+
   # Disable autoupdate
   # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip3 install gitpython; fi
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
@@ -92,7 +123,7 @@ install:
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
   # Install dependencies (CMake, Android NDK)
-  - install-ci-dependencies.py
+  - install-ci-dependencies.py --prune-archives
 
   # Tune locations
   - export PATH="`pwd`/_ci/cmake/bin:${PATH}"
@@ -101,6 +132,8 @@ install:
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
   - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
+  - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
+  - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
 script:
   - python3 ./jenkins.py --upload
