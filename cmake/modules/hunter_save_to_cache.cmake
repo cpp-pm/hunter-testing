@@ -9,7 +9,7 @@ include(hunter_make_directory)
 include(hunter_pack_directory)
 include(hunter_patch_unrelocatable_text_files)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_unpack_directory)
 
 # Save results of install
@@ -20,11 +20,11 @@ include(hunter_unpack_directory)
 #  4. Unpack archive from Cache to HUNTER_INSTALL_PREFIX
 #  5. Save cache.sha1 file
 function(hunter_save_to_cache)
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_INSTALL_PREFIX}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_HOME_DIR}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_INSTALL_PREFIX}")
-  hunter_test_string_not_empty("${HUNTER_PACKAGE_NAME}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_INSTALL_PREFIX}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_HOME_DIR}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_INSTALL_PREFIX}")
+  hunter_assert_not_empty_string("${HUNTER_PACKAGE_NAME}")
 
   string(COMPARE NOTEQUAL "${HUNTER_PACKAGE_COMPONENT}" "" has_component)
   string(
@@ -77,6 +77,15 @@ function(hunter_save_to_cache)
       INSTALL_PREFIX "${HUNTER_PACKAGE_INSTALL_PREFIX}"
   )
 
+  # HUNTER_INSTALL_PREFIX could be present on the text file and must be replaced
+  # The cached package can be uncompressed in a different HUNTER_INSTALL_PREFIX
+  # see https://github.com/ruslo/hunter/issues/472
+  hunter_patch_unrelocatable_text_files(
+      FROM "${HUNTER_INSTALL_PREFIX}"
+      TO "__HUNTER_PACKAGE_INSTALL_PREFIX__"
+      INSTALL_PREFIX "${HUNTER_PACKAGE_INSTALL_PREFIX}"
+  )
+
   ### Lock cache directory
   set(cache_directory "${HUNTER_CACHED_ROOT}/_Base/Cache")
   hunter_lock_directory("${cache_directory}" "")
@@ -88,14 +97,10 @@ function(hunter_save_to_cache)
       archive_sha1
   )
 
-  hunter_test_string_not_empty("${archive_sha1}")
-  set(archive_file "${cache_directory}/raw/${archive_sha1}.tar.bz2")
-  if(NOT EXISTS "${archive_file}")
-    hunter_internal_error("Archive not exists: ${archive_file}")
-  endif()
+  hunter_assert_not_empty_string("${archive_sha1}")
 
   ### Install to global directory from cache archive
-  hunter_unpack_directory("${archive_file}" "${HUNTER_INSTALL_PREFIX}")
+  hunter_unpack_directory(${archive_sha1})
 
   hunter_patch_unrelocatable_text_files(
       FROM "__HUNTER_PACKAGE_INSTALL_PREFIX__"
@@ -105,11 +110,24 @@ function(hunter_save_to_cache)
 
   ### Save cache meta-data
   hunter_create_cache_meta_directory("${cache_directory}" cache_meta_dir)
-  hunter_test_string_not_empty("${cache_meta_dir}")
+  hunter_assert_not_empty_string("${cache_meta_dir}")
 
   ### create cache.sha1 file in home (before saving dependencies)
   hunter_status_debug("Saving cache file: ${cache_file}")
+  hunter_status_debug("With SHA1: ${archive_sha1}")
   file(WRITE "${cache_file}" "${archive_sha1}")
+
+  # Sanity check
+  file(READ "${cache_file}" archive_sha1_check)
+
+  string(COMPARE EQUAL "${archive_sha1}" "${archive_sha1_check}" is_ok)
+  if(NOT is_ok)
+    hunter_internal_error(
+        "Sanity check failed (${cache_file}):"
+        " * '${archive_sha1}'"
+        " * '${archive_sha1_check}'"
+    )
+  endif()
 
   # Get dependencies (non-recursively)
   if(has_component)
@@ -195,4 +213,16 @@ function(hunter_save_to_cache)
 
   file(WRITE "${cache_meta_dir}/cache.sha1" "${archive_sha1}")
   file(WRITE "${cache_meta_dir}/CACHE.DONE" "")
+
+  # Sanity check
+  file(READ "${cache_meta_dir}/cache.sha1" archive_sha1_check)
+
+  string(COMPARE EQUAL "${archive_sha1}" "${archive_sha1_check}" is_ok)
+  if(NOT is_ok)
+    hunter_internal_error(
+        "Sanity check failed (${cache_meta_dir}):"
+        " * '${archive_sha1}'"
+        " * '${archive_sha1_check}'"
+    )
+  endif()
 endfunction()
