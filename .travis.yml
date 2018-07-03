@@ -55,15 +55,19 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/libsodium
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/libsodium
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/399530873
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/libsodium
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/libsodium
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/399530874
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/libsodium
 
     - os: linux
       env: >
