@@ -1,15 +1,22 @@
 # Copyright (c) 2014, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_CPPNETLIB_URI_HUNTER_CMAKE_)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_CPPNETLIB_URI_HUNTER_CMAKE_ 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    CppNetlibUri
+    VERSION
+    "1.0.5-hunter"
+    URL
+    "https://github.com/hunter-packages/uri/archive/v1.0.5-hunter.tar.gz"
+    SHA1
+    b61a81998e7636bc3d80668e6629b3844bb4a28a
+)
 
 hunter_add_version(
     PACKAGE_NAME

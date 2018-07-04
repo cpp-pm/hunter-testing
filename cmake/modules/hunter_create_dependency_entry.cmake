@@ -4,7 +4,8 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_internal_error)
-include(hunter_test_string_not_empty)
+include(hunter_status_debug)
+include(hunter_assert_not_empty_string)
 
 function(hunter_create_dependency_entry)
   set(one PACKAGE COMPONENT RESULT)
@@ -13,9 +14,9 @@ function(hunter_create_dependency_entry)
   # x_COMPONENT optional component
   # x_RESULT optional component
 
-  hunter_test_string_not_empty("${x_PACKAGE}")
-  hunter_test_string_not_empty("${x_RESULT}")
-  hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_ID_PATH}")
+  hunter_assert_not_empty_string("${x_PACKAGE}")
+  hunter_assert_not_empty_string("${x_RESULT}")
+  hunter_assert_not_empty_string("${HUNTER_CONFIG_ID_PATH}")
 
   string(COMPARE NOTEQUAL "${x_COMPONENT}" "" has_component)
   string(COMPARE NOTEQUAL "${x_UNPARSED_ARGUMENTS}" "" has_unparsed)
@@ -23,7 +24,7 @@ function(hunter_create_dependency_entry)
     hunter_internal_error("Unparsed: ${x_UNPARSED_ARGUMENTS}")
   endif()
 
-  set(top_dir "${HUNTER_TOOLCHAIN_ID_PATH}/Build")
+  set(top_dir "${HUNTER_CONFIG_ID_PATH}/Build")
 
   set(dep_dir "${top_dir}/${x_PACKAGE}")
   if(has_component)
@@ -32,6 +33,7 @@ function(hunter_create_dependency_entry)
   set(cache_file "${dep_dir}/cache.sha1")
 
   if(NOT EXISTS "${cache_file}")
+    hunter_status_debug("Cache file not found: ${cache_file}")
     set("${x_RESULT}" "" PARENT_SCOPE)
     return()
   endif()

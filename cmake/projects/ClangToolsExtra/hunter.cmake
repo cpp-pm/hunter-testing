@@ -1,15 +1,22 @@
 # Copyright (c) 2014, Ruslan Baratov
 # All rights reserved.
 
-if(DEFINED HUNTER_CMAKE_PROJECTS_CLANGTOOLSEXTRA_HUNTER_CMAKE)
-  return()
-else()
-  set(HUNTER_CMAKE_PROJECTS_CLANGTOOLSEXTRA_HUNTER_CMAKE 1)
-endif()
+# !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
 include(hunter_download)
 include(hunter_pick_scheme)
+
+hunter_add_version(
+    PACKAGE_NAME
+    ClangToolsExtra
+    VERSION
+    "4.0.1"
+    URL
+    "http://llvm.org/releases/4.0.1/clang-tools-extra-4.0.1.src.tar.xz"
+    SHA1
+    414ccbadc4ba0658b34421a3855784af4e767796
+)
 
 hunter_add_version(
     PACKAGE_NAME
