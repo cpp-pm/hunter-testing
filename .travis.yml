@@ -43,10 +43,12 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/x264
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/x264
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/400572828
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/x264
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/248449654
     # - os: linux
