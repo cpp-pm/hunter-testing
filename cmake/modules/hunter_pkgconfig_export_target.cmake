@@ -12,6 +12,10 @@ include(FindPkgConfig)
 include(hunter_internal_error)
 include(hunter_status_debug)
 
+# Packages to test this function:
+# * x11
+# * x264
+# * xcb
 function(hunter_pkgconfig_export_target PKG_CONFIG_MODULE)
   set(target_name "PkgConfig::${PKG_CONFIG_MODULE}")
   if(TARGET "${target_name}")
@@ -23,7 +27,7 @@ function(hunter_pkgconfig_export_target PKG_CONFIG_MODULE)
         "Could not find pkg-config module: ${PKG_CONFIG_MODULE}"
     )
   endif()
-  add_library("${target_name}" INTERFACE IMPORTED)
+  add_library("${target_name}" INTERFACE IMPORTED GLOBAL)
 
   # --- INTERFACE_INCLUDE_DIRECTORIES begin ---
   hunter_status_debug(

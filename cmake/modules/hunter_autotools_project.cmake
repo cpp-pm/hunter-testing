@@ -57,10 +57,13 @@ include(ExternalProject) # ExternalProject_Add
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_autotools_configure_command)
-include(hunter_fatal_error)
+include(hunter_user_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
+# Packages to test this function:
+# * xau
+# * gstreamer
 function(hunter_autotools_project target_name)
   set(optional_params)
   set(one_value_params
@@ -101,16 +104,18 @@ function(hunter_autotools_project target_name)
     )
   endif()
 
-  hunter_test_string_not_empty("${PARAM_BUILD_DIR}")
-  hunter_test_string_not_empty("${PARAM_GLOBAL_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
+  hunter_assert_not_empty_string("${PARAM_BUILD_DIR}")
+  hunter_assert_not_empty_string("${PARAM_GLOBAL_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
 
   set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
   set(shell_env_path "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}")
 
-  set(d1 "${root_id}/lib/pkgconfig")
-  set(d2 "${root_id}/share/pkgconfig")
+  set(shell_ld_path "LD_LIBRARY_PATH=${PARAM_GLOBAL_INSTALL_DIR}/lib:$ENV{LD_LIBRARY_PATH}")
+
+  set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
+  set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
   set(shell_pkg_config_libdir "PKG_CONFIG_LIBDIR=${d1}:${d2}")
 
   set(clear_vars_shell_script "${PARAM_HUNTER_SELF}/scripts/clear-all.sh")
@@ -121,6 +126,7 @@ function(hunter_autotools_project target_name)
       &&
       ${shell_env_path}
       ${shell_pkg_config_libdir}
+      ${shell_ld_path}
   )
 
   # Build command and options
@@ -136,7 +142,7 @@ function(hunter_autotools_project target_name)
   if(is_ios)
     hunter_status_debug("Autotools iOS IPHONEOS_ARCHS: ${IPHONEOS_ARCHS} IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}")
     if(BUILD_SHARED_LIBS)
-      hunter_fatal_error("Autotools: building iOS libraries as shared is not supported")
+      hunter_user_error("Autotools: building iOS libraries as shared is not supported")
     endif()
     set(ios_architectures)
     list(APPEND ios_architectures ${IPHONEOS_ARCHS} ${IPHONESIMULATOR_ARCHS})
@@ -171,6 +177,8 @@ function(hunter_autotools_project target_name)
           ${PARAM_URL_HASH}
         DOWNLOAD_DIR
           ${PARAM_DOWNLOAD_DIR}
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}
         INSTALL_DIR
@@ -193,6 +201,8 @@ function(hunter_autotools_project target_name)
     ExternalProject_Add(${ios_universal_target}
         DOWNLOAD_COMMAND
           ""
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}/universal
         INSTALL_DIR
@@ -228,7 +238,7 @@ function(hunter_autotools_project target_name)
         set(configure_host "x86_64-apple-darwin")
         set(is_simulator TRUE)
       else()
-        hunter_fatal_error("iOS architecture: ${ios_architecture} not supported")
+        hunter_user_error("iOS architecture: ${ios_architecture} not supported")
       endif()
 
       set(arch_flags)
@@ -239,6 +249,9 @@ function(hunter_autotools_project target_name)
       else()
         set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONEOS_SDK_ROOT} -miphoneos-version-min=${IOS_SDK_VERSION} ")
       endif()
+      set(arch_install_dir
+          ${multi_arch_install_root}/${ios_architecture}
+      )
       hunter_autotools_configure_command(autotools_configure_command
           PACKAGE_INSTALL_DIR
             ${arch_install_dir}
@@ -268,9 +281,6 @@ function(hunter_autotools_project target_name)
       set(arch_target
           ${target_name}-${ios_architecture}
       )
-      set(arch_install_dir
-          ${multi_arch_install_root}/${ios_architecture}
-      )
       ExternalProject_Add(${arch_target}
           URL
             ${PARAM_URL}
@@ -278,6 +288,8 @@ function(hunter_autotools_project target_name)
             ${PARAM_URL_HASH}
           DOWNLOAD_DIR
             ${PARAM_DOWNLOAD_DIR}
+          TLS_VERIFY
+            "${HUNTER_TLS_VERIFY}"
           SOURCE_DIR
             ${arch_source_dir}
           INSTALL_DIR
