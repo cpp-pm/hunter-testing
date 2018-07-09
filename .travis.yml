@@ -606,11 +606,13 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Boost-log
+        HUNTER_JOBS_NUMBER=1
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Boost-log-shared
+        HUNTER_JOBS_NUMBER=1
 
     # }
 
