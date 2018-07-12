@@ -120,10 +120,12 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/qt-widgets
 
+    # Note: xcode9.3 is broken:
+    #   mac/qfontengine_coretext.mm:826:20: error: qualified reference to 'QFixed' is a constructor name rather than a type in this context
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.2
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
         PROJECT_DIR=examples/qt-widgets
 
     # qt-core {
@@ -161,9 +163,9 @@ matrix:
         PROJECT_DIR=examples/qt-camera
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.2
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
         PROJECT_DIR=examples/qt-camera
 
     # }
@@ -188,9 +190,9 @@ matrix:
         PROJECT_DIR=examples/qt-location
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.2
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
         PROJECT_DIR=examples/qt-location
 
     # }
@@ -220,9 +222,9 @@ matrix:
         PROJECT_DIR=examples/qt-qml
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.2
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
         PROJECT_DIR=examples/qt-qml
 
     # }
@@ -241,7 +243,6 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "upgrade failed"; fi # Xcode 9.2 image failure
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install 'ant' for Android
