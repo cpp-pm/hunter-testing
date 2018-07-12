@@ -82,11 +82,12 @@ matrix:
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/dlib
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/dlib
+    # FIXME: OpenBLAS
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-cxx14
+    #     PROJECT_DIR=examples/dlib
 
     - os: osx
       osx_image: xcode9.3
