@@ -128,16 +128,6 @@ matrix:
         TOOLCHAIN=ios-nocodesign-11-2-dep-9-3-armv7
         PROJECT_DIR=examples/qt-widgets
 
-    # qt-core {
-
-    - os: osx
-      osx_image: xcode9.2
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/qt-core
-
-    # }
-
     # qt-camera {
 
     - os: linux
