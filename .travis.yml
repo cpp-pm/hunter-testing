@@ -42,6 +42,7 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/rocksdb
+        HUNTER_JOBS_NUMBER=2
 
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/308916941
     # - os: linux
