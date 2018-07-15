@@ -38,6 +38,8 @@ environment:
     #   PROJECT_DIR: examples\rocksdb
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # Extra {
+
     - TOOLCHAIN: "vs-14-2015-win64"
       PROJECT_DIR: examples\rocksdb
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
@@ -45,6 +47,8 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64"
       PROJECT_DIR: examples\rocksdb
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # }
 
 install:
   # Python 3
