@@ -38,10 +38,11 @@ matrix:
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/glm
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/glm
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/404628168
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/glm
 
     - os: linux
       env: >
