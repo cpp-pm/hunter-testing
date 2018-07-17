@@ -57,12 +57,13 @@ include(ExternalProject) # ExternalProject_Add
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_autotools_configure_command)
-include(hunter_fatal_error)
+include(hunter_user_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * xau
+# * gstreamer
 function(hunter_autotools_project target_name)
   set(optional_params)
   set(one_value_params
@@ -103,15 +104,15 @@ function(hunter_autotools_project target_name)
     )
   endif()
 
-  hunter_test_string_not_empty("${PARAM_BUILD_DIR}")
-  hunter_test_string_not_empty("${PARAM_GLOBAL_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
+  hunter_assert_not_empty_string("${PARAM_BUILD_DIR}")
+  hunter_assert_not_empty_string("${PARAM_GLOBAL_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
 
   set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
   set(shell_env_path "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}")
 
-  set(shell_ld_path "LD_LIBRARY_PATH=${PARAM_GLOBAL_INSTALL_DIR}/lib")
+  set(shell_ld_path "LD_LIBRARY_PATH=${PARAM_GLOBAL_INSTALL_DIR}/lib:$ENV{LD_LIBRARY_PATH}")
 
   set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
   set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
@@ -141,7 +142,7 @@ function(hunter_autotools_project target_name)
   if(is_ios)
     hunter_status_debug("Autotools iOS IPHONEOS_ARCHS: ${IPHONEOS_ARCHS} IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}")
     if(BUILD_SHARED_LIBS)
-      hunter_fatal_error("Autotools: building iOS libraries as shared is not supported")
+      hunter_user_error("Autotools: building iOS libraries as shared is not supported")
     endif()
     set(ios_architectures)
     list(APPEND ios_architectures ${IPHONEOS_ARCHS} ${IPHONESIMULATOR_ARCHS})
@@ -237,7 +238,7 @@ function(hunter_autotools_project target_name)
         set(configure_host "x86_64-apple-darwin")
         set(is_simulator TRUE)
       else()
-        hunter_fatal_error("iOS architecture: ${ios_architecture} not supported")
+        hunter_user_error("iOS architecture: ${ios_architecture} not supported")
       endif()
 
       set(arch_flags)
