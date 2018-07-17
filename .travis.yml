@@ -96,6 +96,15 @@ matrix:
 
     # }
 
+    # Extra {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/CURL-with-ares
+
+    # }
+
 install:
   # Info about OS
   - uname -a
