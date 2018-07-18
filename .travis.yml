@@ -38,6 +38,7 @@ matrix:
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/gRPC
         VERBOSE=0
+        HUNTER_JOBS_NUMBER=4
 
     # FIXME: https://travis-ci.com/rbsheth/hunter/jobs/132120867
     # Somtimes results in an internal compiler error
@@ -76,6 +77,7 @@ matrix:
         TOOLCHAIN=sanitize-thread-cxx17
         PROJECT_DIR=examples/gRPC
         VERBOSE=0
+        HUNTER_JOBS_NUMBER=4
 
     # }
 
