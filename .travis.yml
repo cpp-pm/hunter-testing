@@ -37,8 +37,10 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=clang-cxx17 VERBOSE=0
 
-    - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=gcc-7-cxx17
+    # FIXME: https://travis-ci.com/rbsheth/hunter/jobs/132120867
+    # Somtimes results in an internal compiler error
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=gcc-7-cxx17
 
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/291260625
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/291260625
@@ -49,11 +51,13 @@ matrix:
     # - os: linux
     #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=analyze-cxx17
 
-    - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-address-cxx17 VERBOSE=0
+    # FIXME: https://travis-ci.com/rbsheth/hunter/jobs/132024456
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-address-cxx17 VERBOSE=0
 
-    - os: linux
-      env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-leak-cxx17 VERBOSE=0
+    # FIXME: https://travis-ci.com/rbsheth/hunter/jobs/132024459
+    # - os: linux
+    #   env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-leak-cxx17 VERBOSE=0
 
     - os: linux
       env: PROJECT_DIR=examples/gRPC TOOLCHAIN=sanitize-thread-cxx17 VERBOSE=0
