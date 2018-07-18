@@ -33,12 +33,14 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/gRPC
-        VERBOSE=0
-        HUNTER_JOBS_NUMBER=4
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/405231962
+    # lib/libcares.a: error adding symbols: Bad value
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/gRPC
+    #     VERBOSE=0
+    #     HUNTER_JOBS_NUMBER=4
 
     # FIXME: https://travis-ci.com/rbsheth/hunter/jobs/132120867
     # Somtimes results in an internal compiler error
@@ -72,12 +74,13 @@ matrix:
     #     TOOLCHAIN=sanitize-leak-cxx17
     #     PROJECT_DIR=examples/gRPC
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/gRPC
-        VERBOSE=0
-        HUNTER_JOBS_NUMBER=4
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/405231963
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/gRPC
+    #     VERBOSE=0
+    #     HUNTER_JOBS_NUMBER=4
 
     # }
 
