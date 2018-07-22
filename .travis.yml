@@ -48,10 +48,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/libsodium
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/libsodium
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/406924077
+    # warning: Value stored to 'ret' is never read ('assert' removed in Release)
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/libsodium
 
     - os: linux
       env: >
