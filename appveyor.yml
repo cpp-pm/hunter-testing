@@ -18,15 +18,15 @@ environment:
     #   PROJECT_DIR: examples\SuiteSparse
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1927/job/b9q2uqvmg29utl1e
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\SuiteSparse
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\SuiteSparse
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       HUNTER_BINARY_DIR: C:\__BIN
+
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.4274/job/8mvqafjqxempsla0
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\SuiteSparse
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\SuiteSparse

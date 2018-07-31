@@ -76,11 +76,12 @@ matrix:
 
     # OSX {
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/SuiteSparse
+    # FIXME:  https://travis-ci.org/ingenue/hunter/jobs/410420098
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-make-cxx14
+    #     PROJECT_DIR=examples/SuiteSparse
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076571
     # - os: osx
@@ -120,11 +121,12 @@ matrix:
         TOOLCHAIN=sanitize-thread-cxx17
         PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
-    - os: osx
-      osx_image: xcode9.3
-      env: >
-        TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/SuiteSparse-dynLAPACK
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/410420105
+    # - os: osx
+    #   osx_image: xcode9.3
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-make-cxx14
+    #     PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
     # }
 
