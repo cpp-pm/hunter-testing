@@ -242,6 +242,8 @@ HUNTER_PASSWORDS_PATH
 
 Path to :doc:`Hunter passwords file <terminology/hunter-passwords-file>`.
 
+.. _hunter keep package sources:
+
 HUNTER_KEEP_PACKAGE_SOURCES
 ===========================
 
@@ -380,6 +382,8 @@ HUNTER_ROOT
 
 * Same as CMake's :ref:`HUNTER_ROOT <hunter root>` variable.
   If both environment and CMake variables are set then CMake has a higher priority
+
+.. _env hunter binary dir:
 
 HUNTER_BINARY_DIR
 =================
