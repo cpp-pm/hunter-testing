@@ -43,11 +43,10 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/libxml2
 
-    # Missing glob.h in NDK: https://travis-ci.org/ingenue/hunter/jobs/201561657
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/libxml2
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/libxml2
 
     # Complains compiler does not work: https://travis-ci.org/ingenue/hunter/jobs/201561658
     # - os: linux
