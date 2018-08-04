@@ -112,6 +112,8 @@ HUNTER_PACKAGE_LOG_INSTALL
 * Apply ``LOG_INSTALL 1``
   (see `ExternalProject <https://cmake.org/cmake/help/v3.3/module/ExternalProject.html>`__)
 
+.. _hunter configuration types:
+
 HUNTER_CONFIGURATION_TYPES
 ==========================
 
@@ -240,6 +242,8 @@ HUNTER_PASSWORDS_PATH
 
 Path to :doc:`Hunter passwords file <terminology/hunter-passwords-file>`.
 
+.. _hunter keep package sources:
+
 HUNTER_KEEP_PACKAGE_SOURCES
 ===========================
 
@@ -348,6 +352,26 @@ Default: ``ON``
   :ref:`default <hunter_use_cache_servers>`) meta cache files like
   ``cache.sha1`` will not be checked at all!
 
+.. _hunter no toolchain id recalculation:
+
+HUNTER_NO_TOOLCHAIN_ID_RECALCULATION
+====================================
+
+If set to ``ON`` Hunter will skip calculation of ``Toolchain-ID`` if value is
+already present in CMake cache.
+
+Default: ``OFF``
+
+.. note::
+
+  Do not use this option while making a bug report.
+
+.. warning::
+
+  This option is for the **advanced** users only. Incorrect usage of this option
+  may lead to invalid unrecoverable cache state. Please read carefully
+  :ref:`this page <id calculation>` before using this option.
+
 Environment
 ~~~~~~~~~~~
 
@@ -358,6 +382,8 @@ HUNTER_ROOT
 
 * Same as CMake's :ref:`HUNTER_ROOT <hunter root>` variable.
   If both environment and CMake variables are set then CMake has a higher priority
+
+.. _env hunter binary dir:
 
 HUNTER_BINARY_DIR
 =================
