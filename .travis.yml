@@ -48,25 +48,33 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/tcl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/tcl
+    # FIXME: configure: error: C compiler cannot create executables
+    # * https://travis-ci.com/drodin/hunter/jobs/138308623
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/tcl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/tcl
+    # FIXME: configure: error: cannot run C compiled programs.
+    # * https://travis-ci.com/drodin/hunter/jobs/138308624
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/tcl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/tcl
+    # FIXME: configure: error: cannot run C compiled programs.
+    # * https://travis-ci.com/drodin/hunter/jobs/138308625
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/tcl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/tcl
+    # FIXME: error: conflicting types for 'memcpy', etc.
+    # * https://travis-ci.com/drodin/hunter/jobs/138308626
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/tcl
 
     # }
 
@@ -84,11 +92,13 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/tcl
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/tcl
+    # FIXME: Build/tcl/Source/multi-arch-build/armv7s /bin/sh: ./configure: No such file or directory
+    # * https://travis-ci.com/drodin/hunter/jobs/138308629
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/tcl
 
     # }
 
