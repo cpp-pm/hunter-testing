@@ -6,6 +6,14 @@
 # It forwards to ExternalProject_Add the following parameters:
 #   URL, URL_HASH, DOWNLOAD_DIR, SOURCE_DIR and INSTALL_DIR
 #
+# Adds to the environment variables:
+#   PATH=<root-id>/bin
+#   PKG_CONFIG_LIBDIR=<root-id>/{lib,share}/pkgconfig
+#
+# Adds to autotools flags:
+#   CPPFLAGS=-I<root-id>/include
+#   LDFLAGS=-L<root-id>/lib
+
 # Usage example:
 # hunter_autotools_project("@HUNTER_EP_NAME@" # target name
 #     HUNTER_SELF                             # hunter home
@@ -26,6 +34,8 @@
 #       "@HUNTER_INSTALL_PREFIX@"
 #     PARALLEL_JOBS                           # number of parallel jobs for make
 #       "@HUNTER_JOBS_OPTION@"
+#     PACKAGE_CONFIGURATION_TYPES             # build configuration (Release|Debug)
+#       "@HUNTER_PACKAGE_CONFIGURATION_TYPES@"
 #     CPPFLAGS                                # C pre-processor flags
 #       "-DEXAMPLE -I/usr/local/include/library"
 #     CFLAGS                                  # C Compiler flags
@@ -38,23 +48,28 @@
 #       --enable-feature
 #       --disable-other
 #       --with-library
-#     MODIFY_PATH                             # add <root-id>/bin folder to the
-#                                             # PATH environment variable
-#     MODIFY_PKG_CONFIG                       # add <root-id>/{lib,share}/pkgconfig
-#                                             # folders to the PKG_CONFIG_PATH
-#                                             # environment variable
+#     PATCH_COMMAND                           # add a patch command
+#       ${CMAKE_COMMAND} -E copy "@HUNTER_PACKAGE_SCRIPT_DIR@/patch.sh" "@HUNTER_PACKAGE_SOURCE_DIR@"
+#       COMMAND "./patch.sh"
+#     BOOTSTRAP                               # add a bootstrap command to be run
+#       "./autogen.sh"                        # before ./configure such as 
+#                                             # ./autogen.sh or ./bootstrap
 # )
 
 include(ExternalProject) # ExternalProject_Add
 include(CMakeParseArguments) # cmake_parse_arguments
 
-include(hunter_fatal_error)
+include(hunter_autotools_configure_command)
+include(hunter_user_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
+# Packages to test this function:
+# * xau
+# * gstreamer
+# * libxml2
 function(hunter_autotools_project target_name)
-
-  set(optional_params MODIFY_PATH MODIFY_PKG_CONFIG)
+  set(optional_params)
   set(one_value_params
       HUNTER_SELF
       URL
@@ -69,8 +84,13 @@ function(hunter_autotools_project target_name)
       CFLAGS
       CXXFLAGS
       LDFLAGS
+      BOOTSTRAP
   )
-  set(multi_value_params EXTRA_FLAGS)
+  set(multi_value_params
+      PACKAGE_CONFIGURATION_TYPES
+      EXTRA_FLAGS
+      PATCH_COMMAND
+  )
   cmake_parse_arguments(
       PARAM
       "${optional_params}"
@@ -81,232 +101,80 @@ function(hunter_autotools_project target_name)
   # -> PARAM_BUILD_DIR
   # -> PARAM_GLOBAL_INSTALL_DIR
   # -> PARAM_INSTALL_DIR
-  # -> PARAM_MODIFY_PATH
-  # -> PARAM_MODIFY_PKG_CONFIG
 
   if(PARAM_UNPARSED_ARGUMENTS)
     hunter_internal_error(
-        "Invalid arguments passed to hunter_autotools_configure:"
+        "Invalid arguments passed to hunter_autotools_project:"
         " ${PARAM_UNPARSED_ARGUMENTS}"
     )
   endif()
 
-  hunter_test_string_not_empty("${PARAM_BUILD_DIR}")
-  hunter_test_string_not_empty("${PARAM_GLOBAL_INSTALL_DIR}")
-  hunter_test_string_not_empty("${PARAM_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_BUILD_DIR}")
+  hunter_assert_not_empty_string("${PARAM_GLOBAL_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_INSTALL_DIR}")
+  hunter_assert_not_empty_string("${PARAM_PACKAGE_CONFIGURATION_TYPES}")
 
-  # Sets the toolchain binaries
-  #   AR=${CMAKE_AR}
-  #   AS=${CMAKE_ASM_COMPILER}
-  #   LD=${CMAKE_LINKER}
-  #   NM=${CMAKE_NM}
-  #   OBJCOPY=${CMAKE_OBJCOPY}
-  #   OBJDUMP=${CMAKE_OBJDUMP}
-  #   RANLIB=${CMAKE_RANLIB}
-  #   STRIP=${CMAKE_STRIP}
-  #   CPP=${CMAKE_C_PREPROCESSOR}
-  #   CC=${CMAKE_C_COMPILER}
-  #   CXX=${CMAKE_CXX_COMPILER}
-  #
-  set(toolchain_binaries)
-  if(CMAKE_AR)
-    list(APPEND toolchain_binaries AR=${CMAKE_AR})
-  endif()
-  if(CMAKE_ASM_COMPILER)
-    list(APPEND toolchain_binaries AS=${CMAKE_ASM_COMPILER})
-  endif()
-  if(CMAKE_LINKER)
-    list(APPEND toolchain_binaries LD=${CMAKE_LINKER})
-  endif()
-  if(CMAKE_NM)
-    list(APPEND toolchain_binaries NM=${CMAKE_NM})
-  endif()
-  if(CMAKE_OBJCOPY)
-    list(APPEND toolchain_binaries OBJCOPY=${CMAKE_OBJCOPY})
-  endif()
-  if(CMAKE_OBJDUMP)
-    list(APPEND toolchain_binaries OBJDUMP=${CMAKE_OBJDUMP})
-  endif()
-  if(CMAKE_RANLIB)
-    list(APPEND toolchain_binaries RANLIB=${CMAKE_RANLIB})
-  endif()
-  if(CMAKE_STRIP)
-    list(APPEND toolchain_binaries STRIP=${CMAKE_STRIP})
-  endif()
-  if(CMAKE_C_PREPROCESSOR)
-    list(APPEND toolchain_binaries CPP=${CMAKE_C_PREPROCESSOR})
-  endif()
-  if(CMAKE_C_COMPILER)
-    list(APPEND toolchain_binaries CC=${CMAKE_C_COMPILER})
-  endif()
-  if(CMAKE_CXX_COMPILER)
-    list(APPEND toolchain_binaries CXX=${CMAKE_CXX_COMPILER})
+  set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
+  set(shell_env_path "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}")
+
+  set(shell_ld_path "LD_LIBRARY_PATH=${PARAM_GLOBAL_INSTALL_DIR}/lib:$ENV{LD_LIBRARY_PATH}")
+
+  set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
+  set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
+  set(shell_pkg_config_libdir "PKG_CONFIG_LIBDIR=${d1}:${d2}")
+
+  set(clear_vars_shell_script "${PARAM_HUNTER_SELF}/scripts/clear-all.sh")
+
+  set(shell_env
+      .
+      ${clear_vars_shell_script}
+      &&
+      ${shell_env_path}
+      ${shell_pkg_config_libdir}
+      ${shell_ld_path}
+  )
+
+  # Build command and options
+  set(autotools_build_command "make")
+  string(COMPARE NOTEQUAL "${PARAM_PARALLEL_JOBS}" "" have_jobs)
+  if(have_jobs)
+    list(APPEND autotools_build_command "-j" "${PARAM_PARALLEL_JOBS}")
   endif()
 
-  string(STRIP "${toolchain_binaries}" toolchain_binaries)
-  if(HUNTER_STATUS_DEBUG)
-    string(
-        REPLACE ";" "\n" toolchain_binaries_new_line "${toolchain_binaries}"
-    )
-    hunter_status_debug("Toolchain Binaries:")
-    foreach(x ${toolchain_binaries})
-      hunter_status_debug("  ${x}")
-    endforeach()
-  endif()
+  set(build_command ${shell_env} ${autotools_build_command})
 
-  # CPPFLAGS=${PARAM_CPPFLAGS} [-D${COMPILE_DEFINITIONS}]
-  #          [-I${INCLUDE_DIRECTORIES}]
-  #
-  # C Preprocessor flags
-  set(cppflags)
-  get_directory_property(defs COMPILE_DEFINITIONS)
-  foreach(def ${defs})
-    set(cppflags "${cppflags} -D${def}")
-  endforeach()
-
-  get_directory_property(include_dirs INCLUDE_DIRECTORIES)
-  foreach(include_dir ${include_dirs})
-    set(cppflags
-        "${cppflags} ${CMAKE_INCLUDE_SYSTEM_FLAG_CXX} ${include_dir}"
-    )
-  endforeach()
-
-  set(cppflags "${cppflags} ${PARAM_CPPFLAGS}")
-  string(STRIP "${cppflags}" cppflags)
-  hunter_status_debug("CPPFLAGS=${cppflags}")
-
-  # CFLAGS=${cflags} ${CMAKE_C_FLAGS}
-  #
-  # C Compiler Flags (defines or include directories should not be needed here)
-  set(cflags "${CMAKE_C_FLAGS} ${PARAM_CFLAGS}")
-  string(STRIP "${cflags}" cflags)
-  hunter_status_debug("CFLAGS=${cflags}")
-
-  # CXXFLAGS=${cxxflags} ${CMAKE_CXX_FLAGS}
-  #
-  # C++ Compiler flags (defines or include directories should not be needed here)
-  set(cxxflags "${CMAKE_CXX_FLAGS} ${PARAM_CXXFLAGS}")
-  string(STRIP "${cxxflags}" cxxflags)
-  hunter_status_debug("CXXFLAGS=${cxxflags}")
-
-  # LDFLAGS=${ldflags}
-  #
-  # Linker flags
-  set(ldflags "${CMAKE_EXE_LINKER_FLAGS} ${PARAM_LDFLAGS}")
-  string(STRIP "${ldflags}" ldflags)
-  hunter_status_debug("LDFLAGS=${ldflags}")
-
-  set(configure_host)
-  string(COMPARE NOTEQUAL "${ANDROID}" "" is_android)
   string(COMPARE NOTEQUAL "${IPHONEOS_ARCHS}${IPHONESIMULATOR_ARCHS}" "" is_ios)
-  string(COMPARE NOTEQUAL "${CROSS_COMPILE_TOOLCHAIN_PREFIX}" "" is_cross_compile)
-  if(is_android)
-    # AWP: the checks below should also be done for the Raspberry Pi
-    #      how could we do it without repetition?
-    hunter_test_string_not_empty("${CMAKE_C_FLAGS}")
-    hunter_test_string_not_empty("${CMAKE_CXX_FLAGS}")
-    hunter_test_string_not_empty("${CMAKE_AR}")
-    hunter_test_string_not_empty("${CMAKE_C_PREPROCESSOR}")
-    hunter_test_string_not_empty("${CMAKE_C_COMPILER}")
-    hunter_test_string_not_empty("${CMAKE_CXX_COMPILER}")
-    hunter_test_string_not_empty("${CMAKE_LINKER}")
-    hunter_test_string_not_empty("${CMAKE_NM}")
-    hunter_test_string_not_empty("${CMAKE_OBJCOPY}")
-    hunter_test_string_not_empty("${CMAKE_OBJDUMP}")
-    hunter_test_string_not_empty("${CMAKE_RANLIB}")
-    hunter_test_string_not_empty("${CMAKE_STRIP}")
-
-    hunter_test_string_not_empty("${ANDROID_TOOLCHAIN_MACHINE_NAME}")
-    set(configure_host --host=${ANDROID_TOOLCHAIN_MACHINE_NAME})
-    set(ldflags "${ldflags} ${__libstl}")
-  elseif(is_ios)
+  if(is_ios)
     hunter_status_debug("Autotools iOS IPHONEOS_ARCHS: ${IPHONEOS_ARCHS} IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}")
     if(BUILD_SHARED_LIBS)
-      hunter_fatal_error("Autotools: building iOS libraries as shared is not supported")
+      hunter_user_error("Autotools: building iOS libraries as shared is not supported")
     endif()
     set(ios_architectures)
     list(APPEND ios_architectures ${IPHONEOS_ARCHS} ${IPHONESIMULATOR_ARCHS})
-  elseif(is_cross_compile)
-    set(configure_host --host=${CROSS_COMPILE_TOOLCHAIN_PREFIX})
-  endif()
-
-  # Hunter builds static libraries by default
-  if(BUILD_SHARED_LIBS)
-    list(APPEND PARAM_EXTRA_FLAGS --enable-shared --disable-static)
-  else()
-    list(APPEND PARAM_EXTRA_FLAGS --disable-shared --enable-static)
-  endif()
-
-  if(HUNTER_STATUS_DEBUG)
-    string(REPLACE ";" " " extra_flags "${PARAM_EXTRA_FLAGS}")
-    hunter_status_debug("EXTRA_FLAGS=${extra_flags}")
-  endif()
-
-  # Build command and options
-  set(build_command . "${PARAM_HUNTER_SELF}/scripts/clear-all.sh" && make)
-  set(build_opts)
-  string(COMPARE NOTEQUAL "${PARAM_PARALLEL_JOBS}" "" have_jobs)
-  if(have_jobs)
-    list(APPEND build_opts "-j" "${PARAM_PARALLEL_JOBS}")
-  endif()
-
-  set(configure_command . "${PARAM_HUNTER_SELF}/scripts/clear-all.sh" &&)
-  list(APPEND configure_command AR=${CMAKE_AR})
-  if(PARAM_MODIFY_PATH)
-    # see clear-all.sh
-    set(default_path "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin")
-    list(
-        APPEND
-        configure_command
-        "PATH=${PARAM_GLOBAL_INSTALL_DIR}/bin:${default_path}"
-    )
-  endif()
-  if(PARAM_MODIFY_PKG_CONFIG)
-    set(d1 "${PARAM_GLOBAL_INSTALL_DIR}/lib/pkgconfig")
-    set(d2 "${PARAM_GLOBAL_INSTALL_DIR}/share/pkgconfig")
-    list(APPEND configure_command "PKG_CONFIG_PATH=${d1}:${d2}")
-  endif()
-
-  list(APPEND configure_command "./configure")
-
-  # Build the configure command line options
-  set(configure_opts)
-  string(COMPARE NOTEQUAL "${configure_host}" "" has_configure_host)
-  if(has_configure_host)
-    list(APPEND configure_opts ${configure_host})
-  endif()
-
-  string(COMPARE NOTEQUAL "${toolchain_binaries}" "" has_changes)
-  if(has_changes)
-    list(APPEND configure_opts ${toolchain_binaries})
-  endif()
-
-  string(COMPARE NOTEQUAL "${cppflags}" "" has_cppflags)
-  if(has_cppflags)
-    list(APPEND configure_opts CPPFLAGS=${cppflags})
-  endif()
-
-  string(COMPARE NOTEQUAL "${cflags}" "" has_cflags)
-  if(has_cflags)
-    list(APPEND configure_opts CFLAGS=${cflags})
-  endif()
-
-  string(COMPARE NOTEQUAL "${cxxflags}" "" has_cxxflags)
-  if(has_cxxflags)
-    list(APPEND configure_opts CXXFLAGS=${cxxflags})
-  endif()
-
-  string(COMPARE NOTEQUAL "${ldflags}" "" hasldflags)
-  if(hasldflags)
-    list(APPEND configure_opts LDFLAGS=${ldflags})
-  endif()
-
-  if(PARAM_EXTRA_FLAGS)
-    list(APPEND configure_opts ${PARAM_EXTRA_FLAGS})
   endif()
 
   if(NOT is_ios)
-    hunter_status_debug("Autotools configure_opts: ${configure_opts} ")
+    hunter_autotools_configure_command(autotools_configure_command
+       PACKAGE_INSTALL_DIR
+         ${PARAM_INSTALL_DIR}
+       EXTRA_FLAGS
+         ${PARAM_EXTRA_FLAGS}
+       INSTALL_DIR
+         ${PARAM_GLOBAL_INSTALL_DIR}
+       PACKAGE_CONFIGURATION_TYPES
+         ${PARAM_PACKAGE_CONFIGURATION_TYPES}
+       CPPFLAGS
+         ${PARAM_CPPFLAGS}
+       CFLAGS
+         ${PARAM_CFLAGS}
+       CXXFLAGS
+         ${PARAM_CXXFLAGS}
+       LDFLAGS
+         ${PARAM_LDFLAGS}
+    )
+
+    set(configure_command ${shell_env} ${autotools_configure_command})
+
     ExternalProject_Add(${target_name}
         URL
           ${PARAM_URL}
@@ -314,18 +182,21 @@ function(hunter_autotools_project target_name)
           ${PARAM_URL_HASH}
         DOWNLOAD_DIR
           ${PARAM_DOWNLOAD_DIR}
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}
         INSTALL_DIR
           ${PARAM_INSTALL_DIR}
           # not used, just avoid creating Install/<name> empty directory
+        PATCH_COMMAND
+          ${PARAM_PATCH_COMMAND}
         CONFIGURE_COMMAND
+          "${PARAM_BOOTSTRAP}"
+        COMMAND
           ${configure_command}
-          ${configure_opts}
-          "--prefix=${PARAM_INSTALL_DIR}"
         BUILD_COMMAND
           ${build_command}
-          ${build_opts}
         BUILD_IN_SOURCE
           1
         INSTALL_COMMAND
@@ -337,6 +208,8 @@ function(hunter_autotools_project target_name)
     ExternalProject_Add(${ios_universal_target}
         DOWNLOAD_COMMAND
           ""
+        TLS_VERIFY
+          "${HUNTER_TLS_VERIFY}"
         SOURCE_DIR
           ${PARAM_SOURCE_DIR}/universal
         INSTALL_DIR
@@ -372,11 +245,10 @@ function(hunter_autotools_project target_name)
         set(configure_host "x86_64-apple-darwin")
         set(is_simulator TRUE)
       else()
-        hunter_fatal_error("iOS architecture: ${ios_architecture} not supported")
+        hunter_user_error("iOS architecture: ${ios_architecture} not supported")
       endif()
 
       set(arch_flags)
-      set(configure_opts)
       # Extra space at the end of the arch_flags is needed below when appending
       # to configure_opts, please do not remove!
       if(is_simulator)
@@ -384,13 +256,30 @@ function(hunter_autotools_project target_name)
       else()
         set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONEOS_SDK_ROOT} -miphoneos-version-min=${IOS_SDK_VERSION} ")
       endif()
-      list(APPEND configure_opts --host=${configure_host})
-      list(APPEND configure_opts ${toolchain_binaries})
-      list(APPEND configure_opts CPPFLAGS=${arch_flags}${cppflags})
-      list(APPEND configure_opts CFLAGS=${arch_flags}${cflags})
-      list(APPEND configure_opts CXXFLAGS=${arch_flags}${cxxflags})
-      list(APPEND configure_opts LDFLAGS=${arch_flags}${ldflags})
-      list(APPEND configure_opts ${PARAM_EXTRA_FLAGS})
+      set(arch_install_dir
+          ${multi_arch_install_root}/${ios_architecture}
+      )
+      hunter_autotools_configure_command(autotools_configure_command
+          PACKAGE_INSTALL_DIR
+            ${arch_install_dir}
+          EXTRA_FLAGS
+            ${PARAM_EXTRA_FLAGS}
+          CONFIGURE_HOST
+            ${configure_host}
+          INSTALL_DIR
+            ${PARAM_GLOBAL_INSTALL_DIR}
+          PACKAGE_CONFIGURATION_TYPES
+            ${PARAM_PACKAGE_CONFIGURATION_TYPES}
+          CPPFLAGS
+            ${arch_flags}${PARAM_CPPFLAGS}
+          CFLAGS
+            ${arch_flags}${PARAM_CFLAGS}
+          CXXFLAGS
+            ${arch_flags}${PARAM_CXXFLAGS}
+          LDFLAGS
+            ${arch_flags}${PARAM_LDFLAGS}
+      )
+      set(configure_command ${shell_env} ${autotools_configure_command})
 
       # architecture specific source dir
       set(arch_source_dir
@@ -399,9 +288,6 @@ function(hunter_autotools_project target_name)
       set(arch_target
           ${target_name}-${ios_architecture}
       )
-      set(arch_install_dir
-          ${multi_arch_install_root}/${ios_architecture}
-      )
       ExternalProject_Add(${arch_target}
           URL
             ${PARAM_URL}
@@ -409,18 +295,21 @@ function(hunter_autotools_project target_name)
             ${PARAM_URL_HASH}
           DOWNLOAD_DIR
             ${PARAM_DOWNLOAD_DIR}
+          TLS_VERIFY
+            "${HUNTER_TLS_VERIFY}"
           SOURCE_DIR
             ${arch_source_dir}
           INSTALL_DIR
             ${arch_install_dir}
             # not used, just avoid creating Install/<name> empty directory
+          PATCH_COMMAND
+            ${PARAM_PATCH_COMMAND}
           CONFIGURE_COMMAND
+            "${PARAM_BOOTSTRAP}"
+          COMMAND
             ${configure_command}
-            ${configure_opts}
-            "--prefix=${arch_install_dir}"
           BUILD_COMMAND
             ${build_command}
-            ${build_opts}
           BUILD_IN_SOURCE
             1
           INSTALL_COMMAND

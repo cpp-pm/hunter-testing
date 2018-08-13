@@ -1,11 +1,25 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 Contacts
 --------
 
-Feel free to open new `issue`_ if you want to ask any questions. Also you can
-write me to ``ruslan_baratov@yahoo.com`` or contact me using `Tox`_:
+Public
+======
 
-* ``7EBD836B7690C3742E6F3632742BEB00283529E06D76E06F7065544A5F9C6F37D948FB0F754B``
-* ``4EED21EA40B0351D8BFC85A69499A3F7CFEDA6844DA39FF1783A4D9827423F075D7194707C43``
+* Feel free to open new `issue`_ if you want to ask any question
+* Public chat room on |gitter_public|
+
+Private
+=======
+
+* Write me to ruslan_baratov@yahoo.com
+* Private chat room on |gitter_private|
 
 .. _issue: https://github.com/ruslo/hunter/issues/new
-.. _Tox: https://tox.chat
+
+.. |gitter_public| image:: https://badges.gitter.im/ruslo/hunter.svg
+  :target: https://gitter.im/ruslo/hunter
+
+.. |gitter_private| image:: https://badges.gitter.im/ruslo/hunter.svg
+  :target: https://gitter.im/ruslo

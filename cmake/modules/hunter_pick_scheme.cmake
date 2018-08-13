@@ -4,7 +4,7 @@
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_internal_error)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 # Set variable:
 #     * HUNTER_DOWNLOAD_SCHEME
@@ -13,7 +13,7 @@ include(hunter_test_string_not_empty)
 #     * HUNTER_PACKAGE_SCHEME_UNPACK
 #     * HUNTER_PACKAGE_SCHEME_INSTALL
 function(hunter_pick_scheme)
-  hunter_test_string_not_empty("${CMAKE_GENERATOR}")
+  hunter_assert_not_empty_string("${CMAKE_GENERATOR}")
 
   # parse args
   set(one DEFAULT IPHONEOS WINDOWS)
@@ -38,6 +38,7 @@ function(hunter_pick_scheme)
 
   set(HUNTER_PACKAGE_SCHEME_DOWNLOAD "")
   set(HUNTER_PACKAGE_SCHEME_UNPACK "")
+  set(HUNTER_PACKAGE_SCHEME_UNPACK_INSTALL "")
   set(HUNTER_PACKAGE_SCHEME_INSTALL "")
 
   # set HUNTER_PACKAGE_SCHEME_*
@@ -57,10 +58,28 @@ function(hunter_pick_scheme)
       is_download
   )
 
+  string(
+      COMPARE
+      EQUAL
+      "${HUNTER_DOWNLOAD_SCHEME}"
+      "url_sha1_unpack_install"
+      is_unpack_install
+  )
+
+  string(
+      COMPARE
+      EQUAL
+      "${HUNTER_DOWNLOAD_SCHEME}"
+      "url_sha1_unpack_bin_install"
+      is_unpack_bin_install
+  )
+
   if(is_unpack)
     set(HUNTER_PACKAGE_SCHEME_UNPACK "1")
   elseif(is_download)
     set(HUNTER_PACKAGE_SCHEME_DOWNLOAD "1")
+  elseif(is_unpack_install OR is_unpack_bin_install)
+    set(HUNTER_PACKAGE_SCHEME_UNPACK_INSTALL "1")
   else()
     set(HUNTER_PACKAGE_SCHEME_INSTALL "1")
   endif()
@@ -76,6 +95,11 @@ function(hunter_pick_scheme)
   set(
       HUNTER_PACKAGE_SCHEME_UNPACK
       "${HUNTER_PACKAGE_SCHEME_UNPACK}"
+      PARENT_SCOPE
+  )
+  set(
+      HUNTER_PACKAGE_SCHEME_UNPACK_INSTALL
+      "${HUNTER_PACKAGE_SCHEME_UNPACK_INSTALL}"
       PARENT_SCOPE
   )
   set(
