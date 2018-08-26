@@ -1,3 +1,10 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
+.. spelling::
+
+  armv
+
 Binaries from server
 --------------------
 
@@ -9,9 +16,10 @@ it does affect ``Config-ID`` so new root will be created. But it will not affect
 how ``GTest`` builds (if it's not a dependency) so ``GTest`` archive can be
 unpacked from cache. Such cache can be used locally or uploaded to server.
 
+
 .. seealso::
 
-  * `Uploading binaries to server <https://github.com/ruslo/hunter/wiki/Uploading-binaries-to-server>`_
+  * :ref:`Uploading to server <uploading to server>`
 
 Details
 =======
@@ -34,7 +42,7 @@ Binaries/headers stored in archives. Archives are the result of packing
 ``cmake --build _builds --target install`` command. Idea is similar to CPack
 functionality but extended for non-CMake packages too.
 
-.. code-block:: shell
+.. code-block:: none
   :emphasize-lines: 3, 6, 8
 
   > mkdir temp-dir
