@@ -1,3 +1,6 @@
+.. Copyright (c) 2016, Ruslan Baratov
+.. All rights reserved.
+
 Hunter-ID
 ---------
 
@@ -43,14 +46,14 @@ of Hunter archive.  This level defines list of available packages and mapping
 +-------------+-------------------+--------------+----------+------------------------------------------+
 
 
-.. [1] Yep, same version but different URL/SHA1. No conficts.
+.. [1] Yep, same version but different URL/SHA1. No conflicts.
 
 Message in logs:
 
-::
+.. code-block:: none
 
-  -- [hunter] [ Hunter-ID: 1eae623 | Config-ID: ... | Toolchain-ID: ... ]
-  -- [hunter] [ Hunter-ID: e07a124 | Config-ID: ... | Toolchain-ID: ... ]
+  -- [hunter] [ Hunter-ID: 1eae623 | Toolchain-ID: ... | Config-ID: ... ]
+  -- [hunter] [ Hunter-ID: e07a124 | Toolchain-ID: ... | Config-ID: ... ]
 
 .. admonition:: Hunter
 

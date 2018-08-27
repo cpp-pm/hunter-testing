@@ -4,12 +4,10 @@
 # !!! DO NOT PLACE HEADER GUARDS HERE !!!
 
 include(hunter_add_version)
+include(hunter_cacheable)
 include(hunter_configuration_types)
 include(hunter_download)
 include(hunter_pick_scheme)
-
-hunter_add_package(odb)
-hunter_add_package(SQLite3)
 
 hunter_add_version(
     PACKAGE_NAME
@@ -24,6 +22,11 @@ hunter_add_version(
 
 hunter_configuration_types(odb-sqlite CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_odb-sqlite_autotools)
+hunter_cacheable(odb-sqlite)
 hunter_download(
     PACKAGE_NAME odb-sqlite
+    PACKAGE_UNRELOCATABLE_TEXT_FILES
+    "lib/libodb-sqlite.la"
+    "lib/pkgconfig/libodb-sqlite.pc"
+    PACKAGE_INTERNAL_DEPS_ID "1"
 )
