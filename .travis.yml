@@ -600,6 +600,11 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Boost-contract
 
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-custom-args
+
     # Boost-log {
 
     - os: linux
