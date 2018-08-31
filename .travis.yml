@@ -86,13 +86,13 @@ matrix:
     # OSX {
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/OpenCV
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/OpenCV
@@ -104,9 +104,9 @@ matrix:
     #     error: implicitly declaring library function '_mm_pause' with type 'void ()'
     #
     # - os: osx
-    #   osx_image: xcode9.3
+    #   osx_image: xcode9.4
     #   env: >
-    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
     #     PROJECT_DIR=examples/OpenCV
     #     VERBOSE=0
 
@@ -151,43 +151,43 @@ matrix:
     # OSX {
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/OpenCV-extra
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-armv7
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-arm64
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-armv7
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-armv7
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3-arm64
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-arm64
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
 
@@ -207,7 +207,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
