@@ -54,6 +54,12 @@ function(hunter_pack_git_self)
   endif()
 
   set(cmd "${git_executable}" status --porcelain)
+  hunter_status_debug(
+      "Run command '${cmd}' in '${top_git_directory}' directory"
+  )
+  hunter_status_debug(
+      "All changes in '${HUNTER_GATE_LOCATION}' directory will be ignored"
+  )
   execute_process(
       COMMAND ${cmd}
       WORKING_DIRECTORY "${top_git_directory}"
@@ -80,6 +86,14 @@ function(hunter_pack_git_self)
     string(COMPARE EQUAL "${no_status_line}" "${status_full_line}" no_change)
     if(no_change)
       hunter_internal_error("Unexpected status format: '${status_full_line}'")
+    endif()
+
+    if(HUNTER_GIT_SELF_IGNORE_UNTRACKED)
+      string(REGEX MATCH "^\\?\\? " status_only "${status_full_line}")
+      if(status_only STREQUAL "?? ")
+        hunter_status_debug("File will be ignored: '${status_full_line}'")
+        continue()
+      endif()
     endif()
 
     # no_status_line can be:
