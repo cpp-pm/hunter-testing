@@ -311,6 +311,11 @@ function(hunter_download)
   file(REMOVE "${HUNTER_ARGS_FILE}")
   hunter_create_args_file("${package_cmake_args}" "${HUNTER_ARGS_FILE}")
 
+  # Pass the raw list of arguments to build scheme:
+  # * https://github.com/ruslo/hunter/blob/v0.23.18/cmake/projects/Boost/schemes/url_sha1_boost.cmake.in#L95-L100
+  # * https://github.com/ruslo/hunter/issues/1525
+  set(HUNTER_${HUNTER_PACKAGE_NAME}_CMAKE_ARGS "${package_cmake_args}")
+
   # Check if package can be loaded from cache
   hunter_load_from_cache()
 
@@ -446,6 +451,11 @@ function(hunter_download)
       APPEND
       "${HUNTER_DOWNLOAD_TOOLCHAIN}"
       "set(HUNTER_JOBS_NUMBER \"${HUNTER_JOBS_NUMBER}\" CACHE INTERNAL \"\")\n"
+  )
+  file(
+      APPEND
+      "${HUNTER_DOWNLOAD_TOOLCHAIN}"
+      "set(HUNTER_NO_TOOLCHAIN_ID_RECALCULATION \"${HUNTER_NO_TOOLCHAIN_ID_RECALCULATION}\" CACHE INTERNAL \"\")\n"
   )
 
   string(COMPARE NOTEQUAL "${CMAKE_MAKE_PROGRAM}" "" has_make)
