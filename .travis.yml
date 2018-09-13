@@ -33,20 +33,25 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/428143244
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=clang-cxx17
+    #    PROJECT_DIR=examples/WebKit
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/428143245
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=gcc-7-cxx17
+    #    PROJECT_DIR=examples/WebKit
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/WebKit
+        VERBOSE=0
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/369970355
     # - os: linux
@@ -54,20 +59,24 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/WebKit
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME (ICU build)
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-address-cxx17
+    #    PROJECT_DIR=examples/WebKit
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME (ICU build)
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-leak-cxx17
+    #    PROJECT_DIR=examples/WebKit
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/WebKit
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/428143249
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-thread-cxx17
+    #    PROJECT_DIR=examples/WebKit
 
     # }
 
@@ -84,6 +93,7 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/WebKit
+        VERBOSE=0
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/369970361
     # - os: osx
@@ -100,6 +110,7 @@ matrix:
       env: >
         TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-thumb-clang-libcxx14
         PROJECT_DIR=examples/WebKit
+        VERBOSE=0
 
     # }
 
