@@ -52,6 +52,7 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/WebKit
         VERBOSE=0
+        HUNTER_JOBS_NUMBER=2
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/369970355
     # - os: linux
@@ -111,6 +112,7 @@ matrix:
         TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-thumb-clang-libcxx14
         PROJECT_DIR=examples/WebKit
         VERBOSE=0
+        HUNTER_JOBS_NUMBER=2
 
     # }
 
