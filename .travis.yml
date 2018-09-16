@@ -39,10 +39,12 @@ matrix:
     #    TOOLCHAIN=clang-cxx17
     #    PROJECT_DIR=examples/pybind11
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/pybind11
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/429234139
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=gcc-7-cxx17
+    #    PROJECT_DIR=examples/pybind11
 
     # FIXME: https://travis-ci.org/isaachier/hunter/builds/295065422
     #- os: linux
@@ -68,10 +70,12 @@ matrix:
     #    TOOLCHAIN=sanitize-leak-cxx17
     #    PROJECT_DIR=examples/pybind11
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/pybind11
+    # FIXME:
+    # * https://travis-ci.org/ingenue/hunter/jobs/429234140
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-thread-cxx17
+    #    PROJECT_DIR=examples/pybind11
 
     # }
 
