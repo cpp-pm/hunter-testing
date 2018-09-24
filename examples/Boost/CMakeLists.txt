@@ -9,33 +9,31 @@ include("../common.cmake")
 
 project(download-boost)
 
-# download boost
 hunter_add_package(Boost)
-
-# now boost can be used
 find_package(Boost CONFIG REQUIRED)
 
 add_executable(foo foo.cpp)
-target_link_libraries(foo Boost::boost)
-
-# Create license with Boost's license under 3rd party
-if(NOT EXISTS "${Boost_LICENSE}")
-  message(FATAL_ERROR "License file not found")
-endif()
-
-file(READ "${Boost_LICENSE}" boost_license_content)
+target_link_libraries(foo PUBLIC Boost::boost)
 
 set(project_license "${CMAKE_CURRENT_BINARY_DIR}/LICENSE.txt")
 file(
     WRITE
     "${project_license}"
     "Some info about this project license.\n\n"
-    "== 3rd party licenses ==\n\n"
-    "== Boost ==\n\n"
-    "${boost_license_content}"
 )
-message("Project license: ${project_license}")
 
-# Compatibility mode
-find_package(Boost REQUIRED)
-include_directories("${Boost_INCLUDE_DIRS}")
+string(COMPARE EQUAL "${Boost_LICENSES}" "" is_empty)
+if(is_empty)
+  message(FATAL_ERROR "No licenses")
+endif()
+
+file(APPEND "${project_license}" "== 3rd party licenses ==\n\n")
+
+foreach(x ${Boost_LICENSES})
+  file(READ "${x}" content)
+  get_filename_component(license_name "${x}" NAME)
+  file(APPEND "${project_license}" "== Boost (${license_name}) ==\n\n")
+  file(APPEND "${project_license}" "${content}")
+endforeach()
+
+message("Project license: ${project_license}")

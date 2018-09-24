@@ -5,9 +5,9 @@ include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_fatal_error)
 include(hunter_finalize)
+include(hunter_get_project_files_to_load)
 include(hunter_internal_error)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
 
 # internal variables: _hunter_ap_*
 macro(hunter_add_package)
@@ -36,55 +36,31 @@ macro(hunter_add_package)
   endif()
   list(GET _hunter_ap_arg_UNPARSED_ARGUMENTS 0 _hunter_ap_project)
 
-  hunter_test_string_not_empty("${HUNTER_SELF}")
-  set(
-      _hunter_ap_project_dir
-      "${HUNTER_SELF}/cmake/projects/${_hunter_ap_project}"
+  hunter_get_project_files_to_load(
+      PROJECT_NAME "${_hunter_ap_project}"
+      COMPONENTS "${_hunter_ap_arg_COMPONENTS}"
+      FILES _hunter_ap_list
+      NEW_INJECTED_PACKAGE _hunter_ap_new_injected_package
   )
-  if(NOT EXISTS "${_hunter_ap_project_dir}")
-    hunter_internal_error("Project '${_hunter_ap_project}' not found")
+
+  if(_hunter_ap_new_injected_package)
+    hunter_status_debug("Injected package '${_hunter_ap_project}'")
+    include(hunter_cacheable)
+    include(hunter_download)
+    include(hunter_pick_scheme)
+    hunter_pick_scheme(DEFAULT url_sha1_cmake)
+    hunter_cacheable("${_hunter_ap_project}")
+    hunter_download(PACKAGE_NAME "${_hunter_ap_project}")
+  else()
+    # do not use any variables after this 'foreach', because included files
+    # may call 'hunter_add_package' and rewrite it
+    foreach(x ${_hunter_ap_list})
+      hunter_status_debug("load: ${x}")
+      if(NOT EXISTS "${x}")
+        hunter_internal_error("File not found: '${x}'")
+      endif()
+      include("${x}")
+      hunter_status_debug("load: ${x} ... end")
+    endforeach()
   endif()
-  if(NOT IS_DIRECTORY "${_hunter_ap_project_dir}")
-    hunter_internal_error("Project '${_hunter_ap_project}' not found")
-  endif()
-
-  # Check components
-  foreach(_hunter_ap_component ${_hunter_ap_arg_COMPONENTS})
-    set(
-        _hunter_ap_component_dir
-        "${_hunter_ap_project_dir}/${_hunter_ap_component}"
-    )
-    if(NOT EXISTS "${_hunter_ap_component_dir}")
-      hunter_internal_error(
-          "Component '${_hunter_ap_component}' not found "
-          "in project '${_hunter_ap_project}'"
-      )
-    endif()
-    if(NOT IS_DIRECTORY "${_hunter_ap_component_dir}")
-      hunter_internal_error(
-          "Component '${_hunter_ap_component}' not found "
-          "in project '${_hunter_ap_project}'"
-      )
-    endif()
-  endforeach()
-
-  unset(_hunter_ap_list)
-  list(APPEND _hunter_ap_list "${_hunter_ap_project_dir}/hunter.cmake")
-
-  # Load components
-  foreach(_hunter_ap_component ${_hunter_ap_arg_COMPONENTS})
-    list(
-        APPEND
-        _hunter_ap_list
-        "${_hunter_ap_project_dir}/${_hunter_ap_component}/hunter.cmake"
-    )
-  endforeach()
-
-  # do not use any variables after this 'foreach', because included files
-  # may call 'hunter_add_package' and rewrite it
-  foreach(x ${_hunter_ap_list})
-    hunter_status_debug("load: ${x}")
-    include("${x}")
-    hunter_status_debug("load: ${x} ... end")
-  endforeach()
 endmacro()

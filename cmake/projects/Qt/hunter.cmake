@@ -9,6 +9,7 @@ include(hunter_cacheable)
 include(hunter_cmake_args)
 include(hunter_configuration_types)
 include(hunter_report_broken_package)
+include(hunter_check_toolchain_definition)
 
 # Use *.7z version.
 # Qt 5.5 overview:
@@ -76,6 +77,17 @@ hunter_add_version(
     PACKAGE_NAME
     Qt
     VERSION
+    "5.5.1-hunter-p2"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-p2/hunter-5.5.1.7z"
+    SHA1
+    5e4dbc4e453f4fa8a43188c9d2dfd461adc0e26d
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
     "5.5.1-cvpixelbuffer-p0"
     URL
     "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-p0/v5.5.1-cvpixelbuffer-p0.7z"
@@ -131,11 +143,110 @@ hunter_add_version(
     PACKAGE_NAME
     Qt
     VERSION
+    "5.5.1-cvpixelbuffer-2-p4"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p4/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    25b54fb50292f28b76d0631a9e5c791e01bf3c45
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.5.1-cvpixelbuffer-2-p5"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p5/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    4d4caf96c2f78f4c15c242f74513107a241f8c2c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.5.1-cvpixelbuffer-2-p6"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p6/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    96c56491d6228eb131f9c11c00b894f00e76e3d6
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.5.1-cvpixelbuffer-2-p7"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p7/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    4219da1cc7d14bfdd59bcbecf9180c2133181e52
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.5.1-cvpixelbuffer-2-p8"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p8/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    130b210eff2a29b2aa65421e23ec618b65aa5d0f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.5.1-cvpixelbuffer-2-p9"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.5.1-cvpixelbuffer-2-p9/hunter-5.5.1-cvpixelbuffer-2.7z"
+    SHA1
+    da8682218c7ed731d1affbdd1abee3c7393fb3e7
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
     "5.6.0-alpha"
     URL
     "http://download.qt.io/development_releases/qt/5.6/5.6.0-alpha/single/qt-everywhere-opensource-src-5.6.0-alpha.7z"
     SHA1
     d902b7df94219d2ed2f5c868839c85ce9daa056a
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.9.1-p0"
+    URL
+    "https://github.com/hunter-packages/Qt/releases/download/v5.9.1-p0/hunter-5.9.1.7z"
+    SHA1
+    b1bc254e688426316b55115adddd13e4a10115b2
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.10.1"
+    URL
+    "http://download.qt.io/official_releases/qt/5.10/5.10.1/single/qt-everywhere-src-5.10.1.tar.xz"
+    SHA1
+    3d71e887287bdea664ac6f8db4aaa4a7d913be59
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Qt
+    VERSION
+    "5.11.1"
+    URL
+    "http://download.qt.io/official_releases/qt/5.11/5.11.1/single/qt-everywhere-src-5.11.1.tar.xz"
+    SHA1
+    0ac866442a960d4038a51ba3096b2cc5d796b5ee
 )
 
 hunter_cacheable(Qt)
@@ -157,6 +268,30 @@ if(IOS)
         "For example Qt Multimedia: https://bugreports.qt.io/browse/QTBUG-48805"
     )
   endif()
+endif()
+
+if(CMAKE_VERSION VERSION_LESS 3.6)
+  # QtCMakeExtra modules (https://github.com/hunter-packages/QtCMakeExtra) installed
+  # near the Qt CMake modules and loaded by `file(GLOB)`:
+  # * https://github.com/qt/qtbase/blob/441ad9b938d453ccf5bff8867e7d3e6e432f9eba/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in#L352
+  #
+  # Before CMake 3.6 file(GLOB) order is not predictable and QtCMakeExtra will not work
+  # because they are expected to load last.
+  #
+  # file(GLOB) sorted since CMake 3.6:
+  # * https://gitlab.kitware.com/cmake/cmake/commit/edcccde7d65944b3744c4567bd1d452211829702
+  hunter_report_broken_package(
+      "CMake 3.6+ expected for Qt package (current version is ${CMAKE_VERSION}."
+  )
+endif()
+
+if(MSVC)
+  hunter_check_toolchain_definition(NAME "_DLL" DEFINED _hunter_vs_md)
+  hunter_cmake_args(
+    Qt
+    CMAKE_ARGS
+      QT_BUILD_DYNAMIC_VSRUNTIME=${_hunter_vs_md}
+  )
 endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/qtbase/hunter.cmake")

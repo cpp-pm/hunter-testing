@@ -5,6 +5,7 @@ include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_internal_error)
 include(hunter_status_debug)
+include(hunter_user_error)
 
 # If 'HUNTER_<name>_VERSION' is equal to 'h_VERSION', then
 # this function will set 'HUNTER_<name>_URL' and 'HUNTER_<name>_SHA1'.
@@ -30,6 +31,10 @@ function(hunter_add_version)
   # update HUNTER_<name>_VERSIONS (list of available versions)
   set(h_versions "HUNTER_${h_PACKAGE_NAME}_VERSIONS")
   list(APPEND ${h_versions} ${h_VERSION})
+
+  # 'hunter.cmake' may be loaded several times
+  list(REMOVE_DUPLICATES "${h_versions}")
+
   set(${h_versions} ${${h_versions}} PARENT_SCOPE)
 
   set(expected_version "HUNTER_${h_PACKAGE_NAME}_VERSION")
@@ -38,15 +43,22 @@ function(hunter_add_version)
     hunter_internal_error(
         "HUNTER_<name>_VERSION can't be empty "
         "(${h_PACKAGE_NAME})"
-        "(probably `hunter_config(...)` missing in config file)"
+        "(probably hunter_default_version/hunter_config call is missing)"
     )
   endif()
   string(COMPARE NOTEQUAL "${${expected_version}}" "${h_VERSION}" version_diff)
   if(version_diff)
-    hunter_status_debug(
-        "Skip '${h_VERSION}' (looking for '${${expected_version}}')"
-    )
     return()
+  endif()
+
+  set(user_url "${__HUNTER_FINAL_URL_${h_PACKAGE_NAME}}")
+  set(user_sha1 "${__HUNTER_FINAL_SHA1_${h_PACKAGE_NAME}}")
+
+  if(NOT user_url STREQUAL "" OR NOT user_sha1 STREQUAL "")
+    hunter_user_error(
+        "${h_VERSION} already used in 'hunter.cmake'."
+        " Please specify another version in hunter_config(${h_PACKAGE_NAME})."
+    )
   endif()
 
   # HUNTER_<name>_VERSION found
