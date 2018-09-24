@@ -11,6 +11,28 @@ hunter_add_version(
     PACKAGE_NAME
     Clang
     VERSION
+    "4.0.1-p0"
+    URL
+    "https://github.com/hunter-packages/clang/archive/v4.0.1-p0.tar.gz"
+    SHA1
+    cc2e74c852f57c946a4337812c73ce1bc97d639f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Clang
+    VERSION
+    "3.6.2-p0"
+    URL
+    "https://github.com/hunter-packages/clang/archive/v3.6.2-p0.tar.gz"
+    SHA1
+    a83fb5364829f3836cbf0104cb54500359d4ea8c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Clang
+    VERSION
     "3.6.2"
     URL
     "http://llvm.org/releases/3.6.2/cfe-3.6.2.src.tar.xz"

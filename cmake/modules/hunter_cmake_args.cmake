@@ -4,31 +4,23 @@
 
 include(CMakeParseArguments) # cmake_parse_arguments
 
-include(hunter_user_error)
+include(hunter_assert_empty_string)
+include(hunter_assert_not_empty_string)
 
-# internal variables: _hunter_c_*
-macro(hunter_cmake_args)
-  set(_hunter_c_multiple_values CMAKE_ARGS)
-  cmake_parse_arguments(
-      _hunter_c
-      ""
-      ""
-      "${_hunter_c_multiple_values}"
-      ${ARGV}
-  )
-  list(LENGTH _hunter_c_UNPARSED_ARGUMENTS _hunter_c_len)
-  if(NOT ${_hunter_c_len} EQUAL 1)
-    hunter_user_error("unparsed: ${_hunter_c_UNPARSED_ARGUMENTS}")
-  endif()
+function(hunter_cmake_args package)
+  hunter_assert_not_empty_string("${package}")
 
-  list(GET _hunter_c_UNPARSED_ARGUMENTS 0 _hunter_c_current_project)
+  set(optional "")
+  set(one "")
+  set(multiple CMAKE_ARGS)
 
-  if(_hunter_c_CMAKE_ARGS)
-    list(
-      # Prepend to list so already-set variables have priority
-      INSERT HUNTER_${_hunter_c_current_project}_CMAKE_ARGS 0
-      ${_hunter_c_CMAKE_ARGS})
-  else()
-    hunter_user_error("Expected CMAKE_ARGS")
-  endif()
-endmacro()
+  # Introduce:
+  # * x_CMAKE_ARGS
+  cmake_parse_arguments(x "${optional}" "${one}" "${multiple}" "${ARGN}")
+
+  hunter_assert_empty_string("${x_UNPARSED_ARGUMENTS}")
+
+  hunter_assert_not_empty_string("${x_CMAKE_ARGS}")
+
+  set("__HUNTER_DEFAULT_CMAKE_ARGS_${package}" "${x_CMAKE_ARGS}" PARENT_SCOPE)
+endfunction()

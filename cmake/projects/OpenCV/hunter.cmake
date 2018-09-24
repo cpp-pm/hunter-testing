@@ -12,6 +12,137 @@ include(hunter_download)
 include(hunter_pick_scheme)
 
 # List of versions here...
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.4.1-p1"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.4.1-p1.tar.gz"
+    SHA1
+    a3f4f0a29e14eb3ff4ebf834f5505ff63b384332
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.4.1-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.4.1-p0.tar.gz"
+    SHA1
+    cae0b9c141ca372629f65d09a780e820ea87ae49
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.4.0-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.4.0-p0.tar.gz"
+    SHA1
+    f4c4e8711cfe6b1aec5178dfeb3cd503fd24c9a8
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.3.1-p1"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.1-p1.tar.gz"
+    SHA1
+    2efff02ce7f3be1454dc2c41d536124a4a6ee048
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.3.1-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.1-p0.tar.gz"
+    SHA1
+    cca79df3db45c1a1d8da3a4952d04d69c1710508
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.3.0-p2"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.0-p2.tar.gz"
+    SHA1
+    27be59f7978a4625401a1041af8d108a47ae745b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.3.0-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.3.0-p0.tar.gz"
+    SHA1
+    fc351142139be71b366458fa1572ab004c871774
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.2.0-p2"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.2.0-p2.tar.gz"
+    SHA1
+    ea8f612eea55dfa6d2f3669d5e9eb4240417444b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.2.0-p1"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.2.0-p1.tar.gz"
+    SHA1
+    be088ced81f1b725e1bb76a45806ab044107fba3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.2.0-p0"
+    URL
+    "https://github.com/hunter-packages/opencv/releases/download/v3.2.0-p0/v3.2.0-p0.tar.gz"
+    SHA1
+    901f98202eb12dc2e1cc7f008204a9fb98ea0b13
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.1.0-p3"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.1.0-p3.tar.gz"
+    SHA1
+    d1f235600e454bcc3ce7d746b6b706e89ed81acc
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.1.0-p2"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/3.1.0-p2.tar.gz"
+    SHA1
+    2ad10c43f8be723b604f1cfccce1f7840b7c39ed
+)
 
 hunter_add_version(
     PACKAGE_NAME
@@ -33,7 +164,62 @@ hunter_add_version(
     "https://github.com/hunter-packages/opencv/archive/3.1.0-p0.tar.gz"
     SHA1
     ab503105ce7e5415fc77cf44de0b276008be624f
+    )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p11"
+    URL
+    "https://github.com/hunter-packages/opencv/releases/download/v3.0.0-p11/v3.0.0-p11.tar.gz"
+    SHA1
+    3fa05fadc5c2b5e02ada00ccb7752ede660699ab
 )
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p10"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p10.tar.gz"
+    SHA1
+    90bb9721231693b5999619aece8453b0710181d3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p9"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p9.tar.gz"
+    SHA1
+    b41a71206d0963dcdf934ecf8f0d7ff299c4b57c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p8"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p8.tar.gz"
+    SHA1
+    8cff7617f0b2a4e59c8a6b0016207476c30ba7e8
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    OpenCV
+    VERSION
+    "3.0.0-p7"
+    URL
+    "https://github.com/hunter-packages/opencv/archive/v3.0.0-p7.tar.gz"
+    SHA1
+    c1e6e32b146a4a19642bcd3ad7e36b4ddcd13ec3
+    )
 
 hunter_add_version(
     PACKAGE_NAME
@@ -178,12 +364,11 @@ hunter_add_version(
     a0c2d5944364fc4f26b6160b33c03082b1fa08c1
 )
 
-string(COMPARE EQUAL "${CMAKE_OSX_SYSROOT}" "iphoneos" _is_ios)
-
-if(_is_ios)
-  set(_ios_args ENABLE_NEON=ON)
+if(ANDROID)
+  # This feature doesn't work with new CMake 3.7+ toolchains
+  set(_android_args ENABLE_PRECOMPILED_HEADERS=OFF)
 else()
-  set(_ios_args "")
+  set(_android_args "")
 endif()
 
 hunter_cmake_args(
@@ -197,16 +382,22 @@ hunter_cmake_args(
         BUILD_opencv_apps=OFF
         INSTALL_PYTHON_EXAMPLES=OFF
         BUILD_WITH_STATIC_CRT=OFF # Fix https://github.com/ruslo/hunter/issues/177
-        ${_ios_args}
+        ${_android_args}
         # Find packages in Hunter (instead of building from OpenCV sources)
         BUILD_ZLIB=OFF
         BUILD_TIFF=OFF
         BUILD_PNG=OFF
         BUILD_JPEG=OFF
+        BUILD_JASPER=OFF
+        BUILD_WEBP=OFF
         # This stuff will build shared libraries. Build with PIC required for dependencies.
         BUILD_opencv_java=OFF
         BUILD_opencv_python2=OFF
         BUILD_opencv_python3=OFF
+        # There is not a CUDA package so need to stop OpenCV from searching for it, otherwise
+        #  it might pick up the host version
+        WITH_CUDA=OFF
+        WITH_CUFFT=OFF
 )
 
 # Pick a download scheme
@@ -219,4 +410,7 @@ hunter_pick_scheme(DEFAULT url_sha1_cmake)
 #     * libexample_Ad.a
 
 hunter_cacheable(OpenCV)
-hunter_download(PACKAGE_NAME OpenCV)
+hunter_download(
+    PACKAGE_NAME OpenCV
+    PACKAGE_INTERNAL_DEPS_ID "1"
+)
