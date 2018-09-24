@@ -28,9 +28,10 @@ environment:
       PROJECT_DIR: examples\Expat
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\Expat
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.4430/job/enpdicpu8vab14md
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\Expat
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
