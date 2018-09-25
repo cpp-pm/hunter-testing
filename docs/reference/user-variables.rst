@@ -352,6 +352,16 @@ Default: ``ON``
   :ref:`default <hunter_use_cache_servers>`) meta cache files like
   ``cache.sha1`` will not be checked at all!
 
+.. _hunter git self ignore untracked:
+
+HUNTER_GIT_SELF_IGNORE_UNTRACKED
+================================
+
+Set this option to ``ON`` if you want to ignore untracked files while
+using :doc:`GIT_SELF feature </user-guides/hunter-user/git-self>`.
+
+Default: ``OFF``
+
 .. _hunter no toolchain id recalculation:
 
 HUNTER_NO_TOOLCHAIN_ID_RECALCULATION
@@ -382,6 +392,8 @@ HUNTER_ROOT
 
 * Same as CMake's :ref:`HUNTER_ROOT <hunter root>` variable.
   If both environment and CMake variables are set then CMake has a higher priority
+
+.. _env hunter binary dir:
 
 HUNTER_BINARY_DIR
 =================
