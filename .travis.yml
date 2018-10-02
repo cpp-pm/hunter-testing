@@ -37,6 +37,7 @@ matrix:
       env: >
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/tomcrypt
+        HUNTER_JOBS_NUMBER=2
 
     - os: linux
       env: >
@@ -58,6 +59,7 @@ matrix:
       env: >
         TOOLCHAIN=sanitize-address-cxx17
         PROJECT_DIR=examples/tomcrypt
+        HUNTER_JOBS_NUMBER=2
 
     - os: linux
       env: >
@@ -68,6 +70,7 @@ matrix:
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
         PROJECT_DIR=examples/tomcrypt
+        HUNTER_JOBS_NUMBER=2
 
     # }
 
@@ -90,6 +93,7 @@ matrix:
       env: >
         TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
         PROJECT_DIR=examples/tomcrypt
+        VERBOSE=0
 
     # }
 
