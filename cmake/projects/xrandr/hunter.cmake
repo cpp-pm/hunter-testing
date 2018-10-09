@@ -36,11 +36,12 @@ hunter_cmake_args(
     xrandr
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
       DEPENDS_ON_PACKAGES=${xrandr_dependencies}
+      PKGCONFIG_EXPORT_TARGETS=xrandr
 )
 hunter_cacheable(xrandr)
 hunter_download(
     PACKAGE_NAME xrandr
-    PACKAGE_INTERNAL_DEPS_ID "1"
+    PACKAGE_INTERNAL_DEPS_ID "2"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/pkgconfig/xrandr.pc"
     "lib/libXrandr.la"
