@@ -91,6 +91,7 @@ matrix:
       env: >
         TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
         PROJECT_DIR=examples/glm
+        VERBOSE=0
 
     # }
 
