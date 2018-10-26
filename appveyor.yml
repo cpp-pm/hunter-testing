@@ -20,9 +20,10 @@ environment:
       PROJECT_DIR: examples\units
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\units
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+#    INFO: this project requires C++17
+#    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+#      PROJECT_DIR: examples\units
+#      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\units
