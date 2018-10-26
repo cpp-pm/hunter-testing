@@ -48,10 +48,11 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/HalideIR
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/HalideIR
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/446561281
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/HalideIR
 
     - os: linux
       env: >
