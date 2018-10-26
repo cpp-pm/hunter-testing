@@ -87,7 +87,7 @@ install:
   - cmd: set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools
 
 build_script:
-  - cmd: python .\jenkins.py
+  - cmd: python .\jenkins.py --upload
 
 # http://www.appveyor.com/docs/branches#white-and-blacklisting
 # Exclude branch 'pkg.template'. Nothing to build there.
