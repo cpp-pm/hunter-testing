@@ -3,10 +3,11 @@
 language:
   - cpp
 
-# Container-based infrastructure (Linux)
-# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
+# "sudo: false" image doesn't have enough space for CUDA:
+# * https://travis-ci.org/travis-ci-tester/travis-test-cuda-install/builds/447796801
+# * https://docs.travis-ci.com/user/reference/overview/#virtualisation-environment-vs-operating-system
 sudo:
-  - false
+  - required
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
