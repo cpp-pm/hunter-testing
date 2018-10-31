@@ -28,10 +28,9 @@ environment:
       PROJECT_DIR: examples\glbinding
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME build is broken with current glbinding version
-    # - TOOLCHAIN: "msys-cxx17"
-    #  PROJECT_DIR: examples\glbinding
-    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "msys-cxx17"
+      PROJECT_DIR: examples\glbinding
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
