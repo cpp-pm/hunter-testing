@@ -23,6 +23,9 @@ addons:
       - python3-pip
       - g++-7
 
+      # For LAPACK dependency
+      - gfortran
+
 dist:
   - trusty
 
