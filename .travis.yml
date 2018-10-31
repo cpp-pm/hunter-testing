@@ -3,10 +3,11 @@
 language:
   - cpp
 
-# Container-based infrastructure (Linux)
-# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
+# "sudo: false" image doesn't have enough space for CUDA:
+# * https://travis-ci.org/travis-ci-tester/travis-test-cuda-install/builds/447796801
+# * https://docs.travis-ci.com/user/reference/overview/#virtualisation-environment-vs-operating-system
 sudo:
-  - false
+  - required
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
@@ -132,6 +133,16 @@ install:
   - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
   - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
   - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
+
+  # Install CUDA {
+  # * https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1404&target_type=deblocal
+  - wget --quiet https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1404-10-0-local-10.0.130-410.48_1.0-1_amd64 -O cuda.deb
+  - sudo dpkg -i cuda.deb
+  - sudo apt-key add /var/cuda-repo-*/7fa2af80.pub
+  - sudo apt-get update
+  - sudo apt-get install cuda
+  - export PATH=/usr/local/cuda-10.0/bin:${PATH}
+  # }
 
 script:
   - python3 ./jenkins.py
