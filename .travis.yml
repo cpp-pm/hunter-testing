@@ -77,22 +77,22 @@ matrix:
     # OSX {
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/dlib
 
     # FIXME: OpenBLAS
     # - os: osx
-    #   osx_image: xcode9.3
+    #   osx_image: xcode9.4
     #   env: >
     #     TOOLCHAIN=osx-10-13-cxx14
     #     PROJECT_DIR=examples/dlib
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
-        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
         PROJECT_DIR=examples/dlib
         VERBOSE=0
 
@@ -110,7 +110,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
@@ -121,8 +121,8 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
-  - unzip master.zip
+  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
+  - unzip -q master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
