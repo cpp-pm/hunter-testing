@@ -50,6 +50,7 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/OpenCV
         VERBOSE=0
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
