@@ -121,6 +121,8 @@ HUNTER_CONFIGURATION_TYPES
 * See `example <https://github.com/ruslo/hunter/wiki/example.hunter_configuration_types>`__
 * Default: ``Release``, ``Debug``
 
+.. _hunter build shared libs:
+
 HUNTER_BUILD_SHARED_LIBS
 ========================
 
@@ -429,6 +431,8 @@ HUNTER_GIT_EXECUTABLE
 =====================
 
 Path to Git executable
+
+.. _hunter jobs number env:
 
 HUNTER_JOBS_NUMBER
 ==================
