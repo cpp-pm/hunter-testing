@@ -112,6 +112,8 @@ HUNTER_PACKAGE_LOG_INSTALL
 * Apply ``LOG_INSTALL 1``
   (see `ExternalProject <https://cmake.org/cmake/help/v3.3/module/ExternalProject.html>`__)
 
+.. _hunter configuration types:
+
 HUNTER_CONFIGURATION_TYPES
 ==========================
 
@@ -119,12 +121,16 @@ HUNTER_CONFIGURATION_TYPES
 * See `example <https://github.com/ruslo/hunter/wiki/example.hunter_configuration_types>`__
 * Default: ``Release``, ``Debug``
 
+.. _hunter build shared libs:
+
 HUNTER_BUILD_SHARED_LIBS
 ========================
 
 * Value for
   `BUILD_SHARED_LIBS <https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html>`__
   for 3rd party packages
+
+.. _hunter jobs number:
 
 HUNTER_JOBS_NUMBER
 ==================
@@ -238,6 +244,8 @@ HUNTER_PASSWORDS_PATH
 
 Path to :doc:`Hunter passwords file <terminology/hunter-passwords-file>`.
 
+.. _hunter keep package sources:
+
 HUNTER_KEEP_PACKAGE_SOURCES
 ===========================
 
@@ -346,6 +354,36 @@ Default: ``ON``
   :ref:`default <hunter_use_cache_servers>`) meta cache files like
   ``cache.sha1`` will not be checked at all!
 
+.. _hunter git self ignore untracked:
+
+HUNTER_GIT_SELF_IGNORE_UNTRACKED
+================================
+
+Set this option to ``ON`` if you want to ignore untracked files while
+using :doc:`GIT_SELF feature </user-guides/hunter-user/git-self>`.
+
+Default: ``OFF``
+
+.. _hunter no toolchain id recalculation:
+
+HUNTER_NO_TOOLCHAIN_ID_RECALCULATION
+====================================
+
+If set to ``ON`` Hunter will skip calculation of ``Toolchain-ID`` if value is
+already present in CMake cache.
+
+Default: ``OFF``
+
+.. note::
+
+  Do not use this option while making a bug report.
+
+.. warning::
+
+  This option is for the **advanced** users only. Incorrect usage of this option
+  may lead to invalid unrecoverable cache state. Please read carefully
+  :ref:`this page <id calculation>` before using this option.
+
 Environment
 ~~~~~~~~~~~
 
@@ -356,6 +394,8 @@ HUNTER_ROOT
 
 * Same as CMake's :ref:`HUNTER_ROOT <hunter root>` variable.
   If both environment and CMake variables are set then CMake has a higher priority
+
+.. _env hunter binary dir:
 
 HUNTER_BINARY_DIR
 =================
@@ -384,3 +424,17 @@ HUNTER_PASSWORDS_PATH
 
 Environment variable with functionality similar to CMake variable with
 :ref:`the same name <hunter passwords path>`.
+
+.. _hunter git executable env:
+
+HUNTER_GIT_EXECUTABLE
+=====================
+
+Path to Git executable
+
+.. _hunter jobs number env:
+
+HUNTER_JOBS_NUMBER
+==================
+
+See :ref:`HUNTER_JOBS_NUMBER <hunter jobs number>` CMake variable
