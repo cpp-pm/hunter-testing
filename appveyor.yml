@@ -19,10 +19,13 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\MySQL-client
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\MySQL-client
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/20129988/job/4hehvhifwvv9d8tm
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\MySQL-client
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: https://ci.appveyor.com/project/caseymcc/hunter/build/1.0.94/job/h6f5lvfa84flqjyg
     #- TOOLCHAIN: "mingw-cxx17"
