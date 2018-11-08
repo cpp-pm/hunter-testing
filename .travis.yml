@@ -141,17 +141,21 @@ matrix:
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/OpenCV-extra
-        VERBOSE=0
+    # Build timeout:
+    # * https://travis-ci.org/ingenue/hunter/jobs/452255857
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-leak-cxx17
+    #    PROJECT_DIR=examples/OpenCV-extra
+    #    VERBOSE=0
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/OpenCV-extra
-        VERBOSE=0
+    # Build timeout:
+    # * https://travis-ci.org/ingenue/hunter/jobs/452255858
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-thread-cxx17
+    #    PROJECT_DIR=examples/OpenCV-extra
+    #    VERBOSE=0
 
     # }
 
