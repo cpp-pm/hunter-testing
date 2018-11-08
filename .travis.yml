@@ -45,12 +45,12 @@ matrix:
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/OpenCV
 
-    # FIXME: https://travis-ci.org/xsacha/hunter/jobs/347083573
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=gcc-7-cxx17
-    #     PROJECT_DIR=examples/OpenCV
-    #     VERBOSE=0
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/OpenCV
+        VERBOSE=0
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
@@ -121,6 +121,13 @@ matrix:
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/OpenCV-extra
+        VERBOSE=0
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
