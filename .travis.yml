@@ -35,10 +35,10 @@ matrix:
     # Linux {
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076560
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=clang-cxx17
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/SuiteSparse
 
     - os: linux
       env: >
@@ -46,16 +46,16 @@ matrix:
         PROJECT_DIR=examples/SuiteSparse
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076562
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/SuiteSparse
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076563
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=analyze-cxx17
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: linux
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/SuiteSparse
 
     - os: linux
       env: >
@@ -77,29 +77,40 @@ matrix:
     # OSX {
 
     # FIXME:  https://travis-ci.org/ingenue/hunter/jobs/410420098
-    # - os: osx
-    #   osx_image: xcode9.3
-    #   env: >
-    #     TOOLCHAIN=osx-10-13-make-cxx14
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/SuiteSparse
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076571
-    # - os: osx
-    #   osx_image: xcode9.3
-    #   env: >
-    #     TOOLCHAIN=osx-10-13-cxx14
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/SuiteSparse
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076572
-    # - os: osx
-    #   osx_image: xcode9.3
-    #   env: >
-    #     TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-    #     PROJECT_DIR=examples/SuiteSparse
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+        PROJECT_DIR=examples/SuiteSparse
 
     # }
 
     # Extra {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/SuiteSparse-dynLAPACK
+
+    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076560
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
     - os: linux
       env: >
@@ -122,11 +133,11 @@ matrix:
         PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/410420105
-    # - os: osx
-    #   osx_image: xcode9.3
-    #   env: >
-    #     TOOLCHAIN=osx-10-13-make-cxx14
-    #     PROJECT_DIR=examples/SuiteSparse-dynLAPACK
+    - os: osx
+      osx_image: xcode9.3
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
     # }
 
@@ -142,7 +153,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
@@ -156,8 +167,8 @@ install:
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install gcc; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
-  - unzip master.zip
+  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
+  - unzip -q master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
