@@ -35,7 +35,6 @@ matrix:
   include:
     # Linux {
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076560
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
@@ -46,7 +45,6 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/SuiteSparse
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076562
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
@@ -98,7 +96,7 @@ matrix:
     #- os: osx
     #  osx_image: xcode9.4
     #  env: >
-    #    TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
+    #    TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
     #    PROJECT_DIR=examples/SuiteSparse
 
     # }
@@ -110,7 +108,6 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/SuiteSparse-dynLAPACK
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/251076560
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
@@ -138,7 +135,7 @@ matrix:
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/410420105
     #- os: osx
-    #  osx_image: xcode9.3
+    #  osx_image: xcode9.4
     #  env: >
     #    TOOLCHAIN=osx-10-13-make-cxx14
     #    PROJECT_DIR=examples/SuiteSparse-dynLAPACK
