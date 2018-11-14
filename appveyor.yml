@@ -24,17 +24,17 @@ environment:
       PROJECT_DIR: examples\SDL2
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME from mingw
-    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.591/job/xpjtp220ee0dm0su
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\SDL2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME
+    # https://ci.appveyor.com/project/NeroBurner/hunter/builds/20301936/job/s8xdils9bsnqke8t
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\SDL2
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME from msys
-    # https://ci.appveyor.com/project/ingenue/hunter/build/1.0.591/job/gds8go6sj5l288gl
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\SDL2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME
+    # https://ci.appveyor.com/project/NeroBurner/hunter/builds/20301936/job/kev7a6xnkr24ykci
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\SDL2
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3

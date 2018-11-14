@@ -43,35 +43,28 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/SDL2
 
-    # FIXME from android-ndk-r10e-api-19-armeabi-v7a-neon
-    # https://travis-ci.org/ingenue/hunter/jobs/139306958
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/SDL2
 
     # FIXME
-    # https://travis-ci.org/ingenue/hunter/jobs/138969013
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/SDL2
+    # https://travis-ci.org/NeroBurner/hunter/jobs/455098938
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/SDL2
 
-    # FIXME
-    # https://travis-ci.org/ingenue/hunter/jobs/138969014
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
         PROJECT_DIR=examples/SDL2
 
-    # FIXME
-    # https://travis-ci.org/ingenue/hunter/jobs/138969015
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
         PROJECT_DIR=examples/SDL2
 
-    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
@@ -94,12 +87,12 @@ matrix:
         PROJECT_DIR=examples/SDL2
 
     # FIXME from ios-nocodesign-10-3
-    # https://travis-ci.org/ingenue/hunter/jobs/139306963
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/SDL2
+    # https://travis-ci.org/NeroBurner/hunter/jobs/455098938
+    #- os: osx
+    #  osx_image: xcode9.4
+    #  env: >
+    #    TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #    PROJECT_DIR=examples/SDL2
 
     # }
 
