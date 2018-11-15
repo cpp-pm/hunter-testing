@@ -40,6 +40,14 @@ environment:
     #   PROJECT_DIR: examples\OpenSSL
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    # Extra {
+
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\OpenSSL-asm
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # }
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
