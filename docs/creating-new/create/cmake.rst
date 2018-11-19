@@ -315,8 +315,8 @@ disable those. If such an option is not disabled by default use
 .. code-block:: cmake
   :emphasize-lines: 3, 6-8
 
-  # bottom of cmake/projects/Foo/hunter.cmake
-
+  include(hunter_cmake_args)
+  # bottom of cmake/projects/hunter_box_1/hunter.cmake
   hunter_cmake_args(
       Foo
       CMAKE_ARGS
@@ -710,6 +710,37 @@ Adding ``VERBOSE=0`` environment variable should help:
 Example:
 
 * https://github.com/ingenue/hunter/blob/92cb26bd0bc5eeb14525f56b3a068fb072e2e5a1/.travis.yml#L55-L59
+
+Workaround for GCC internal error
+=================================
+
+Travis machines have 32 logical cores and Hunter will use all of them by default
+(e.g. build with ``make -j32``). Because of this system may run out of memory
+and GCC may get killed:
+
+.. code-block:: none
+
+  g++-7: internal compiler error: Killed (program cc1plus)
+
+As a workaround you can limit number of jobs explicitly by adding
+the :ref:`HUNTER_JOBS_NUMBER <hunter jobs number env>` environment variable:
+
+.. code-block:: yaml
+  :emphasize-lines: 5
+
+  - os: linux
+    env: >
+      TOOLCHAIN=gcc-7-cxx17
+      PROJECT_DIR=examples/mkldnn
+      HUNTER_JOBS_NUMBER=4
+
+Example:
+
+* https://github.com/ingenue/hunter/blob/c1e12ba21940b8418d1e3d596b653ad3bf588e11/.travis.yml#L41-L45
+
+.. admonition:: Stackoverflow
+
+  * https://stackoverflow.com/a/35011967
 
 Excluding tests
 ===============
