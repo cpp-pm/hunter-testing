@@ -20,9 +20,10 @@ environment:
       PROJECT_DIR: examples\CapnProto
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\CapnProto
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/20410585/job/fij9uovfndosfk14
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\CapnProto
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/20406638/job/bsvbwkihdrdqaoyb
     #- TOOLCHAIN: "mingw-cxx17"
