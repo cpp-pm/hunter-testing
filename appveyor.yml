@@ -24,13 +24,15 @@ environment:
       PROJECT_DIR: examples\CapnProto
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\CapnProto
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/20406638/job/bsvbwkihdrdqaoyb
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\CapnProto
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\CapnProto
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/20406638/job/nmbpe6tlxd4bk85a
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\CapnProto
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
