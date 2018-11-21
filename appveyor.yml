@@ -23,14 +23,17 @@ environment:
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Qwt
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      VERBOSE=0
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Qwt
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      VERBOSE=0
 
     - TOOLCHAIN: "msys-cxx17"
       PROJECT_DIR: examples\Qwt
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      VERBOSE=0
 
 install:
   # Python 3
