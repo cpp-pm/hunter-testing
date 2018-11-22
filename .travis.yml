@@ -117,47 +117,47 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846142
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846143
     - os: linux
       env: >
         TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846132
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: issue with glog
     # * https://travis-ci.org/ingenue/hunter/jobs/105846133
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
     # - os: linux
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # }
 
@@ -167,7 +167,7 @@ matrix:
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: no fortran compiler found
     # * https://travis-ci.org/ingenue/hunter/jobs/256904309#L752
@@ -175,14 +175,14 @@ matrix:
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: ceres requires a toolchain file in is directory to be called to setup builds
     - os: osx
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/ceres-solver
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # }
 

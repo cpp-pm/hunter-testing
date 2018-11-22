@@ -39,31 +39,31 @@ environment:
     # ceres-solver-suitesparse-dynLAPACK {
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: issue with glog
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/48gweqf10g59yj8s
     - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: issue with glog
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.54/job/9vqsv6dqeo7f65q0
     - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\ceres-solver
+      PROJECT_DIR: examples\ceres-solver-suitesparse-dynLAPACK
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # } end ceres-solver-suitesparse-dynLAPACK
