@@ -42,13 +42,13 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/tvm
-        HUNTER_JOBS_NUMBER=8
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/tvm
-        HUNTER_JOBS_NUMBER=8
+        HUNTER_JOBS_NUMBER=4
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/446597172
     # - os: linux
