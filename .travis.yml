@@ -42,11 +42,13 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/tvm
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/tvm
+        HUNTER_JOBS_NUMBER=4
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/446597172
     # - os: linux
@@ -58,6 +60,7 @@ matrix:
       env: >
         TOOLCHAIN=sanitize-address-cxx17
         PROJECT_DIR=examples/tvm
+        HUNTER_JOBS_NUMBER=8
 
     - os: linux
       env: >
@@ -117,8 +120,8 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
-  - unzip master.zip
+  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
+  - unzip -q master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
