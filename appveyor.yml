@@ -8,21 +8,27 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\LLVM
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Killed by timeout, can't upload from local machine because can't
+    # reproduce environment:
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/20471782/job/tat5am3i64lypg0y
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\LLVM
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\LLVM
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Killed by timeout
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\LLVM
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\LLVM
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Killed by timeout
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\LLVM
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\LLVM
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Killed by timeout
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\LLVM
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.2126/job/d0cfvewsdoctkkgt
@@ -35,6 +41,14 @@ environment:
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\LLVM
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\LLVM
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
