@@ -13,17 +13,6 @@ hunter_add_version(
     PACKAGE_NAME
     cxxopts
     VERSION
-    1.0.0-p0
-    URL
-    "https://github.com/hunter-packages/cxxopts/archive/v1.0.0-p0.tar.gz"
-    SHA1
-    90040ef52faf71686febb0f93a3189cd9ea36ede
-)
-
-hunter_add_version(
-    PACKAGE_NAME
-    cxxopts
-    VERSION
     1.3.0
     URL
     "https://github.com/jarro2783/cxxopts/archive/v1.3.0.tar.gz"
@@ -108,6 +97,18 @@ hunter_add_version(
     eb11b3f56444a70225237eb008d930ae758a0f24
 )
 
+# FIXME, waiting for release:
+# * https://github.com/jarro2783/cxxopts/issues/110#issuecomment-394909564
+hunter_add_version(
+    PACKAGE_NAME
+    cxxopts
+    VERSION
+    2.1.1-pre
+    URL
+    "https://github.com/jarro2783/cxxopts/archive/e725ea308468ab50751ba7f930842a4c061226e9.zip"
+    SHA1
+    cbeec5576599d031f6f992d987e1f3575b3afee3
+)
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(cxxopts)

@@ -69,6 +69,9 @@ elseif("@APPLE@")
   # Using CMAKE_AR on OSX leads to error (b2 use 'libtool'):
   # * https://travis-ci.org/ingenue/hunter/jobs/204617507
   set(use_cmake_archiver FALSE)
+elseif("@QNX@")
+  set(toolset_name "qcc")
+  set(toolset_version "")
 elseif("@CMAKE_COMPILER_IS_GNUCXX@")
   set(toolset_name "gcc")
   set(toolset_version "")
@@ -290,7 +293,7 @@ if(CMAKE_EXE_LINKER_FLAGS)
 endif()
 
 if("@ANDROID@")
-  if("@CMAKE_ANDROID_ARCH@" MATCHES "arm|mips|x86")
+  if("@CMAKE_ANDROID_ARCH@" MATCHES "^(arm|mips|x86)$")
     list(APPEND build_opts "address-model=32")
   else()
     list(APPEND build_opts "address-model=64")

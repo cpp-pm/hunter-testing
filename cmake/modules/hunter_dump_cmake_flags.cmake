@@ -9,6 +9,7 @@ include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * Boost
+# * libxml2
 # * OpenSSL
 # * odb-boost
 function(hunter_dump_cmake_flags)
@@ -40,6 +41,22 @@ function(hunter_dump_cmake_flags)
     endif()
   endif()
 
+  if(APPLE AND NOT IOS)
+    if(NOT "${CMAKE_OSX_SYSROOT}" STREQUAL "")
+      if(NOT EXISTS "${CMAKE_OSX_SYSROOT}")
+        hunter_internal_error("Not exists: '${CMAKE_OSX_SYSROOT}'")
+      endif()
+      # Note: do not use quotes here, see OpenSSL-1.0.2 example
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+    endif()
+
+    if(NOT "${CMAKE_OSX_DEPLOYMENT_TARGET}" STREQUAL "")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+    endif()
+  endif()
+
   set(cppflags "")
 
   if(ANDROID)
@@ -50,7 +67,7 @@ function(hunter_dump_cmake_flags)
       set(android_sysroot "${CMAKE_SYSROOT_COMPILE}")
 
       hunter_assert_not_empty_string("${CMAKE_SYSROOT}")
-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --sysroot=${CMAKE_SYSROOT}")
+      set(CMAKE_EXE_LINKER_FLAGS "--sysroot=${CMAKE_SYSROOT} ${CMAKE_EXE_LINKER_FLAGS}")
     endif()
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --sysroot=${android_sysroot}")
