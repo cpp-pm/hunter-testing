@@ -20,9 +20,11 @@ environment:
     #   PROJECT_DIR: examples\folly
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\folly
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/20724375
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\folly
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.3673/job/h0t860d3ju0u5cw5
@@ -41,6 +43,14 @@ environment:
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\folly
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\folly
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
