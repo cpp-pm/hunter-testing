@@ -46,42 +46,33 @@ matrix:
         PROJECT_DIR=examples/magnum
 
     # FIXME : CI disabled on android
-    # See https://travis-ci.org/pthom/hunter/jobs/462202107
+    # Build log:  https://travis-ci.org/pthom/hunter/jobs/462812618
+    # The build because because of some Qt 4 code that is included by OpenAL...
     #
-    # CMake Error at cmake/Magnum/FindMagnum.cmake:839 (find_package):
-    # By not providing "FindOpenGLES3.cmake" in CMAKE_MODULE_PATH this project
-    # has asked CMake to find a package configuration file provided by
-    # "OpenGLES3", but CMake did not find one.
-    # Could not find a package configuration file provided by "OpenGLES3" with
-    # any of the following names:
-    #   OpenGLES3Config.cmake
-    #   opengles3-config.cmake
+    # In file included from OpenAL/Source/utils/alsoft-config/mainwindow.h:4:
+    # In file included from /usr/include/qt4/QtCore/qatomic_arch.h:88:
+    # /usr/include/qt4/QtCore/qatomic_x86_64.h:119:37: error: invalid output constraint '=qm' in asm
+    #             : "=m" (_q_value), "=qm" (ret)
     #
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/magnum
-        CROSS_COMPILE=1
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/magnum
+    #     CROSS_COMPILE=1
+
 
     # FIXME : analyze-cxx17 disabled for this package
+    # Build log: https://travis-ci.org/pthom/hunter/jobs/462812621
     # This is due to a problem inside SDL2 (see message below)
     #
-    # Log: /home/travis/build/pthom/hunter/_testing/_logs/polly/analyze-cxx17/log.txt
-    # Last 200 lines
-    # --------------------------------------------------------------------------------
-    # +RESULT=0
-    # +'[' 0 == 0 ']'
-    # +'[' -s /tmp/polly-clang-analyze.out.eudTQ ']'
-    # +RESULT=1
-    # +cat /tmp/polly-clang-analyze.out.eudTQ
     # SDL2/Source/src/render/SDL_render.c:2078:9: warning: Use of memory after it is freed
     #         SDL_DestroyTexture(renderer->textures);
     #
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/magnum
-        VERBOSE=0
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/magnum
+    #     VERBOSE=0
 
     - os: linux
       env: >
