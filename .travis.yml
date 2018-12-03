@@ -117,6 +117,7 @@ matrix:
       env: >
         TOOLCHAIN=gcc-7-cxx14
         PROJECT_DIR=examples/folly
+        HUNTER_JOBS_NUMBER=4
 
     - os: linux
       env: >
