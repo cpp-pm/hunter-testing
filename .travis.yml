@@ -48,10 +48,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/LodePNG
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/LodePNG
+    # FIXME: Clang static analyzer build is not supported by this package
+    # * https://travis-ci.com/bkotzz/hunter/jobs/162084297
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/LodePNG
 
     - os: linux
       env: >
