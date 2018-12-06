@@ -75,13 +75,57 @@ hunter_add_version(
     c150a5495a317ad2d92187d31388d42a8d413434
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    Urho3D
+    VERSION
+    1.7-p9
+    URL
+    "https://github.com/hunter-packages/Urho3D/archive/v1.7-p9.tar.gz"
+    SHA1
+    df696bba70384368a703c3650988e91951ce51f1
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Urho3D
+    VERSION
+    1.7-p12
+    URL
+    "https://github.com/hunter-packages/Urho3D/archive/v1.7-p12.tar.gz"
+    SHA1
+    1c6258cce46018d8386cf836bfda8fdfbfe225f6
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Urho3D
+    VERSION
+    1.7-p13
+    URL
+    "https://github.com/hunter-packages/Urho3D/archive/v1.7-p13.tar.gz"
+    SHA1
+    9dc5df770d7b454feb880ada76bcc0868879adfb
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Urho3D
+    VERSION
+    1.7-p15
+    URL
+    "https://github.com/hunter-packages/Urho3D/archive/v1.7-p15.tar.gz"
+    SHA1
+    2413d786c419845fdcb062c102f810503ddd09d4
+)
+
 hunter_cmake_args(
     Urho3D
     CMAKE_ARGS
     URHO3D_ANGELSCRIPT=ON
     URHO3D_DATABASE_ODBC=OFF
-    URHO3D_DATABASE_SQLITE=OFF
-    URHO3D_LUA=OFF
+    URHO3D_DATABASE_SQLITE=ON
+    URHO3D_LUA=ON
     URHO3D_NAVIGATION=ON
     URHO3D_NETWORK=ON
     URHO3D_PCH=OFF
