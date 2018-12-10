@@ -24,7 +24,7 @@ addons:
       - gfortran
 
 dist:
-  - trusty
+  - xenial
 
 env:
   global:

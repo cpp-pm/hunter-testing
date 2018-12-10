@@ -3,18 +3,16 @@
 
 cmake_minimum_required(VERSION 3.2)
 
-option(HUNTER_BUILD_SHARED_LIBS "..." ON)
-
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-tvm)
+project(download-LodePNG)
 
 # DOCUMENTATION_START {
-hunter_add_package(tvm)
-find_package(tvm CONFIG REQUIRED)
+hunter_add_package(LodePNG)
+find_package(LodePNG CONFIG REQUIRED)
 
-add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC tvm::nnvm_compiler)
+add_executable(main main.cpp)
+target_link_libraries(main PUBLIC LodePNG::lodepng)
 # DOCUMENTATION_END }
