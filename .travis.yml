@@ -48,22 +48,16 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/glog
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846143
     - os: linux
       env: >
         TOOLCHAIN=analyze-cxx17
         PROJECT_DIR=examples/glog
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846132
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
         PROJECT_DIR=examples/glog
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105846132
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
