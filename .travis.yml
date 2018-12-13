@@ -22,6 +22,9 @@ addons:
       - python3-pip
       - g++-7
 
+      # GL library
+      - libgl1-mesa-dev
+
 dist:
   - xenial
 
