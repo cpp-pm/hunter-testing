@@ -621,6 +621,15 @@ matrix:
 
     # }
 
+    # Boost-python {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-python
+
+    # }
+
     # }
 
 install:
