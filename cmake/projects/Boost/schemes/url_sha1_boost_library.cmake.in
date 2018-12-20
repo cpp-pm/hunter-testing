@@ -21,25 +21,26 @@ include(hunter_internal_error)
 include(hunter_pick_archiver)
 include(hunter_status_debug)
 include(hunter_status_print)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_user_error)
 include(hunter_parse_boost_config_macros)
+include(hunter_parse_cmake_args_for_keyword)
 
 hunter_status_debug("Scheme: url_sha1_boost_library")
 
 # Check preconditions
-hunter_test_string_not_empty("@HUNTER_SELF@")
-hunter_test_string_not_empty("@HUNTER_EP_NAME@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SOURCE_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_BUILD_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_INSTALL_PREFIX@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_COMPONENT@")
-hunter_test_string_not_empty("@CMAKE_CXX_COMPILER@")
-hunter_test_string_not_empty("@CMAKE_CXX_COMPILER_ID@")
-hunter_test_string_not_empty("@HUNTER_Boost_VERSION@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SCRIPT_DIR@")
-hunter_test_string_not_empty("@HUNTER_TLS_VERIFY@")
+hunter_assert_not_empty_string("@HUNTER_SELF@")
+hunter_assert_not_empty_string("@HUNTER_EP_NAME@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SOURCE_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_BUILD_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_INSTALL_PREFIX@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_COMPONENT@")
+hunter_assert_not_empty_string("@CMAKE_CXX_COMPILER@")
+hunter_assert_not_empty_string("@CMAKE_CXX_COMPILER_ID@")
+hunter_assert_not_empty_string("@HUNTER_Boost_VERSION@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SCRIPT_DIR@")
+hunter_assert_not_empty_string("@HUNTER_TLS_VERIFY@")
 
 # get list of boost components for given version
 hunter_get_boost_libs(VERSION "@HUNTER_Boost_VERSION@" LIBS boost_libs)
@@ -69,6 +70,9 @@ elseif("@APPLE@")
   # Using CMAKE_AR on OSX leads to error (b2 use 'libtool'):
   # * https://travis-ci.org/ingenue/hunter/jobs/204617507
   set(use_cmake_archiver FALSE)
+elseif("@QNX@")
+  set(toolset_name "qcc")
+  set(toolset_version "")
 elseif("@CMAKE_COMPILER_IS_GNUCXX@")
   set(toolset_name "gcc")
   set(toolset_version "")
@@ -191,6 +195,8 @@ else()
   set(link_opts link=shared)
 endif()
 
+# Modify Boost user jam file
+
 set(toolset_full_name ${toolset_name})
 string(COMPARE NOTEQUAL "${toolset_version}" "" has_toolset_version)
 if(has_toolset_version)
@@ -214,6 +220,10 @@ if("@MINGW@")
   set(build_opts target-os=windows ${build_opts})
 endif()
 
+set(BOOST_VERSION "@HUNTER_Boost_VERSION@")
+
+# Use:
+# * BOOST_VERSION
 hunter_boost_component_b2_args(
     "@HUNTER_PACKAGE_COMPONENT@"
     "@HUNTER_Boost_CMAKE_ARGS@"
@@ -279,6 +289,52 @@ file(
     "${using_mpi}\n"
 )
 
+# handle requested python version if such is specified
+hunter_parse_cmake_args_for_keyword(
+  CMAKE_ARGS "@HUNTER_Boost_CMAKE_ARGS@"
+  KEYWORD REQUESTED_PYTHON_VERSION
+  OUTPUT requested_python
+)
+
+# set up paths for python in boost.user.jam
+if(NOT requested_python STREQUAL "")
+  find_package(PythonInterp ${requested_python} EXACT QUIET)
+  if(NOT PYTHONINTERP_FOUND)
+    hunter_user_error("Python Interpreter for Python version ${requested_python} not found.")
+  endif()
+  set(python_executable ${PYTHON_EXECUTABLE})
+  execute_process(
+    COMMAND "${python_executable}" -c "import os.path, sysconfig; info = sysconfig.get_paths(); print(info['include'])"
+    RESULT_VARIABLE python_process
+    OUTPUT_VARIABLE python_include_directory
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+  if(NOT python_process EQUAL 0)
+    hunter_user_error("Python include directory for Python version ${requested_python} not found.")
+  endif()
+  if(NOT EXISTS "${python_include_directory}")
+    hunter_internal_error("Directory not found: ${python_include_directory}")
+  endif()
+  execute_process(
+    COMMAND "${python_executable}" -c "import os.path, sysconfig; info = sysconfig.get_paths(); print(os.path.dirname(info['stdlib']))"
+    RESULT_VARIABLE python_process
+    OUTPUT_VARIABLE python_library_directory
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+  if(NOT python_process EQUAL 0)
+    hunter_user_error("Python runtime library directory for Python version ${requested_python} not found.")
+  endif()
+  if(NOT EXISTS "${python_library_directory}")
+    hunter_internal_error("Directory not found: ${python_library_directory}")
+  endif()
+  file(
+    APPEND ${boost_user_jam}
+    "using python  : ${requested_python} : \"${python_executable}\" : \"${python_include_directory}\" : \"${python_library_directory}\" ;\n"
+  )
+endif()
+
+# Handle ./b2 build options
+
 list(APPEND build_opts ${b2_component_opts})
 
 if(CMAKE_EXE_LINKER_FLAGS)
@@ -286,7 +342,7 @@ if(CMAKE_EXE_LINKER_FLAGS)
 endif()
 
 if("@ANDROID@")
-  if("@CMAKE_ANDROID_ARCH@" MATCHES "arm|mips|x86")
+  if("@CMAKE_ANDROID_ARCH@" MATCHES "^(arm|mips|x86)$")
     list(APPEND build_opts "address-model=32")
   else()
     list(APPEND build_opts "address-model=64")
@@ -303,7 +359,11 @@ endif()
 
 string(COMPARE NOTEQUAL "@HUNTER_JOBS_OPTION@" "" have_jobs)
 if(have_jobs)
-  list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  if("@HUNTER_JOBS_OPTION@" GREATER "256")
+    list(APPEND build_opts "-j" 256)
+  else()
+    list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  endif()
 endif()
 
 if(@HUNTER_STATUS_DEBUG@)
@@ -320,10 +380,6 @@ if(CMAKE_HOST_WIN32)
     set(patch_cmd "@CMAKE_COMMAND@" -E copy "@HUNTER_PACKAGE_DOWNLOAD_DIR@/patched_boostrap.bat" "@HUNTER_PACKAGE_SOURCE_DIR@/patched_boostrap.bat")
     set(bootstrap_cmd "patched_boostrap.bat")
   else()
-    if ("@ANDROID@")
-      # cross compile from "windows" to "android"
-      set(build_opts target-os=android ${build_opts})
-    endif()
     set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
     set(bootstrap_cmd "bootstrap.bat")
   endif()
@@ -333,8 +389,16 @@ else()
   set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
 endif()
 
+if(compiler_is_clang AND NOT CMAKE_CROSSCOMPILING)
+  list(APPEND bootstrap_cmd "--with-toolset=clang")
+endif()
+
 if("@MINGW@")
   list(APPEND bootstrap_cmd "gcc")
+endif()
+
+if("@ANDROID@")
+  list(APPEND build_opts target-os=android)
 endif()
 
 if(HUNTER_STATUS_DEBUG)
@@ -350,16 +414,16 @@ if(HUNTER_STATUS_DEBUG)
   hunter_status_debug("------")
 endif()
 
-if("@MSVC@")
-  # Logging as Workaround for VS_UNICODE_OUTPUT issue:
-  # https://public.kitware.com/Bug/view.php?id=14266
-  set(log_opts LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1 LOG_DOWNLOAD 1)
-  get_filename_component(x "@HUNTER_PACKAGE_SOURCE_DIR@/.." ABSOLUTE)
-  hunter_status_print(
-      "For progress check log files in directory: ${x}"
-  )
+if("@HUNTER_PACKAGE_LOG_BUILD@")
+  set(log_build 1)
 else()
-  set(log_opts "")
+  set(log_build 0)
+endif()
+
+if("@HUNTER_PACKAGE_LOG_INSTALL@" OR "@HUNTER_SUPPRESS_LIST_OF_FILES@")
+  set(log_install 1)
+else()
+  set(log_install 0)
 endif()
 
 hunter_parse_boost_config_macros(BOOST_CONFIG_MACROS "@HUNTER_Boost_CMAKE_ARGS@")
@@ -406,7 +470,9 @@ ExternalProject_Add(
     stage # install only libraries, headers installed in `url_sha1_boost`
     "--stagedir=@HUNTER_PACKAGE_INSTALL_PREFIX@"
     --ignore-site-config # Ignore Gentoo specific optimization "none" in site config that only the patched bjam of Gentoo can understand.
-    ${log_opts}
+    LOG_CONFIGURE ${log_build}
+    LOG_BUILD ${log_build}
+    LOG_INSTALL ${log_install}
 )
 
 # Forward some variables
