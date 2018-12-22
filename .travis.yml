@@ -102,7 +102,6 @@ matrix:
       env: >
         TOOLCHAIN=clang-libcxx14-fpic
         PROJECT_DIR=examples/OpenSceneGraph
-        VERBOSE=0
 
     # }
 
