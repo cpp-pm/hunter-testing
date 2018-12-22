@@ -80,12 +80,12 @@ matrix:
     #    TOOLCHAIN=osx-10-13-make-cxx14
     #    PROJECT_DIR=examples/OpenSceneGraph
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/OpenSceneGraph
-        VERBOSE=0
+    #- os: osx
+    #  osx_image: xcode9.4
+    #  env: >
+    #    TOOLCHAIN=osx-10-13-cxx14
+    #    PROJECT_DIR=examples/OpenSceneGraph
+    #   VERBOSE=0
 
     #- os: osx
     #  osx_image: xcode9.4
