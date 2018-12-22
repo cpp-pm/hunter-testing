@@ -97,6 +97,7 @@ matrix:
 
     # Extra {
 
+    # Travis timeout, uploaded from local machine
     - os: linux
       env: >
         TOOLCHAIN=clang-libcxx14-fpic
