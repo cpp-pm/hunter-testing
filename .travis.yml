@@ -24,7 +24,7 @@ addons:
       # GL
       - libgl1-mesa-dev
       
-      - gcc-7
+      - g++-7
 
 dist:
   - xenial
