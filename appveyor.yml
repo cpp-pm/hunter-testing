@@ -28,7 +28,7 @@ environment:
       PROJECT_DIR: examples\soil
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-	# FIXME: Can't find OpenGL (https://ci.appveyor.com/project/frequem/hunter/build/job/4tqvuiyliqusj9jk)
+    # FIXME: Can't find OpenGL (https://ci.appveyor.com/project/frequem/hunter/build/job/4tqvuiyliqusj9jk)
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\soil
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
