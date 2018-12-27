@@ -20,7 +20,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
-      - g++-7
+      
+      # GL
+      - libgl1-mesa-dev
+      
+      - gcc-7
 
 dist:
   - xenial
