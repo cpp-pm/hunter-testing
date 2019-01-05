@@ -34,48 +34,62 @@ matrix:
     # Linux {
 
     - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=default
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=gcc
-    # FIXME: android toolchain doesn't like snprintf used from std:: namespace
-    #        also doctest has its own static analysis on the CI with the latest clang-tidy
-    #        https://github.com/ruslo/hunter/pull/801#issuecomment-302346335
-    #- os: linux
-    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    #- os: linux
-    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=sanitize-address
-    - os: linux
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=sanitize-leak
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/doctest
 
-    # FIXME: https://github.com/ruslo/hunter/issues/718#issuecomment-290610583
-    # - os: linux
-    #   env: PROJECT_DIR=examples/doctest TOOLCHAIN=sanitize-thread
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/doctest
+
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/doctest
+
+    - os: linux
+      env: >
+        TOOLCHAIN=analyze-cxx17
+        PROJECT_DIR=examples/doctest
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/doctest
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/doctest
+
+    - os: linux
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/doctest
 
     # }
 
     # OSX {
 
     - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=default
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/doctest
+
     - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=libcxx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/doctest
+
     - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=osx-10-11
-    - os: osx
-      env: PROJECT_DIR=examples/doctest TOOLCHAIN=ios-nocodesign-9-3
-    # FIXME: android toolchain doesn't like snprintf used from std:: namespace
-    #        also doctest has its own static analysis on the CI with the latest clang-tidy
-    #        https://github.com/ruslo/hunter/pull/801#issuecomment-302346335
-    #- os: osx
-    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-    #- os: osx
-    #  env: PROJECT_DIR=examples/doctest TOOLCHAIN=analyze
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+        PROJECT_DIR=examples/doctest
+
     # }
 
 install:
