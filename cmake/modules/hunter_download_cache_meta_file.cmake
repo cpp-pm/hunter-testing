@@ -3,16 +3,21 @@
 
 include(CMakeParseArguments) # cmake_parse_arguments
 
+include(hunter_cache_server_password)
 include(hunter_check_download_error_message)
+include(hunter_get_passwords_path)
+include(hunter_http_password)
 include(hunter_init_not_found_counter)
 include(hunter_internal_error)
+include(hunter_private_data_password)
 include(hunter_sleep_before_download)
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
+include(hunter_upload_password)
 include(hunter_user_error)
 
 function(hunter_download_cache_meta_file)
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
 
   cmake_parse_arguments(x "" "LOCAL;DONE" "" ${ARGV})
   # -> x_LOCAL
@@ -60,31 +65,67 @@ function(hunter_download_cache_meta_file)
       NOT_FOUND_NEEDED not_found_counter "${number_of_servers}"
   )
 
+  hunter_get_passwords_path(pass_path)
+  string(COMPARE NOTEQUAL "${pass_path}" "" has_pass)
+
   set(total_retry 10)
   foreach(x RANGE ${total_retry})
     foreach(server ${HUNTER_CACHE_SERVERS})
-      string(REGEX MATCH "^https://github.com/" is_github "${server}")
-      if(NOT is_github)
-        hunter_user_error("Unknown cache server: ${server}")
+      set(HUNTER_CACHE_SERVER_NAME "${server}")
+
+      set(HUNTER_CACHE_SERVER_USERPWD "")
+      set(HUNTER_CACHE_SERVER_HTTPHEADER "")
+      set(HUNTER_CACHE_SERVER_SUB_SHA1_SUFFIX FALSE)
+
+      if(has_pass)
+        # May use:
+        # * hunter_http_password
+        # * hunter_private_data_password
+        # * hunter_upload_password
+        # * hunter_cache_server_password
+        include("${pass_path}")
       endif()
 
-      string(
-          REPLACE
-          "https://github.com/"
-          "https://raw.githubusercontent.com/"
-          url
-          "${server}"
-      )
+      string(REGEX MATCH "^https://github.com/" is_github "${server}")
+      if(NOT is_github)
+        set(local_url "${server}/meta/${local_suffix}")
+        set(done_url "${server}/meta/${done_suffix}")
+      else()
+        string(
+            REPLACE
+            "https://github.com/"
+            "https://raw.githubusercontent.com/"
+            url
+            "${server}"
+        )
 
-      set(local_url "${url}/master/${local_suffix}")
-      set(done_url "${url}/master/${done_suffix}")
+        set(local_url "${url}/master/${local_suffix}")
+        set(done_url "${url}/master/${done_suffix}")
+      endif()
 
-      hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
+      if(HUNTER_CACHE_SERVER_SUB_SHA1_SUFFIX)
+        string(
+            REGEX
+            REPLACE
+            "/cache\\.sha1$"
+            "/cache_sha1"
+            local_url
+            "${local_url}"
+        )
+      endif()
+
+      hunter_status_debug("Downloading DONE metafile (try #${x} of ${total_retry}):")
       hunter_status_debug("  ${done_url}")
       hunter_status_debug("  -> ${x_DONE}")
 
       hunter_sleep_before_download("${x}")
-      file(DOWNLOAD "${done_url}" "${done_temp}" STATUS status)
+      file(
+          DOWNLOAD "${done_url}" "${done_temp}"
+          STATUS status
+          TLS_VERIFY "${HUNTER_TLS_VERIFY}"
+          ${HUNTER_CACHE_SERVER_USERPWD}
+          ${HUNTER_CACHE_SERVER_HTTPHEADER}
+      )
 
       list(GET status 0 error_code)
       list(GET status 1 error_message)
@@ -115,12 +156,18 @@ function(hunter_download_cache_meta_file)
 
       set(total_retry ${NOT_FOUND_NEEDED})
       foreach(x RANGE ${total_retry})
-        hunter_status_debug("Downloading file (try #${x} of ${total_retry}):")
+        hunter_status_debug("Downloading metafile (try #${x} of ${total_retry}):")
         hunter_status_debug("  ${local_url}")
         hunter_status_debug("  -> ${x_LOCAL}")
 
         hunter_sleep_before_download("${x}")
-        file(DOWNLOAD "${local_url}" "${local_temp}" STATUS status)
+        file(
+            DOWNLOAD "${local_url}" "${local_temp}"
+            STATUS status
+            TLS_VERIFY "${HUNTER_TLS_VERIFY}"
+            ${HUNTER_CACHE_SERVER_USERPWD}
+            ${HUNTER_CACHE_SERVER_HTTPHEADER}
+        )
 
         list(GET status 0 error_code)
         list(GET status 1 error_message)
