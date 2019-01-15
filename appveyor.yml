@@ -5,6 +5,7 @@ environment:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
       secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
+    HUNTER_BINARY_DIR: C:\jenkins\hunter_bin
 
   matrix:
 
@@ -78,6 +79,9 @@ environment:
     # } end ceres-solver-suitesparse-dynLAPACK
 
 install:
+  # create junctions directory
+  - cmd: if not exist "%HUNTER_BINARY_DIR%" mkdir %HUNTER_BINARY_DIR%
+
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
 
