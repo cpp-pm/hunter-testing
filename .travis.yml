@@ -120,11 +120,10 @@ matrix:
     #    TOOLCHAIN=clang-cxx17
     #    PROJECT_DIR=examples/ceres-solver-suitesparse
 
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/467488050
-    #- os: linux
-    #  env: >
-    #    TOOLCHAIN=gcc-7-cxx17
-    #    PROJECT_DIR=examples/ceres-solver-suitesparse
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/ceres-solver-suitesparse
 
     # FIXME: build without suitesparse is failing
     #- os: linux
