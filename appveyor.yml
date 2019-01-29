@@ -8,13 +8,17 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (OpenSSL):
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/21973012/job/f0tlvtux2wr3e2jt
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libjson-rpc-cpp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME (OpenSSL):
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/21973012/job/y3i1s8cc4uts8s3x
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libjson-rpc-cpp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\libjson-rpc-cpp
@@ -24,13 +28,17 @@ environment:
       PROJECT_DIR: examples\libjson-rpc-cpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (OpenSSL):
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/21973012/job/gnk06rh8ekd9y5kr
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\libjson-rpc-cpp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\libjson-rpc-cpp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (OpenSSL):
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/21973012/job/ynd0jh6f9ecf8cgl
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\libjson-rpc-cpp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
