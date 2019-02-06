@@ -6,7 +6,7 @@ language:
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
-  - false
+  - true
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
@@ -138,6 +138,14 @@ install:
   - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
   - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
   - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
+
+  # For host builds {
+  - if [[ "`uname`" == "Linux" ]]; then sudo update-alternatives --remove-all cc; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo update-alternatives --remove-all c++; fi
+
+  - if [[ "`uname`" == "Linux" ]]; then sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 1; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc-7 1; fi
+  # }
 
 script:
   - python3 ./jenkins.py
