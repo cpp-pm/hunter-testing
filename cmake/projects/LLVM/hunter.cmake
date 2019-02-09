@@ -15,6 +15,28 @@ hunter_add_version(
     PACKAGE_NAME
     LLVM
     VERSION
+    "6.0.1-p0"
+    URL
+    "https://github.com/hunter-packages/llvm/archive/v6.0.1-p0.tar.gz"
+    SHA1
+    0942eedb9f349f3de7c483600de026192cc9e3ee
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    LLVM
+    VERSION
+    "4.0.1-p0"
+    URL
+    "https://github.com/hunter-packages/llvm/archive/v4.0.1-p0.tar.gz"
+    SHA1
+    fd70af82551d3a693c4270d71e994b810f33f593
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    LLVM
+    VERSION
     "3.6.2-p0"
     URL
     "https://github.com/hunter-packages/llvm/archive/v3.6.2-p0.tar.gz"
@@ -77,7 +99,7 @@ hunter_cmake_args(
 hunter_configuration_types(LLVM CONFIGURATION_TYPES Release)
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 
-if(MSVC_IDE)
+if(MSVC_IDE AND HUNTER_LLVM_VERSION VERSION_LESS 4.0.1)
   hunter_report_broken_package(
       "LLVM build broken on Visual Studio, see:"
       "http://llvm.1065342.n5.nabble.com/Install-Problem-of-Compiler-rt-with-Visual-Studio-Express-2013-for-Windows-Desktop-td66575.html"
