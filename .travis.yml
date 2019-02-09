@@ -48,10 +48,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/OpenNMTTokenizer
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/OpenNMTTokenizer
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/491010286
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/OpenNMTTokenizer
 
     - os: linux
       env: >
