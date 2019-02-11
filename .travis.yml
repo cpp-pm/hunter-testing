@@ -48,10 +48,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/sentencepiece
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/sentencepiece
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/491779304
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/sentencepiece
 
     - os: linux
       env: >
