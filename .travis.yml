@@ -43,10 +43,10 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Protobuf
 
-     os: linux
-     env: >
-       TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-       PROJECT_DIR=examples/Protobuf
+    - os: linux
+      env: >
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+        PROJECT_DIR=examples/Protobuf
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/154440013
     #- os: linux
