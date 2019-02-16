@@ -24,13 +24,17 @@ environment:
       PROJECT_DIR: examples\harfbuzz
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\harfbuzz
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (ICU):
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/22424500/job/7rwa0kflja45h5ni
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\harfbuzz
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\harfbuzz
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME (ICU):
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/22424500/job/ux0truirf357n2f9
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\harfbuzz
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
