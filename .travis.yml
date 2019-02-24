@@ -38,20 +38,26 @@ matrix:
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/v8
+    # Clang compiler should be used
+    # /.../v8/Source/src/interface-descriptors.h:395:18: error: expected identifier before ‘,’ token
+    #  ##__VA_ARGS__, \
+    #               ^
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/v8
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/v8
+    # FIXME (ICU):
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760149
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/v8
 
     - os: linux
       env: >
