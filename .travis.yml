@@ -33,10 +33,12 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/v8
+    # FIXME (use C++11):
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760144
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/v8
 
     # Clang compiler should be used
     # /.../v8/Source/src/interface-descriptors.h:395:18: error: expected identifier before ‘,’ token
@@ -47,10 +49,12 @@ matrix:
     #     TOOLCHAIN=gcc-7-cxx17
     #     PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/v8
+    # FIXME (use C++11):
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760148
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/v8
 
     # FIXME (ICU):
     # - https://travis-ci.org/ingenue/hunter/jobs/497760149
@@ -59,20 +63,26 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/v8
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760150
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/v8
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760151
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/v8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/v8
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760152
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/v8
 
     # }
 
@@ -84,16 +94,34 @@ matrix:
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/v8
 
-    - os: osx
-      osx_image: xcode9.4
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760154
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-cxx14
+    #     PROJECT_DIR=examples/v8
+
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/497760155
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/v8
+
+    # }
+
+    # Extra {
+
+    - os: linux
       env: >
-        TOOLCHAIN=osx-10-13-cxx14
+        TOOLCHAIN=clang-cxx11
         PROJECT_DIR=examples/v8
 
-    - os: osx
-      osx_image: xcode9.4
+    - os: linux
       env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx11
         PROJECT_DIR=examples/v8
 
     # }
