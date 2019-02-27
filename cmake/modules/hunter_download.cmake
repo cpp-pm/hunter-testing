@@ -311,6 +311,11 @@ function(hunter_download)
   file(REMOVE "${HUNTER_ARGS_FILE}")
   hunter_create_args_file("${package_cmake_args}" "${HUNTER_ARGS_FILE}")
 
+  # Pass the raw list of arguments to build scheme:
+  # * https://github.com/ruslo/hunter/blob/v0.23.18/cmake/projects/Boost/schemes/url_sha1_boost.cmake.in#L95-L100
+  # * https://github.com/ruslo/hunter/issues/1525
+  set(HUNTER_${HUNTER_PACKAGE_NAME}_CMAKE_ARGS "${package_cmake_args}")
+
   # Check if package can be loaded from cache
   hunter_load_from_cache()
 
@@ -528,7 +533,7 @@ function(hunter_download)
   if(NOT allow_builds AND HUNTER_PACKAGE_SCHEME_INSTALL)
     hunter_fatal_error(
         "Building package from source is disabled (dir: ${HUNTER_PACKAGE_HOME_DIR})"
-        WIKI "error.build.disabled"
+        ERROR_PAGE "error.build.disabled"
     )
   endif()
 
@@ -552,6 +557,7 @@ function(hunter_download)
   )
   string(COMPARE NOTEQUAL "${CMAKE_GENERATOR_TOOLSET}" "" has_toolset)
   if(has_toolset)
+    hunter_status_debug("Add toolset: '${CMAKE_GENERATOR_TOOLSET}'")
     list(APPEND cmd "-T" "${CMAKE_GENERATOR_TOOLSET}")
   endif()
 
@@ -581,7 +587,7 @@ function(hunter_download)
   else()
     hunter_fatal_error(
         "Configure step failed (dir: ${HUNTER_PACKAGE_HOME_DIR})"
-        WIKI "error.external.build.failed"
+        ERROR_PAGE "error.external.build.failed"
     )
   endif()
 
@@ -607,7 +613,7 @@ function(hunter_download)
   else()
     hunter_fatal_error(
         "Build step failed (dir: ${HUNTER_PACKAGE_HOME_DIR}"
-        WIKI "error.external.build.failed"
+        ERROR_PAGE "error.external.build.failed"
     )
   endif()
 
