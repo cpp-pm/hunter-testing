@@ -74,6 +74,39 @@ hunter_add_version(
     562740c5ab644d8334b20974e73b372625f99c2e
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    ICU
+    VERSION
+    63.1-p3
+    URL
+    "https://github.com/hunter-packages/icu/archive/v63.1-p3.tar.gz"
+    SHA1
+    6192cef73b0f15c0f4d93a8a3deffeaeb562a65e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    ICU
+    VERSION
+    63.1-p4
+    URL
+    "https://github.com/hunter-packages/icu/archive/v63.1-p4.tar.gz"
+    SHA1
+    eead3c1c8f8ec00cb224a50a8895e0333c6c65a8
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    ICU
+    VERSION
+    63.1-p5
+    URL
+    "https://github.com/hunter-packages/icu/archive/v63.1-p5.tar.gz"
+    SHA1
+    506109ef6fa0c3105be64bcebb5bd9e3fba1a24f
+)
+
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(ICU)
 hunter_download(PACKAGE_NAME ICU)
