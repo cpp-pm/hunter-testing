@@ -171,8 +171,8 @@ environment:
     # }
 
 install:
-  # Python 3
-  - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
+  # Python 3 (Python 3.5 for Boost-python test)
+  - cmd: set PATH=C:\Python35-x64;C:\Python35-x64\Scripts;%PATH%
 
   # Install Python package 'requests', 'gitpython'
   - cmd: pip install requests
