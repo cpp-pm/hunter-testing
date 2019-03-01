@@ -168,6 +168,10 @@ environment:
       PROJECT_DIR: examples\Boost-fiber
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\Boost-python
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
     # }
 
 install:
