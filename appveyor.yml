@@ -20,9 +20,11 @@ environment:
     #   PROJECT_DIR: examples\BoringSSL
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\BoringSSL
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/22888161/job/30khh5bv76m6j13i
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\BoringSSL
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\BoringSSL
