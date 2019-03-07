@@ -21,7 +21,6 @@ addons:
     packages:
       - python3-pip
       - g++-7
-      - golang
 
 dist:
   - xenial
