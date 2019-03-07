@@ -4,7 +4,7 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: qQvNsrf+SWY9hg8/7HmsJzE9m4S0phUeVaWk+wyrQe3aNsWLazFXzCsBsu4EBBvc
+      secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
 
   matrix:
 
@@ -28,9 +28,11 @@ environment:
       PROJECT_DIR: examples\WebP
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\WebP
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME:
+    # * https://ci.appveyor.com/project/ingenue/hunter/builds/22890750/job/ii7222nx70tpqovb
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\WebP
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
