@@ -9,6 +9,7 @@ include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * Boost
+# * libxml2
 # * OpenSSL
 # * odb-boost
 function(hunter_dump_cmake_flags)
@@ -27,11 +28,11 @@ function(hunter_dump_cmake_flags)
     hunter_assert_not_empty_string("${IOS_SDK_VERSION}")
     string(COMPARE EQUAL "${IOS_DEPLOYMENT_SDK_VERSION}" "" _no_deployment_sdk_version)
     if(_no_deployment_sdk_version)
-      set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_SDK_VERSION}")
-      set(CMAKE_C_FLAGS "-miphoneos-version-min=${IOS_SDK_VERSION}")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -miphoneos-version-min=${IOS_SDK_VERSION}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_SDK_VERSION}")
     else()
-      set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
-      set(CMAKE_C_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
     endif()
 
     if(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE)
@@ -66,7 +67,7 @@ function(hunter_dump_cmake_flags)
       set(android_sysroot "${CMAKE_SYSROOT_COMPILE}")
 
       hunter_assert_not_empty_string("${CMAKE_SYSROOT}")
-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --sysroot=${CMAKE_SYSROOT}")
+      set(CMAKE_EXE_LINKER_FLAGS "--sysroot=${CMAKE_SYSROOT} ${CMAKE_EXE_LINKER_FLAGS}")
     endif()
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --sysroot=${android_sysroot}")
