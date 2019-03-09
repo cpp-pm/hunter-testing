@@ -21,6 +21,7 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\lehrfempp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     # FIXME: Boost doesn't support this
     # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
