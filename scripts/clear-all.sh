@@ -19,6 +19,7 @@ unset ARCHS_STANDARD_32_BIT
 unset ARCHS_STANDARD_64_BIT
 unset ARCHS_STANDARD_INCLUDING_64_BIT
 unset ARCHS_UNIVERSAL_IPHONE_OS
+unset ASM
 unset AVAILABLE_PLATFORMS
 unset BUILD_COMPONENTS
 unset BUILD_DIR
@@ -116,6 +117,7 @@ unset ICONV
 unset INFOPLIST_EXPAND_BUILD_SETTINGS
 unset INFOPLIST_OUTPUT_FORMAT
 unset INFOPLIST_PREPROCESS
+unset INSTALL
 unset INSTALL_DIR
 unset INSTALL_GROUP
 unset INSTALL_MODE_FLAG
@@ -302,6 +304,11 @@ unset PKG_CONFIG_DISABLE_UNINSTALLED
 unset PKG_CONFIG_ALLOW_SYSTEM_CFLAGS
 unset PKG_CONFIG_ALLOW_SYSTEM_LIBS
 unset PKG_CONFIG_SYSROOT_DIR
+
+# https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html#cross-compiling-for-android
+unset ANDROID_NDK
+unset ANDROID_NDK_ROOT
+unset ANDROID_STANDALONE_TOOLCHAIN
 
 # This variable should be set to empty.
 # Example from Ubuntu:

@@ -33,11 +33,12 @@ hunter_cmake_args(
     xext
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
       DEPENDS_ON_PACKAGES=${xext_dependencies}
+      PKGCONFIG_EXPORT_TARGETS=xext
 )
 hunter_cacheable(xext)
 hunter_download(
     PACKAGE_NAME xext
-    PACKAGE_INTERNAL_DEPS_ID "2"
+    PACKAGE_INTERNAL_DEPS_ID "3"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/libXext.la"
     "lib/pkgconfig/xext.pc"
