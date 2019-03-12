@@ -87,6 +87,7 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/GSL
+        VERBOSE=0
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105845783
