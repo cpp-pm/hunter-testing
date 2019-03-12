@@ -10,80 +10,92 @@ sudo:
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
-# * http://stackoverflow.com/a/30925448/2288008
+# List of available packages:
+# * https://github.com/travis-ci/apt-package-whitelist/blob/master/ubuntu-trusty
+# List of available sources:
+# * https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
 addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - python3
+      - python3-pip
+      - g++-7
 
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
-      - python3-setuptools # easy_install3
-
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
-
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+dist:
+  - xenial
 
 env:
   global:
-    - secure: "IpVQQ3WaLQdSYtZTJFB+/1zJw1Jhli+AuKUfzikeO/EMv1QVD8sOAlsfGkrs/0V/uzLnq3yo8I8VjakGySZW7RquT7JlTF8jIrbvPGltMCL2AGlpmA9fsohXJ3jddWLD1jI9/GP53SZFpA3WHN8PSufbbtVx9snATiYH/c7nebuHz4xZ7uOV6zAIAfeCaqTjxC6NXAjp18bwOcMoSBGy94KmOQK7TqC0+bIFV62V0YXsp/0sC12n80X7mrV3d1K5GXH18akzOyl5/J2UtCsOt47591uu1VG8lfRiq3Hd1Q5zyfc0C74nVuYHUCT0ykT+3eWSO5LA3crY4NXzCXNxJ7tRX6rIT61V56YwSSMm8HgrtMkCplXMLHEtrZlmIVumgn20YUnSUP40Giaib/tv3cyaKPeF1Wv99nqJvd7qnmKl+TcrAiMtM1gGtyih2NgdUoc2ukJv8/Gx3pXQNlzZ2Wg4AEDZW6wHugxtUjFllwM8wmKKdARyLozudB6cfFjw4VBp2EH8xGnRG7RhjuC+XeFl3Z8iKs7TzRxZTosTRSC9SzxVBiPevi4CdVD48CzYpdReoxjhHqX+ZTDlpx0WZ1mmpYQz+dD4vHKl5iUX+SwEItqOIZiDpIw5jVbiiCtEUOI7UBMZHDoPAgHDx63HAKdvIkr5HC3yMoWeDQgy90c="
+    - secure: "DJPGduVmEHr3v/n+4DlCBud5gDgoAo6FKcLO9lWKQ1aBkiK8qXttTr7XDIZ/CgnWBKjp3YiwteKAQrQZPlNRza7Cm4J74SqAXHt/SQuRLy7p4X7XM71UQ3YNllXl1WTmEEPLznVOoR0za1PEcvjeHlLJ2Bk9CqnCQbWt4ie35hBUv1v2Ft9M4mw+oZJElWrVY7COudF4bPFd/AaVMmsohjRIyKG8bgcnsl1RtI/tTZbFQn6VIz8Jf/P+uULB2B+ddPMpXSCBxxLsNupZ3ddEl5hfdH4FGFrlUaj47zj+1s6rG38DsIX4pT0/jXZxJ8hkvqn/QOd1lprAAgnSbgsBd2tWLUYQHG+mfaRFpG0WzVzNZpx1sjyroKEi8mbusYrENuzmhWCs3GNVSe0bImfLnfnaoRiKHloTtaTp+RNf9ftiSCRyyr9OKCJvK9fUzyYZeCZBGzYzlrsY3AgbyBYTQMrK8NwImuTMWpWCPfP8Lb/gy2+1W+AouASF8w3nzObJxe/R/3XvjCYABMmgo34YXv/Qzv8kpQW7PSJgYXDdjx9dNgrnlwz5PxjoXAkGd3BEIFRMBMSYwOJPA4ZIXbojCJ9yGXHSSJZLO+5qdtt35/EhLQJkZBe1Cx0YordYuqDLS9rN3iaxPoI2zIYVEBQbrjFBLgwivoZNV+D2hx0WsGc="
 
 matrix:
   include:
     # Linux {
+
     - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=default
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/GSL
+
     - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=gcc-4-8
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/GSL
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105845784
     # - os: linux
-    #   env: PROJECT_DIR=examples/GSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/GSL
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105845773
     # - os: linux
-    #   env: PROJECT_DIR=examples/GSL TOOLCHAIN=analyze
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/GSL
 
     - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-address
+      env: >
+        TOOLCHAIN=sanitize-address-cxx17
+        PROJECT_DIR=examples/GSL
+
     - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-leak
+      env: >
+        TOOLCHAIN=sanitize-leak-cxx17
+        PROJECT_DIR=examples/GSL
+
     - os: linux
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=sanitize-thread
+      env: >
+        TOOLCHAIN=sanitize-thread-cxx17
+        PROJECT_DIR=examples/GSL
+
     # }
 
     # OSX {
+
     - os: osx
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=default
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/GSL
+
     - os: osx
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=libcxx
-    - os: osx
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=clang-libstdcxx
-    - os: osx
-      env: PROJECT_DIR=examples/GSL TOOLCHAIN=osx-10-9
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/GSL
+        VERBOSE=0
 
     # FIXME:
     # * https://travis-ci.org/ingenue/hunter/jobs/105845783
     # - os: osx
-    #   env: PROJECT_DIR=examples/GSL TOOLCHAIN=ios-nocodesign
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845784
-    # - os: osx
-    #   env: PROJECT_DIR=examples/GSL TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/105845773
-    # - os: osx
-    #   env: PROJECT_DIR=examples/GSL TOOLCHAIN=analyze
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/GSL
 
     # }
 
@@ -91,22 +103,32 @@ install:
   # Info about OS
   - uname -a
 
+  # Info about available disk space
+  - df -h $HOME
+
+  # Disable autoupdate
+  # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
+  - export HOMEBREW_NO_AUTO_UPDATE=1
+
   # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip3 install gitpython; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
-  - unzip master.zip
+  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
+  - unzip -q master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
   # Install dependencies (CMake, Android NDK)
-  - install-ci-dependencies.py
+  - install-ci-dependencies.py --prune-archives
 
   # Tune locations
   - export PATH="`pwd`/_ci/cmake/bin:${PATH}"
@@ -114,6 +136,9 @@ install:
   # Installed if toolchain is Android (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/_ci/android-ndk-r10e"
   - export ANDROID_NDK_r11c="`pwd`/_ci/android-ndk-r11c"
+  - export ANDROID_NDK_r15c="`pwd`/_ci/android-ndk-r15c"
+  - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
+  - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
 script:
   - python3 ./jenkins.py --upload
@@ -123,3 +148,5 @@ script:
 branches:
   except:
     - pkg.template
+    - /^pr\..*/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+$/
