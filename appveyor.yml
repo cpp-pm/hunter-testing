@@ -9,27 +9,29 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\sleef
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\sleef
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\sleef
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23058416/job/fjf5kq4325qiyaie
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\sleef
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23058416/job/uw2ocj7438bpxyb3 (issues with expecting bash command 'cat')
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\sleef
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\sleef
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
