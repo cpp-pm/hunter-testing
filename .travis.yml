@@ -6,7 +6,7 @@ language:
 # Container-based infrastructure (Linux)
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
-  - false
+  - true
 
 # Install packages differs for container-based infrastructure
 # * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
@@ -114,6 +114,10 @@ install:
 
   # Info about available disk space
   - df -h $HOME
+
+  # Standard path to host build (Hunter will clean PATH variable)
+  - if [[ "`uname`" == "Linux" ]]; then sudo ln -s /usr/local/clang-7.0.0/bin/clang /usr/bin/clang; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo ln -s /usr/local/clang-7.0.0/bin/clang++ /usr/bin/clang++; fi
 
   # Disable autoupdate
   # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
