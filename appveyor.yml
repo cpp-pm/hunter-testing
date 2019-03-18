@@ -8,17 +8,20 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\Sqlpp11
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23143020/job/c6nwac9ajblq59ml
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Sqlpp11
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\Sqlpp11
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23143020/job/gq0xaansbyyewn8a
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Sqlpp11
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\Sqlpp11
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23143020/job/vm9e4kpem3sbei2w
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Sqlpp11
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\Sqlpp11
