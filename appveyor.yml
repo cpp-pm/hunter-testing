@@ -41,7 +41,7 @@ environment:
     # Extra {
 
     - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\pybind11
+      PROJECT_DIR: examples\wyrm
 
     # }
 

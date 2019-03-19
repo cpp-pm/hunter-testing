@@ -20,7 +20,8 @@ addons:
       - ubuntu-toolchain-r-test
       - deadsnakes
     packages:
-      - python3.7-dev python3.7-venv
+      - python3.7-dev
+      - python3.7-venv
       - python3-pip
       - g++-7
 
