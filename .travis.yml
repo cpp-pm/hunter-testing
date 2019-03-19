@@ -18,7 +18,9 @@ addons:
   apt:
     sources:
       - ubuntu-toolchain-r-test
+      - deadsnakes
     packages:
+      - python3.7-dev python3.7-venv
       - python3-pip
       - g++-7
 
@@ -36,37 +38,38 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/foo
+    # FIXME: https://travis-ci.org/a-sevin/hunter/jobs/508603417
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/wyrm
 
     - os: linux
       env: >
         TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     - os: linux
       env: >
         TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     # }
 
@@ -76,19 +79,20 @@ matrix:
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
     - os: osx
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/wyrm
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/foo
+    # FIXME: https://travis-ci.org/a-sevin/hunter/jobs/508603424
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/wyrm
 
     # }
 

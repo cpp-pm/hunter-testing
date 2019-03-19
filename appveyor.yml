@@ -8,33 +8,46 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/y6m3uvaoq71u4jbo
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/w6301xo02tc22qnq
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/xts2775vrtvgebql
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/952o3y1ajmm3ibox
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/5dvwh55e3osmsfp1
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/a-sevin/hunter/build/job/xmt25jxg65val6m7
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\wyrm
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\pybind11
+
+    # }
 
 install:
   # Python 3
-  - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
+  - cmd: set PATH=C:\Python37-x64;C:\Python37-x64\Scripts;%PATH%
 
   # Install Python package 'requests', 'gitpython'
   - cmd: pip install requests
