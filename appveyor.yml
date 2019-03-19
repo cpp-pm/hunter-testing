@@ -28,9 +28,10 @@ environment:
       PROJECT_DIR: examples\cpuinfo
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\cpuinfo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # TODO: https://ci.appveyor.com/project/xsacha/hunter-h4uji/builds/23196633/job/s87ga27uubgxj2t5
+    #- TOOLCHAIN: "msys-cxx17"
+    # PROJECT_DIR: examples\cpuinfo
+    # APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
