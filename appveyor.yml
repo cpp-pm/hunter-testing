@@ -22,9 +22,11 @@ environment:
       PROJECT_DIR: examples\mkldnn
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\mkldnn
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # 64bit only:
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/23316246/job/6y9h7cpab51ye29n
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\mkldnn
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/19816816/job/xfpevwuji1plh7vc
     # - TOOLCHAIN: "mingw-cxx17"
@@ -35,6 +37,14 @@ environment:
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\mkldnn
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+      PROJECT_DIR: examples\mkldnn
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
