@@ -21,10 +21,12 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\tvm
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\tvm
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
     # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/19817171/job/12xihimqdkjr54kr
     # - TOOLCHAIN: "mingw-cxx17"
