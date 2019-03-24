@@ -57,21 +57,21 @@ matrix:
     #     TOOLCHAIN=analyze-cxx17
     #     PROJECT_DIR=examples/tvm
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/tvm
-        HUNTER_JOBS_NUMBER=8
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/tvm
+    #     HUNTER_JOBS_NUMBER=8
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/tvm
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/tvm
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/tvm
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/tvm
 
     # }
 
