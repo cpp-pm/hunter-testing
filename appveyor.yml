@@ -8,17 +8,20 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17-nonpermissive"
-      PROJECT_DIR: examples\range-v3
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/22965954/job/nc4r5p2o2n9ns7yb
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\range-v3
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17-nonpermissive"
-      PROJECT_DIR: examples\range-v3
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/22965954/job/7utbn7bv21l43hcb
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\range-v3
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17-nonpermissive"
-      PROJECT_DIR: examples\range-v3
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/22965954/job/ruqhkwca1uvffub2
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\range-v3
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\range-v3
@@ -31,6 +34,22 @@ environment:
     - TOOLCHAIN: "msys-cxx17"
       PROJECT_DIR: examples\range-v3
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # EXTRA {
+
+    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17-nonpermissive"
+      PROJECT_DIR: examples\range-v3
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17-nonpermissive"
+      PROJECT_DIR: examples\range-v3
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17-nonpermissive"
+      PROJECT_DIR: examples\range-v3
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    # }
 
 install:
   # Python 3
