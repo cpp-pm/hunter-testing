@@ -7,12 +7,12 @@ cmake_minimum_required(VERSION 3.2)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-foo)
+project(download-bento4)
 
 # DOCUMENTATION_START {
-hunter_add_package(foo)
-find_package(foo CONFIG REQUIRED)
+hunter_add_package(bento4)
+find_package(bento4 CONFIG REQUIRED)
 
-add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC foo::foo)
+add_executable(main main.cpp)
+target_link_libraries(main PUBLIC bento4::ap4)
 # DOCUMENTATION_END }
