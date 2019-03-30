@@ -37,13 +37,10 @@ matrix:
   include:
     # Linux {
 
-    # FIXME:
-    # * https://travis-ci.org/ingenue/hunter/jobs/448799946
-    #   Install/include/dmlc/omp.h:30:13: error: exception specification in declaration does not match previous declaration
-    # - os: linux
-    #   env: >
-    #     TOOLCHAIN=clang-cxx17
-    #     PROJECT_DIR=examples/mxnet
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17
+        PROJECT_DIR=examples/mxnet
 
     - os: linux
       env: >
@@ -79,17 +76,17 @@ matrix:
 
     # OSX {
 
-    # - os: osx
-    #   osx_image: xcode9.4
-    #   env: >
-    #     TOOLCHAIN=osx-10-13-make-cxx14
-    #     PROJECT_DIR=examples/mxnet
+    - os: osx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-make-cxx14
+        PROJECT_DIR=examples/mxnet
 
-    # - os: osx
-    #   osx_image: xcode9.4
-    #   env: >
-    #     TOOLCHAIN=osx-10-13-cxx14
-    #     PROJECT_DIR=examples/mxnet
+    - os: osx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=osx-10-13-cxx14
+        PROJECT_DIR=examples/mxnet
 
     # - os: osx
     #   osx_image: xcode9.4
