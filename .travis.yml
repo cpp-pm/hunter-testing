@@ -139,12 +139,12 @@ install:
 
   # Install CUDA {
   # * https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=1404&target_type=deblocal
-  - wget --quiet https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1404-10-0-local-10.0.130-410.48_1.0-1_amd64 -O cuda.deb
-  - sudo dpkg -i cuda.deb
-  - sudo apt-key add /var/cuda-repo-*/7fa2af80.pub
-  - sudo apt-get update
-  - sudo apt-get install cuda
-  - export PATH=/usr/local/cuda-10.0/bin:${PATH}
+  - if [[ "`uname`" == "Linux" ]]; then wget --quiet https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda-repo-ubuntu1404-10-0-local-10.0.130-410.48_1.0-1_amd64 -O cuda.deb; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo dpkg -i cuda.deb; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo apt-key add /var/cuda-repo-*/7fa2af80.pub; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo apt-get update; fi
+  - if [[ "`uname`" == "Linux" ]]; then sudo apt-get install cuda; fi
+  - if [[ "`uname`" == "Linux" ]]; then export PATH=/usr/local/cuda-10.0/bin:${PATH}; fi
   # }
 
 script:
