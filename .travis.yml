@@ -34,10 +34,11 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/tvm
+    # Need PIC for shared library
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/tvm
 
     - os: linux
       env: >
@@ -102,6 +103,11 @@ matrix:
     # }
 
     # Extra {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17-pic
+        PROJECT_DIR=examples/tvm
 
     - os: osx
       osx_image: xcode9.4
