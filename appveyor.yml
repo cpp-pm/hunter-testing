@@ -8,21 +8,25 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\cmcstl2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/23480526/job/i9405s4qhgncdclv
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\cmcstl2
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\cmcstl2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/23480526/job/7ehahe0jv0q745e2
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\cmcstl2
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\cmcstl2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/23480526/job/soqk4i22r6ei38cx
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\cmcstl2
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\cmcstl2
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # https://ci.appveyor.com/project/dvirtz/hunter/builds/23480526/job/7bfno9oimhap8bnx
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\cmcstl2
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\cmcstl2
