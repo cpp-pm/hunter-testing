@@ -40,11 +40,11 @@ matrix:
     #     TOOLCHAIN=clang-cxx17
     #     PROJECT_DIR=examples/tvm
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/tvm
-        HUNTER_JOBS_NUMBER=4
+    # Need PIC for shared library
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/tvm
 
     - os: linux
       env: >
@@ -107,6 +107,11 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17-pic
+        PROJECT_DIR=examples/tvm
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17-pic
         PROJECT_DIR=examples/tvm
 
     - os: osx
