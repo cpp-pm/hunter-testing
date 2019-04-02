@@ -37,15 +37,17 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/mxnet
+    # PIC needed
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/mxnet
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/mxnet
+    # PIC needed
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=gcc-7-cxx17
+    #     PROJECT_DIR=examples/mxnet
 
     # - os: linux
     #   env: >
@@ -93,6 +95,20 @@ matrix:
     #   env: >
     #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
     #     PROJECT_DIR=examples/mxnet
+
+    # }
+
+    # Extra {
+
+    - os: linux
+      env: >
+        TOOLCHAIN=clang-cxx17-pic
+        PROJECT_DIR=examples/mxnet
+
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17-pic
+        PROJECT_DIR=examples/mxnet
 
     # }
 
