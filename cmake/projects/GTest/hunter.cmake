@@ -7,6 +7,7 @@ include(hunter_add_version)
 include(hunter_cacheable)
 include(hunter_download)
 include(hunter_pick_scheme)
+include(hunter_cmake_args)
 
 hunter_add_version(
     PACKAGE_NAME
@@ -145,7 +146,7 @@ hunter_add_version(
     GTest
     VERSION
     1.8.0-hunter-p2
-    URL 
+    URL
     "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p2.tar.gz"
     SHA1
     93148cb8850abe78b76ed87158fdb6b9c48e38c4
@@ -158,6 +159,84 @@ hunter_add_version(
     1.8.0-hunter-p5
     URL https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p5.tar.gz
     SHA1 3325aa4fc8b30e665c9f73a60f19387b7db36f85
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p6
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p6.tar.gz"
+    SHA1
+    f57096bd01c6f8cbef043b312d4d1e82f29648b6
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p7
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p7.tar.gz"
+    SHA1
+    4fe083a96d7597f7dce6f453dca01e1d94a1e45b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p8
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p8.tar.gz"
+    SHA1
+    1cdd396b20c8d29f7ea08baaa49673b1c261f545
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p9
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p9.tar.gz"
+    SHA1
+    a345f16cb610e0b5dfa7778dc2852b784cfede5b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    1.8.0-hunter-p10
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p10.tar.gz"
+    SHA1
+    1d92c9f51af756410843b13f8c4e4df09e235394
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    GTest
+    VERSION
+    "1.8.0-hunter-p11"
+    URL
+    "https://github.com/hunter-packages/googletest/archive/1.8.0-hunter-p11.tar.gz"
+    SHA1
+    76c6aec038f7d7258bf5c4f45c4817b34039d285
+)
+
+if(HUNTER_GTest_VERSION VERSION_LESS 1.8.0)
+  set(_gtest_license "LICENSE")
+else()
+  set(_gtest_license "googletest/LICENSE")
+endif()
+
+hunter_cmake_args(
+    GTest
+    CMAKE_ARGS
+    HUNTER_INSTALL_LICENSE_FILES=${_gtest_license}
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)

@@ -35,10 +35,12 @@ hunter_cmake_args(
     xcursor
     CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
       DEPENDS_ON_PACKAGES=${xcursor_dependencies}
+      PKGCONFIG_EXPORT_TARGETS=xcursor
 )
 hunter_cacheable(xcursor)
 hunter_download(
     PACKAGE_NAME xcursor
+    PACKAGE_INTERNAL_DEPS_ID "1"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/libXcursor.la"
     "lib/pkgconfig/xcursor.pc"
