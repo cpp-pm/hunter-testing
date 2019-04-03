@@ -25,6 +25,7 @@ addons:
 
       # For LAPACK dependency
       - gfortran
+      - gfortran-7
 
 dist:
   - xenial
