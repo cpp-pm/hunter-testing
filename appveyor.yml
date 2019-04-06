@@ -7,38 +7,39 @@ environment:
       secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
 
   matrix:
+    # FIXME
+    # *https://ci.appveyor.com/project/ErniBrown/hunter/builds/23626604/job/0c13j8rxsimyg85a
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ZMQPP
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME
+    # *https://ci.appveyor.com/project/ErniBrown/hunter/builds/23626604/job/g2v7i528vmsc4dam
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ZMQPP
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME
+    # *https://ci.appveyor.com/project/ErniBrown/hunter/builds/23626604/job/o9tvhhngd4vy68dq
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\ZMQPP
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME
+    # *https://ci.appveyor.com/project/ErniBrown/hunter/builds/23626604/job/in0gp67pth13mv0n
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\ZMQPP
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    # - TOOLCHAIN: "mingw-cxx17"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    # - TOOLCHAIN: "msys-cxx17"
-    #   PROJECT_DIR: examples\ZMQPP
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    # Extra {
-
-    - TOOLCHAIN: "dummy"
+    - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\ZMQPP
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # }
+    # FIXME
+    # *https://ci.appveyor.com/project/ErniBrown/hunter/builds/23626604/job/r3ya32ve82pqwcjo
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\ZMQPP
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
