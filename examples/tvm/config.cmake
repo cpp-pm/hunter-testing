@@ -1,10 +1,8 @@
+# https://github.com/ruslo/hunter/pull/943#issuecomment-321534754
+
 # DOCUMENTATION_START {
 # config.cmake
 
-hunter_config(OpenCV VERSION 3.4.3-p4)
-# DOCUMENTATION_END }
-
-# See 'tvm' example
 if(APPLE AND XCODE)
   hunter_config(
       LLVM
@@ -14,3 +12,4 @@ if(APPLE AND XCODE)
       LLVM_BUILD_EXTERNAL_COMPILER_RT=ON
   )
 endif()
+# DOCUMENTATION_END }
