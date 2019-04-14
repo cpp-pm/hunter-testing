@@ -20,6 +20,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
+      - virtualenv
       - g++-7
 
 dist:
@@ -36,37 +37,42 @@ matrix:
     - os: linux
       env: >
         TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/pip_urllib3
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/pip_urllib3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/foo
+    # Host only
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #     PROJECT_DIR=examples/pip_urllib3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/foo
+    # Toolchain is not really used, same as 'clang-cxx17'
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/pip_urllib3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/foo
+    # Toolchain is not really used, same as 'clang-cxx17'
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/pip_urllib3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/foo
+    # Toolchain is not really used, same as 'clang-cxx17'
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/pip_urllib3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/foo
+    # Toolchain is not really used, same as 'clang-cxx17'
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/pip_urllib3
 
     # }
 
@@ -76,19 +82,20 @@ matrix:
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/pip_urllib3
 
     - os: osx
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/foo
+        PROJECT_DIR=examples/pip_urllib3
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/foo
+    # Host only
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/pip_urllib3
 
     # }
 
@@ -106,6 +113,7 @@ install:
   # Install Python 3
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry pip3 install virtualenv; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
