@@ -20,6 +20,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
+      - virtualenv
       - g++-7
 
 dist:
