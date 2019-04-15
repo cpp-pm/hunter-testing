@@ -363,10 +363,17 @@ hunter_default_version(pciaccess VERSION 0.13.4)
 
 # pip packages
 hunter_default_version(pip_GitPython VERSION 2.1.11)
+hunter_default_version(pip_astroid VERSION 2.2.5)
 hunter_default_version(pip_cpplint VERSION 1.4.4)
 hunter_default_version(pip_gitdb VERSION 2.0.5)
+hunter_default_version(pip_lazy-object-proxy VERSION 1.3.1)
 hunter_default_version(pip_nose VERSION 1.3.7)
+hunter_default_version(pip_nose-timer VERSION 0.7.5)
+hunter_default_version(pip_numpy VERSION 1.16.2)
+hunter_default_version(pip_pylint VERSION 2.3.1)
+hunter_default_version(pip_six VERSION 1.12.0)
 hunter_default_version(pip_smmap VERSION 2.0.5)
+hunter_default_version(pip_wrapt VERSION 1.11.1)
 
 hunter_default_version(poly2tri VERSION 1.0.0)
 hunter_default_version(polyclipping VERSION 4.8.8-p0) # for Assimp
