@@ -53,6 +53,28 @@ hunter_add_version(
     f050a50ade4e1508621d5138b6edf8b09d9bbcc5
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    tvm
+    VERSION
+    0.5-p3
+    URL
+    "https://github.com/hunter-packages/tvm/archive/v0.5-p3.tar.gz"
+    SHA1
+    ddc16b4125b7eafbe34b63da50e7622fe961787e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    tvm
+    VERSION
+    0.5-p4
+    URL
+    "https://github.com/hunter-packages/tvm/archive/v0.5-p4.tar.gz"
+    SHA1
+    f62ace1e9515799de83b29c6325588e48fc76479
+)
+
 set(
     __hunter_tvm_cmake_args
     INSTALL_DEV=ON
