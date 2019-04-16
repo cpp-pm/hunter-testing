@@ -103,6 +103,11 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/CURL-with-ares
 
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/CURL-BoringSSL
+
     # }
 
 install:
