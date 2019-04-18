@@ -84,15 +84,25 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/glog
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/glog
+    # FIXME: simulator not supported:
+    # src/logging.cc:1158:8: error: thread-local storage is not supported for the current target
+    # static GLOG_THREAD_LOCAL_STORAGE
+    #        ^
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/glog
 
     # }
 
     # Extra {
+
+    - os: osx
+      osx_image: xcode9.4
+      env: >
+        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3-arm64
+        PROJECT_DIR=examples/glog
 
     # FIXME: https://github.com/google/glog/pull/312
     # - os: linux
