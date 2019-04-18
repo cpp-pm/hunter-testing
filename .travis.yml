@@ -33,40 +33,52 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=clang-cxx17
+    #    PROJECT_DIR=examples/arabica
 
-    - os: linux
-      env: >
-        TOOLCHAIN=gcc-7-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=gcc-7-cxx17
+    #    PROJECT_DIR=examples/arabica
 
     - os: linux
       env: >
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/arabica
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/arabica
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-address-cxx17
+    #    PROJECT_DIR=examples/arabica
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-leak-cxx17
+    #    PROJECT_DIR=examples/arabica
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/arabica
+    # FIXME: C++17 is not supported
+    # * https://travis-ci.com/FredrikAppelros/hunter/builds/108829377
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-thread-cxx17
+    #    PROJECT_DIR=examples/arabica
 
     # }
 
