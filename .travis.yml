@@ -94,10 +94,11 @@ matrix:
 
     # Extra {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-thumb-clang-libcxx14
-        PROJECT_DIR=examples/glog
+    # FIXME: https://github.com/google/glog/pull/312
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=android-ndk-r16b-api-16-armeabi-v7a-thumb-clang-libcxx14
+    #     PROJECT_DIR=examples/glog
 
     # }
 
