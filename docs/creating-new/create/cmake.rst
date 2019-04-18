@@ -305,6 +305,36 @@ Add this information to ``cmake/projects/hunter_box_1/hunter.cmake`` file:
   hunter_cacheable(hunter_box_1)
   hunter_download(PACKAGE_NAME hunter_box_1)
 
+Consistency
+===========
+
+Please keep Git tag and ``VERSION`` in consistent state.
+For example if ``URL`` is:
+
+.. code-block:: cmake
+  :emphasize-lines: 3-4
+
+  hunter_add_version(
+      # ...
+      URL
+      "https://github.com/hunterbox/hunter_box_1/archive/v1.3.15-da39a3e-p6.tar.gz"
+      # ...
+  )
+
+Then ``VERSION`` should be:
+
+.. code-block:: cmake
+  :emphasize-lines: 3-4
+
+  hunter_add_version(
+      # ...
+      VERSION
+      1.3.15-da39a3e-p6
+      URL
+      "https://github.com/hunterbox/hunter_box_1/archive/v1.3.15-da39a3e-p6.tar.gz"
+      # ...
+  )
+
 CMake options
 =============
 
@@ -426,6 +456,29 @@ To locally check if the documentation is still building you can run:
   [hunter/docs]> source ./jenkins.sh
   (_venv) [hunter/docs]> ./make.sh
 
+If the documentation contains spelling errors or unrecognized names, the
+documentation test build will fail and report the unrecognized strings. Fix
+any spelling errors and test the build again. Any remaining errors can be
+fixed by adding all correct but unrecognized names, string, or terms to the
+``spelling`` header at the top of the document entry
+``docs/packages/pkg/bar-baz.rst``. In this example,
+``bar-baz`` would be a package name that is not in the dictionary.
+
+.. code-block:: none
+  :emphasize-lines: 1-4
+
+  .. spelling::
+
+    bar
+    baz
+
+  .. index::
+    single: unsorted ; bar-baz
+
+  .. _pkg.bar-baz:
+
+Add entries for each term until the test build completes successfully.
+
 Common mistake
 ==============
 
@@ -462,6 +515,8 @@ Now save all changes by doing a commit:
   [hunter]> git add examples/hunter_box_1/
 
   [hunter]> git commit -m "Add 'hunter_box_1' package"
+
+.. _testing locally:
 
 Testing locally
 ===============
