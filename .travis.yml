@@ -133,8 +133,8 @@ install:
   - export ANDROID_NDK_r16b="`pwd`/_ci/android-ndk-r16b"
   - export ANDROID_NDK_r17="`pwd`/_ci/android-ndk-r17"
 
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user jinja2; fi
-  - if [[ "`uname`" == "Darwin" ]]; then pip3 install jinja2; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip install --user jinja2; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip install jinja2; fi
 
 script:
   - python3 ./jenkins.py --upload
