@@ -1,7 +1,9 @@
+Android
 AppVeyor
 Bonjour
 CGold
 CMake
+CMakeLists
 CPack
 Cap'n
 Config
@@ -9,6 +11,7 @@ Ctrl
 Cygwin
 GCC
 GTest
+GitHub
 Google
 Hunterize
 IDE
@@ -24,6 +27,7 @@ Scalable
 Shareable
 Stackoverflow
 Toolchain
+Ubuntu
 Uninstall
 Wget
 Workflow
@@ -47,9 +51,13 @@ iOS
 injectable
 internet
 inversed
+isn
 login
 macOS
+middleware
 multi
+multiplatform
+natively
 performant
 plugin
 plugins
