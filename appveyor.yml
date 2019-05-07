@@ -23,9 +23,10 @@ environment:
     #   PROJECT_DIR: examples\range-v3
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\range-v3
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # https://ci.appveyor.com/project/dvirtz/hunter/build/job/04y4j3l9o4m55jk8
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\range-v3
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\range-v3
