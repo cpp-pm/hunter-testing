@@ -8,13 +8,17 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\cryptopp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME:
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/24503291/job/0yoq1jvmjvp3075j
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\cryptopp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\cryptopp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME:
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/24503291/job/nnnwf7rr658mdt4u
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\cryptopp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\cryptopp
@@ -24,9 +28,11 @@ environment:
       PROJECT_DIR: examples\cryptopp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\cryptopp
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME:
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/24503291/job/l80qt63x4t0kxv8g
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\cryptopp
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\cryptopp
