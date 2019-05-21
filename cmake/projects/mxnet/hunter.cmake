@@ -31,9 +31,41 @@ hunter_add_version(
     71c01aaa65448f4826e2ec4cadb44987370d664f
 )
 
-hunter_cmake_args(
+hunter_add_version(
+    PACKAGE_NAME
     mxnet
-    CMAKE_ARGS
+    VERSION
+    0.0.0-5b86701f2-p2
+    URL
+    "https://github.com/hunter-packages/mxnet/archive/0.0.0-5b86701f2-p2.tar.gz"
+    SHA1
+    60c4d0ef4b9ac35e6a23c5482a1702da7e377d5c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    mxnet
+    VERSION
+    1.4.0-p2
+    URL
+    "https://github.com/hunter-packages/mxnet/archive/v1.4.0-p2.tar.gz"
+    SHA1
+    bb80e4b173d2630313195f38d528f2d2d42455c3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    mxnet
+    VERSION
+    1.4.0-p3
+    URL
+    "https://github.com/hunter-packages/mxnet/archive/v1.4.0-p3.tar.gz"
+    SHA1
+    aa01fea9b74bd4a10f5a1d028e61be62c4536bd0
+)
+
+set(
+    __hunter_mxnet_args
     BUILD_CPP_EXAMPLES=OFF
     BUILD_TESTS=OFF
     USE_CPP_PACKAGE=ON
@@ -41,6 +73,24 @@ hunter_cmake_args(
     USE_JEMALLOC=OFF
     USE_OPENMP=OFF
 )
+
+if(APPLE)
+  list(
+      APPEND
+      __hunter_mxnet_args
+      BLAS=apple
+      USE_CUDA=OFF
+      USE_LAPACK=OFF
+  )
+else()
+  list(
+      APPEND
+      __hunter_mxnet_args
+      USE_LAPACK=OFF
+  )
+endif()
+
+hunter_cmake_args(mxnet CMAKE_ARGS ${__hunter_mxnet_args})
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
 hunter_cacheable(mxnet)
