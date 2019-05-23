@@ -8,20 +8,17 @@ environment:
 
   matrix:
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/2rdedgnf2f3yiu0j
-    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\irrXML
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\irrXML
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/l01ja87ny6ofu8lv
-    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\irrXML
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\irrXML
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.530/job/w1gy5b2g5rg8b9xn
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\irrXML
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\irrXML
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\irrXML
