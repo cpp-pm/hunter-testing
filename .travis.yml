@@ -135,11 +135,12 @@ matrix:
         PROJECT_DIR=examples/OpenCV-extra
         VERBOSE=0
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/OpenCV-extra
-        VERBOSE=0
+    # Build timeout:
+    # * https://travis-ci.org/ingenue/hunter/jobs/537249221
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/OpenCV-extra
 
     # Build timeout:
     # * https://travis-ci.org/ingenue/hunter/jobs/452255857
