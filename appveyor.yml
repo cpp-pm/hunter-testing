@@ -33,9 +33,18 @@ environment:
     #   PROJECT_DIR: examples\leveldb
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
+    # FIXME: https://ci.appveyor.com/project/chfast/hunter/builds/24865453/job/hv4dkufehvjrl8g4
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\leveldb
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\leveldb
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
