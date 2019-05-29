@@ -8,43 +8,30 @@ environment:
 
   matrix:
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.300
-    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\leveldb
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\leveldb
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.300
-    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\leveldb
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\leveldb
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.300
-    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #   PROJECT_DIR: examples\leveldb
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\leveldb
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.300
-    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-    #   PROJECT_DIR: examples\leveldb
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\leveldb
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME: https://ci.appveyor.com/project/isaachier/hunter/build/1.0.300
-    # - TOOLCHAIN: "mingw-cxx17"
-    #   PROJECT_DIR: examples\leveldb
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\leveldb
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: https://ci.appveyor.com/project/chfast/hunter/builds/24865453/job/hv4dkufehvjrl8g4
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\leveldb
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    # Extra {
-
-    - TOOLCHAIN: "dummy"
-      PROJECT_DIR: examples\leveldb
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    # }
 
 install:
   # Python 3
