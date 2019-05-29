@@ -350,6 +350,14 @@ class Cache:
 
   def try_to_push(self, main_remote, main_remote_url_pull, github):
     try:
+      main_remote.set_url(
+          'https://{}:{}@github.com/{}/{}'.format(
+              github.username,
+              github.password,
+              github.repo_owner,
+              github.repo
+          )
+      )
       fetch_result = main_remote.pull(
           allow_unrelated_histories=True,
           strategy='recursive',
@@ -357,6 +365,7 @@ class Cache:
           rebase=True,
           depth=1
       )
+      main_remote.set_url(main_remote_url_pull)
       for x in fetch_result:
         if x.flags & x.REJECTED:
           print('Pull rejected')
@@ -406,6 +415,8 @@ class Cache:
         "{}@users.noreply.github.com".format(github.username)
     )
     config.set_value("user", "name", github.username)
+    if sys.platform == "win32":
+      config.set_value("core", "autocrlf", "input")
     config.release()
 
     if self.repo.is_dirty(untracked_files=True):
@@ -431,6 +442,8 @@ class Cache:
         elif x.endswith('deps.info'):
           to_add = True
         elif x.endswith('CACHE.DONE'):
+          to_add = True
+        elif x.endswith('SHA1'):
           to_add = True
 
         if to_add:
@@ -463,12 +476,36 @@ class Cache:
     if not main_remote_found:
       main_remote = self.repo.create_remote('origin', main_remote_url_pull)
 
-    print('Fetch remote')
-    sys.stdout.flush()
-    main_remote.fetch(depth=1)
+    retry_max = 10
+
+    fetch_ok = False
+
+    for i in range(1, retry_max):
+      try:
+        if fetch_ok:
+          break
+        print('Fetch remote (attempt #{})'.format(i))
+        sys.stdout.flush()
+
+        main_remote.set_url(
+            'https://{}:{}@github.com/{}/{}'.format(
+                github.username,
+                github.password,
+                github.repo_owner,
+                github.repo
+            )
+        )
+        main_remote.fetch(depth=1)
+        main_remote.set_url(main_remote_url_pull)
+        fetch_ok = True
+      except Exception as exc:
+        print('Exception {}'.format(exc))
+
+    if not fetch_ok:
+      sys.exit('Fetch failed')
+
     self.repo.heads.master.set_tracking_branch(main_remote.refs.master)
 
-    retry_max = 10
     success = False
 
     for i in range(1, retry_max):

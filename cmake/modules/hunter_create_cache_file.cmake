@@ -2,17 +2,17 @@
 # All rights reserved.
 
 include(hunter_status_debug)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 
 function(hunter_create_cache_file cache_path)
-  hunter_test_string_not_empty("${cache_path}")
+  hunter_assert_not_empty_string("${cache_path}")
 
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_SHA1}")
-  hunter_test_string_not_empty("${HUNTER_CONFIG_SHA1}")
-  hunter_test_string_not_empty("${HUNTER_CONFIG_ID_PATH}")
-  hunter_test_string_not_empty("${HUNTER_VERSION}")
-  hunter_test_string_not_empty("${HUNTER_TOOLCHAIN_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CONFIG_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_CONFIG_ID_PATH}")
+  hunter_assert_not_empty_string("${HUNTER_VERSION}")
+  hunter_assert_not_empty_string("${HUNTER_TOOLCHAIN_SHA1}")
 
   if(EXISTS "${cache_path}")
     return()
@@ -92,6 +92,12 @@ function(hunter_create_cache_file cache_path)
         APPEND
         "${temp_path}"
         "set(CMAKE_${lang}_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES \"${CMAKE_${lang}_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES}\" CACHE INTERNAL \"\")\n"
+    )
+    hunter_status_debug("ABI forwarding: CMAKE_${lang}_IMPLICIT_INCLUDE_DIRECTORIES = ${CMAKE_${lang}_IMPLICIT_INCLUDE_DIRECTORIES}")
+    file(
+        APPEND
+        "${temp_path}"
+        "set(CMAKE_${lang}_IMPLICIT_INCLUDE_DIRECTORIES \"${CMAKE_${lang}_IMPLICIT_INCLUDE_DIRECTORIES}\" CACHE INTERNAL \"\")\n"
     )
     if(DEFINED CMAKE_${lang}_LIBRARY_ARCHITECTURE)
       hunter_status_debug("ABI forwarding: CMAKE_${lang}_LIBRARY_ARCHITECTURE = ${CMAKE_${lang}_LIBRARY_ARCHITECTURE}")
@@ -207,6 +213,13 @@ function(hunter_create_cache_file cache_path)
       "set(CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY ON CACHE INTERNAL \"\")\n"
   )
   # }
+
+  # Package can use this variable to check if it's building by Hunter
+  file(
+      APPEND
+      "${temp_path}"
+      "set(HUNTER_PACKAGE_BUILD ON CACHE INTERNAL \"\")\n"
+  )
 
   # Atomic operation
   file(RENAME "${temp_path}" "${cache_path}")
