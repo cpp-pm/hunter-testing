@@ -22,10 +22,11 @@ environment:
     #  PROJECT_DIR: examples\roscpp_core
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\roscpp_core
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\__BIN
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/24937103
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\roscpp_core
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #   HUNTER_BINARY_DIR: C:\__BIN
 
     # FIXME: mingw and msys can't find python package catkin, which could point to some
     # python paths not being set up correctly after catkin is installed to the cache
@@ -37,6 +38,14 @@ environment:
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\roscpp_core
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\roscpp_core
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
