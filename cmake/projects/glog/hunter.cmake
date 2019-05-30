@@ -13,6 +13,17 @@ hunter_add_version(
     PACKAGE_NAME
     glog
     VERSION
+    "0.3.5-p2"
+    URL
+    "https://github.com/hunter-packages/glog/archive/v0.3.5-p2.tar.gz"
+    SHA1
+    3e95e5bcfb5c9d20c3391b72f831a285a3fc238f
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    glog
+    VERSION
     "0.3.5-p1"
     URL
     "https://github.com/hunter-packages/glog/archive/v0.3.5-p1.tar.gz"
@@ -51,6 +62,17 @@ hunter_add_version(
     "https://github.com/hunter-packages/glog/archive/v0.3.4-p1.tar.gz"
     SHA1
     512b8ad6d9aae9499cca2e4c4530b9386cb05440
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    glog
+    VERSION
+    "0.4.0"
+    URL
+    "https://github.com/google/glog/archive/v0.4.0.tar.gz"
+    SHA1
+    0d79fb524591dee0f46213e9a23f609f74e0cbb2
 )
 
 # explicitly remove dependency on gflags (only needed for tests)
