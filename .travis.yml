@@ -26,11 +26,11 @@ addons:
       - python-yaml
 
 dist:
-  - trusty
+  - xenial
 
 env:
   global:
-    - secure: "QjDKH5FkegIqF++LRGoC7Rlag8cckWv0NnpJ7xWN40JEIqrD8g0IONW24+D5iEVQCU6RO2dIOzYxXdTjL7wKd5Lt8NQPfidIfwF7CEj+d7w6PtgzE3EKijlYyjWSRHnQ8vacBV3h4iiY0v+VFjqQeMEemIH2lmPd8pAELE7aSfKcgQfqsO59d9OCHbEvNjGZQVPSrPfjESYS7CW+r2v1Ik712r2p5oY5sLIXHLUGWWL6nb8chC+HwQE2SkzsBBVvJGpKAdfIBrm7jU0gw8KaVFQo6/Eg5+0l4IL7ns+GEYV7k2F5/ZLf3OeygZh0RRVAM5YAf6HoWd1s0kpxOxCVw2lb4abFPJZS7LnhOdS8hW5tbKiCM1AQPXyIN4PccyThocen5RGjbSPslDX0RDEVfmwnK0TlBPss0AsZS+Of0JzFAkXwr6/raya2brDXhmJVr269nictY5uwBbhbsSYHLbU42Fa2zLFXrDdCxOnCD7m9GaJN4gsvZsA6qkkeHrWhZw4wqMRrlTRDwHRJmaXYjFzXHjQfH4gegpzDhLeovan7AOUMCeBWj3LvhY7T6/u9J49b3zXT21bs/I4KylYZz6JQdM17WNpj6IxXNSaeTy5TWubWWDuEKM7IC76QlFpsCqB7ET/TN8HHBZB9CCFozvq4YI5jS7oSznjTFIf1fJM="
+    - secure: "s2o8nxRX/i7BSWsxlogBnyOGNO+3MhbcQrrU5y/Kk5+FwflN1vN+EwcR/kuE7U/O+gD8/ea+e0E8SSCkDwSj30NKZajYym2/DF0YSPNag1PGO9X2x53D4+clrhLPd89++bJpeOrAln1wYrYLLLFPMEq8Veo8g2ql9EHHWwwOqNM3jTPXg1fg4TOGSjgzFB3JnDo1Wjccc7eUj/nJcEMasxIBNg0n9/kjO+b9VYgxF3YVUMCnn+pdLah/AdnbwLWyvoWUz9nhRbXZx236rccFO5tzbKWON6NauIs4hiYxUC/Bu8nw5SZsjto4NwmrX0t7fAsUbMIUo4WBbI2zfao1oao0g/2HQj/QeY5yj+mkeaXosqdUbDZe2J+A+xjHu1fD6JI75jtnpOhFGYN5mPfq6fOiLcMn6Vr67T9NB1NvUpmRJ6sqzm48yxcNc9tmvsUz7BLDNbSN3YRNZ5XCVRnQfY9j1yc88oBvCPMtduUQyu5rd+c6mJ6zBhjJJvu7BM6OlscWPqiJm6+857wcDoBBDlMipZsIrrshOlUmfgyNgdrm/c1wEwDoRcnlb1hR+tKT5y653vytSs8cRJ+uG7+anofuTJJ/Der/a1A/P5ttkp2HGrAcWq4u0zYIpIiOsUlJ0uHcSl0DLQwB4JJgZBiBEibWjWqfjdXwkSVrcj833bU="
 
 matrix:
   include:
@@ -76,13 +76,13 @@ matrix:
     # OSX {
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/ros_std_msgs
 
     - os: osx
-      osx_image: xcode9.3
+      osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/ros_std_msgs
@@ -90,11 +90,11 @@ matrix:
     # FIXME: Build of roscpp_core (dependency of this package) fails because a narrowing
     # conversion is not allowed from a 32b uint to long:
     #   * https://travis-ci.org/lsolanka/hunter/jobs/369708456
-    #- os: osx
-    #  osx_image: xcode9.3
-    #  env: >
-    #    TOOLCHAIN=ios-nocodesign-11-3-dep-9-3
-    #    PROJECT_DIR=examples/ros_std_msgs
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/ros_std_msgs
 
     # }
 
@@ -110,7 +110,7 @@ install:
   - export HOMEBREW_NO_AUTO_UPDATE=1
 
   # Install Python 3
-  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
@@ -125,8 +125,8 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip install --user catkin_pkg; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
-  - unzip master.zip
+  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
+  - unzip -q master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 

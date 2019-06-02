@@ -22,13 +22,13 @@ include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_status_debug)
 include(hunter_status_print)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_user_error)
 
 function(hunter_experimental_add_host_project)
-  hunter_test_string_not_empty("${HUNTER_CACHED_ROOT}")
-  hunter_test_string_not_empty("${HUNTER_SHA1}")
-  hunter_test_string_not_empty("${HUNTER_URL}")
+  hunter_assert_not_empty_string("${HUNTER_CACHED_ROOT}")
+  hunter_assert_not_empty_string("${HUNTER_SHA1}")
+  hunter_assert_not_empty_string("${HUNTER_URL}")
 
   hunter_status_print("
 ************************* !!! WARNING !!! *************************
@@ -76,6 +76,15 @@ https://github.com/ruslo/hunter/issues/495
     set(host_generator -G${HUNTER_EXPERIMENTAL_HOST_GENERATOR})
   endif()
 
+  string(COMPARE EQUAL "${HUNTER_EXPERIMENTAL_HOST_TOOLCHAIN_FILE}" "" no_toolchain)
+  if(no_toolchain)
+    set(host_toolchain "")
+    hunter_status_debug("Not using host toolchain")
+  else()
+    hunter_status_debug("Using host toolchain: ${HUNTER_EXPERIMENTAL_HOST_TOOLCHAIN_FILE}")
+    set(host_toolchain -DCMAKE_TOOLCHAIN_FILE=${HUNTER_EXPERIMENTAL_HOST_TOOLCHAIN_FILE})
+  endif()
+
   # invoke cmake for host project
   include(${HUNTER_SELF}/scripts/clear-all.cmake)
   execute_process(
@@ -89,6 +98,7 @@ https://github.com/ruslo/hunter/issues/495
           "-DHUNTER_ALREADY_LOCKED_DIRECTORIES=${HUNTER_ALREADY_LOCKED_DIRECTORIES}"
           "-DHUNTER_CACHE_SERVERS=${HUNTER_CACHE_SERVERS}"
           ${host_generator}
+          ${host_toolchain}
       RESULT_VARIABLE exit_code
   )
   string(COMPARE EQUAL "${exit_code}" "0" success)
