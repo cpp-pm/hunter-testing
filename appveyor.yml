@@ -22,10 +22,16 @@ environment:
     #  PROJECT_DIR: examples\ros_std_msgs
     #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\ros_std_msgs
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\__BIN
+    # FIXME:
+    # - https://ci.appveyor.com/project/ingenue/hunter/builds/24980413
+    # CMake Error at C:/.../Install/share/catkin/cmake/platform/windows.cmake:123 (add_executable):
+    #   add_executable cannot create target
+    #   "_setup_util.py_executable_install_python" because another target with the
+    #   same name already exists.  The existing target is an executable created in
+    #   source directory
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\ros_std_msgs
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     # FIXME: mingw and msys can't find python package catkin, which could point to some
     # python paths not being set up correctly after catkin is installed to the cache
@@ -37,6 +43,14 @@ environment:
     # - TOOLCHAIN: "msys-cxx17"
     #   PROJECT_DIR: examples\ros_std_msgs
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\ros_std_msgs
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # }
 
 install:
   # Python 3
