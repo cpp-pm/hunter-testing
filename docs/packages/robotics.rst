@@ -1,6 +1,8 @@
 .. spelling::
 
     catkin
+    comm_msgs
+    common_msgs
     filesystem
     gencpp
     geneus
@@ -22,6 +24,9 @@ ROS
 ---
 
  * :ref:`pkg.catkin` - ROS catkin build system
+ * :ref:`pkg.ros` - Core ROS packages
+ * :ref:`pkg.ros_comm_msgs` - ROS `ros_comm_msgs` package
+ * :ref:`pkg.ros_common_msgs` - ROS `common_msgs` package - commonly used messages in ROS
  * :ref:`pkg.ros_console_bridge` - ROS console bridge package (logging, ...)
  * :ref:`pkg.ros_environment` - ROS `ros_environment` package
  * :ref:`pkg.ros_gencpp` - ROS gencpp package - C++ message and service data structure generation
@@ -32,6 +37,6 @@ ROS
  * :ref:`pkg.ros_genpy` - ROS genpy package - Python ROS message and service generator
  * :ref:`pkg.ros_message_generation` - ROS `message_generation` package
  * :ref:`pkg.ros_message_runtime` - ROS `message_runtime` package
- * :ref:`pkg.ros_std_msgs` - ROS `std_msgs` package - Contains minimal messages of primitive data types and multiarrays
+ * :ref:`pkg.ros_std_msgs` - ROS `std_msgs` package - Contains minimal messages of primitive data types and multi-arrays
  * :ref:`pkg.roscpp_core` - ROS C++ core package
  * :ref:`pkg.rospack` - ROS rospack package - a command-line tool for retrieving information about ROS packages available on the filesystem
