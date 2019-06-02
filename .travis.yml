@@ -37,10 +37,12 @@ matrix:
   include:
     # Linux {
 
-    - os: linux
-      env: >
-        TOOLCHAIN=clang-cxx17
-        PROJECT_DIR=examples/rospack
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/540312230
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=clang-cxx17
+    #     PROJECT_DIR=examples/rospack
 
     - os: linux
       env: >
@@ -54,25 +56,33 @@ matrix:
     #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
     #     PROJECT_DIR=examples/rospack
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/rospack
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/540312232
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/rospack
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/rospack
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/540312233
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-address-cxx17
+    #     PROJECT_DIR=examples/rospack
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/rospack
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/540312234
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-leak-cxx17
+    #     PROJECT_DIR=examples/rospack
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/rospack
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/540312235
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=sanitize-thread-cxx17
+    #     PROJECT_DIR=examples/rospack
 
     # }
 
