@@ -69,6 +69,10 @@ environment:
       PROJECT_DIR: examples\Boost-system
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
+    - TOOLCHAIN: "vs-15-2017-win64-mt"
+      PROJECT_DIR: examples\Boost-system
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
     # }
 
     # Boost-iostreams {
