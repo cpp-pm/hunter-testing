@@ -18,9 +18,11 @@ environment:
     #   PROJECT_DIR: examples\mkldnn
     #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\mkldnn
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/25373801/job/inblban8kki3ll5g
+    # waiting for v0.20: https://github.com/intel/mkl-dnn/commit/dbda56d5a43bfbaebc088b18586e3d6083c06067
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\mkldnn
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     # 64bit only:
     # - https://ci.appveyor.com/project/ingenue/hunter/builds/23316246/job/6y9h7cpab51ye29n
@@ -40,7 +42,13 @@ environment:
 
     # Extra {
 
-    - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/builds/25373801/job/qofwl078lhlb1s62
+    # waiting for v0.20: https://github.com/intel/mkl-dnn/commit/dbda56d5a43bfbaebc088b18586e3d6083c06067
+    # - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
+    #   PROJECT_DIR: examples\mkldnn
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    - TOOLCHAIN: "dummy"
       PROJECT_DIR: examples\mkldnn
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
