@@ -20,13 +20,15 @@ environment:
       PROJECT_DIR: examples\libigl
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\libigl
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/rbsheth/hunter/builds/25537275/job/1sq7fvw69v8ywvb9
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\libigl
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\libigl
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/rbsheth/hunter/builds/25537275/job/fagmjs7t0tun83a3
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\libigl
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "msys-cxx17"
       PROJECT_DIR: examples\libigl
