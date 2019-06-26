@@ -20,9 +20,11 @@ environment:
       PROJECT_DIR: examples\taocpp-json
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\taocpp-json
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Fails with fatal error C1083: Cannot open include file: 'optional': No such file or directory
+    # see https://ci.appveyor.com/project/Bjoe/hunter/build/job/29dlf8svrklf3aal#L655
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\taocpp-json
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\taocpp-json
