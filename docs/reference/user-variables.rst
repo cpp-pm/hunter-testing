@@ -121,6 +121,8 @@ HUNTER_CONFIGURATION_TYPES
 * See `example <https://github.com/ruslo/hunter/wiki/example.hunter_configuration_types>`__
 * Default: ``Release``, ``Debug``
 
+.. _hunter build shared libs:
+
 HUNTER_BUILD_SHARED_LIBS
 ========================
 
@@ -270,6 +272,18 @@ and have some usage peculiarities:
   track what files was the original sources/what is temporary files
   for build. Combining with previous peculiarity it's expected that much
   more disk space will be used than usually.
+* If package is already installed before ``HUNTER_KEEP_PACKAGE_SOURCES`` set
+  to ``ON`` there will be no build triggered, hence there will be no sources
+  kept. To re-trigger the build you can add some dummy parameter to
+  ``CMAKE_ARGS``, for example:
+
+  .. code-block:: cmake
+
+    hunter_config(foo VERSION ${HUNTER_foo_VERSION} CMAKE_ARGS DUMMY=1)
+
+.. seealso::
+
+  * :ref:`hunter_config(... KEEP_PACKAGE_SOURCES) <hunter_config>`
 
 .. _hunter download server:
 
@@ -331,6 +345,16 @@ To create new URLs the following template is used:
 
     This is the same structure as Hunter uses for its own :ref:`Download <layout deployed download>` directory.
 
+.. note::
+
+    ``HUNTER_DOWNLOAD_SERVER`` will be applied only to packages enabled with the standard
+    ``VERSION`` variant of :ref:`hunter_config` entries, which is the case for all default
+    Hunter package definitions.  Custom package definitions introduced with a ``URL``/``SHA1``
+    variant on :ref:`hunter_config` in a project's local configuration, such as those included through
+    ``FILEPATH`` or ``LOCAL`` arguments to ``HunterGate()``, will be unaffected by this variable.
+    The ``git`` variants of :ref:`hunter_config`, namely ``GIT_SUBMODULE`` and ``GIT_SELF``, have no
+    transformable URL and are also unaffected by ``HUNTER_DOWNLOAD_SERVER``.
+
 .. _hunter tls verify:
 
 HUNTER_TLS_VERIFY
@@ -351,6 +375,16 @@ Default: ``ON``
   And if you're using binary servers (it's
   :ref:`default <hunter_use_cache_servers>`) meta cache files like
   ``cache.sha1`` will not be checked at all!
+
+.. _hunter git self ignore untracked:
+
+HUNTER_GIT_SELF_IGNORE_UNTRACKED
+================================
+
+Set this option to ``ON`` if you want to ignore untracked files while
+using :doc:`GIT_SELF feature </user-guides/hunter-user/git-self>`.
+
+Default: ``OFF``
 
 .. _hunter no toolchain id recalculation:
 
@@ -390,7 +424,7 @@ HUNTER_BINARY_DIR
 
 * Use external directory ``HUNTER_BINARY_DIR`` for building external projects.
   This variable can be used to fix
-  `"path too long" <https://github.com/ruslo/hunter/wiki/error.external.build.failed#windows>`__ error on windows
+  `"path too long" <https://docs.hunter.sh/en/latest/reference/errors/error.external.build.failed.html#windows>`__ error on windows
 
 .. _hunter disable install:
 
@@ -419,6 +453,8 @@ HUNTER_GIT_EXECUTABLE
 =====================
 
 Path to Git executable
+
+.. _hunter jobs number env:
 
 HUNTER_JOBS_NUMBER
 ==================
