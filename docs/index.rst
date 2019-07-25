@@ -6,11 +6,8 @@ Hunter: organize freedom
 
 .. warning::
 
-  Documentation is in process of migrating from
-  `GitHub wiki <https://github.com/ruslo/hunter/wiki>`_.
-  Some information may be missing: blank pages, broken links, etc.
-  See `issue #667 <https://github.com/ruslo/hunter/issues/677>`__
-  for details.
+  Please read the **IMPORTANT** announcement
+  `Hunter: to be or not to be <https://github.com/ruslo/hunter/issues/1921>`__!
 
 Welcome to the Hunter package manager documentation!
 
@@ -66,8 +63,11 @@ Sounds interesting? Keep reading!
    Frequently Asked Questions <faq>
    /contributing
    /contacts
-   /donations
    /reference
+
+.. note::
+
+  :doc:`Brief overview </overview>` part is a **must-read!**
 
 .. [1] C++ is the main goal, works for other types as well. See :ref:`Manage anything <manage-anything>`.
 
