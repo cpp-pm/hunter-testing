@@ -8,28 +8,44 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    ## Autotools scheme not supported with Visual Studio
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/5aa1hi1hnb7m574y
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    ## Autotools scheme not supported with Visual Studio
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/7ygtfo2e4fhrj0wg
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    ## Autotools scheme not supported with Visual Studio
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/w3plf3j56ogi92kx
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    ## Autotools scheme not supported with Visual Studio
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/08gpk6vk60fb7ui1
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    ## autoreconf: command not found
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/tvdl5lhteu1fqieu
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
+    ## pkg-config.exe could not find 'libxdg-basedir'
+    ## https://ci.appveyor.com/project/tastytea/hunter/build/job/087t9rkddkmoe8xj
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\libxdg-basedir
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\glib
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
