@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/s3
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/s3
+    # FIXME (libxml2):
+    # - https://travis-ci.org/ingenue/hunter/jobs/579228237
+    # - os: linux
+    #   env: >
+    #     # TOOLCHAIN=analyze-cxx17
+    #     # PROJECT_DIR=examples/s3
 
     - os: linux
       env: >
