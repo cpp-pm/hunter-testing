@@ -63,9 +63,6 @@ def run():
       action='store_true',
       help='Upload cache to server and run checks (clean up will be triggered, same as --clear-except-download)'
   )
-  parser.add_argument(
-      '--skip-raw', action='store_true', help="Skip uploading of raw files"
-  )
 
   parsed_args = parser.parse_args()
 
@@ -114,6 +111,7 @@ def run():
   os.makedirs(testing_dir, exist_ok=True)
 
   if os.name == 'nt':
+    # path too long workaround
     hunter_junctions = os.getenv('HUNTER_JUNCTIONS')
     if hunter_junctions:
       temp_dir = tempfile.mkdtemp(dir=hunter_junctions)
@@ -148,6 +146,7 @@ def run():
 
   polly_root = os.getenv('POLLY_ROOT')
   if polly_root:
+    polly_root = os.path.abspath(polly_root)
     print('Using POLLY_ROOT: {}'.format(polly_root))
     build_script = os.path.join(polly_root, 'bin', 'build.py')
   else:
@@ -188,6 +187,13 @@ def run():
   if parsed_args.all_release:
     args += ['HUNTER_CONFIGURATION_TYPES=Release']
 
+  if parsed_args.upload:
+    passwords = os.path.join(
+        cdir, 'maintenance', 'upload-password-template.cmake'
+    )
+    args += ['HUNTER_RUN_UPLOAD=ON']
+    args += ['HUNTER_PASSWORDS_PATH={}'.format(passwords)]
+
   args += ['--verbose']
   if not verbose:
     args += ['--discard', '10']
@@ -201,29 +207,6 @@ def run():
   subprocess.check_call(args)
 
   if parsed_args.upload:
-    upload_script = os.path.join(cdir, 'maintenance', 'upload-cache-to-github.py')
-
-    print('Uploading cache')
-    call_args = [
-        sys.executable,
-        upload_script,
-        '--username',
-        'ingenue',
-        '--repo-owner',
-        'ingenue',
-        '--repo',
-        'hunter-cache',
-        '--cache-dir',
-        os.path.join(hunter_root, '_Base', 'Cache'),
-        '--temp-dir',
-        os.path.join(hunter_root, '__TEMP')
-    ]
-
-    if parsed_args.skip_raw:
-      call_args.append('--skip-raw')
-
-    subprocess.check_call(call_args)
-
     seconds = 60
     print(
         'Wait for GitHub changes became visible ({} seconds)...'.format(seconds)

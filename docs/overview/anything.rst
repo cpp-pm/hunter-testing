@@ -6,7 +6,7 @@ Manage anything
 
 .. _manage-anything:
 
-You can manage anything that can be downloaded by ``URL`` and checked with
+You can manage anything that can be downloaded by ``URL`` and checked with an
 ``SHA1`` hash:
 
 * C/C++ packages
@@ -51,3 +51,7 @@ You can manage anything that can be downloaded by ``URL`` and checked with
   add_test(NAME FooTest1 COMMAND foo --use-data "${MYDATA_ROOT}/case-1.png")
   add_test(NAME FooTest2 COMMAND foo --use-data "${MYDATA_ROOT}/case-2.png")
   # ...
+
+.. note::
+
+  * See :doc:`alternative approach </user-guides/cmake-user/private-data>`
