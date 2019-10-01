@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/SPIRV-Tools
 
-#    - os: linux
-#      env: >
-#        TOOLCHAIN=analyze-cxx17
-#        PROJECT_DIR=examples/SPIRV-Tools
+    # FIXME clang-analyze fails
+    # https://travis-ci.org/mchiasson/hunter/jobs/591747853
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/SPIRV-Tools
 
     - os: linux
       env: >
