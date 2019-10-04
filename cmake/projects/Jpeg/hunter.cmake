@@ -12,6 +12,17 @@ hunter_add_version(
     PACKAGE_NAME
     Jpeg
     VERSION
+    "9b-p3"
+    URL
+    "https://github.com/hunter-packages/jpeg/archive/v9b-p3.tar.gz"
+    SHA1
+    41f208215d59be34868c1f23b1fd0ee3f9934b9b
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Jpeg
+    VERSION
     "9b-p1"
     URL
     "https://github.com/hunter-packages/jpeg/archive/v9b-p1.tar.gz"
@@ -28,6 +39,17 @@ hunter_add_version(
     "https://github.com/hunter-packages/jpeg/archive/v9b-p0.tar.gz"
     SHA1
     70769f349fdf346851f2e7fc4c5f603cd8960ae4
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Jpeg
+    VERSION
+    "9c-p0"
+    URL
+    "https://github.com/hunter-packages/jpeg/archive/v9c-p0.tar.gz"
+    SHA1
+    42ff243ae28bdda5b4df5c47fb727272a534dc94
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)

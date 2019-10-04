@@ -4,15 +4,30 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: uW6WWlvCt7CRvvdO9ePjbymPcPNuV1C6HGF8u7Ey6EI=
+      secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
   matrix:
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1053/job/l4ud1nf8pbo11tkh
-    # - TOOLCHAIN: "default"
-    #   PROJECT_DIR: examples\hdf5
+    #- TOOLCHAIN: "default"
+    #  PROJECT_DIR: examples\hdf5
+
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\hdf5
+
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64"
+    #  PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "ninja-vs-14-2015-win64"
+      PROJECT_DIR: examples\hdf5
 
     - TOOLCHAIN: "ninja-vs-12-2013-win64"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "nmake-vs-15-2017-win64"
       PROJECT_DIR: examples\hdf5
 
     - TOOLCHAIN: "nmake-vs-12-2013-win64"
@@ -38,8 +53,23 @@ environment:
 
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1053/job/l4ud1nf8pbo11tkh
-    # - TOOLCHAIN: "vs-14-2015"
-    #   PROJECT_DIR: examples\hdf5
+    - TOOLCHAIN: "vs-14-2015"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "vs-14-2015-win64"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "vs-15-2017"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "vs-15-2017-win64"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "vs-16-2019"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "vs-16-2019-win64"
+      PROJECT_DIR: examples\hdf5
 
     - TOOLCHAIN: "vs-9-2008"
       PROJECT_DIR: examples\hdf5
@@ -47,17 +77,24 @@ environment:
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\hdf5
 
+    - TOOLCHAIN: "mingw-cxx14"
+      PROJECT_DIR: examples\hdf5
+
+    - TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\hdf5
+
     # FIXME:
     # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1053/job/mtnnis065ibe658y
-    # - TOOLCHAIN: "msys"
-    #   PROJECT_DIR: examples\hdf5
+    - TOOLCHAIN: "msys"
+      PROJECT_DIR: examples\hdf5
 
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
 
-  # Install Python package 'requests'
+  # Install Python package 'requests', 'gitpython'
   - cmd: pip install requests
+  - cmd: pip install gitpython
 
   # Install latest Polly toolchains and scripts
   - cmd: appveyor DownloadFile https://github.com/ruslo/polly/archive/master.zip
@@ -78,12 +115,18 @@ install:
   # * http://stackoverflow.com/a/3870338/2288008
   - cmd: set PATH=%PATH:C:\Program Files\Git\usr\bin;=%
 
-  # Use MinGW from Qt tools because version is higher
-  # * http://www.appveyor.com/docs/installed-software#qt
-  - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+  # Save git.exe in HUNTER_GIT_EXECUTABLE for upload
+  # * https://docs.hunter.sh/en/latest/reference/user-variables.html#hunter-git-executable
+  # Variable will be used in CMake so it's okay to use Unix style '/'
+  - cmd: set HUNTER_GIT_EXECUTABLE=C:/Program Files/Git/bin/git.exe
+
+  - cmd: set MINGW_PATH=C:\mingw-w64\x86_64-7.2.0-posix-seh-rt_v5-rev1\mingw64\bin
 
   # MSYS2 location
   - cmd: set MSYS_PATH=C:\msys64\usr\bin
+
+  # Visual Studio 15 2017: Mimic behavior of older versions
+  - cmd: set VS150COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools
 
 build_script:
   - cmd: python .\jenkins.py
