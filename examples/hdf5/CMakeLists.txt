@@ -9,6 +9,8 @@ include("../common.cmake")
 
 project(download-hdf5)
 
+option(HUNTER_TLS_VERIFY ON)
+
 hunter_add_package(hdf5)
 
 find_package(ZLIB CONFIG REQUIRED)
