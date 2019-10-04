@@ -9,10 +9,6 @@ include("../common.cmake")
 
 project(download-hdf5)
 
-option(HUNTER_TLS_VERIFY ON)
-
-set(CMAKE_PREFIX_PATH $ENV{hdf5_ROOT})
-
 hunter_add_package(hdf5)
 
 find_package(ZLIB CONFIG REQUIRED)
