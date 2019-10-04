@@ -42,3 +42,4 @@ get_filename_component(TESTING_URL "${TESTING_URL}" ABSOLUTE)
 
 ### HunterGate module
 HunterGate(URL "${TESTING_URL}" SHA1 "${TESTING_SHA1}" ${TESTING_CONFIG_OPT})
+
