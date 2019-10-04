@@ -11,7 +11,7 @@ project(download-hdf5)
 
 option(HUNTER_TLS_VERIFY ON)
 
-set(hdf5_DIR $ENV{hdf5_ROOT})
+set(CMAKE_PREFIX_PATH $ENV{hdf5_ROOT})
 
 hunter_add_package(hdf5)
 
