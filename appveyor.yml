@@ -38,11 +38,13 @@ environment:
       HUNTER_BINARY_DIR: C:\_BIN
       HUNTER_ROOT: C:\_HNTR
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\glslang
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\_BIN
-      HUNTER_ROOT: C:\_HNTR
+    # Disabled: Missing 'strdup;
+    # https://ci.appveyor.com/project/mchiasson/hunter/builds/27918176/job/8ml4be4o3hkrvis5#L2920
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\glslang
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #  HUNTER_BINARY_DIR: C:\_BIN
+    #  HUNTER_ROOT: C:\_HNTR
 
 install:
   # Python 3
