@@ -9,8 +9,10 @@ include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * Boost
+# * libxml2
 # * OpenSSL
 # * odb-boost
+# * ncursesw
 function(hunter_dump_cmake_flags)
   cmake_parse_arguments(x "SKIP_INCLUDES;SKIP_PIC" "CPPFLAGS" "" "${ARGV}")
   # -> x_SKIP_INCLUDES
@@ -27,11 +29,11 @@ function(hunter_dump_cmake_flags)
     hunter_assert_not_empty_string("${IOS_SDK_VERSION}")
     string(COMPARE EQUAL "${IOS_DEPLOYMENT_SDK_VERSION}" "" _no_deployment_sdk_version)
     if(_no_deployment_sdk_version)
-      set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_SDK_VERSION}")
-      set(CMAKE_C_FLAGS "-miphoneos-version-min=${IOS_SDK_VERSION}")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -miphoneos-version-min=${IOS_SDK_VERSION}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_SDK_VERSION}")
     else()
-      set(CMAKE_CXX_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
-      set(CMAKE_C_FLAGS "-miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -miphoneos-version-min=${IOS_DEPLOYMENT_SDK_VERSION}")
     endif()
 
     if(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE)
@@ -39,6 +41,8 @@ function(hunter_dump_cmake_flags)
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fembed-bitcode")
     endif()
   endif()
+
+  set(cppflags "")
 
   if(APPLE AND NOT IOS)
     if(NOT "${CMAKE_OSX_SYSROOT}" STREQUAL "")
@@ -48,15 +52,15 @@ function(hunter_dump_cmake_flags)
       # Note: do not use quotes here, see OpenSSL-1.0.2 example
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -isysroot ${CMAKE_OSX_SYSROOT}")
+      set(cppflags "-isysroot ${CMAKE_OSX_SYSROOT}")
     endif()
 
     if(NOT "${CMAKE_OSX_DEPLOYMENT_TARGET}" STREQUAL "")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
+      set(cppflags "${cppflags} -mmacosx-version-min=${CMAKE_OSX_DEPLOYMENT_TARGET}")
     endif()
   endif()
-
-  set(cppflags "")
 
   if(ANDROID)
     string(COMPARE EQUAL "${CMAKE_SYSROOT_COMPILE}" "" no_sysroot_compile)
@@ -66,7 +70,7 @@ function(hunter_dump_cmake_flags)
       set(android_sysroot "${CMAKE_SYSROOT_COMPILE}")
 
       hunter_assert_not_empty_string("${CMAKE_SYSROOT}")
-      set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --sysroot=${CMAKE_SYSROOT}")
+      set(CMAKE_EXE_LINKER_FLAGS "--sysroot=${CMAKE_SYSROOT} ${CMAKE_EXE_LINKER_FLAGS}")
     endif()
 
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --sysroot=${android_sysroot}")

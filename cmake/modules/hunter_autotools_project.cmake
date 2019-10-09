@@ -48,6 +48,9 @@
 #       --enable-feature
 #       --disable-other
 #       --with-library
+#     PATCH_COMMAND                           # add a patch command
+#       ${CMAKE_COMMAND} -E copy "@HUNTER_PACKAGE_SCRIPT_DIR@/patch.sh" "@HUNTER_PACKAGE_SOURCE_DIR@"
+#       COMMAND "./patch.sh"
 #     BOOTSTRAP                               # add a bootstrap command to be run
 #       "./autogen.sh"                        # before ./configure such as 
 #                                             # ./autogen.sh or ./bootstrap
@@ -57,13 +60,15 @@ include(ExternalProject) # ExternalProject_Add
 include(CMakeParseArguments) # cmake_parse_arguments
 
 include(hunter_autotools_configure_command)
-include(hunter_fatal_error)
+include(hunter_user_error)
 include(hunter_status_debug)
 include(hunter_assert_not_empty_string)
 
 # Packages to test this function:
 # * xau
 # * gstreamer
+# * libxml2
+# * ncursesw
 function(hunter_autotools_project target_name)
   set(optional_params)
   set(one_value_params
@@ -85,6 +90,7 @@ function(hunter_autotools_project target_name)
   set(multi_value_params
       PACKAGE_CONFIGURATION_TYPES
       EXTRA_FLAGS
+      PATCH_COMMAND
   )
   cmake_parse_arguments(
       PARAM
@@ -142,7 +148,7 @@ function(hunter_autotools_project target_name)
   if(is_ios)
     hunter_status_debug("Autotools iOS IPHONEOS_ARCHS: ${IPHONEOS_ARCHS} IPHONESIMULATOR_ARCHS: ${IPHONESIMULATOR_ARCHS}")
     if(BUILD_SHARED_LIBS)
-      hunter_fatal_error("Autotools: building iOS libraries as shared is not supported")
+      hunter_user_error("Autotools: building iOS libraries as shared is not supported")
     endif()
     set(ios_architectures)
     list(APPEND ios_architectures ${IPHONEOS_ARCHS} ${IPHONESIMULATOR_ARCHS})
@@ -184,6 +190,8 @@ function(hunter_autotools_project target_name)
         INSTALL_DIR
           ${PARAM_INSTALL_DIR}
           # not used, just avoid creating Install/<name> empty directory
+        PATCH_COMMAND
+          ${PARAM_PATCH_COMMAND}
         CONFIGURE_COMMAND
           "${PARAM_BOOTSTRAP}"
         COMMAND
@@ -238,16 +246,16 @@ function(hunter_autotools_project target_name)
         set(configure_host "x86_64-apple-darwin")
         set(is_simulator TRUE)
       else()
-        hunter_fatal_error("iOS architecture: ${ios_architecture} not supported")
+        hunter_user_error("iOS architecture: ${ios_architecture} not supported")
       endif()
 
       set(arch_flags)
       # Extra space at the end of the arch_flags is needed below when appending
       # to configure_opts, please do not remove!
       if(is_simulator)
-        set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONESIMULATOR_SDK_ROOT} -miphoneos-version-min=${IOS_SDK_VERSION} ")
+        set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONESIMULATOR_SDK_ROOT} ")
       else()
-        set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONEOS_SDK_ROOT} -miphoneos-version-min=${IOS_SDK_VERSION} ")
+        set(arch_flags "-arch ${ios_architecture} -isysroot ${IPHONEOS_SDK_ROOT} ")
       endif()
       set(arch_install_dir
           ${multi_arch_install_root}/${ios_architecture}
@@ -295,6 +303,8 @@ function(hunter_autotools_project target_name)
           INSTALL_DIR
             ${arch_install_dir}
             # not used, just avoid creating Install/<name> empty directory
+          PATCH_COMMAND
+            ${PARAM_PATCH_COMMAND}
           CONFIGURE_COMMAND
             "${PARAM_BOOTSTRAP}"
           COMMAND

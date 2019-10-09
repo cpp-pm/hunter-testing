@@ -4,37 +4,47 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: qQvNsrf+SWY9hg8/7HmsJzE9m4S0phUeVaWk+wyrQe3aNsWLazFXzCsBsu4EBBvc
+      secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\glslang
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\_BIN
+      HUNTER_ROOT: C:\_HNTR
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\glslang
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\_BIN
+      HUNTER_ROOT: C:\_HNTR
 
-    # Fails with a path too long error
-    #   https://ci.appveyor.com/project/jhs67/hunter-vfmrx/build/1.0.1/job/q2aeou9s0o8w7bd5
-    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
-    #  PROJECT_DIR: examples\glslang
-    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+      PROJECT_DIR: examples\glslang
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\_BIN
+      HUNTER_ROOT: C:\_HNTR
 
-    # Fails with a path too long error
-    #   https://ci.appveyor.com/project/jhs67/hunter-vfmrx/build/1.0.1/job/q5ifsipd1b7o4cj0
-    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
-    #  PROJECT_DIR: examples\glslang
-    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+      PROJECT_DIR: examples\glslang
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\_BIN
+      HUNTER_ROOT: C:\_HNTR
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\glslang
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\_BIN
+      HUNTER_ROOT: C:\_HNTR
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\glslang
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # Disabled: Missing 'strdup;
+    # https://ci.appveyor.com/project/mchiasson/hunter/builds/27918176/job/8ml4be4o3hkrvis5#L2920
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\glslang
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #  HUNTER_BINARY_DIR: C:\_BIN
+    #  HUNTER_ROOT: C:\_HNTR
 
 install:
   # Python 3
