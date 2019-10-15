@@ -1,6 +1,3 @@
-# Copyright (c) 2015, Oliver Daniell
-# All rights reserved.
-
 cmake_minimum_required(VERSION 3.10)
 cmake_policy(SET CMP0074 NEW)
 
@@ -19,4 +16,4 @@ find_package(szip CONFIG REQUIRED)
 find_package(hdf5 CONFIG REQUIRED)
 
 add_executable(foo h5_write.c)
-target_link_libraries(foo hdf5::hdf5-static)
+target_link_libraries(foo hdf5::hdf5-static ${SZIP_LIBRARIES} ${SZIP_LIBRARIES})

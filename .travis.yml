@@ -56,8 +56,8 @@ matrix:
     #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859220
-    - os: linux
-      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=analyze
+    #- os: linux
+    #  env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=analyze
 
     # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859221
     - os: linux
