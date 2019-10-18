@@ -39,6 +39,8 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-cxx14
     - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-lto
+    - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-cxx14-pic
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-fpic

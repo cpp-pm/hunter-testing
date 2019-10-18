@@ -10,7 +10,7 @@ hunter_add_package(hdf5)
 
 find_package(ZLIB CONFIG REQUIRED)
 find_package(szip CONFIG REQUIRED)
-find_package(hdf5 CONFIG REQUIRED)
+find_package(HDF5 CONFIG REQUIRED)
 
 add_executable(foo h5_write.c)
 target_link_libraries(foo hdf5::hdf5-static)
