@@ -10,7 +10,17 @@ hunter_add_package(hdf5)
 
 find_package(ZLIB CONFIG REQUIRED)
 find_package(szip CONFIG REQUIRED)
-find_package(hdf5 CONFIG REQUIRED)
+
+set (LIB_TYPE STATIC) # or SHARED
+string(TOLOWER ${LIB_TYPE} SEARCH_TYPE)
+
+find_package (HDF5 NAMES hdf5 COMPONENTS C ${SEARCH_TYPE})
+
+set_directory_properties(PROPERTIES INCLUDE_DIRECTORIES "${HDF5_INCLUDE_DIR}")
+set (LINK_LIBS ${LINK_LIBS} ${HDF5_C_${LIB_TYPE}_LIBRARY})
 
 add_executable(foo h5_write.c)
-target_link_libraries(foo hdf5::hdf5-static)
+target_link_libraries(foo ${LINK_LIBS})
+
+
+

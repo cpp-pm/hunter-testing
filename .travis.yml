@@ -18,6 +18,7 @@ addons:
     packages:
       - python3-pip
       - python3-setuptools # easy_install3
+      - binutils
 
       # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
       - libstdc++-7-dev
@@ -36,8 +37,6 @@ matrix:
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=default
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-libstdcxx
-    - os: linux
-      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=analyze
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-cxx14
     - os: linux
