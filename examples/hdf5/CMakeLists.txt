@@ -16,6 +16,12 @@ string(TOLOWER ${LIB_TYPE} SEARCH_TYPE)
 
 find_package (HDF5 NAMES hdf5 COMPONENTS C ${SEARCH_TYPE})
 
+get_cmake_property(_variableNames VARIABLES)
+list (SORT _variableNames)
+foreach (_variableName ${_variableNames})
+    message(STATUS "${_variableName}=${${_variableName}}")
+endforeach()
+
 message("{HDF5_INCLUDE_DIR} is ${HDF5_INCLUDE_DIR}")
 message("{HDF5_INSTALL_INCLUDE_DIR} is ${HDF5_INSTALL_INCLUDE_DIR}")
 message("{INCLUDE_INSTALL_DIR} is ${INCLUDE_INSTALL_DIR}")
