@@ -60,18 +60,6 @@ environment:
       HUNTER_ROOT: C:\.HUNTER
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
       
-    - TOOLCHAIN: "vs-10-2010"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2010
-      
-    - TOOLCHAIN: "vs-11-2012"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2012
-      
     - TOOLCHAIN: "vs-12-2013-win64"
       PROJECT_DIR: examples\hdf5
       HUNTER_BINARY_DIR: C:\__BIN
@@ -127,12 +115,6 @@ environment:
       HUNTER_BINARY_DIR: C:\__BIN
       HUNTER_ROOT: C:\.HUNTER
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      
-    - TOOLCHAIN: "vs-9-2008"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2008
       
     - TOOLCHAIN: "mingw"
       PROJECT_DIR: examples\hdf5
