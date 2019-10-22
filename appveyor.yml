@@ -116,28 +116,6 @@ environment:
       HUNTER_ROOT: C:\.HUNTER
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       
-    - TOOLCHAIN: "mingw"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      
-    - TOOLCHAIN: "mingw-cxx14"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      
-    # FIXME:
-    # * https://ci.appveyor.com/project/ingenue/hunter/build/1.0.1053/job/mtnnis065ibe658y
-    - TOOLCHAIN: "msys"
-      PROJECT_DIR: examples\hdf5
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
-      
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
