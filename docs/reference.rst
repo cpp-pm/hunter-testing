@@ -13,3 +13,5 @@ Reference
    /reference/user-modules
    /reference/internal-variables
    /reference/internal-modules
+   /reference/layouts
+   /reference/release-notes

@@ -16,17 +16,15 @@ addons:
     sources:
       - ubuntu-toolchain-r-test
     packages:
-      - python3
-
-      # python3-pip package is not available, use 'easy_install3':
-      # * https://github.com/travis-ci/apt-package-whitelist/issues/768
+      - python3-pip
       - python3-setuptools # easy_install3
+      - binutils
 
       # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
-      - libstdc++-4.8-dev
+      - libstdc++-7-dev
 
       # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
-      - g++-4.8
+      - g++-7
 
 env:
   global:
@@ -40,26 +38,27 @@ matrix:
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-libstdcxx
     - os: linux
-      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=gcc-4-8
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859218
-    # - os: linux
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859220
-    # - os: linux
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=analyze
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859221
-    # - os: linux
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=sanitize-address
-
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-cxx14
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-cxx14-pic
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-fpic
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-fpic-static-std
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-fpic-static-std-cxx14
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=gcc-lto
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=gcc-7
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=gcc-7-cxx14-pic
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=sanitize-address
     - os: linux
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=sanitize-leak
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859223
-    # - os: linux
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=sanitize-thread
+    - os: linux
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=sanitize-thread
 
     # }
 
@@ -71,36 +70,36 @@ matrix:
     - os: osx
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=clang-libstdcxx
     - os: osx
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=osx-10-13-make-cxx14
+    - os: osx
+      env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=osx-10-13-cxx14
+    - os: osx
       env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=osx-10-11
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164878134
-    # - os: osx
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=ios-nocodesign-9-3
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859218
-    # - os: osx
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon
-
-    # FIXME: https://travis-ci.org/ingenue/hunter/jobs/164859220
-    # - os: osx
-    #   env: PROJECT_DIR=examples/hdf5 TOOLCHAIN=analyze
-
-    # }
 
 install:
   # Info about OS
   - uname -a
 
+  # Info about available disk space
+  - df -h $HOME
+
+  # Disable autoupdate
+  # * https://github.com/Homebrew/brew/blob/7d31a70373edae4d8e78d91a4cbc05324bebc3ba/Library/Homebrew/manpages/brew.1.md.erb#L202
+  - export HOMEBREW_NO_AUTO_UPDATE=1
+
   # Install Python 3
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
   - if [[ "`uname`" == "Darwin" ]]; then pip3 install requests; fi
-  - if [[ "`uname`" == "Linux" ]]; then travis_retry easy_install3 --user requests==2.10.0; fi
+  - if [[ "`uname`" == "Darwin" ]]; then pip3 install gitpython; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user requests; fi
+  - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
-  - wget https://github.com/ruslo/polly/archive/master.zip
+  - wget https://github.com/cpp-pm/polly/archive/master.zip
   - unzip master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"

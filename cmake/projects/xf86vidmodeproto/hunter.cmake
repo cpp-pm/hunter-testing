@@ -29,12 +29,14 @@ set(xf86vidmodeproto_dependencies
 )
 hunter_cmake_args(
     xf86vidmodeproto
-    CMAKE_ARGS         # do not use double quotes on CMAKE_ARGS
-      DEPENDS_ON_PACKAGES=${xf86vidmodeproto_dependencies}
+    CMAKE_ARGS
+    DEPENDS_ON_PACKAGES=${xf86vidmodeproto_dependencies}
+    PKGCONFIG_EXPORT_TARGETS=xf86vidmodeproto
 )
 hunter_cacheable(xf86vidmodeproto)
 hunter_download(
     PACKAGE_NAME xf86vidmodeproto
+    PACKAGE_INTERNAL_DEPS_ID "2"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/pkgconfig/xf86vidmodeproto.pc"
 )
