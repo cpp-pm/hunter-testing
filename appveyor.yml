@@ -4,7 +4,7 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
+      secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
   matrix:
 
@@ -20,19 +20,21 @@ environment:
       PROJECT_DIR: examples\glm
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
+    - TOOLCHAIN: "vs-16-2019-win64-cxx17"
+      PROJECT_DIR: examples\glm
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\glm
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.4222/job/hqmlayykkklt174o
-    # - TOOLCHAIN: "mingw-cxx17"
-    #   PROJECT_DIR: examples\glm
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "mingw-cxx17"
+      PROJECT_DIR: examples\glm
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    # FIXME: https://ci.appveyor.com/project/ingenue/hunter/build/1.0.4222/job/aiy9ms0970nue6c8
-    # - TOOLCHAIN: "msys-cxx17"
-    #   PROJECT_DIR: examples\glm
-    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    - TOOLCHAIN: "msys-cxx17"
+      PROJECT_DIR: examples\glm
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
