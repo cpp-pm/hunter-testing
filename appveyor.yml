@@ -4,7 +4,7 @@ environment:
   global:
     # This variable used only if '--upload' added to 'jenkins.py'
     GITHUB_USER_PASSWORD:
-      secure: tzWauRyJgacWahxWX5cKP+rnnczqdEXAIzP7ayUgt16GfoGKpkqa/QvDJYxLKM6Q
+      secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
   matrix:
 
@@ -19,6 +19,10 @@ environment:
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\glbinding
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+
+    - TOOLCHAIN: "vs-16-2019-win64-cxx17"
+      PROJECT_DIR: examples\glbinding
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\glbinding
