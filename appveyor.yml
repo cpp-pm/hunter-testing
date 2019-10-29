@@ -13,18 +13,21 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       HUNTER_BINARY_DIR: C:\__BIN
       HUNTER_ROOT: C:\.HUNTER
+      HUNTER_CONFIGURATION_TYPES: Release
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\shaderc
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       HUNTER_BINARY_DIR: C:\__BIN
       HUNTER_ROOT: C:\.HUNTER
+      HUNTER_CONFIGURATION_TYPES: Release
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\shaderc
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
       HUNTER_BINARY_DIR: C:\__BIN
       HUNTER_ROOT: C:\.HUNTER
+      HUNTER_CONFIGURATION_TYPES: Release
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
       PROJECT_DIR: examples\shaderc
@@ -37,12 +40,13 @@ environment:
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
       HUNTER_BINARY_DIR: C:\__BIN
       HUNTER_ROOT: C:\.HUNTER
+      HUNTER_CONFIGURATION_TYPES: Release
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\shaderc
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      HUNTER_BINARY_DIR: C:\__BIN
-      HUNTER_ROOT: C:\.HUNTER
+    # Broken build
+    # https://ci.appveyor.com/project/mchiasson/hunter/builds/28463548/job/hk43bdxvcnkaawks
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\shaderc
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
