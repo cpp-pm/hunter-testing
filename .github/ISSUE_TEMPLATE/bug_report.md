@@ -9,7 +9,7 @@ assignees: ''
 
 * I've read [Brief overview section](https://docs.hunter.sh/en/latest/overview.html) and do understand basic concepts. **[Yes|No]**
 * I've read [F.A.Q. section](https://docs.hunter.sh/en/latest/faq.html) and there is no solution to my problem there. **[Yes|No]**
-* I've read [Code of Conduct](https://github.com/ruslo/hunter/blob/master/.github/CODE_OF_CONDUCT.md), I promise to be polite and will do my best at being constructive. **[Yes|No]**
+* I've read [Code of Conduct](https://github.com/cpp-pm/hunter/blob/master/.github/CODE_OF_CONDUCT.md), I promise to be polite and will do my best at being constructive. **[Yes|No]**
 * I've read [Reporting bugs section](https://docs.hunter.sh/en/latest/contributing.html#reporting-bugs) carefully. **[Yes|No]**
 * I've checked that all the `hunter_add_package`/`find_package` API used by me in the example is the same as in [documentation](https://docs.hunter.sh/en/latest/packages.html). **[Yes|No]**
 * I'm using [latest](https://github.com/ruslo/hunter/releases) Hunter `URL`/`SHA1`. **[Yes|No]**
