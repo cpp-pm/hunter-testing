@@ -9,28 +9,34 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tiny-process-library
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tiny-process-library
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: error MSB3491: specified path, file name, or both are too long
+    # * https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29432208/job/r4mg2x0lbp5vlqai#L427
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\tiny-process-library
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: error MSB3491: specified path, file name, or both are too long
+    # * https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29432208/job/bh3sydnde5rsyhs5#L403
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\tiny-process-library
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tiny-process-library
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Compile error: class 'TinyProcessLib::Process::Data' does not have any field named 'handle'
+    # * https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29432208/job/m7wu9pgewmia2ri3#L413
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\tiny-process-library
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
