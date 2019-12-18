@@ -7,12 +7,12 @@ cmake_minimum_required(VERSION 3.2)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(tiny-process-library)
+project(immer)
 
 # DOCUMENTATION_START {
-hunter_add_package(tiny-process-library)
-find_package(tiny-process-library CONFIG REQUIRED)
+hunter_add_package(Immer)
+find_package(Immer CONFIG REQUIRED)
 
 add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC tiny-process-library::tiny-process-library)
+target_link_libraries(boo PUBLIC immer)
 # DOCUMENTATION_END }
