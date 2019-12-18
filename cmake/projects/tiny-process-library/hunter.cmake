@@ -9,11 +9,11 @@ hunter_add_version(
     PACKAGE_NAME
     tiny-process-library
     VERSION
-    2.0.2
+    2.0.2-p0
     URL
-    "https://gitlab.com/eidheim/tiny-process-library/-/archive/v2.0.2/tiny-process-library-v2.0.2.tar.gz"
+    "https://github.com/cpp-pm/tiny-process-library/archive/v2.0.2-p0.tar.gz"
     SHA1
-    380589052c93ca6815717d0fd62270c6dc867eef
+    cfe8bf3df785e819807e6c5363341d6427b47fae
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
