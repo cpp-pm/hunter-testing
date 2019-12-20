@@ -8,29 +8,49 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Boost build error: Failed to build Boost.Build engine.
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/lq6g4uu43fijoyg4#L357
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Boost build error: Failed to build Boost.Build engine.
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/kaxiprt482pu8nqo#L407
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Compile error in zug/skip.hpp
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/8ffhanf8ixd18jy8#L890
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+    # FIXME: Compile error in zug/util.hpp error C2496: 'zug::noop' 'selectany' can only be applied to data items with external linkage
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/93n4v70e7xybv85x#L904
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME: template argument deduction/substitution failed
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/bbcomgv4lx7pll6h#L936
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # FIXME: Boost build error: /bin/sh: bootstrap.bat: command not found
+    # https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/29651498/job/sg9iglesnqj5k4w5#L364
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\Zug
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    # Extra {
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\Zug
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # }
 
 install:
   # Python 3
