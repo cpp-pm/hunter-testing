@@ -22,7 +22,7 @@ Private
 * Write me at ruslan_baratov@yahoo.com
 * Private chat room on Gitter: https://gitter.im/ruslo
 
-.. _issue: https://github.com/ruslo/hunter/issues/new
+.. _issue: https://github.com/cpp-pm/hunter/issues/new
 
 Please don't
 ============
@@ -57,5 +57,9 @@ If you like Hunter and its goals, consider supporting it by making a donation.
 .. image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
   :target: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UN8PDZZ3Q7VVL
   :alt: PayPal donation
+
+.. image:: https://raster.shields.io/badge/patreon-donate-green.png
+  :target: https://patreon.com/ruslo
+  :alt: Patreon donation
 
 Thanks! :)

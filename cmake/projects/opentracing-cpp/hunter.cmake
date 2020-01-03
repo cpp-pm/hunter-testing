@@ -48,6 +48,12 @@ hunter_add_version(
     URL "https://github.com/opentracing/opentracing-cpp/archive/v1.5.0.tar.gz"
     SHA1 "8aa1d0251274749d2f0604b56fb215431529387b")
 
+hunter_add_version(
+    PACKAGE_NAME opentracing-cpp
+    VERSION "1.6.0"
+    URL "https://github.com/opentracing/opentracing-cpp/archive/v1.6.0.tar.gz"
+    SHA1 "F5DCCF21DC05CDDB6205164A8FD3CF210926EF6C")
+
 hunter_cmake_args(opentracing-cpp CMAKE_ARGS
     BUILD_TESTING=OFF ENABLE_LINTING=OFF)
 
