@@ -20,6 +20,8 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - python3-pip
+      - python3-setuptools
+      - virtualenv
       - g++-7
 
 dist:
@@ -628,6 +630,11 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/Boost-python
 
+    - os: linux
+      env: >
+        TOOLCHAIN=gcc-7-cxx17
+        PROJECT_DIR=examples/Boost-python-numpy
+
     # }
 
     # }
@@ -646,6 +653,7 @@ install:
   # Install Python 3
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew upgrade python || echo "Ignoring failure..."; fi
   - if [[ "`uname`" == "Darwin" ]]; then travis_retry brew install python3; fi
+  - if [[ "`uname`" == "Darwin" ]]; then travis_retry pip3 install virtualenv; fi
 
   # Install Python package 'requests'
   # 'easy_install3' is not installed by 'brew install python3' on OS X 10.9 Maverick
@@ -655,8 +663,8 @@ install:
   - if [[ "`uname`" == "Linux" ]]; then travis_retry pip3 install --user gitpython; fi
 
   # Install latest Polly toolchains and scripts
-  - wget --quiet https://github.com/ruslo/polly/archive/master.zip
-  - unzip -q master.zip
+  - wget https://github.com/cpp-pm/polly/archive/master.zip
+  - unzip master.zip
   - POLLY_ROOT="`pwd`/polly-master"
   - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
