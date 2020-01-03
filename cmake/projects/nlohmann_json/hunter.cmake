@@ -10,8 +10,8 @@ include(hunter_status_debug)
 
 # See https://github.com/nlohmann/json#supported-compilers
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.9")
-    hunter_report_broken_package("The nlohmann_json package requires GCC 4.9 or newer.")
+  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.8")
+    hunter_report_broken_package("The nlohmann_json package requires GCC 4.8 or newer.")
   endif()
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "3.4")
@@ -118,6 +118,13 @@ hunter_add_version(
     VERSION "3.6.1"
     URL "https://github.com/nlohmann/json/archive/v3.6.1.tar.gz"
     SHA1 581e1d1c89c65670fb5212d74493a4545d9ab91c
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.7.0"
+    URL "https://github.com/nlohmann/json/archive/v3.7.0.tar.gz"
+    SHA1 d40e66b98392d0cfbd348de029b7822ab5b74e25
 )
 
 hunter_cmake_args(nlohmann_json CMAKE_ARGS JSON_BuildTests=OFF)
