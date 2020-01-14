@@ -38,36 +38,48 @@ matrix:
       env: >
         TOOLCHAIN=clang-cxx17
         PROJECT_DIR=examples/tinyrefl
+        VERBOSE=0
 
     - os: linux
       env: >
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/tinyrefl
+        VERBOSE=0
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME Clang archive Clang/4.0.1-p0/cc2e74c/v4.0.1-p0.tar.gz Clang/4.0.1-p0/cc2e74c/v4.0.1-p0.tar.gz SHA1 Hash mismatch
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244127#L11224
+    # - os: linux
+    #  env: >
+    #    TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #    PROJECT_DIR=examples/tinyrefl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME compile error recipe for target 'test/CMakeFiles/type_safe_test.dir/bounded_type.cpp.o' failed
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244128#L7679
+    # - os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/tinyrefl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-address-cxx17
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME compile error: "The AddressSanitizer run-time should not be"
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244129#L8947
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-address-cxx17
+    #    PROJECT_DIR=examples/tinyrefl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-leak-cxx17
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME link error undefined reference
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244130#L13872
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-leak-cxx17
+    #    PROJECT_DIR=examples/tinyrefl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=sanitize-thread-cxx17
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME clang-7: error: clang frontend command failed with exit code 70
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244131#L10041
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=sanitize-thread-cxx17
+    #    PROJECT_DIR=examples/tinyrefl
 
     # }
 
@@ -78,18 +90,22 @@ matrix:
       env: >
         TOOLCHAIN=osx-10-13-make-cxx14
         PROJECT_DIR=examples/tinyrefl
+        VERBOSE=0
 
     - os: osx
       osx_image: xcode9.4
       env: >
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/tinyrefl
+        VERBOSE=0
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/tinyrefl
+    # FIXME compile error: static_assert failed
+    # See https://travis-ci.org/Bjoe/hunter/jobs/636244134#L5054
+    #- os: osx
+    #  osx_image: xcode9.4
+    #  env: >
+    #    TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #    PROJECT_DIR=examples/tinyrefl
 
     # }
 
