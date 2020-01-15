@@ -28,9 +28,11 @@ environment:
       PROJECT_DIR: examples\date
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\date
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # Broken, see
+    # https://ci.appveyor.com/project/kaihowl/hunter/builds/30044220/job/nfsjym8iymyxqp3l#L411
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\date
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
