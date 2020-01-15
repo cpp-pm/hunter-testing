@@ -9,28 +9,34 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tinyrefl
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-
+      
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tinyrefl
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tinyrefl
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      HUNTER_BINARY_DIR: C:\__BIN
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\tinyrefl
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME compile error: use of deleted function 'llvm::cl::opt'
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/build/job/m05807x5ifn0mw8v#L9948
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\tinyrefl
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME compile error in type_safe/constrained_type.hpp
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/build/job/ofr5aa4b8toc0lj5#L2864
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\tinyrefl
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
