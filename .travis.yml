@@ -49,7 +49,6 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/OpenAL
 
-    
     # FIXME: analyze toolchain build failed
     # * https://travis-ci.com/drodin/hunter/jobs/274128889
     # - os: linux
