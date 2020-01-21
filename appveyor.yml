@@ -7,22 +7,29 @@ environment:
       secure: LNJ5FPxb7CPXpslLdb63M1Z2344XY5kxQOsnE1RQ6O+hslNqTHk7pvbS+YB5+05P
 
   matrix:
+    # FIXME: Compile error: is_visitable.hpp(8): fatal error C1083: Cannot open include file: 'experimental/type_traits': No such file or directory
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30231548/job/nn2fcro9vurla2tc#L474
+    #- TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\scelta
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\scelta
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Compile error: is_visitable.hpp(8): fatal error C1083: Cannot open include file: 'experimental/type_traits': No such file or directory
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30231548/job/rrbiyph2cgbq29pi#L573
+    #- TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\scelta
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\scelta
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Compile error: is_visitable.hpp(8): fatal error C1083: Cannot open include file: 'experimental/type_traits': No such file or directory
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30231548/job/ahqvrm2mcwwcih6v#L638
+    #- TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #  PROJECT_DIR: examples\scelta
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\scelta
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\scelta
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Compile error: is_visitable.hpp(8): fatal error C1083: Cannot open include file: 'experimental/type_traits': No such file or directory
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30231548/job/0pnn0omuoxx7kj3j#L692
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\scelta
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\scelta
