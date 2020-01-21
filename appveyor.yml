@@ -179,6 +179,7 @@ environment:
     - TOOLCHAIN: "vs-14-2015-win64-sdk-8-1"
       PROJECT_DIR: examples\Boost-python-numpy
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+      HUNTER_BINARY_DIR: C:\__BIN
 
     # }
 
