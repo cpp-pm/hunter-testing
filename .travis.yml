@@ -22,6 +22,7 @@ addons:
       - python3-pip
       - python3-setuptools
       - g++-7
+      - libgl1-mesa-dev
 
 dist:
   - xenial
@@ -49,10 +50,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/glu
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/glu
+    # FIXME: analyze toolchain build failed
+    # * https://travis-ci.com/drodin/hunter/jobs/287917916
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/glu
 
     - os: linux
       env: >
@@ -73,23 +76,29 @@ matrix:
 
     # OSX {
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-make-cxx14
-        PROJECT_DIR=examples/glu
+    # FIXME: glu package doesn't support mac os
+    # * https://travis-ci.com/drodin/hunter/jobs/287917920
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-make-cxx14
+    #     PROJECT_DIR=examples/glu
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=osx-10-13-cxx14
-        PROJECT_DIR=examples/glu
+    # FIXME: glu package doesn't support mac os
+    # * https://travis-ci.com/drodin/hunter/jobs/287917921
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=osx-10-13-cxx14
+    #     PROJECT_DIR=examples/glu
 
-    - os: osx
-      osx_image: xcode9.4
-      env: >
-        TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
-        PROJECT_DIR=examples/glu
+    # FIXME: glu package doesn't support ios
+    # * https://travis-ci.com/drodin/hunter/jobs/287917922
+    # - os: osx
+    #   osx_image: xcode9.4
+    #   env: >
+    #     TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
+    #     PROJECT_DIR=examples/glu
 
     # }
 
