@@ -130,6 +130,28 @@ hunter_add_version(
     ff088d2c7164d3cabb591f4e2aa29981f1f99540
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    lehrfempp
+    VERSION
+    0.7.19
+    URL
+    "https://github.com/craffael/lehrfempp/archive/release-0.7.19.tar.gz"
+    SHA1
+    9b1233b42e73eae59b7f6cbb0792c07f85eabd51
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    lehrfempp
+    VERSION
+    0.7.20
+    URL
+    "https://github.com/craffael/lehrfempp/archive/release-0.7.20.tar.gz"
+    SHA1
+    65ed75a901f700e8f61a1272ad15423223bfe932
+)
+
 hunter_cmake_args(
     lehrfempp
     CMAKE_ARGS
