@@ -28,13 +28,17 @@ environment:
       PROJECT_DIR: examples\glbinding
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\glbinding
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+#https://ci.appveyor.com/project/caseymcc/hunter/builds/30665438/job/n0hjiflmuvwkyoy1
+#Know issue in latest release, https://github.com/cginternals/glbinding/issues/297
+#    - TOOLCHAIN: "mingw-cxx17"
+#      PROJECT_DIR: examples\glbinding
+#      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\glbinding
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+#https://ci.appveyor.com/project/caseymcc/hunter/builds/30665438/job/3k548iyr3j1ymy0n
+#Know issue in latest release, https://github.com/cginternals/glbinding/issues/297
+#    - TOOLCHAIN: "msys-cxx17"
+#      PROJECT_DIR: examples\glbinding
+#      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
