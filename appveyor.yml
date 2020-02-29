@@ -8,6 +8,11 @@ environment:
 
   matrix:
 
+    - TOOLCHAIN: "vs-16-2019-win64-cxx17"
+      PROJECT_DIR: examples\magnum
+      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      HUNTER_BINARY_DIR: C:\__BIN
+
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
       PROJECT_DIR: examples\magnum
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
