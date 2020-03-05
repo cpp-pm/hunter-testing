@@ -229,6 +229,11 @@ set(
     "--user-config=${boost_user_jam}"
     --with-@HUNTER_PACKAGE_COMPONENT@
 )
+
+if (@HUNTER_Boost_VERSION@ VERSION_GREATER_EQUAL 1.72.0)
+  list(APPEND build_opts --no-cmake-config )
+endif()
+
 if("@MINGW@")
   # cross compile from "linux" to "windows" using mingw
   set(build_opts target-os=windows ${build_opts})
@@ -434,6 +439,15 @@ if(CMAKE_HOST_WIN32)
     set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
     set(bootstrap_cmd "bootstrap.bat")
   endif()
+elseif(APPLE)
+  set(b2_cmd "./b2")
+  set(bootstrap_cmd
+      . "@HUNTER_GLOBAL_SCRIPT_DIR@/clear-all.sh" &&
+      ./bootstrap.sh
+      "--with-libraries=@HUNTER_PACKAGE_COMPONENT@"
+      "--prefix=@HUNTER_PACKAGE_INSTALL_PREFIX@"
+  )
+  set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
 else()
   set(b2_cmd "./b2")
   set(bootstrap_cmd "./bootstrap.sh")
@@ -512,6 +526,7 @@ ExternalProject_Add(
     ${verbose_output}
     ${build_opts}
     --ignore-site-config # Ignore Gentoo specific optimization "none" in site config that only the patched bjam of Gentoo can understand.
+
     BUILD_IN_SOURCE
     1
     INSTALL_COMMAND
