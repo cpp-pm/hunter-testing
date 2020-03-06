@@ -12,18 +12,7 @@ include(hunter_source_subdir)
 
 hunter_add_version(
     PACKAGE_NAME
-    IlmBase
-    VERSION
-    2.4.0-p0
-    URL
-    "https://github.com/cpp-pm/openexr/archive/v2.4.0-p0.tar.gz"
-    SHA1
-    a99fb3c35b9d9c2e4aeb2cd38e7cb1149619ca0e
-)
-
-hunter_add_version(
-    PACKAGE_NAME
-    IlmBase
+    OpenEXR
     VERSION
     2.4.0-p1
     URL
@@ -33,16 +22,19 @@ hunter_add_version(
 )
 
 hunter_cmake_args(
-    IlmBase
+    OpenEXR
     CMAKE_ARGS
         BUILD_TESTING=OFF
+        INSTALL_OPENEXR_DOCS=OFF
+        INSTALL_OPENEXR_EXAMPLES=OFF
+        OPENEXR_BUILD_UTILS=OFF
 )
 
 hunter_source_subdir(
-    IlmBase
-    SOURCE_SUBDIR "IlmBase"
+    OpenEXR
+    SOURCE_SUBDIR "OpenEXR"
 )
 
 hunter_pick_scheme(DEFAULT url_sha1_cmake)
-hunter_cacheable(IlmBase)
-hunter_download(PACKAGE_NAME IlmBase)
+hunter_cacheable(OpenEXR)
+hunter_download(PACKAGE_NAME OpenEXR)
