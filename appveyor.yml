@@ -8,25 +8,35 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\libbacktrace
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # See https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/build/job/5mugoebv3i2yr6q6#L324
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libbacktrace
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\libbacktrace
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # See https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/build/job/x2fleny56ycuaws0#L321
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libbacktrace
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\libbacktrace
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # See https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/build/job/g4hc7f3tw2r6sg91#L322
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\libbacktrace
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\libbacktrace
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # See https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/build/job/yfljoqm0dpuq7mh4#L323
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\libbacktrace
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\libbacktrace
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: . is not recognized as an internal or external command, operable program or batch file.
+    # See https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/build/job/a67e1prgg2w0ny0k#L402
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\libbacktrace
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "msys-cxx17"
       PROJECT_DIR: examples\libbacktrace

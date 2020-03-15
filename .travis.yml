@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/libbacktrace
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/libbacktrace
+    # FIXME: configure: error: C compiler cannot create executables
+    # See https://travis-ci.org/Bjoe/hunter/jobs/660602536#L1506
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/libbacktrace
 
     - os: linux
       env: >
