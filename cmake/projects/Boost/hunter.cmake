@@ -130,11 +130,44 @@ hunter_add_version(
     PACKAGE_NAME
     Boost
     VERSION
+    "1.69.0-p1"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.69.0-p1.tar.gz"
+    SHA1
+    7f3a890d698912516f45effb3c88a8b6f93ed2da
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
     "1.70.0-p0"
     URL
     "https://github.com/hunter-packages/boost/archive/v1.70.0-p0.tar.gz"
     SHA1
     e6bb97b5109c7c15ea459cf2b1a9d52cbf88a89e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.71.0-p0"
+    URL
+    "https://github.com/cpp-pm/boost/archive/v1.71.0-p0.tar.gz"
+    SHA1
+    a3aae228568555c997927d5f531acb8f4830762c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.72.0-p0"
+    URL
+    "https://github.com/cpp-pm/boost/archive/v1.72.0-p0.tar.gz"
+    SHA1
+    6022cd8eea0f04cbfb78df8064fcd134e40a7735
 )
 
 # up until 1.63 sourcefourge was used
@@ -389,4 +422,4 @@ endif()
 
 hunter_pick_scheme(DEFAULT url_sha1_boost)
 hunter_cacheable(Boost)
-hunter_download(PACKAGE_NAME Boost PACKAGE_INTERNAL_DEPS_ID "43")
+hunter_download(PACKAGE_NAME Boost PACKAGE_INTERNAL_DEPS_ID "45")
