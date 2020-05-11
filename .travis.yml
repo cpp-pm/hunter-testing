@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/uuid
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/uuid
+    # FIXME: checking whether the C compiler works... no
+    # * see https://travis-ci.org/github/Bjoe/hunter/jobs/684754956#L1576
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/uuid
 
     - os: linux
       env: >
