@@ -8,28 +8,44 @@ environment:
 
   matrix:
 
-    - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/nyld3bswlv7t7r1u#L326
+    # - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/11w5tehr5x42vk55#L322
+    # - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/kiwces1rxk1gm2fa#L324
+    # - TOOLCHAIN: "vs-15-2017-win64-cxx17"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: Autotools scheme not supported with Visual Studio
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/7cv9b8d18h7ok6hw#L324
+    # - TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME: '.' is not recognized as an internal or external command, operable program or batch file.
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/vmhidfacnh68s9m9#L422
+    # - TOOLCHAIN: "mingw-cxx17"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
+    # FIXME: configure: error: cannot guess build type; you must specify one
+    # * see https://ci.appveyor.com/project/Bjoe/hunter-tdmm2/builds/32744702/job/dh2kg34ft06823db#L463
+    # - TOOLCHAIN: "msys-cxx17"
+    #   PROJECT_DIR: examples\uuid
+    #   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+
+    - TOOLCHAIN: "dummy"
+      PROJECT_DIR: examples\uuid
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
