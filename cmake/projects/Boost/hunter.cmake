@@ -38,6 +38,149 @@ hunter_add_version(
     f9260074ecfb31f3e65322fae9c15cc423c0ad59
 )
 
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.66.0"
+    URL
+    "${_hunter_boost_base_url}/1.66.0/source/boost_1_66_0.7z"
+    SHA1
+    075d0b43980614054b1f1bafd189f863bba6600e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.66.0-p0"
+    URL
+    "https://github.com/hunter-packages/boost/releases/download/v1.66.0-p0/hunter-1.66.0.7z"
+    SHA1
+    8c9829ce5e8f0b2b582f8ee1a6103c037a154aa3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.67.0"
+    URL
+    "${_hunter_boost_base_url}/1.67.0/source/boost_1_67_0.7z"
+    SHA1
+    64c278c23defe155e630a307ae2c0615348b14b3
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.67.0-p0"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.67.0-p0.tar.gz"
+    SHA1
+    e56a5fbafa31683047f92850e05735dfcde084aa
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.67.0-p1"
+    URL
+    "https://github.com/hunter-packages/boost/releases/download/v1.67.0-p1/hunter-1.67.0.7z"
+    SHA1
+    26fcf19a79d013a318562435cef2829ea6bf29a4
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.68.0-p0"
+    URL
+    "https://github.com/hunter-packages/boost/releases/download/v1.68.0-p0/hunter-1.68.0.7z"
+    SHA1
+    3af972569d4b685145442445e51b3fcace342b31
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.68.0-p1"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.68.0-p1.tar.gz"
+    SHA1
+    0bb10b0a0fdc196646c87e0143c0290baa32357d
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.69.0-p0"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.69.0-p0.tar.gz"
+    SHA1
+    2539b0751f77ff3efdf842775700fe5422c2adfb
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.69.0-p1"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.69.0-p1.tar.gz"
+    SHA1
+    7f3a890d698912516f45effb3c88a8b6f93ed2da
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.70.0-p0"
+    URL
+    "https://github.com/hunter-packages/boost/archive/v1.70.0-p0.tar.gz"
+    SHA1
+    e6bb97b5109c7c15ea459cf2b1a9d52cbf88a89e
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.71.0-p0"
+    URL
+    "https://github.com/cpp-pm/boost/archive/v1.71.0-p0.tar.gz"
+    SHA1
+    a3aae228568555c997927d5f531acb8f4830762c
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.72.0-p0"
+    URL
+    "https://github.com/cpp-pm/boost/archive/v1.72.0-p0.tar.gz"
+    SHA1
+    6022cd8eea0f04cbfb78df8064fcd134e40a7735
+)
+
+hunter_add_version(
+    PACKAGE_NAME
+    Boost
+    VERSION
+    "1.72.0-p1"
+    URL
+    "https://github.com/cpp-pm/boost/archive/v1.72.0-p1.tar.gz"
+    SHA1
+    04f570acbe0beb762e588ad3de292d0328a79c64
+)
+
 # up until 1.63 sourcefourge was used
 set(_hunter_boost_base_url "https://downloads.sourceforge.net/project/boost/boost/")
 hunter_add_version(
@@ -290,4 +433,27 @@ endif()
 
 hunter_pick_scheme(DEFAULT url_sha1_boost)
 hunter_cacheable(Boost)
-hunter_download(PACKAGE_NAME Boost PACKAGE_INTERNAL_DEPS_ID "20")
+hunter_download(PACKAGE_NAME Boost PACKAGE_INTERNAL_DEPS_ID "48")
+
+
+if(NOT HUNTER_Boost_VERSION VERSION_LESS 1.72.0)
+    hunter_get_cmake_args(PACKAGE Boost OUT boost_cmake_args)
+    string(FIND "${boost_cmake_args}" "BUILD_SHARED_LIBS=ON" boost_shared)
+    string(FIND "${boost_cmake_args}" "USE_CONFIG_FROM_BOOST=ON" use_boost_config)
+    string(FIND "${boost_cmake_args}" "BOOST_BUILD_DYNAMIC_VSRUNTIME=NO" boost_static_runtime)
+    if(use_boost_config GREATER -1)
+    if(boost_shared LESS 0)
+        option(Boost_USE_STATIC_LIBS "Use of the static libraries" ON)
+    else()
+        option(Boost_USE_STATIC_LIBS "Use of the static libraries" OFF)
+    endif()
+    
+    if(MSVC)
+        if(boost_static_runtime LESS 0)
+            option(Boost_USE_STATIC_RUNTIME "Use libraries linked statically to the C++ runtime" OFF)
+        else()
+            option(Boost_USE_STATIC_RUNTIME "Use libraries linked statically to the C++ runtime" ON)
+        endif()
+    endif()
+    endif()
+endif()

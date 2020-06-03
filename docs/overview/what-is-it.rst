@@ -5,19 +5,19 @@ What is it?
 -----------
 
 Every Hunter `release`_ (`Atom feed`_) archive is a meta-package with build
-instructions and URLs of real packages.  Archive will be downloaded and
-unpacked automatically by ``HunterGate`` CMake module. You only need to set
-``URL`` and ``SHA1``:
+instructions and URLs of real packages.  The archive will be downloaded and
+unpacked automatically by the ``HunterGate`` CMake module. You only need to set
+the ``URL`` and ``SHA1``:
 
 .. code-block:: cmake
   :emphasize-lines: 2-3
 
   HunterGate(
-      URL "https://github.com/ruslo/hunter/archive/v0.14.5.tar.gz"
+      URL "https://github.com/cpp-pm/hunter/archive/v0.14.5.tar.gz"
       SHA1 "f2c3de6d13baf8c5d2aa77bdc47c516e668c677e"
   )
 
-Here is content of the archive in simplified form:
+Here is the content of the archive in simplified form:
 
 .. code-block:: none
 
@@ -29,7 +29,7 @@ Here is content of the archive in simplified form:
       ...
   }
 
-If you download and unpack it you can view some internals. Let's see OpenSSL
+If you download and unpack it, you can view some internals. Let's look at the OpenSSL
 package properties:
 
 .. literalinclude:: what-is-it.sh
@@ -37,7 +37,7 @@ package properties:
   :start-after: # doc: download-start
   :end-before: # doc: download-end
 
-`hunter.cmake`_ holds list of available versions:
+`hunter.cmake`_ holds the list of available versions:
 
 .. literalinclude:: what-is-it.sh
   :language: shell
@@ -83,15 +83,15 @@ Default version from `default.cmake`_
 
 .. code-block:: cmake
 
-  hunter_config(OpenSSL VERSION 1.0.2g)
+  hunter_default_version(OpenSSL VERSION 1.0.2g)
 
 .. seealso::
 
   * :doc:`Detailed sources layout </reference/layouts/sources>`
   * :doc:`Creating version on the fly from Git submodule </user-guides/hunter-user/git-submodule>`
 
-.. _release: https://github.com/ruslo/hunter/releases
-.. _Atom feed: https://github.com/ruslo/hunter/releases.atom
-.. _default.cmake: https://github.com/ruslo/hunter/blob/master/cmake/configs/default.cmake
-.. _hunter.cmake: https://github.com/ruslo/hunter/blob/master/cmake/projects/OpenSSL/hunter.cmake
-.. _url_sha1_openssl.cmake.in: https://github.com/ruslo/hunter/blob/master/cmake/projects/OpenSSL/schemes/url_sha1_openssl.cmake.in
+.. _release: https://github.com/cpp-pm/hunter/releases
+.. _Atom feed: https://github.com/cpp-pm/hunter/releases.atom
+.. _default.cmake: https://github.com/cpp-pm/hunter/blob/master/cmake/configs/default.cmake
+.. _hunter.cmake: https://github.com/cpp-pm/hunter/blob/master/cmake/projects/OpenSSL/hunter.cmake
+.. _url_sha1_openssl.cmake.in: https://github.com/cpp-pm/hunter/blob/master/cmake/projects/OpenSSL/schemes/url_sha1_openssl.cmake.in
