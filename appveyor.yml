@@ -9,28 +9,34 @@ environment:
   matrix:
 
     - TOOLCHAIN: "ninja-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\PocoCpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "nmake-vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\PocoCpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-15-2017-win64-cxx17"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\PocoCpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
     - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\foo
+      PROJECT_DIR: examples\PocoCpp
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "mingw-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME
+    # Build error: message compiler not found: required to build
+    # See https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30625454/job/rxvwob9s4lw74b4g#L387
+    #- TOOLCHAIN: "mingw-cxx17"
+    #  PROJECT_DIR: examples\PocoCpp
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
-    - TOOLCHAIN: "msys-cxx17"
-      PROJECT_DIR: examples\foo
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    # FIXME
+    # Build error: message compiler not found: required to build
+    # https://ci.appveyor.com/project/Bjoe/hunter-t1t06/builds/30625454/job/6trfah7f7xgk25ht#L404
+    #- TOOLCHAIN: "msys-cxx17"
+    #  PROJECT_DIR: examples\PocoCpp
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
 install:
   # Python 3
