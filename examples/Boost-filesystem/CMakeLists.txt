@@ -3,6 +3,8 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(Boost_DEBUG ON CACHE BOOLEAN "")
+
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
@@ -30,16 +32,13 @@ else()
   add_executable(foo foo.cpp)
 endif()
 
-target_link_libraries(foo Boost::system Boost::filesystem)
-
-# Compatibility mode
-set(Boost_USE_STATIC_LIBS ON)
-if(MSVC)
-  add_definitions(-DBOOST_ALL_NO_LIB=1)
-endif()
-find_package(Boost REQUIRED system filesystem)
-include_directories("${Boost_INCLUDE_DIRS}")
-target_link_libraries(foo ${Boost_LIBRARIES})
+target_link_libraries(
+    foo
+    Boost::filesystem
+    Boost::system # Should be last
+        # Boost 1.66.0, Linux, Clang with -stdlib=libstdc++:
+        # * https://travis-ci.org/ingenue/hunter/jobs/318140416#L2674
+)
 
 if(ANDROID)
   target_link_libraries(foo log android)

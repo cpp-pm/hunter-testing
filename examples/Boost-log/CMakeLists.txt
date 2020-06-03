@@ -3,16 +3,25 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(Boost_DEBUG ON CACHE BOOLEAN "")
+
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
 project(download-boost)
 
-# download boost
-hunter_add_package(Boost COMPONENTS log)
+hunter_add_package(Boost COMPONENTS log filesystem system chrono thread regex date_time atomic)
+find_package(Boost CONFIG REQUIRED log filesystem system chrono thread regex date_time atomic)
 
-# now boost can be used
-find_package(Boost CONFIG REQUIRED log)
 add_executable(foo foo.cpp)
-target_link_libraries(foo Boost::log)
+target_link_libraries(foo PUBLIC Boost::log
+    Boost::filesystem
+    Boost::chrono
+    Boost::thread
+    Boost::regex
+    Boost::date_time
+    Boost::atomic
+    Boost::system
+    Boost::boost
+)

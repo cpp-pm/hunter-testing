@@ -3,20 +3,19 @@
 
 cmake_minimum_required(VERSION 3.0)
 
+set(Boost_DEBUG ON CACHE BOOLEAN "")
+
 # Emulate HunterGate:
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
 project(download-boost)
 
-# download boost
 hunter_add_package(Boost)
-
-# now boost can be used
 find_package(Boost CONFIG REQUIRED)
 
 add_executable(foo foo.cpp)
-target_link_libraries(foo Boost::boost)
+target_link_libraries(foo PUBLIC Boost::boost) # Since boost 1.70 you should use Boost::headers as target
 
 set(project_license "${CMAKE_CURRENT_BINARY_DIR}/LICENSE.txt")
 file(
@@ -41,6 +40,8 @@ endforeach()
 
 message("Project license: ${project_license}")
 
-# Compatibility mode
-find_package(Boost REQUIRED)
-include_directories("${Boost_INCLUDE_DIRS}")
+file(GLOB_RECURSE boost_configs "${BOOST_ROOT}/*/BoostConfig.cmake")
+list(LENGTH boost_configs len)
+if(NOT len EQUAL "1")
+  message(FATAL_ERROR "More than one *Config: ${boost_configs}")
+endif()

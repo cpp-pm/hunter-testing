@@ -21,35 +21,32 @@ include(hunter_internal_error)
 include(hunter_pick_archiver)
 include(hunter_status_debug)
 include(hunter_status_print)
-include(hunter_test_string_not_empty)
+include(hunter_assert_not_empty_string)
 include(hunter_user_error)
 include(hunter_parse_boost_config_macros)
+include(hunter_parse_cmake_args_for_keyword)
 
 hunter_status_debug("Scheme: url_sha1_boost_library")
 
 # Check preconditions
-hunter_test_string_not_empty("@HUNTER_SELF@")
-hunter_test_string_not_empty("@HUNTER_EP_NAME@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SOURCE_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_BUILD_DIR@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_INSTALL_PREFIX@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_COMPONENT@")
-hunter_test_string_not_empty("@CMAKE_CXX_COMPILER@")
-hunter_test_string_not_empty("@CMAKE_CXX_COMPILER_ID@")
-hunter_test_string_not_empty("@HUNTER_Boost_VERSION@")
-hunter_test_string_not_empty("@HUNTER_PACKAGE_SCRIPT_DIR@")
+hunter_assert_not_empty_string("@HUNTER_SELF@")
+hunter_assert_not_empty_string("@HUNTER_EP_NAME@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_DOWNLOAD_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SOURCE_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_BUILD_DIR@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_INSTALL_PREFIX@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_COMPONENT@")
+hunter_assert_not_empty_string("@CMAKE_CXX_COMPILER@")
+hunter_assert_not_empty_string("@CMAKE_CXX_COMPILER_ID@")
+hunter_assert_not_empty_string("@HUNTER_Boost_VERSION@")
+hunter_assert_not_empty_string("@HUNTER_PACKAGE_SCRIPT_DIR@")
+hunter_assert_not_empty_string("@HUNTER_TLS_VERIFY@")
 
-if("@MSVC@")
-  hunter_test_string_not_empty("@HUNTER_MSVC_ARCH@")
-  hunter_test_string_not_empty("@HUNTER_MSVC_VCVARSALL@")
-
-  set(x "$ENV{USERPROFILE}/source")
-  if(EXISTS "${x}")
-    hunter_user_error(
-        "Please remove directory '${x}' (see https://github.com/ruslo/hunter/issues/745#issuecomment-316629752)"
-    )
-  endif()
+# Add/enable NumPy if it is requested
+if (HUNTER_ENABLE_BOOST_PYTHON_NUMPY)
+  cmake_minimum_required(VERSION 3.12)
+  hunter_add_package(pip_numpy)
+  find_package(pip_numpy CONFIG REQUIRED)
 endif()
 
 # get list of boost components for given version
@@ -80,6 +77,9 @@ elseif("@APPLE@")
   # Using CMAKE_AR on OSX leads to error (b2 use 'libtool'):
   # * https://travis-ci.org/ingenue/hunter/jobs/204617507
   set(use_cmake_archiver FALSE)
+elseif("@QNX@")
+  set(toolset_name "qcc")
+  set(toolset_version "")
 elseif("@CMAKE_COMPILER_IS_GNUCXX@")
   set(toolset_name "gcc")
   set(toolset_version "")
@@ -93,7 +93,7 @@ elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
   set(toolset_name "intel")
   set(toolset_version "")
 else()
-  hunter_fatal_error("TODO: set toolset for boost" WIKI "error.boost.toolset")
+  hunter_fatal_error("TODO: set toolset for boost" ERROR_PAGE "error.boost.toolset")
 endif()
 
 hunter_dump_cmake_flags()
@@ -116,15 +116,15 @@ if("@ANDROID@")
 endif()
 
 if("@MSVC@")
-  set(env_cmd "@HUNTER_MSVC_VCVARSALL@" "@HUNTER_MSVC_ARCH@")
-else()
-  # Workaround for: http://public.kitware.com/Bug/view.php?id=15567
-  set(env_cmd "@CMAKE_COMMAND@" -E echo "configure")
-endif()
-
-if("@MSVC@")
   set(boost_compiler  "@CMAKE_CXX_COMPILER@")
-  string(REPLACE "/" "\\" boost_compiler "${boost_compiler}")
+
+  # Note:
+  # - '/' will not work
+  # - single '\' lead to bug
+  #
+  # See issue:
+  # - https://github.com/boostorg/build/issues/426#issuecomment-482564740
+  string(REPLACE "/" "\\\\" boost_compiler "${boost_compiler}")
 else()
   set(boost_compiler "@CMAKE_CXX_COMPILER@")
 endif()
@@ -144,7 +144,7 @@ if(is_mpi)
           "MPI is required. Please install it. For example MS-MPI: "
           "http://msdn.microsoft.com/en-us/library/bb524831%28v=vs.85%29.aspx"
       )
-      hunter_fatal_error("MPI is required" WIKI "error.boost.mpi.on.windows")
+      hunter_fatal_error("MPI is required" ERROR_PAGE "error.boost.mpi.on.windows")
     endif()
     get_filename_component(MPI_DIR "${MPI_CXX_INCLUDE_PATH}/.." ABSOLUTE)
     string(REPLACE "/" "\\\\" MPI_DIR "${MPI_DIR}")
@@ -209,6 +209,8 @@ else()
   set(link_opts link=shared)
 endif()
 
+# Modify Boost user jam file
+
 set(toolset_full_name ${toolset_name})
 string(COMPARE NOTEQUAL "${toolset_version}" "" has_toolset_version)
 if(has_toolset_version)
@@ -216,6 +218,9 @@ if(has_toolset_version)
 endif()
 
 set(boost_user_jam "@HUNTER_PACKAGE_BUILD_DIR@/boost.user.jam")
+# TODO file(TO_NATIVE_PATH "${boost_user_jam}" boost_user_jam_native_path)
+# Escape --user-config=C:\projects\hunter-tdmm2\_testing\Hunter\_Base\5398c9d\30f4075\2d24521\Build\Boost\__filesystem\Build\boost.user.jam
+# Error -> Invalid character escape '\p'.
 set(
     build_opts
     -a
@@ -227,11 +232,20 @@ set(
     "--user-config=${boost_user_jam}"
     --with-@HUNTER_PACKAGE_COMPONENT@
 )
+
+if (@HUNTER_Boost_VERSION@ VERSION_GREATER_EQUAL 1.72.0 AND NOT USE_CONFIG_FROM_BOOST)
+  list(APPEND build_opts --no-cmake-config )
+endif()
+
 if("@MINGW@")
   # cross compile from "linux" to "windows" using mingw
   set(build_opts target-os=windows ${build_opts})
 endif()
 
+set(BOOST_VERSION "@HUNTER_Boost_VERSION@")
+
+# Use:
+# * BOOST_VERSION
 hunter_boost_component_b2_args(
     "@HUNTER_PACKAGE_COMPONENT@"
     "@HUNTER_Boost_CMAKE_ARGS@"
@@ -281,11 +295,15 @@ endif()
 
 if(MSVC)
   # See 'boost_compiler' section
+
+  # Note: Flags should be quoted:
+  # - https://github.com/boostorg/build/issues/426#issuecomment-482564740
+
   foreach(cxx_flag ${cxx_flags_list})
     file(
         APPEND
         ${boost_user_jam}
-        "  <compileflags>${cxx_flag}\n"
+        "  <compileflags>\"${cxx_flag}\"\n"
     )
   endforeach()
 endif()
@@ -297,20 +315,114 @@ file(
     "${using_mpi}\n"
 )
 
+# handle requested python version if such is specified
+hunter_parse_cmake_args_for_keyword(
+  CMAKE_ARGS "@HUNTER_Boost_CMAKE_ARGS@"
+  KEYWORD PYTHON_VERSION
+  OUTPUT python_version
+)
+
+# set up paths for python in boost.user.jam
+if(NOT python_version STREQUAL "")
+  if(HUNTER_ENABLE_BOOST_PYTHON_NUMPY)
+    # Use the CMake >= 3.12 way (names are all a bit different)
+    find_package(Python REQUIRED COMPONENTS Interpreter Development NumPy)
+    if(NOT Python_Interpreter_FOUND)
+      hunter_user_error("Python Interpreter for Python version ${python_version} not found.")
+    endif()
+    set(python_executable ${Python_EXECUTABLE})
+    if(NOT Python_Development_FOUND)
+      hunter_user_error("Python development artifacts for Python version ${python_version} not found.")
+    endif()
+    if(NOT Python_NumPy_FOUND)
+      hunter_user_error("Python NumPy for Python version ${python_version} not found.")
+    endif()
+    set(python_maj_min "${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}")
+    # get the main Python include directory containing pyconfig.h
+    list(LENGTH Python_INCLUDE_DIRS python_include_dir_list_length)
+    if(python_include_dir_list_length EQUAL 1)
+      set(python_include_directory "${Python_INCLUDE_DIRS}")
+    else()
+      list(GET Python_INCLUDE_DIRS 0 python_include_directory)
+    endif()
+    # get directory of optimized library
+    list(LENGTH Python_LIBRARIES python_libraries_list_length)
+    if(python_libraries_list_length EQUAL 1)
+      set(python_optimized_library_path "${Python_LIBRARIES}")
+    else()
+      list(GET Python_LIBRARIES 1 python_optimized_library_path)
+    endif()
+  else()
+    # Use the CMake < 3.12 way
+    find_package(PythonInterp ${python_version} EXACT QUIET)
+    if(NOT PYTHONINTERP_FOUND)
+      hunter_user_error("Python Interpreter for Python version ${python_version} not found.")
+    endif()
+    set(python_executable ${PYTHON_EXECUTABLE})
+    find_package(PythonLibs ${python_version} EXACT QUIET)
+    if(NOT PYTHONLIBS_FOUND)
+      hunter_user_error("Python runtime library directory for Python version ${python_version} not found.")
+    endif()
+    set(python_maj_min "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
+    # get the main Python include directory containing pyconfig.h
+    list(LENGTH PYTHON_INCLUDE_DIRS python_include_dir_list_length)
+    if(python_include_dir_list_length EQUAL 1)
+      set(python_include_directory "${PYTHON_INCLUDE_DIRS}")
+    else()
+      list(GET PYTHON_INCLUDE_DIRS 0 python_include_directory)
+    endif()
+    # get directory of optimized library
+    list(LENGTH PYTHON_LIBRARIES python_libraries_list_length)
+    if(python_libraries_list_length EQUAL 1)
+      set(python_optimized_library_path "${PYTHON_LIBRARIES}")
+    else()
+      list(GET PYTHON_LIBRARIES 1 python_optimized_library_path)
+    endif()
+  endif()
+
+  get_filename_component(python_library_directory "${python_optimized_library_path}" DIRECTORY)
+  if("@MSVC@")
+    string(REPLACE "/" "\\\\" python_executable "${python_executable}")
+    string(REPLACE "/" "\\\\" python_include_directory "${python_include_directory}")
+    string(REPLACE "/" "\\\\" python_library_directory "${python_library_directory}")
+  endif()
+  file(
+    APPEND ${boost_user_jam}
+    "using python  : ${python_maj_min} : \"${python_executable}\" : \"${python_include_directory}\" : \"${python_library_directory}\" ;\n"
+  )
+endif()
+
+# Handle ./b2 build options
+
 list(APPEND build_opts ${b2_component_opts})
 
 if(CMAKE_EXE_LINKER_FLAGS)
   list(APPEND build_opts "linkflags=${CMAKE_EXE_LINKER_FLAGS}")
 endif()
 
-string(COMPARE EQUAL "@HUNTER_MSVC_ARCH@" "amd64" is_x64)
-if("@MSVC@" AND is_x64)
-  list(APPEND build_opts "address-model=64")
+if("@ANDROID@")
+  if("@CMAKE_ANDROID_ARCH@" MATCHES "^(arm|mips|x86)$")
+    list(APPEND build_opts "address-model=32")
+  else()
+    list(APPEND build_opts "address-model=64")
+  endif()
+elseif("@MSVC@")
+  string(COMPARE EQUAL "@HUNTER_MSVC_ARCH@" "x86" is_x86)
+  string(COMPARE EQUAL "@HUNTER_MSVC_ARCH@" "amd64" is_x64)
+  if(is_x86)
+    list(APPEND build_opts "address-model=32")
+  elseif(is_x64)
+    list(APPEND build_opts "address-model=64")
+  endif()
 endif()
 
 string(COMPARE NOTEQUAL "@HUNTER_JOBS_OPTION@" "" have_jobs)
 if(have_jobs)
-  list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  if("@HUNTER_JOBS_OPTION@" GREATER "256")
+    list(APPEND build_opts "-j" 256)
+  else()
+    list(APPEND build_opts "-j" "@HUNTER_JOBS_OPTION@")
+  endif()
 endif()
 
 if(@HUNTER_STATUS_DEBUG@)
@@ -318,15 +430,43 @@ if(@HUNTER_STATUS_DEBUG@)
 endif()
 
 if(CMAKE_HOST_WIN32)
-  set(bootstrap_cmd "bootstrap.bat")
   set(b2_cmd "b2")
-else()
-  set(bootstrap_cmd "./bootstrap.sh")
+  if("@MSVC@")
+    set(HUNTER_MSVC_VCVARSALL "@HUNTER_MSVC_VCVARSALL@")
+    set(HUNTER_MSVC_ARCH "@HUNTER_MSVC_ARCH@")
+    set(HUNTER_PACKAGE_SOURCE_DIR "@HUNTER_PACKAGE_SOURCE_DIR@")
+    configure_file("@HUNTER_PACKAGE_SCRIPT_DIR@/patched_boostrap.bat.in" "@HUNTER_PACKAGE_DOWNLOAD_DIR@/patched_boostrap.bat")
+    set(patch_cmd "@CMAKE_COMMAND@" -E copy "@HUNTER_PACKAGE_DOWNLOAD_DIR@/patched_boostrap.bat" "@HUNTER_PACKAGE_SOURCE_DIR@/patched_boostrap.bat")
+    set(bootstrap_cmd "patched_boostrap.bat")
+  else()
+    set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
+    set(bootstrap_cmd "bootstrap.bat")
+  endif()
+elseif(APPLE)
   set(b2_cmd "./b2")
+  set(bootstrap_cmd
+      . "@HUNTER_GLOBAL_SCRIPT_DIR@/clear-all.sh" &&
+      ./bootstrap.sh
+      "--with-libraries=@HUNTER_PACKAGE_COMPONENT@"
+      "--prefix=@HUNTER_PACKAGE_INSTALL_PREFIX@"
+  )
+  set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
+else()
+  set(b2_cmd "./b2")
+  set(bootstrap_cmd "./bootstrap.sh")
+  set(patch_cmd "@CMAKE_COMMAND@" -E echo "Dummy patch command")
+endif()
+
+if(compiler_is_clang AND NOT CMAKE_CROSSCOMPILING)
+  list(APPEND bootstrap_cmd "--with-toolset=clang")
 endif()
 
 if("@MINGW@")
   list(APPEND bootstrap_cmd "gcc")
+endif()
+
+if("@ANDROID@")
+  list(APPEND build_opts target-os=android)
 endif()
 
 if(HUNTER_STATUS_DEBUG)
@@ -342,16 +482,16 @@ if(HUNTER_STATUS_DEBUG)
   hunter_status_debug("------")
 endif()
 
-if("@MSVC@")
-  # Logging as Workaround for VS_UNICODE_OUTPUT issue:
-  # https://public.kitware.com/Bug/view.php?id=14266
-  set(log_opts LOG_CONFIGURE 1 LOG_BUILD 1 LOG_INSTALL 1 LOG_DOWNLOAD 1)
-  get_filename_component(x "@HUNTER_PACKAGE_SOURCE_DIR@/.." ABSOLUTE)
-  hunter_status_print(
-      "For progress check log files in directory: ${x}"
-  )
+if("@HUNTER_PACKAGE_LOG_BUILD@")
+  set(log_build 1)
 else()
-  set(log_opts "")
+  set(log_build 0)
+endif()
+
+if("@HUNTER_PACKAGE_LOG_INSTALL@" OR "@HUNTER_SUPPRESS_LIST_OF_FILES@")
+  set(log_install 1)
+else()
+  set(log_install 0)
 endif()
 
 hunter_parse_boost_config_macros(BOOST_CONFIG_MACROS "@HUNTER_Boost_CMAKE_ARGS@")
@@ -369,6 +509,8 @@ ExternalProject_Add(
     SHA1=@HUNTER_PACKAGE_SHA1@
     DOWNLOAD_DIR
     "@HUNTER_PACKAGE_DOWNLOAD_DIR@"
+    TLS_VERIFY
+    "@HUNTER_TLS_VERIFY@"
     SOURCE_DIR
     "@HUNTER_PACKAGE_SOURCE_DIR@"
     INSTALL_DIR
@@ -378,7 +520,7 @@ ExternalProject_Add(
     "@CMAKE_COMMAND@" -P
     "@HUNTER_PACKAGE_BUILD_DIR@/append-boost-config-macros.cmake"
     CONFIGURE_COMMAND
-    ${env_cmd}
+    ${patch_cmd}
     ${copy_mpi_command}
     COMMAND
     ${bootstrap_cmd}
@@ -387,16 +529,19 @@ ExternalProject_Add(
     ${verbose_output}
     ${build_opts}
     --ignore-site-config # Ignore Gentoo specific optimization "none" in site config that only the patched bjam of Gentoo can understand.
+
     BUILD_IN_SOURCE
     1
     INSTALL_COMMAND
     ${b2_cmd}
     -d0
     ${build_opts}
-    stage # install only libraries, headers installed in `url_sha1_boost`
-    "--stagedir=@HUNTER_PACKAGE_INSTALL_PREFIX@"
+    install
+    "--prefix=@HUNTER_PACKAGE_INSTALL_PREFIX@"
     --ignore-site-config # Ignore Gentoo specific optimization "none" in site config that only the patched bjam of Gentoo can understand.
-    ${log_opts}
+    LOG_CONFIGURE ${log_build}
+    LOG_BUILD ${log_build}
+    LOG_INSTALL ${log_install}
 )
 
 # Forward some variables
@@ -404,4 +549,6 @@ set(HUNTER_SELF "@HUNTER_SELF@")
 set(HUNTER_PACKAGE_INSTALL_PREFIX "@HUNTER_PACKAGE_INSTALL_PREFIX@")
 set(HUNTER_Boost_VERSION "@HUNTER_Boost_VERSION@")
 
-hunter_install_boost_config()
+if(NOT USE_CONFIG_FROM_BOOST OR HUNTER_Boost_VERSION VERSION_LESS 1.72.0)
+  hunter_install_boost_config()
+endif()
