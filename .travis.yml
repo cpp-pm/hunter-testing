@@ -44,13 +44,15 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/quickjs
 
-    # FIXME: Android build doesn't work for this package.
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/563921125
     # - os: linux
     #   env: >
     #     TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
     #     PROJECT_DIR=examples/quickjs
 
-    # FIXME: Static analysis fails for this package.
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/563921126
     # - os: linux
     #   env: >
     #     TOOLCHAIN=analyze-cxx17
@@ -87,7 +89,8 @@ matrix:
         TOOLCHAIN=osx-10-13-cxx14
         PROJECT_DIR=examples/quickjs
 
-    # FIXME: iOS build doesn't work for this package.
+    # FIXME:
+    # - https://travis-ci.org/ingenue/hunter/jobs/563921134
     # - os: osx
     #   osx_image: xcode9.4
     #   env: >
