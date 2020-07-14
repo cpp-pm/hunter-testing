@@ -39,11 +39,13 @@ hunter_cmake_args(
     xi
     CMAKE_ARGS
       DEPENDS_ON_PACKAGES=${_dependencies}
+      PKGCONFIG_EXPORT_TARGETS=xi
 )
 
 hunter_cacheable(xi)
 hunter_download(
     PACKAGE_NAME xi
+    PACKAGE_INTERNAL_DEPS_ID "1"
     PACKAGE_UNRELOCATABLE_TEXT_FILES
     "lib/libXi.la"
     "lib/pkgconfig/xi.pc"
