@@ -50,12 +50,12 @@ of Hunter archive.  This level defines list of available packages and mapping
 
 Message in logs:
 
-::
+.. code-block:: none
 
-  -- [hunter] [ Hunter-ID: 1eae623 | Config-ID: ... | Toolchain-ID: ... ]
-  -- [hunter] [ Hunter-ID: e07a124 | Config-ID: ... | Toolchain-ID: ... ]
+  -- [hunter] [ Hunter-ID: 1eae623 | Toolchain-ID: ... | Config-ID: ... ]
+  -- [hunter] [ Hunter-ID: e07a124 | Toolchain-ID: ... | Config-ID: ... ]
 
 .. admonition:: Hunter
 
-  * `Releases <https://github.com/ruslo/hunter/releases>`__
-  * `Atom feed <https://github.com/ruslo/hunter/releases.atom>`__
+  * `Releases <https://github.com/cpp-pm/hunter/releases>`__
+  * `Atom feed <https://github.com/cpp-pm/hunter/releases.atom>`__

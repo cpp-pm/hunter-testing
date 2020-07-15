@@ -1,5 +1,11 @@
-.. Copyright (c) 2016, Ruslan Baratov
+.. Copyright (c) 2016-2019, Ruslan Baratov
 .. All rights reserved.
+
+.. spelling::
+
+  Gitter
+  refactor
+  spam
 
 Contacts
 --------
@@ -7,23 +13,29 @@ Contacts
 Public
 ======
 
-Feel free to open new `issue`_ if you want to ask any questions.
-
-Public chat room: `gitter`_
+* Feel free to open a new `issue`_ if you want to ask a question
+* Public chat room on Gitter: https://gitter.im/cpp-pm/community
 
 Private
 =======
 
-You can write me to ``ruslan_baratov@yahoo.com`` or contact me using `Tox`_:
+* Private chat room on Gitter: https://gitter.im/rbsheth
 
-* ``7EBD836B7690C3742E6F3632742BEB00283529E06D76E06F7065544A5F9C6F37D948FB0F754B``
-* ``4EED21EA40B0351D8BFC85A69499A3F7CFEDA6844DA39FF1783A4D9827423F075D7194707C43``
+.. _issue: https://github.com/cpp-pm/hunter/issues/new
 
-.. _issue: https://github.com/ruslo/hunter/issues/new
-.. _Tox: https://tox.chat
+Please don't
+============
 
-.. _gitter: https://gitter.im/ruslo/hunter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+- Please use private channels only if you have sensible or private information
+  to share, do use public channels otherwise.
 
-.. Stopped working for some reason: https://travis-ci.org/ruslo/hunter/jobs/185557845
-.. .. |gitter| image:: https://badges.gitter.im/ruslo/hunter.svg
-..  :target: https://gitter.im/ruslo/hunter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+- Please do not cross-post. Do not send the same messages to all channels.
+
+- Please avoid adding messages to closed issues unless it's absolutely
+  necessary. If the issue is closed then it means that problem was resolved
+  for original author or author lost interest in it. Please report a new issue
+  with your details and fresh setup instead.
+
+- Please don't spam channels with uninformative messages such as
+  "+1", "me too!", "any updates?!", "please please fix it!", etc.
+  Please use `GitHub reactions <https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/>`__ instead.
