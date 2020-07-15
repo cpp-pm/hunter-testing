@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2018, Ruslan Baratov
+# Copyright (c) 2020, Rahul Sheth
 # All rights reserved.
 
 cmake_minimum_required(VERSION 3.2)
@@ -7,12 +7,12 @@ cmake_minimum_required(VERSION 3.2)
 # * https://github.com/hunter-packages/gate
 include("../common.cmake")
 
-project(download-utf8)
+project(download-tinyobjloader)
 
 # DOCUMENTATION_START {
-hunter_add_package(utf8)
-find_package(utf8cpp CONFIG REQUIRED)
+hunter_add_package(tinyobjloader)
+find_package(tinyobjloader CONFIG REQUIRED)
 
 add_executable(boo boo.cpp)
-target_link_libraries(boo PUBLIC utf8cpp)
+target_link_libraries(boo PUBLIC tinyobjloader::tinyobjloader)
 # DOCUMENTATION_END }
