@@ -3,7 +3,7 @@
 # Copyright (c) 2014, Ruslan Baratov
 # All rights reserved.
 
-# https://github.com/ruslo/polly/wiki/Jenkins
+# https://github.com/cpp-pm/polly/wiki/Jenkins
 
 import argparse
 import hashlib
@@ -111,6 +111,7 @@ def run():
   os.makedirs(testing_dir, exist_ok=True)
 
   if os.name == 'nt':
+    # path too long workaround
     hunter_junctions = os.getenv('HUNTER_JUNCTIONS')
     if hunter_junctions:
       temp_dir = tempfile.mkdtemp(dir=hunter_junctions)
@@ -145,6 +146,7 @@ def run():
 
   polly_root = os.getenv('POLLY_ROOT')
   if polly_root:
+    polly_root = os.path.abspath(polly_root)
     print('Using POLLY_ROOT: {}'.format(polly_root))
     build_script = os.path.join(polly_root, 'bin', 'build.py')
   else:
