@@ -20,9 +20,10 @@ environment:
       PROJECT_DIR: examples\Eigen
       APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
-    - TOOLCHAIN: "vs-14-2015-sdk-8-1"
-      PROJECT_DIR: examples\Eigen
-      APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+    #FIXME: https://ci.appveyor.com/project/rbsheth/hunter/builds/34112616/job/ouoh2t6911vf6l95
+    #- TOOLCHAIN: "vs-14-2015-sdk-8-1"
+    #  PROJECT_DIR: examples\Eigen
+    #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
 
     - TOOLCHAIN: "mingw-cxx17"
       PROJECT_DIR: examples\Eigen
