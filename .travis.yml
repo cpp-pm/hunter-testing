@@ -44,10 +44,11 @@ matrix:
         TOOLCHAIN=gcc-7-cxx17
         PROJECT_DIR=examples/libigl
 
-    - os: linux
-      env: >
-        TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
-        PROJECT_DIR=examples/libigl
+    #FIXME: https://travis-ci.com/github/rbsheth/hunter/jobs/36136266
+    #- os: linux
+    #  env: >
+    #    TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
+    #    PROJECT_DIR=examples/libigl
 
     #FIXME: https://travis-ci.com/rbsheth/hunter/jobs/210909062
     #- os: linux
