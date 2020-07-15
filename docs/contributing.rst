@@ -33,7 +33,7 @@ When contributing please follow the style guides:
     Before adding or updating a package in Hunter, the package is tested.
     Tests are done to check if the source can be downloaded, built and linked.
     Head over to our
-    `repository for per package CI testing contribution <https://github.com/ingenue/hunter/branches/all?utf8=%E2%9C%93&query=pkg.>`__
+    `repository for per package CI testing contribution <https://github.com/cpp-pm/hunter-testing/branches/all?utf8=%E2%9C%93&query=pkg.>`__
     to see more.
 
 .. note::
@@ -87,7 +87,7 @@ If everything seems OK:
   and check that issue you have hit is not already fixed/reported
 * Check this document if the first error you see is ``external.build.failed``:
 
-  * https://cpp-pm-hunter.readthedocs.io/en/latest/reference/errors/error.external.build.failed.html
+  * https://hunter.readthedocs.io/en/latest/reference/errors/error.external.build.failed.html
 * Remove irrelevant code from your example and report one problem at a time.
   Try to construct `SSCCE <http://www.sscce.org/>`__. If you need more files
   than just ``CMakeLists.txt`` it's better to create separate GitHub repository
