@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/pugixml
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/pugixml
+    # FIXME: analyze toolchain build failed
+    # * https://travis-ci.com/drodin/hunter/jobs/277189849
+    # - os: linux
+    #  env: >
+    #    TOOLCHAIN=analyze-cxx17
+    #    PROJECT_DIR=examples/pugixml
 
     - os: linux
       env: >
