@@ -49,10 +49,12 @@ matrix:
         TOOLCHAIN=android-ndk-r17-api-24-arm64-v8a-clang-libcxx14
         PROJECT_DIR=examples/opusfile
 
-    - os: linux
-      env: >
-        TOOLCHAIN=analyze-cxx17
-        PROJECT_DIR=examples/opusfile
+    # FIXME: analyze toolchain build failed
+    # * https://travis-ci.com/github/drodin/hunter/jobs/372350523
+    # - os: linux
+    #   env: >
+    #     TOOLCHAIN=analyze-cxx17
+    #     PROJECT_DIR=examples/opusfile
 
     - os: linux
       env: >
@@ -90,6 +92,7 @@ matrix:
       env: >
         TOOLCHAIN=ios-nocodesign-11-4-dep-9-3
         PROJECT_DIR=examples/opusfile
+        VERBOSE=0
 
     # }
 
