@@ -11,8 +11,7 @@ dlpack
 ======
 
 -  `Official GitHub <https://github.com/dmlc/dlpack>`__
--  `Hunterized <https://github.com/hunter-packages/dlpack>`__
--  `Example <https://github.com/ruslo/hunter/blob/master/examples/dlpack/CMakeLists.txt>`__
+-  `Example <https://github.com/cpp-pm/hunter/blob/master/examples/dlpack/CMakeLists.txt>`__
 
 .. literalinclude:: /../examples/dlpack/CMakeLists.txt
   :language: cmake

@@ -55,7 +55,7 @@ if(NOT "${PERL_VERSION}" EQUAL 0)
 
   hunter_fatal_error(
       "OpenSSL: perl not found"
-      WIKI "error.openssl.perl.not.found"
+      ERROR_PAGE "error.openssl.perl.not.found"
   )
 endif()
 
@@ -66,6 +66,10 @@ if(is_amd64)
 else()
   set(arch "VC-WIN32")
   set(do_ms do_ms.bat)
+endif()
+
+if(DEBUG_RUNTIME)
+  set(arch "debug-${arch}")
 endif()
 
 if(ASM_SUPPORT)
