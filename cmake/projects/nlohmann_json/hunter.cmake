@@ -10,8 +10,8 @@ include(hunter_status_debug)
 
 # See https://github.com/nlohmann/json#supported-compilers
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.9")
-    hunter_report_broken_package("The nlohmann_json package requires GCC 4.9 or newer.")
+  if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.8")
+    hunter_report_broken_package("The nlohmann_json package requires GCC 4.8 or newer.")
   endif()
 elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS "3.4")
@@ -97,6 +97,62 @@ hunter_add_version(
     VERSION "3.4.0"
     URL "https://github.com/nlohmann/json/archive/v3.4.0.tar.gz"
     SHA1 eb8cedccbe5868cbd963bf72f5c27f4ebea51423
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.5.0"
+    URL "https://github.com/nlohmann/json/archive/v3.5.0.tar.gz"
+    SHA1 d5fb01debe55c2f56ef44dabb0539947434e815d
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.6.0"
+    URL "https://github.com/nlohmann/json/archive/v3.6.0.tar.gz"
+    SHA1 2848ddd69a5ddc6b48d134e9c7ad2f0896c67f9c
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.6.1"
+    URL "https://github.com/nlohmann/json/archive/v3.6.1.tar.gz"
+    SHA1 581e1d1c89c65670fb5212d74493a4545d9ab91c
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.7.0"
+    URL "https://github.com/nlohmann/json/archive/v3.7.0.tar.gz"
+    SHA1 d40e66b98392d0cfbd348de029b7822ab5b74e25
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.7.1"
+    URL "https://github.com/nlohmann/json/archive/v3.7.1.tar.gz"
+    SHA1 a9c7ed5d9a3a514636cec6287a8aebd89502a5f0
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.7.2"
+    URL "https://github.com/nlohmann/json/archive/v3.7.2.tar.gz"
+    SHA1 2909fb5aa4cd9766eb8a49fdf911116c5c65d68b
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.7.3"
+    URL "https://github.com/nlohmann/json/archive/v3.7.3.tar.gz"
+    SHA1 2edc54d0cec46549c3bf9983541813f1b64bd26c
+)
+
+hunter_add_version(
+    PACKAGE_NAME nlohmann_json
+    VERSION "3.8.0"
+    URL "https://github.com/nlohmann/json/archive/v3.8.0.tar.gz"
+    SHA1 70a16819777672d3771a2754eccee95e4249b3b4
 )
 
 hunter_cmake_args(nlohmann_json CMAKE_ARGS JSON_BuildTests=OFF)
